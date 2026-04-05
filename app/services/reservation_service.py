@@ -18,8 +18,14 @@ class BookingPeriodError(Exception):
 
 
 def get_available_slots(facility_id, target_date):
-    """指定施設・日付の利用可能な時間枠を返す"""
-    all_slots = get_available_time_slots(target_date)
+    """指定施設・日付の利用可能な時間枠を返す（施設別時間設定に対応）"""
+    from app.models.facility import Facility
+    facility = db.session.get(Facility, facility_id)
+    if not facility:
+        return []
+
+    # 施設別の利用可能時間枠を取得（設定があればそれを使用、なければデフォルト）
+    all_slots = facility.get_time_slots_for_date(target_date)
 
     existing = Reservation.query.filter(
         Reservation.facility_id == facility_id,
@@ -27,11 +33,6 @@ def get_available_slots(facility_id, target_date):
         Reservation.status == Reservation.STATUS_CONFIRMED,
     ).all()
     booked_times = {(r.start_time, r.end_time) for r in existing}
-
-    from app.models.facility import Facility
-    facility = db.session.get(Facility, facility_id)
-    if not facility:
-        return []
 
     blocks = SchoolBlock.query.filter(
         SchoolBlock.school_id == facility.school_id,

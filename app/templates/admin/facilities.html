@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block title %}施設管理 - いなチャレ施設予約{% endblock %}
+
+{% block content %}
+<div class="page-header d-flex justify-content-between align-items-start flex-wrap">
+    <div>
+        <h1><i class="bi bi-door-open"></i>施設管理</h1>
+        <p class="page-subtitle">施設の追加・編集・利用可能時間の設定を行います</p>
+    </div>
+    <a href="{{ url_for('admin.new_facility') }}" class="btn btn-success">
+        <i class="bi bi-plus-circle me-1"></i>施設を追加
+    </a>
+</div>
+
+{% if facilities %}
+<div class="card">
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>施設名</th>
+                    <th>学校</th>
+                    <th>種別</th>
+                    <th>定員</th>
+                    <th>状態</th>
+                    <th>時間設定</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for f in facilities %}
+                <tr class="{{ 'table-secondary' if not f.is_active }}">
+                    <td><strong>{{ f.name }}</strong></td>
+                    <td>{{ f.school.name }}</td>
+                    <td><span class="badge {{ 'badge-confirmed' if f.facility_type == 'outdoor' else 'badge-certified' }}">{{ f.type_label }}</span></td>
+                    <td>{{ f.capacity or '-' }}名</td>
+                    <td>
+                        {% if f.is_active %}
+                        <span class="badge badge-confirmed"><i class="bi bi-check-circle me-1"></i>有効</span>
+                        {% else %}
+                        <span class="badge badge-cancelled"><i class="bi bi-x-circle me-1"></i>無効</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% set custom_count = f.time_settings.count() %}
+                        {% if custom_count > 0 %}
+                        <span class="badge badge-pending">カスタム ({{ custom_count }}枠)</span>
+                        {% else %}
+                        <span class="badge badge-general">デフォルト</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="{{ url_for('admin.facility_detail', id=f.id) }}" class="btn btn-sm btn-outline-primary">
+                            <i class="bi bi-gear me-1"></i>詳細・設定
+                        </a>
+                        <form method="POST" action="{{ url_for('admin.toggle_facility', id=f.id) }}" class="d-inline">
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                            <button class="btn btn-sm {{ 'btn-outline-danger' if f.is_active else 'btn-outline-success' }}" title="{{ '無効にする' if f.is_active else '有効にする' }}">
+                                <i class="bi {{ 'bi-pause-circle' if f.is_active else 'bi-play-circle' }}"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% else %}
+<div class="card">
+    <div class="card-body empty-state">
+        <i class="bi bi-door-open d-block"></i>
+        <p>施設が登録されていません</p>
+        <a href="{{ url_for('admin.new_facility') }}" class="btn btn-success">施設を追加</a>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

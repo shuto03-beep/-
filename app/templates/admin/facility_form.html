@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block title %}{{ '施設編集' if is_edit else '施設追加' }} - いなチャレ施設予約{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1><i class="bi bi-door-open"></i>{{ '施設を編集' if is_edit else '施設を追加' }}</h1>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header"><i class="bi bi-pencil-square me-2"></i>施設情報</div>
+            <div class="card-body p-4">
+                <form method="POST">
+                    {{ form.hidden_tag() }}
+
+                    <div class="section-title">基本情報</div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label">学校 <span class="text-danger">*</span></label>
+                            {{ form.school_id(class="form-select") }}
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">種別 <span class="text-danger">*</span></label>
+                            {{ form.facility_type(class="form-select") }}
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-8">
+                            <label class="form-label">施設名 <span class="text-danger">*</span></label>
+                            {{ form.name(class="form-control", placeholder="例：グラウンド、体育館") }}
+                            {% for error in form.name.errors %}<div class="text-danger small mt-1">{{ error }}</div>{% endfor %}
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">定員（人）</label>
+                            {{ form.capacity(class="form-control", placeholder="例：50") }}
+                        </div>
+                    </div>
+
+                    <div class="section-title">詳細情報</div>
+                    <div class="mb-3">
+                        <label class="form-label"><i class="bi bi-info-circle me-1"></i>施設の説明</label>
+                        {{ form.description(class="form-control", rows="2", placeholder="施設の概要を入力してください") }}
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label"><i class="bi bi-shield-check me-1"></i>利用ルール・注意事項</label>
+                        {{ form.usage_rules(class="form-control", rows="3", placeholder="例：室内シューズ必須、利用後は清掃を行うこと") }}
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label"><i class="bi bi-tools me-1"></i>設備情報</label>
+                        {{ form.equipment(class="form-control", rows="2", placeholder="例：バレーネット2面、バドミントンコート4面") }}
+                    </div>
+
+                    <div class="mb-3 form-check">
+                        {{ form.is_active(class="form-check-input") }}
+                        <label class="form-check-label">利用可能（有効）</label>
+                    </div>
+
+                    <hr>
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn btn-success"><i class="bi bi-check-circle me-1"></i>保存</button>
+                        <a href="{{ url_for('admin.facilities') }}" class="btn btn-outline-secondary">キャンセル</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

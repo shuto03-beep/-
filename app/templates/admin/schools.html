@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}学校管理 - いなチャレ施設予約{% endblock %}
+
+{% block content %}
+<div class="page-header d-flex justify-content-between align-items-start flex-wrap">
+    <div>
+        <h1><i class="bi bi-building"></i>学校管理</h1>
+        <p class="page-subtitle">学校の追加・編集を行います</p>
+    </div>
+    <a href="{{ url_for('admin.new_school') }}" class="btn btn-success">
+        <i class="bi bi-plus-circle me-1"></i>学校を追加
+    </a>
+</div>
+
+{% if schools %}
+<div class="card">
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>学校名</th>
+                    <th>コード</th>
+                    <th>住所</th>
+                    <th>電話番号</th>
+                    <th>施設数</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for s in schools %}
+                <tr>
+                    <td><strong>{{ s.name }}</strong></td>
+                    <td><code>{{ s.code }}</code></td>
+                    <td>{{ s.address or '-' }}</td>
+                    <td>{{ s.contact_phone or '-' }}</td>
+                    <td><span class="badge badge-confirmed">{{ s.facilities.count() }}</span></td>
+                    <td>
+                        <a href="{{ url_for('admin.edit_school', id=s.id) }}" class="btn btn-sm btn-outline-primary">
+                            <i class="bi bi-pencil me-1"></i>編集
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% else %}
+<div class="card">
+    <div class="card-body empty-state">
+        <i class="bi bi-building d-block"></i>
+        <p>学校が登録されていません</p>
+        <a href="{{ url_for('admin.new_school') }}" class="btn btn-success">学校を追加</a>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

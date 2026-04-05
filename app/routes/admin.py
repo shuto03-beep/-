@@ -1,13 +1,14 @@
-from datetime import date, timedelta
+from datetime import date, time, timedelta
 from flask import Blueprint, render_template, redirect, url_for, flash, request
 from flask_login import login_required, current_user
 from app.extensions import db
 from app.models.user import User
 from app.models.organization import Organization
 from app.models.reservation import Reservation
-from app.models.facility import Facility
+from app.models.facility import Facility, FacilityTimeSlot
 from app.models.school import School
 from app.forms.admin import OrganizationRegistrationForm, UserEditForm
+from app.forms.facility import SchoolForm, FacilityForm, TimeSlotForm
 from app.services.notification_service import create_notification
 from app.utils.decorators import admin_required
 
@@ -227,3 +228,227 @@ def reports():
                            facility_stats=facility_stats,
                            org_stats=org_stats,
                            month=today.strftime('%Y年%m月'))
+
+
+# ===================================
+# 学校管理
+# ===================================
+
+@admin_bp.route('/admin/schools')
+@login_required
+@admin_required
+def schools():
+    all_schools = School.query.all()
+    return render_template('admin/schools.html', schools=all_schools)
+
+
+@admin_bp.route('/admin/schools/new', methods=['GET', 'POST'])
+@login_required
+@admin_required
+def new_school():
+    form = SchoolForm()
+    if form.validate_on_submit():
+        school = School(
+            name=form.name.data,
+            code=form.code.data,
+            address=form.address.data,
+            contact_phone=form.contact_phone.data,
+        )
+        db.session.add(school)
+        db.session.commit()
+        flash(f'「{school.name}」を追加しました。', 'success')
+        return redirect(url_for('admin.schools'))
+    return render_template('admin/school_form.html', form=form, is_edit=False)
+
+
+@admin_bp.route('/admin/schools/<int:id>/edit', methods=['GET', 'POST'])
+@login_required
+@admin_required
+def edit_school(id):
+    school = db.session.get(School, id)
+    if not school:
+        flash('学校が見つかりません。', 'danger')
+        return redirect(url_for('admin.schools'))
+    form = SchoolForm(obj=school)
+    if form.validate_on_submit():
+        school.name = form.name.data
+        school.code = form.code.data
+        school.address = form.address.data
+        school.contact_phone = form.contact_phone.data
+        db.session.commit()
+        flash(f'「{school.name}」を更新しました。', 'success')
+        return redirect(url_for('admin.schools'))
+    return render_template('admin/school_form.html', form=form, is_edit=True, school=school)
+
+
+# ===================================
+# 施設管理
+# ===================================
+
+@admin_bp.route('/admin/facilities')
+@login_required
+@admin_required
+def facilities():
+    all_facilities = Facility.query.join(School).order_by(School.name, Facility.name).all()
+    return render_template('admin/facilities.html', facilities=all_facilities)
+
+
+@admin_bp.route('/admin/facilities/new', methods=['GET', 'POST'])
+@login_required
+@admin_required
+def new_facility():
+    form = FacilityForm()
+    form.school_id.choices = [(s.id, s.name) for s in School.query.all()]
+    form.is_active.data = True if request.method == 'GET' else form.is_active.data
+    if form.validate_on_submit():
+        facility = Facility(
+            school_id=form.school_id.data,
+            name=form.name.data,
+            facility_type=form.facility_type.data,
+            capacity=form.capacity.data,
+            description=form.description.data,
+            usage_rules=form.usage_rules.data,
+            equipment=form.equipment.data,
+            is_active=form.is_active.data,
+        )
+        db.session.add(facility)
+        db.session.commit()
+        flash(f'「{facility.full_name}」を追加しました。', 'success')
+        return redirect(url_for('admin.facility_detail', id=facility.id))
+    return render_template('admin/facility_form.html', form=form, is_edit=False)
+
+
+@admin_bp.route('/admin/facilities/<int:id>')
+@login_required
+@admin_required
+def facility_detail(id):
+    facility = db.session.get(Facility, id)
+    if not facility:
+        flash('施設が見つかりません。', 'danger')
+        return redirect(url_for('admin.facilities'))
+
+    # 曜日ごとの時間設定を取得
+    time_settings = {}
+    for day in range(7):
+        slots = FacilityTimeSlot.query.filter_by(
+            facility_id=id, day_of_week=day
+        ).order_by(FacilityTimeSlot.start_time).all()
+        time_settings[day] = slots
+
+    time_form = TimeSlotForm()
+    day_labels = FacilityTimeSlot.DAY_LABELS
+
+    return render_template('admin/facility_detail.html',
+                           facility=facility,
+                           time_settings=time_settings,
+                           time_form=time_form,
+                           day_labels=day_labels)
+
+
+@admin_bp.route('/admin/facilities/<int:id>/edit', methods=['GET', 'POST'])
+@login_required
+@admin_required
+def edit_facility(id):
+    facility = db.session.get(Facility, id)
+    if not facility:
+        flash('施設が見つかりません。', 'danger')
+        return redirect(url_for('admin.facilities'))
+
+    form = FacilityForm(obj=facility)
+    form.school_id.choices = [(s.id, s.name) for s in School.query.all()]
+    if form.validate_on_submit():
+        facility.school_id = form.school_id.data
+        facility.name = form.name.data
+        facility.facility_type = form.facility_type.data
+        facility.capacity = form.capacity.data
+        facility.description = form.description.data
+        facility.usage_rules = form.usage_rules.data
+        facility.equipment = form.equipment.data
+        facility.is_active = form.is_active.data
+        db.session.commit()
+        flash(f'「{facility.full_name}」を更新しました。', 'success')
+        return redirect(url_for('admin.facility_detail', id=id))
+    return render_template('admin/facility_form.html', form=form, is_edit=True, facility=facility)
+
+
+@admin_bp.route('/admin/facilities/<int:id>/toggle', methods=['POST'])
+@login_required
+@admin_required
+def toggle_facility(id):
+    facility = db.session.get(Facility, id)
+    if not facility:
+        flash('施設が見つかりません。', 'danger')
+        return redirect(url_for('admin.facilities'))
+    facility.is_active = not facility.is_active
+    db.session.commit()
+    status = '有効' if facility.is_active else '無効'
+    flash(f'「{facility.full_name}」を{status}にしました。', 'success')
+    return redirect(url_for('admin.facilities'))
+
+
+# ===================================
+# 施設 利用可能時間設定
+# ===================================
+
+@admin_bp.route('/admin/facilities/<int:id>/timeslots/<int:day>', methods=['POST'])
+@login_required
+@admin_required
+def add_timeslot(id, day):
+    facility = db.session.get(Facility, id)
+    if not facility or day < 0 or day > 6:
+        flash('不正なリクエストです。', 'danger')
+        return redirect(url_for('admin.facilities'))
+
+    form = TimeSlotForm()
+    if form.validate_on_submit():
+        start_h = form.start_hour.data
+        end_h = form.end_hour.data
+        if start_h >= end_h:
+            flash('開始時間は終了時間より前にしてください。', 'danger')
+            return redirect(url_for('admin.facility_detail', id=id))
+
+        # 1時間単位で追加
+        for h in range(start_h, end_h):
+            existing = FacilityTimeSlot.query.filter_by(
+                facility_id=id, day_of_week=day,
+                start_time=time(h, 0), end_time=time(h + 1, 0),
+            ).first()
+            if not existing:
+                slot = FacilityTimeSlot(
+                    facility_id=id,
+                    day_of_week=day,
+                    start_time=time(h, 0),
+                    end_time=time(h + 1, 0),
+                    is_available=True,
+                )
+                db.session.add(slot)
+
+        db.session.commit()
+        flash(f'{FacilityTimeSlot.DAY_LABELS[day]}曜日の時間枠を追加しました。', 'success')
+
+    return redirect(url_for('admin.facility_detail', id=id))
+
+
+@admin_bp.route('/admin/facilities/<int:fid>/timeslots/<int:slot_id>/delete', methods=['POST'])
+@login_required
+@admin_required
+def delete_timeslot(fid, slot_id):
+    slot = db.session.get(FacilityTimeSlot, slot_id)
+    if not slot or slot.facility_id != fid:
+        flash('不正なリクエストです。', 'danger')
+        return redirect(url_for('admin.facilities'))
+
+    db.session.delete(slot)
+    db.session.commit()
+    flash('時間枠を削除しました。', 'info')
+    return redirect(url_for('admin.facility_detail', id=fid))
+
+
+@admin_bp.route('/admin/facilities/<int:id>/timeslots/clear/<int:day>', methods=['POST'])
+@login_required
+@admin_required
+def clear_timeslots(id, day):
+    FacilityTimeSlot.query.filter_by(facility_id=id, day_of_week=day).delete()
+    db.session.commit()
+    flash(f'{FacilityTimeSlot.DAY_LABELS[day]}曜日の設定をリセットしました（デフォルトに戻ります）。', 'info')
+    return redirect(url_for('admin.facility_detail', id=id))

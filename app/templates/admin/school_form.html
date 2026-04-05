@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}{{ '学校編集' if is_edit else '学校追加' }} - いなチャレ施設予約{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1><i class="bi bi-building"></i>{{ '学校を編集' if is_edit else '学校を追加' }}</h1>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header"><i class="bi bi-pencil-square me-2"></i>学校情報</div>
+            <div class="card-body p-4">
+                <form method="POST">
+                    {{ form.hidden_tag() }}
+                    <div class="mb-3">
+                        <label class="form-label"><i class="bi bi-building me-1"></i>学校名 <span class="text-danger">*</span></label>
+                        {{ form.name(class="form-control", placeholder="例：稲美中学校") }}
+                        {% for error in form.name.errors %}<div class="text-danger small mt-1">{{ error }}</div>{% endfor %}
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label"><i class="bi bi-code me-1"></i>学校コード <span class="text-danger">*</span></label>
+                        {{ form.code(class="form-control", placeholder="例：inami") }}
+                        <small class="text-muted">英数字のユニークな識別子</small>
+                        {% for error in form.code.errors %}<div class="text-danger small mt-1">{{ error }}</div>{% endfor %}
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label"><i class="bi bi-geo-alt me-1"></i>住所</label>
+                        {{ form.address(class="form-control") }}
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label"><i class="bi bi-telephone me-1"></i>連絡先電話番号</label>
+                        {{ form.contact_phone(class="form-control") }}
+                    </div>
+                    <hr>
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn btn-success"><i class="bi bi-check-circle me-1"></i>保存</button>
+                        <a href="{{ url_for('admin.schools') }}" class="btn btn-outline-secondary">キャンセル</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
