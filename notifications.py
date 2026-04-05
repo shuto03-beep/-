@@ -158,3 +158,29 @@ def send_daily_summary(portfolio_summary: dict, signal_count: int):
 def send_learning_report(report: str):
     """学習レポート通知"""
     _send_discord(report)
+
+
+def send_startup_notification(state: dict):
+    """起動通知（Webhook動作確認兼用）"""
+    from datetime import datetime, timezone, timedelta
+    now = datetime.now(timezone(timedelta(hours=9)))
+    positions = state.get("portfolio", {}).get("positions", [])
+    capital = state.get("portfolio", {}).get("capital", 0)
+    closed = state.get("portfolio", {}).get("closed_trades", [])
+
+    day_names = ["月", "火", "水", "木", "金", "土", "日"]
+    day_name = day_names[now.weekday()]
+
+    is_market_day = now.weekday() < 5
+    market_status = "取引日" if is_market_day else "休場日"
+
+    msg = f"""🤖 スウィングトレードBot起動
+━━━━━━━━━━━━━━━━━━━
+🕐 {now.strftime('%Y-%m-%d')}（{day_name}）{now.strftime('%H:%M')} JST
+📅 本日: {market_status}
+💰 資金: {capital:,.0f}円
+📈 保有ポジション: {len(positions)}件
+📊 累計トレード: {len(closed)}件
+━━━━━━━━━━━━━━━━━━━"""
+
+    _send_discord(msg)

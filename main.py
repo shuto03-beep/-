@@ -17,6 +17,7 @@ from learning import should_run_optimization, run_learning_cycle, generate_perfo
 from notifications import (
     send_signal_notification, send_exit_notification,
     send_position_update, send_daily_summary, send_learning_report,
+    send_startup_notification,
 )
 
 JST = timezone(timedelta(hours=9))
@@ -175,6 +176,9 @@ def main():
     print(f"{'='*50}")
 
     state = load_state()
+
+    # === 起動通知（毎回送信） ===
+    send_startup_notification(state)
 
     try:
         # === Phase 1: 既存ポジション監視（毎回実行） ===
