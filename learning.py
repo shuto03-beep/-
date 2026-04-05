@@ -42,14 +42,22 @@ def should_run_optimization(state: dict) -> bool:
         if datetime.now() - last_date < timedelta(days=7):
             return False
 
-    # クローズ済みトレードが5件以上あるか
-    closed = state.get("portfolio", {}).get("closed_trades", [])
+    # クローズ済みトレードが5件以上あるか（A戦略を基準に判定）
+    strategies = state.get("strategies", {})
+    first_key = next(iter(strategies), None)
+    if not first_key:
+        return False
+    closed = strategies[first_key].get("closed_trades", [])
     return len(closed) >= 5
 
 
 def analyze_trade_history(state: dict) -> dict:
     """直近トレードの成績を分析"""
-    closed = state.get("portfolio", {}).get("closed_trades", [])
+    # マルチ戦略対応: 全戦略のトレードを集約
+    all_closed = []
+    for s in state.get("strategies", {}).values():
+        all_closed.extend(s.get("closed_trades", []))
+    closed = all_closed
     if not closed:
         return {"total": 0, "wins": 0, "win_rate": 0, "avg_pnl_pct": 0}
 
@@ -150,7 +158,11 @@ def optimize_parameters(analysis: dict, state: dict) -> dict:
     """ストップロス/利確/閾値を最適化"""
     learning = load_learning_state()
     params = learning.get("parameters", {}).copy()
-    closed = state.get("portfolio", {}).get("closed_trades", [])
+    # マルチ戦略対応: 全戦略のトレードを集約
+    all_closed = []
+    for s in state.get("strategies", {}).values():
+        all_closed.extend(s.get("closed_trades", []))
+    closed = all_closed
 
     if len(closed) < 20:
         return params

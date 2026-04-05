@@ -1,11 +1,25 @@
 {
-  "portfolio": {
-    "capital": 1000000,
-    "positions": [],
-    "closed_trades": [],
-    "daily_pnl": {}
+  "strategies": {
+    "A_3銘柄": {
+      "capital": 1000000,
+      "positions": [],
+      "closed_trades": [],
+      "daily_pnl": {}
+    },
+    "B_5銘柄": {
+      "capital": 1000000,
+      "positions": [],
+      "closed_trades": [],
+      "daily_pnl": {}
+    },
+    "C_10銘柄": {
+      "capital": 1000000,
+      "positions": [],
+      "closed_trades": [],
+      "daily_pnl": {}
+    }
   },
-  "last_run": "2026-04-05T14:36:39.433798",
-  "last_full_screening": "2026-04-05T14:15:01.512527",
+  "last_run": null,
+  "last_full_screening": null,
   "signals_history": []
 }

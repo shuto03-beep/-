@@ -1,26 +1,39 @@
-"""ポジション管理・損益追跡"""
+"""ポジション管理・損益追跡（マルチ戦略対応）"""
 import json
 from datetime import datetime
-from config import STATE_FILE, TRAILING_STOP_PCT, HOLDING_PERIOD_MAX
+from config import STATE_FILE, TRAILING_STOP_PCT, HOLDING_PERIOD_MAX, INITIAL_CAPITAL, STRATEGIES
+
+
+def _default_portfolio():
+    return {
+        "capital": INITIAL_CAPITAL,
+        "positions": [],
+        "closed_trades": [],
+        "daily_pnl": {},
+    }
 
 
 def load_state() -> dict:
     """state.jsonからポートフォリオ状態を読み込む"""
     try:
         with open(STATE_FILE, "r", encoding="utf-8") as f:
-            return json.load(f)
+            state = json.load(f)
     except (FileNotFoundError, json.JSONDecodeError):
-        return {
-            "portfolio": {
-                "capital": 1_000_000,
-                "positions": [],
-                "closed_trades": [],
-                "daily_pnl": {},
-            },
-            "last_run": None,
-            "last_full_screening": None,
-            "signals_history": [],
-        }
+        state = {}
+
+    # マルチ戦略対応: strategies キーがなければ初期化
+    if "strategies" not in state:
+        state["strategies"] = {}
+    for key in STRATEGIES:
+        if key not in state["strategies"]:
+            state["strategies"][key] = _default_portfolio()
+
+    state.setdefault("last_run", None)
+    state.setdefault("last_full_screening", None)
+    state.setdefault("signals_history", [])
+
+    # 旧形式の portfolio は参照しない（後方互換のため残す）
+    return state
 
 
 def save_state(state: dict):
@@ -32,11 +45,12 @@ def save_state(state: dict):
 
 
 def open_position(
-    state: dict, ticker: str, name: str, price: float, quantity: int,
-    stop_loss: float, take_profit: float,
+    state: dict, strategy_key: str, ticker: str, name: str, price: float,
+    quantity: int, stop_loss: float, take_profit: float,
     signal_score: int = 0, signal_reasons: list = None, ai_confidence: int = 0,
 ) -> dict:
-    """新規ポジションを開く"""
+    """新規ポジションを開く（指定戦略のポートフォリオに）"""
+    portfolio = state["strategies"][strategy_key]
     position = {
         "ticker": ticker,
         "name": name,
@@ -50,15 +64,15 @@ def open_position(
         "signal_reasons": signal_reasons or [],
         "ai_confidence": ai_confidence,
     }
-    state["portfolio"]["positions"].append(position)
-    # 資金を減らす
-    state["portfolio"]["capital"] -= price * quantity
+    portfolio["positions"].append(position)
+    portfolio["capital"] -= price * quantity
     return position
 
 
-def close_position(state: dict, ticker: str, exit_price: float, reason: str) -> dict | None:
+def close_position(state: dict, strategy_key: str, ticker: str, exit_price: float, reason: str) -> dict | None:
     """ポジションを決済する"""
-    positions = state["portfolio"]["positions"]
+    portfolio = state["strategies"][strategy_key]
+    positions = portfolio["positions"]
     position = None
     idx = None
     for i, p in enumerate(positions):
@@ -70,7 +84,6 @@ def close_position(state: dict, ticker: str, exit_price: float, reason: str) -> 
     if position is None:
         return None
 
-    # 損益計算
     pnl = (exit_price - position["entry_price"]) * position["quantity"]
     pnl_pct = (exit_price - position["entry_price"]) / position["entry_price"]
 
@@ -90,39 +103,30 @@ def close_position(state: dict, ticker: str, exit_price: float, reason: str) -> 
         "ai_confidence": position.get("ai_confidence", 0),
     }
 
-    # 取引履歴に追加
-    state["portfolio"]["closed_trades"].append(trade_record)
-    # 資金を戻す
-    state["portfolio"]["capital"] += exit_price * position["quantity"]
-    # ポジション削除
+    portfolio["closed_trades"].append(trade_record)
+    portfolio["capital"] += exit_price * position["quantity"]
     positions.pop(idx)
 
-    # 日次損益記録
     today = datetime.now().strftime("%Y-%m-%d")
-    daily = state["portfolio"].setdefault("daily_pnl", {})
+    daily = portfolio.setdefault("daily_pnl", {})
     daily[today] = daily.get(today, 0) + pnl
 
     return trade_record
 
 
 def check_exit_conditions(position: dict, current_price: float) -> str | None:
-    """ポジションの終了条件をチェック。理由を返す or None"""
+    """ポジションの終了条件をチェック"""
     entry_price = position["entry_price"]
 
-    # ストップロス
     if current_price <= position["stop_loss"]:
         return "STOP_LOSS"
-
-    # 利確
     if current_price >= position["take_profit"]:
         return "TAKE_PROFIT"
 
-    # トレーリングストップ
     highest = position.get("highest_price", entry_price)
     if current_price < highest * (1 - TRAILING_STOP_PCT) and current_price > entry_price:
         return "TRAILING_STOP"
 
-    # 保有期間超過
     entry_date = datetime.strptime(position["entry_date"], "%Y-%m-%d")
     holding_days = (datetime.now() - entry_date).days
     if holding_days >= HOLDING_PERIOD_MAX:
@@ -137,9 +141,9 @@ def update_trailing_stop(position: dict, current_price: float):
         position["highest_price"] = current_price
 
 
-def get_portfolio_summary(state: dict) -> dict:
-    """ポートフォリオのサマリーを返す"""
-    portfolio = state.get("portfolio", {})
+def get_portfolio_summary(state: dict, strategy_key: str) -> dict:
+    """指定戦略のポートフォリオサマリーを返す"""
+    portfolio = state["strategies"].get(strategy_key, _default_portfolio())
     positions = portfolio.get("positions", [])
     closed = portfolio.get("closed_trades", [])
     capital = portfolio.get("capital", 0)
@@ -147,7 +151,6 @@ def get_portfolio_summary(state: dict) -> dict:
     total_invested = sum(p["entry_price"] * p["quantity"] for p in positions)
     total_value = capital + total_invested
 
-    # クローズ済みトレードの成績
     if closed:
         wins = sum(1 for t in closed if t["pnl"] > 0)
         total_pnl = sum(t["pnl"] for t in closed)
@@ -167,3 +170,11 @@ def get_portfolio_summary(state: dict) -> dict:
         "win_rate": win_rate,
         "total_pnl": total_pnl,
     }
+
+
+def get_all_strategies_summary(state: dict) -> dict:
+    """全戦略のサマリーを返す"""
+    summaries = {}
+    for key in STRATEGIES:
+        summaries[key] = get_portfolio_summary(state, key)
+    return summaries
