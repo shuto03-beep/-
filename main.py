@@ -175,6 +175,17 @@ def main():
     print(f"[MAIN] スウィングトレードBot起動 - {now.strftime('%Y-%m-%d %H:%M:%S')} JST")
     print(f"{'='*50}")
 
+    # 環境変数の診断
+    from config import DISCORD_WEBHOOK_URL, ANTHROPIC_API_KEY
+    if DISCORD_WEBHOOK_URL:
+        print(f"[CONFIG] Discord Webhook: 設定済み（{len(DISCORD_WEBHOOK_URL)}文字）")
+    else:
+        print(f"[CONFIG] Discord Webhook: 未設定！GitHub Secretsを確認してください")
+    if ANTHROPIC_API_KEY:
+        print(f"[CONFIG] Anthropic API: 設定済み")
+    else:
+        print(f"[CONFIG] Anthropic API: 未設定（フォールバックモード）")
+
     state = load_state()
 
     # === 起動通知（毎回送信） ===
