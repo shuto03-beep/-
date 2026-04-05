@@ -10,26 +10,33 @@ def calculate_position_size(
     max_position_ratio: float = MAX_POSITION_RATIO,
     risk_per_trade: float = 0.02,
 ) -> int:
-    """ATRベースのポジションサイジング"""
+    """ATRベースのポジションサイジング（日本株100株単位対応）"""
     if price <= 0 or atr <= 0 or capital <= 0:
         return 0
 
+    # 最大投入額
+    max_invest = capital * max_position_ratio
+
+    # 投入額で買える最大株数（100株単位）
+    max_shares = int(max_invest / price / 100) * 100
+
+    # リスクベースの株数計算
     risk_amount = capital * risk_per_trade
     per_share_risk = atr * 2
-    shares = int(risk_amount / per_share_risk)
+    risk_shares = int(risk_amount / per_share_risk / 100) * 100
 
-    max_shares_by_capital = int((capital * max_position_ratio) / price)
-    shares = min(shares, max_shares_by_capital)
+    # リスクベースと最大投入額の小さい方を採用
+    shares = min(risk_shares, max_shares) if risk_shares > 0 else max_shares
 
-    if shares < 100:
+    # 100株未満でも買える場合は100株で試す
+    if shares == 0 and price * 100 <= max_invest:
         shares = 100
-    else:
-        shares = (shares // 100) * 100
 
-    if shares * price > capital * max_position_ratio:
-        shares = int((capital * max_position_ratio) / price / 100) * 100
+    # 最終チェック: 購入金額が資金を超えないか
+    if shares * price > capital:
+        return 0
 
-    return max(shares, 0)
+    return shares
 
 
 def can_open_position_strategy(state: dict, strategy_key: str) -> bool:

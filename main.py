@@ -28,6 +28,34 @@ from notifications import (
 
 JST = timezone(timedelta(hours=9))
 
+# 日本の祝日（2026年）※年始に毎年更新が必要
+JPX_HOLIDAYS_2026 = {
+    "2026-01-01", "2026-01-02", "2026-01-03",  # 年末年始
+    "2026-01-12",  # 成人の日
+    "2026-02-11",  # 建国記念の日
+    "2026-02-23",  # 天皇誕生日
+    "2026-03-20",  # 春分の日
+    "2026-04-29",  # 昭和の日
+    "2026-05-03", "2026-05-04", "2026-05-05", "2026-05-06",  # GW
+    "2026-07-20",  # 海の日
+    "2026-08-11",  # 山の日
+    "2026-09-21", "2026-09-22", "2026-09-23",  # 敬老の日・秋分の日
+    "2026-10-12",  # スポーツの日
+    "2026-11-03",  # 文化の日
+    "2026-11-23",  # 勤労感謝の日
+    "2026-12-31",  # 大納会
+}
+
+
+def is_market_open(now) -> bool:
+    """東証の取引日かどうか判定"""
+    if now.weekday() >= 5:  # 土日
+        return False
+    date_str = now.strftime("%Y-%m-%d")
+    if date_str in JPX_HOLIDAYS_2026:
+        return False
+    return True
+
 
 def check_existing_positions(state: dict):
     """全戦略の既存ポジション監視"""
@@ -202,6 +230,13 @@ def main():
         send_startup_notification(state)
     except Exception as e:
         print(f"[WARN] 起動通知エラー: {e}")
+
+    # === 祝日・休場日チェック ===
+    if not is_market_open(now):
+        print(f"[MAIN] 本日は休場日です。スクリーニングをスキップします。")
+        save_state(state)
+        print(f"\n[MAIN] 完了 - state.json保存済み")
+        return
 
     # === Phase 1: 既存ポジション監視 ===
     try:
