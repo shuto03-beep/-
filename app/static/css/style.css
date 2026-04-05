@@ -808,7 +808,26 @@ body {
     .main-content { padding: 16px 0; }
     .brand-main { font-size: 1.05rem; }
     .brand-sub { font-size: 0.6rem; }
+    .brand-icon { width: 36px; height: 36px; font-size: 1.1rem; margin-right: 8px; }
     .stat-card .stat-value { font-size: 1.6rem; }
     .calendar-filters { padding: 12px; }
+    .view-switcher { flex-wrap: wrap; }
     .view-switcher .btn { padding: 6px 10px; font-size: 0.75rem; }
+    .view-switcher .btn i { display: none; }
+    .facility-legend { gap: 4px; }
+    .facility-legend-item { font-size: 0.68rem; padding: 2px 5px; }
+    .page-header h1 { font-size: 1.2rem; }
+    .page-header .page-subtitle { font-size: 0.78rem; }
+    .main-nav .nav-link { padding: 10px 12px !important; font-size: 0.85rem; }
+    .card-body { padding: 14px; }
+    .table { font-size: 0.85rem; }
+    .table thead th { font-size: 0.75rem; padding: 8px 10px; }
+    .table tbody td { padding: 8px 10px; }
+    #viewGuide { font-size: 0.75rem; padding: 8px 12px !important; }
+    .fc .fc-toolbar-title { font-size: 1rem !important; }
+    .fc .fc-button { font-size: 0.72rem !important; padding: 4px 8px !important; }
+    .modal-dialog { margin: 8px; }
+    .reservation-info-banner { padding: 12px; flex-direction: column; text-align: center; }
+    .reservation-info-banner .info-icon { font-size: 1.4rem; }
+    .section-title { font-size: 0.9rem; }
 }
