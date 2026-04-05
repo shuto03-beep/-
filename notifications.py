@@ -9,13 +9,17 @@ def _send_discord(message: str):
         print(f"[DISCORD] Webhook未設定 → コンソール出力:\n{message}")
         return
 
+    # discordapp.com → discord.com に正規化（リダイレクトでPOSTがGETになる問題を回避）
+    url = DISCORD_WEBHOOK_URL.replace("https://discordapp.com/", "https://discord.com/")
+
     # Discord文字数制限（2000文字）対応
     chunks = [message[i:i + 1990] for i in range(0, len(message), 1990)]
     for chunk in chunks:
         try:
             payload = {"content": chunk}
-            resp = requests.post(DISCORD_WEBHOOK_URL, json=payload, timeout=10)
+            resp = requests.post(url, json=payload, timeout=10)
             resp.raise_for_status()
+            print(f"[DISCORD] 送信成功 (status: {resp.status_code})")
         except Exception as e:
             print(f"[DISCORD] 送信エラー: {e}")
 
