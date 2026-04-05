@@ -1,0 +1,21 @@
+{
+  "weights": {
+    "ma_cross": 15,
+    "ma_trend": 10,
+    "macd": 15,
+    "rsi": 10,
+    "bollinger": 10,
+    "volume": 10,
+    "stochastic": 10,
+    "ichimoku": 15,
+    "historical": 5
+  },
+  "parameters": {
+    "stop_loss_pct": -0.03,
+    "take_profit_pct": 0.08,
+    "buy_threshold": 60
+  },
+  "version": 1,
+  "last_optimization": null,
+  "performance_history": []
+}
