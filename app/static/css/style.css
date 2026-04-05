@@ -1,0 +1,814 @@
+/* ============================================
+   いなチャレ施設予約システム - デザインシステム
+   ============================================ */
+
+/* --- カラーパレット --- */
+:root {
+    --primary: #1a6b3c;
+    --primary-dark: #0f4d2a;
+    --primary-light: #e8f5ee;
+    --primary-hover: #15572f;
+    --accent: #c8a84e;
+    --accent-light: #f7f0d8;
+    --text-primary: #1a1a2e;
+    --text-secondary: #4a4a6a;
+    --text-muted: #8888a0;
+    --bg-body: #f5f6fa;
+    --bg-card: #ffffff;
+    --border-color: #e2e4ec;
+    --border-radius: 12px;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+    --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+    --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+    --transition: all 0.2s ease;
+}
+
+/* --- ベース --- */
+body {
+    font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- トップバー --- */
+.top-bar {
+    background: var(--primary-dark);
+    color: rgba(255,255,255,0.85);
+    padding: 6px 0;
+    font-size: 0.78rem;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.top-bar-role {
+    background: rgba(255,255,255,0.15);
+    padding: 1px 8px;
+    border-radius: 10px;
+    margin-left: 6px;
+    font-size: 0.72rem;
+}
+
+/* --- ナビゲーション --- */
+.main-nav {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    padding: 0;
+    box-shadow: var(--shadow-md);
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+}
+.main-nav .navbar-brand {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    text-decoration: none;
+}
+.brand-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 10px;
+    font-size: 1.3rem;
+    color: var(--accent);
+    margin-right: 12px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+}
+.brand-main {
+    font-size: 1.25rem;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: 2px;
+}
+.brand-sub {
+    font-size: 0.68rem;
+    color: var(--accent);
+    letter-spacing: 3px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+.main-nav .nav-link {
+    color: rgba(255,255,255,0.85) !important;
+    padding: 16px 14px !important;
+    font-size: 0.88rem;
+    font-weight: 500;
+    transition: var(--transition);
+    border-bottom: 3px solid transparent;
+    letter-spacing: 0.3px;
+}
+.main-nav .nav-link:hover {
+    color: #fff !important;
+    background: rgba(255,255,255,0.08);
+    border-bottom-color: var(--accent);
+}
+.nav-link-cta {
+    background: rgba(200,168,78,0.2) !important;
+    border-radius: 6px !important;
+    margin: 8px 4px !important;
+    padding: 8px 16px !important;
+    border: 1px solid rgba(200,168,78,0.3) !important;
+}
+.nav-link-cta:hover {
+    background: rgba(200,168,78,0.35) !important;
+}
+.badge-notify {
+    position: absolute;
+    top: 8px;
+    right: 2px;
+    background: #e63946;
+    color: #fff;
+    font-size: 0.65rem;
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-weight: 700;
+    line-height: 1;
+}
+.dropdown-menu-styled {
+    border: none;
+    box-shadow: var(--shadow-lg);
+    border-radius: var(--border-radius);
+    padding: 8px;
+}
+.dropdown-menu-styled .dropdown-item {
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 0.88rem;
+    transition: var(--transition);
+}
+.dropdown-menu-styled .dropdown-item:hover {
+    background: var(--primary-light);
+    color: var(--primary);
+}
+
+/* --- メインコンテンツ --- */
+.main-content {
+    flex: 1;
+    padding: 32px 0;
+}
+
+/* --- ページタイトル --- */
+.page-header {
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--border-color);
+}
+.page-header h1 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.page-header h1 i {
+    color: var(--primary);
+    font-size: 1.4rem;
+}
+.page-header .page-subtitle {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-top: 4px;
+}
+
+/* --- カード --- */
+.card {
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    overflow: hidden;
+}
+.card:hover {
+    box-shadow: var(--shadow-md);
+}
+.card-header {
+    background: linear-gradient(135deg, #fafbfd 0%, #f0f2f8 100%);
+    border-bottom: 1px solid var(--border-color);
+    font-weight: 600;
+    font-size: 0.92rem;
+    padding: 14px 20px;
+    color: var(--text-primary);
+}
+.card-body {
+    padding: 20px;
+}
+
+/* --- 統計カード --- */
+.stat-card {
+    border: none;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    transition: var(--transition);
+}
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+.stat-card .stat-value {
+    font-size: 2.2rem;
+    font-weight: 900;
+    line-height: 1.1;
+}
+.stat-card .stat-label {
+    font-size: 0.82rem;
+    opacity: 0.9;
+    letter-spacing: 0.5px;
+}
+.stat-card.stat-primary {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: #fff;
+}
+.stat-card.stat-accent {
+    background: linear-gradient(135deg, var(--accent) 0%, #b89740 100%);
+    color: #fff;
+}
+.stat-card.stat-info {
+    background: linear-gradient(135deg, #2196f3 0%, #1565c0 100%);
+    color: #fff;
+}
+.stat-card.stat-subtle {
+    background: #fff;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+.stat-card.stat-subtle .stat-value {
+    color: var(--primary);
+}
+
+/* --- テーブル --- */
+.table {
+    margin-bottom: 0;
+}
+.table thead th {
+    background: linear-gradient(135deg, #fafbfd 0%, #f0f2f8 100%);
+    font-weight: 600;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 12px 16px;
+    border-bottom: 2px solid var(--border-color);
+    white-space: nowrap;
+}
+.table tbody td {
+    padding: 12px 16px;
+    vertical-align: middle;
+    font-size: 0.9rem;
+    border-bottom: 1px solid #f0f1f5;
+}
+.table-hover tbody tr:hover {
+    background: var(--primary-light);
+}
+
+/* --- バッジ --- */
+.badge {
+    font-weight: 600;
+    font-size: 0.75rem;
+    padding: 5px 10px;
+    border-radius: 6px;
+    letter-spacing: 0.3px;
+}
+.badge-certified {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: #fff;
+}
+.badge-general {
+    background: #e8eaef;
+    color: var(--text-secondary);
+}
+.badge-pending {
+    background: var(--accent-light);
+    color: #8b6914;
+    border: 1px solid rgba(200,168,78,0.3);
+}
+.badge-confirmed {
+    background: var(--primary-light);
+    color: var(--primary);
+    border: 1px solid rgba(26,107,60,0.2);
+}
+.badge-cancelled {
+    background: #fde8e8;
+    color: #c0392b;
+    border: 1px solid rgba(192,57,43,0.15);
+}
+
+/* --- ボタン --- */
+.btn {
+    font-weight: 600;
+    font-size: 0.88rem;
+    border-radius: 8px;
+    padding: 8px 20px;
+    transition: var(--transition);
+    letter-spacing: 0.3px;
+}
+.btn-primary, .btn-success {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    border: none;
+    box-shadow: 0 2px 8px rgba(26,107,60,0.25);
+}
+.btn-primary:hover, .btn-success:hover {
+    background: linear-gradient(135deg, var(--primary-hover) 0%, #0a3a1f 100%);
+    box-shadow: 0 4px 12px rgba(26,107,60,0.35);
+    transform: translateY(-1px);
+}
+.btn-outline-primary {
+    color: var(--primary);
+    border-color: var(--primary);
+}
+.btn-outline-primary:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+    transform: translateY(-1px);
+}
+.btn-accent {
+    background: linear-gradient(135deg, var(--accent) 0%, #b89740 100%);
+    border: none;
+    color: #fff;
+}
+.btn-danger {
+    box-shadow: 0 2px 8px rgba(220,53,69,0.25);
+}
+.btn-lg {
+    padding: 12px 32px;
+    font-size: 1rem;
+    border-radius: 10px;
+}
+
+/* --- フォーム --- */
+.form-control, .form-select {
+    border: 1.5px solid var(--border-color);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 0.92rem;
+    transition: var(--transition);
+    background: #fff;
+}
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(26,107,60,0.1);
+}
+.form-label {
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+}
+
+/* --- アラート --- */
+.alert-styled {
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 0.9rem;
+    padding: 14px 20px;
+    box-shadow: var(--shadow-sm);
+}
+.alert-success {
+    background: var(--primary-light);
+    color: var(--primary-dark);
+    border-left: 4px solid var(--primary);
+}
+.alert-danger {
+    background: #fde8e8;
+    color: #8b1a1a;
+    border-left: 4px solid #c0392b;
+}
+.alert-warning {
+    background: var(--accent-light);
+    color: #6b4d0a;
+    border-left: 4px solid var(--accent);
+}
+.alert-info {
+    background: #e8f4fd;
+    color: #0d47a1;
+    border-left: 4px solid #2196f3;
+}
+
+/* --- カレンダー基盤 --- */
+#calendar {
+    background: var(--bg-card);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+}
+.fc .fc-toolbar-title {
+    font-size: 1.2rem !important;
+    font-weight: 700 !important;
+    color: var(--text-primary);
+}
+.fc .fc-button {
+    background: var(--bg-card) !important;
+    border: 1.5px solid var(--border-color) !important;
+    color: var(--text-secondary) !important;
+    font-size: 0.82rem !important;
+    font-weight: 600 !important;
+    border-radius: 6px !important;
+    padding: 6px 12px !important;
+    transition: var(--transition) !important;
+    text-transform: none !important;
+}
+.fc .fc-button:hover {
+    background: var(--primary-light) !important;
+    color: var(--primary) !important;
+    border-color: var(--primary) !important;
+}
+.fc .fc-button-active {
+    background: var(--primary) !important;
+    color: #fff !important;
+    border-color: var(--primary) !important;
+}
+.fc .fc-event {
+    border: none !important;
+    border-radius: 5px !important;
+    cursor: pointer;
+    font-weight: 500;
+    overflow: hidden;
+}
+.fc .fc-daygrid-event {
+    margin: 1px 2px !important;
+}
+.fc .fc-col-header-cell {
+    background: linear-gradient(135deg, #fafbfd 0%, #f0f2f8 100%);
+    font-weight: 600;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    padding: 10px 0 !important;
+}
+.fc .fc-timegrid-slot {
+    height: 64px !important;
+}
+.fc .fc-day-today {
+    background: rgba(26,107,60,0.04) !important;
+}
+.fc .fc-scrollgrid {
+    border-radius: 8px;
+    overflow: hidden;
+}
+.fc .fc-more-link {
+    color: var(--primary) !important;
+    font-weight: 600;
+    font-size: 0.75rem;
+}
+
+/* ========================================
+   年間ビュー: コンパクトなドット表示
+   ======================================== */
+.year-event {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 0.65rem;
+    line-height: 1.3;
+    padding: 0 2px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.year-reservation {
+    color: #fff;
+}
+.year-block {
+    color: #fff;
+    font-weight: 700;
+}
+.facility-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+/* ========================================
+   月間ビュー: 施設名+団体名+時間を表示
+   ======================================== */
+.month-event {
+    font-size: 0.72rem;
+    line-height: 1.35;
+    padding: 2px 4px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px 6px;
+    align-items: center;
+}
+.month-reservation {
+    color: #fff;
+}
+.month-facility {
+    font-weight: 700;
+    font-size: 0.7rem;
+}
+.month-org {
+    font-weight: 500;
+    opacity: 0.95;
+}
+.month-time {
+    font-size: 0.65rem;
+    opacity: 0.8;
+}
+.month-block {
+    color: #fff;
+    font-weight: 700;
+}
+.month-block-reason {
+    font-weight: 500;
+}
+.cert-mark {
+    color: #ffd700;
+    font-size: 0.7rem;
+    margin-right: 1px;
+}
+
+/* ========================================
+   週間・日別ビュー: 詳細な団体・施設・目的表示
+   ======================================== */
+.week-event {
+    padding: 3px 6px;
+    line-height: 1.35;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.week-reservation {
+    color: #fff;
+}
+.week-org-line {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 700;
+    font-size: 0.82rem;
+}
+.week-org-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.week-cert-badge {
+    background: rgba(255,215,0,0.25);
+    color: #ffd700;
+    border: 1px solid rgba(255,215,0,0.4);
+    font-size: 0.55rem;
+    padding: 0 4px;
+    border-radius: 3px;
+    font-weight: 700;
+    flex-shrink: 0;
+    letter-spacing: 0.5px;
+}
+.week-facility-line {
+    font-size: 0.72rem;
+    opacity: 0.9;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+.week-school-tag {
+    background: rgba(255,255,255,0.2);
+    padding: 0 4px;
+    border-radius: 3px;
+    font-size: 0.6rem;
+    font-weight: 600;
+}
+.week-purpose {
+    font-size: 0.68rem;
+    opacity: 0.8;
+    margin-top: 1px;
+    font-style: italic;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.week-meta {
+    display: flex;
+    gap: 8px;
+    margin-top: 1px;
+}
+.week-participants {
+    font-size: 0.65rem;
+    opacity: 0.75;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+.week-block {
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.week-block-label {
+    font-weight: 700;
+    font-size: 0.75rem;
+}
+.week-block-reason {
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+.week-block-facility {
+    font-size: 0.68rem;
+    opacity: 0.8;
+}
+
+/* 認定団体のイベント装飾 */
+.event-certified {
+    box-shadow: 0 0 0 1px rgba(255,215,0,0.5), 0 2px 6px rgba(0,0,0,0.15) !important;
+}
+
+/* ========================================
+   モーダル スタイリング
+   ======================================== */
+.modal-header-reservation {
+    background: linear-gradient(135deg, var(--primary-light) 0%, #d4edda 100%);
+    border-bottom: 2px solid var(--primary);
+}
+.modal-header-block {
+    background: linear-gradient(135deg, #fde8e8 0%, #fadbd8 100%);
+    border-bottom: 2px solid #c0392b;
+}
+.modal-org-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+.modal-detail-table {
+    margin-bottom: 0;
+}
+.modal-detail-table td {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+}
+.modal-label {
+    color: var(--text-muted);
+    font-weight: 600;
+    width: 110px;
+    white-space: nowrap;
+}
+.modal-label i {
+    width: 18px;
+    text-align: center;
+    margin-right: 4px;
+}
+.modal-block-alert {
+    background: #fde8e8;
+    color: #8b1a1a;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    border-left: 4px solid #c0392b;
+}
+
+/* ========================================
+   カレンダーフィルターパネル
+   ======================================== */
+.calendar-filters {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-sm);
+}
+/* 施設別凡例 */
+.facility-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.facility-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    background: #f8f9fa;
+    padding: 3px 8px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+}
+.facility-legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+    flex-shrink: 0;
+}
+.block-legend-item {
+    background: #fde8e8;
+    border-color: rgba(192,57,43,0.15);
+    color: #8b1a1a;
+}
+
+/* 表示切替ボタングループ */
+.view-switcher {
+    display: flex;
+    background: #f0f2f8;
+    border-radius: 10px;
+    padding: 3px;
+    gap: 2px;
+}
+.view-switcher .btn {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 0.82rem;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+.view-switcher .btn.active {
+    background: var(--primary);
+    color: #fff;
+    box-shadow: 0 2px 6px rgba(26,107,60,0.25);
+}
+
+/* --- 予約フォーム --- */
+.reservation-info-banner {
+    border-radius: var(--border-radius);
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+.reservation-info-banner.certified {
+    background: linear-gradient(135deg, var(--primary-light) 0%, #d4edda 100%);
+    border: 1px solid rgba(26,107,60,0.2);
+}
+.reservation-info-banner.general {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d6eaf8 100%);
+    border: 1px solid rgba(33,150,243,0.2);
+}
+.reservation-info-banner .info-icon {
+    font-size: 1.8rem;
+    color: var(--primary);
+}
+
+/* --- フッター --- */
+.main-footer {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, #0a3520 100%);
+    color: rgba(255,255,255,0.8);
+    padding: 24px 0;
+    margin-top: auto;
+}
+.footer-brand {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #fff;
+    margin-bottom: 2px;
+    letter-spacing: 0.5px;
+}
+
+/* --- ユーティリティ --- */
+.section-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+    padding-left: 12px;
+    border-left: 3px solid var(--primary);
+}
+.empty-state {
+    text-align: center;
+    padding: 48px 24px;
+    color: var(--text-muted);
+}
+.empty-state i {
+    font-size: 3rem;
+    margin-bottom: 16px;
+    opacity: 0.4;
+}
+.empty-state p {
+    font-size: 0.95rem;
+}
+
+/* --- レスポンシブ --- */
+@media (max-width: 768px) {
+    .top-bar { display: none; }
+    .main-content { padding: 16px 0; }
+    .brand-main { font-size: 1.05rem; }
+    .brand-sub { font-size: 0.6rem; }
+    .stat-card .stat-value { font-size: 1.6rem; }
+    .calendar-filters { padding: 12px; }
+    .view-switcher .btn { padding: 6px 10px; font-size: 0.75rem; }
+}

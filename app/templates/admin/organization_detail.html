@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% block title %}団体詳細 - いなチャレ施設予約{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">団体詳細</h1>
+
+<div class="card shadow">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <span>{{ org.name }}</span>
+        <div>
+            {% if org.is_inachalle_certified %}
+            <span class="badge bg-success fs-6">いなチャレ認定</span>
+            {% elif org.is_approved %}
+            <span class="badge bg-primary fs-6">一般承認済み</span>
+            {% else %}
+            <span class="badge bg-warning text-dark fs-6">承認待ち</span>
+            {% endif %}
+        </div>
+    </div>
+    <div class="card-body">
+        <table class="table table-borderless">
+            <tr><th class="w-25">団体名</th><td>{{ org.name }}</td></tr>
+            <tr><th>代表者</th><td>{{ org.representative }}</td></tr>
+            <tr><th>連絡先メール</th><td>{{ org.contact_email or '-' }}</td></tr>
+            <tr><th>連絡先電話</th><td>{{ org.contact_phone or '-' }}</td></tr>
+            <tr><th>登録番号</th><td>{{ org.registration_number or '-' }}</td></tr>
+            <tr><th>いなチャレ認定</th>
+                <td>
+                    {% if org.is_inachalle_certified %}
+                    <span class="text-success fw-bold">認定済み</span>（{{ org.advance_days }}日先まで優先予約可能）
+                    {% else %}
+                    <span class="text-muted">未認定</span>（{{ org.advance_days }}日先まで予約可能）
+                    {% endif %}
+                </td>
+            </tr>
+            <tr><th>備考</th><td>{{ org.notes or '-' }}</td></tr>
+            <tr><th>登録日</th><td>{{ org.created_at.strftime('%Y/%m/%d') }}</td></tr>
+        </table>
+
+        {% if not org.is_approved %}
+        <div class="d-flex gap-2 mb-3">
+            <form method="POST" action="{{ url_for('admin.approve_organization', id=org.id) }}">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="certify_inachalle" value="1">
+                <button class="btn btn-success">いなチャレ認定として承認</button>
+            </form>
+            <form method="POST" action="{{ url_for('admin.approve_organization', id=org.id) }}">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="certify_inachalle" value="0">
+                <button class="btn btn-outline-success">一般団体として承認</button>
+            </form>
+            <form method="POST" action="{{ url_for('admin.reject_organization', id=org.id) }}"
+                  onsubmit="return confirm('本当に却下しますか？団体情報は削除されます。')">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <button class="btn btn-danger">却下する</button>
+            </form>
+        </div>
+        {% elif org.is_approved %}
+        <div class="mb-3">
+            <form method="POST" action="{{ url_for('admin.toggle_certification', id=org.id) }}"
+                  onsubmit="return confirm('認定ステータスを変更しますか？')">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                {% if org.is_inachalle_certified %}
+                <button class="btn btn-outline-warning">いなチャレ認定を解除する</button>
+                {% else %}
+                <button class="btn btn-success">いなチャレ認定に切り替える</button>
+                {% endif %}
+            </form>
+        </div>
+        {% endif %}
+
+        <h5 class="mt-4">メンバー一覧</h5>
+        {% set members = org.members.all() %}
+        {% if members %}
+        <table class="table table-sm">
+            <thead><tr><th>名前</th><th>ロール</th><th>メール</th></tr></thead>
+            <tbody>
+                {% for m in members %}
+                <tr>
+                    <td>{{ m.display_name }}</td>
+                    <td>{{ m.role_label }}</td>
+                    <td>{{ m.email }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p class="text-muted">メンバーはまだ登録されていません。</p>
+        {% endif %}
+    </div>
+</div>
+
+<div class="mt-3">
+    <a href="{{ url_for('admin.organizations') }}" class="btn btn-outline-secondary">団体一覧へ戻る</a>
+</div>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}予約詳細 - いなチャレ施設予約{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1><i class="bi bi-calendar-check"></i>予約詳細</h1>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <span><i class="bi bi-bookmark me-2"></i>予約 #{{ reservation.id }}</span>
+                {% if reservation.status == 'confirmed' %}
+                <span class="badge badge-confirmed" style="font-size:0.85rem;"><i class="bi bi-check-circle me-1"></i>確定</span>
+                {% else %}
+                <span class="badge badge-cancelled" style="font-size:0.85rem;"><i class="bi bi-x-circle me-1"></i>キャンセル済み</span>
+                {% endif %}
+            </div>
+            <div class="card-body p-4">
+                <table class="table table-borderless">
+                    <tr><th style="width:30%; color:var(--text-secondary);"><i class="bi bi-building me-2"></i>施設</th><td><strong>{{ reservation.facility.full_name }}</strong></td></tr>
+                    <tr><th style="color:var(--text-secondary);"><i class="bi bi-tag me-2"></i>施設タイプ</th><td>{{ reservation.facility.type_label }}</td></tr>
+                    <tr><th style="color:var(--text-secondary);"><i class="bi bi-calendar3 me-2"></i>日付</th><td>{{ reservation.date.strftime('%Y年%m月%d日') }}</td></tr>
+                    <tr><th style="color:var(--text-secondary);"><i class="bi bi-clock me-2"></i>時間</th><td>{{ reservation.time_range }}</td></tr>
+                    <tr><th style="color:var(--text-secondary);"><i class="bi bi-people me-2"></i>団体</th><td>{{ reservation.organization.name }}</td></tr>
+                    <tr><th style="color:var(--text-secondary);"><i class="bi bi-person me-2"></i>予約者</th><td>{{ reservation.user.display_name }}</td></tr>
+                    <tr><th style="color:var(--text-secondary);"><i class="bi bi-chat-text me-2"></i>利用目的</th><td>{{ reservation.purpose or '-' }}</td></tr>
+                    <tr><th style="color:var(--text-secondary);"><i class="bi bi-people-fill me-2"></i>予定参加人数</th><td>{{ reservation.expected_participants or '-' }}名</td></tr>
+                    <tr><th style="color:var(--text-secondary);"><i class="bi bi-sticky me-2"></i>備考</th><td>{{ reservation.notes or '-' }}</td></tr>
+                    <tr><th style="color:var(--text-secondary);"><i class="bi bi-clock-history me-2"></i>予約日時</th><td>{{ reservation.created_at.strftime('%Y/%m/%d %H:%M') }}</td></tr>
+                    {% if reservation.status == 'cancelled' %}
+                    <tr><th style="color:#c0392b;"><i class="bi bi-x-circle me-2"></i>キャンセル理由</th><td class="text-danger">{{ reservation.cancellation_reason or '-' }}</td></tr>
+                    <tr><th style="color:#c0392b;"><i class="bi bi-clock me-2"></i>キャンセル日時</th><td>{{ reservation.cancelled_at.strftime('%Y/%m/%d %H:%M') if reservation.cancelled_at else '-' }}</td></tr>
+                    {% endif %}
+                </table>
+
+                {% if reservation.is_active and (current_user.is_admin or reservation.organization_id == current_user.organization_id) %}
+                <hr>
+                <div class="section-title" style="color:#c0392b; border-left-color:#c0392b;">予約をキャンセル</div>
+                <form method="POST" action="{{ url_for('reservations.cancel', id=reservation.id) }}"
+                      onsubmit="return confirm('本当にこの予約をキャンセルしますか？')">
+                    {{ cancel_form.hidden_tag() }}
+                    <div class="mb-3">
+                        <label class="form-label">キャンセル理由 <span class="text-danger">*</span></label>
+                        {{ cancel_form.cancellation_reason(class="form-control", rows="2", placeholder="キャンセル理由を入力してください") }}
+                        {% for error in cancel_form.cancellation_reason.errors %}
+                        <div class="text-danger small mt-1">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                    <button type="submit" class="btn btn-danger">
+                        <i class="bi bi-x-circle me-1"></i>キャンセルする
+                    </button>
+                </form>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="mt-3">
+            <a href="{{ url_for('reservations.list_reservations') }}" class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-left me-1"></i>予約一覧へ戻る
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

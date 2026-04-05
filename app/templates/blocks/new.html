@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}ブロック追加 - いなチャレ施設予約{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1><i class="bi bi-shield-lock"></i>学校ブロックを追加</h1>
+    <p class="page-subtitle">学校行事等で施設を利用不可にする日程を設定します</p>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="alert alert-warning alert-styled">
+            <i class="bi bi-exclamation-triangle me-2"></i>
+            <strong>ご注意：</strong>ブロックを設定すると、対象の時間帯に既にある予約は自動的にキャンセルされ、予約者に通知が送信されます。
+        </div>
+
+        <div class="card">
+            <div class="card-header"><i class="bi bi-pencil-square me-2"></i>ブロック情報を入力</div>
+            <div class="card-body p-4">
+                <form method="POST">
+                    {{ form.hidden_tag() }}
+                    <div class="mb-3">
+                        <label class="form-label"><i class="bi bi-building me-1"></i>学校</label>
+                        {{ form.school_id(class="form-select") }}
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label"><i class="bi bi-door-open me-1"></i>施設</label>
+                        {{ form.facility_id(class="form-select") }}
+                        <small class="text-muted">「全施設」を選ぶとその学校の全施設がブロックされます</small>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label"><i class="bi bi-calendar3 me-1"></i>日付</label>
+                        {{ form.date(class="form-control", type="date") }}
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label"><i class="bi bi-clock me-1"></i>開始時間</label>
+                            {{ form.start_time(class="form-control", type="time") }}
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label"><i class="bi bi-clock me-1"></i>終了時間</label>
+                            {{ form.end_time(class="form-control", type="time") }}
+                        </div>
+                        <small class="text-muted mt-1">空欄にすると終日ブロックになります</small>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label"><i class="bi bi-chat-text me-1"></i>理由 <span class="text-danger">*</span></label>
+                        {{ form.reason(class="form-control", rows="2", placeholder="例：期末テスト、体育祭、卒業式") }}
+                        {% for error in form.reason.errors %}
+                        <div class="text-danger small mt-1">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-danger btn-lg">
+                            <i class="bi bi-shield-lock me-2"></i>ブロックを設定する
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

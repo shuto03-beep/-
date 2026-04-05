@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block title %}団体管理 - いなチャレ施設予約{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1><i class="bi bi-people"></i>団体管理</h1>
+    <p class="page-subtitle">いなチャレ認定団体は3ヶ月先まで優先予約、一般団体は1ヶ月先まで予約可能</p>
+</div>
+
+{% if organizations %}
+<div class="card">
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>団体名</th>
+                    <th>代表者</th>
+                    <th>登録番号</th>
+                    <th>認定ステータス</th>
+                    <th>予約可能</th>
+                    <th>メンバー</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for org in organizations %}
+                <tr>
+                    <td><strong>{{ org.name }}</strong></td>
+                    <td>{{ org.representative }}</td>
+                    <td>{{ org.registration_number or '-' }}</td>
+                    <td>
+                        {% if org.is_inachalle_certified %}
+                        <span class="badge badge-certified"><i class="bi bi-award me-1"></i>いなチャレ認定</span>
+                        {% elif org.is_approved %}
+                        <span class="badge badge-general">一般</span>
+                        {% else %}
+                        <span class="badge badge-pending"><i class="bi bi-hourglass-split me-1"></i>承認待ち</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ org.advance_days }}日先</td>
+                    <td>{{ org.members.count() }}名</td>
+                    <td>
+                        <a href="{{ url_for('admin.organization_detail', id=org.id) }}" class="btn btn-sm btn-outline-primary">
+                            <i class="bi bi-eye me-1"></i>詳細
+                        </a>
+                        {% if not org.is_approved %}
+                        <form method="POST" action="{{ url_for('admin.approve_organization', id=org.id) }}" class="d-inline">
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                            <input type="hidden" name="certify_inachalle" value="1">
+                            <button class="btn btn-sm btn-success" title="いなチャレ認定として承認">
+                                <i class="bi bi-award me-1"></i>認定承認
+                            </button>
+                        </form>
+                        <form method="POST" action="{{ url_for('admin.approve_organization', id=org.id) }}" class="d-inline">
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                            <input type="hidden" name="certify_inachalle" value="0">
+                            <button class="btn btn-sm btn-outline-success" title="一般団体として承認">一般承認</button>
+                        </form>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% else %}
+<div class="card">
+    <div class="card-body empty-state">
+        <i class="bi bi-people d-block"></i>
+        <p>登録された団体はありません</p>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

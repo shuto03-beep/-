@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %}利用レポート - いなチャレ施設予約{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1><i class="bi bi-bar-chart-line"></i>利用レポート</h1>
+    <p class="page-subtitle">{{ month }} の施設利用状況</p>
+</div>
+
+<div class="row g-4 mb-4">
+    <div class="col-md-6">
+        <div class="stat-card stat-primary p-4 text-center">
+            <div class="stat-value">{{ monthly_reservations }}</div>
+            <div class="stat-label"><i class="bi bi-calendar-check me-1"></i>今月の予約数</div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="stat-card stat-subtle p-4 text-center">
+            <div class="stat-value">{{ monthly_cancellations }}</div>
+            <div class="stat-label"><i class="bi bi-x-circle me-1"></i>今月のキャンセル数</div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header"><i class="bi bi-building me-2"></i>施設別利用状況</div>
+            <div class="card-body p-0">
+                <table class="table table-hover mb-0">
+                    <thead>
+                        <tr><th>施設</th><th class="text-end">予約数</th></tr>
+                    </thead>
+                    <tbody>
+                        {% for stat in facility_stats %}
+                        <tr>
+                            <td>{{ stat.facility.full_name }}</td>
+                            <td class="text-end"><span class="badge badge-confirmed">{{ stat.count }}</span></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header"><i class="bi bi-people me-2"></i>団体別利用状況</div>
+            <div class="card-body p-0">
+                {% if org_stats %}
+                <table class="table table-hover mb-0">
+                    <thead>
+                        <tr><th>団体</th><th class="text-end">予約数</th></tr>
+                    </thead>
+                    <tbody>
+                        {% for stat in org_stats %}
+                        <tr>
+                            <td>{{ stat.org.name }}</td>
+                            <td class="text-end"><span class="badge badge-certified">{{ stat.count }}</span></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <div class="empty-state py-4">
+                    <p>承認済みの団体がありません</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

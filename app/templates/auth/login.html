@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}ログイン - いなチャレ施設予約{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center" style="min-height: 60vh; align-items: center;">
+    <div class="col-md-5 col-lg-4">
+        <div class="text-center mb-4">
+            <div class="brand-icon mx-auto mb-3" style="width:64px; height:64px; font-size:1.8rem; background:var(--primary); border-radius:16px;">
+                <i class="bi bi-building" style="color:var(--accent);"></i>
+            </div>
+            <h2 class="fw-bold" style="letter-spacing:3px;">いなチャレ</h2>
+            <p class="text-muted small">施設予約システム</p>
+        </div>
+        <div class="card">
+            <div class="card-body p-4">
+                <form method="POST">
+                    {{ form.hidden_tag() }}
+                    <div class="mb-3">
+                        <label class="form-label"><i class="bi bi-person me-1"></i>ユーザー名</label>
+                        {{ form.username(class="form-control", placeholder="ユーザー名を入力") }}
+                        {% for error in form.username.errors %}
+                        <div class="text-danger small mt-1">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label"><i class="bi bi-lock me-1"></i>パスワード</label>
+                        {{ form.password(class="form-control", placeholder="パスワードを入力") }}
+                        {% for error in form.password.errors %}
+                        <div class="text-danger small mt-1">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                    <div class="d-grid mb-3">
+                        <button type="submit" class="btn btn-success btn-lg">
+                            <i class="bi bi-box-arrow-in-right me-1"></i>ログイン
+                        </button>
+                    </div>
+                </form>
+                <div class="text-center">
+                    <a href="{{ url_for('auth.register') }}" class="text-decoration-none small">
+                        <i class="bi bi-person-plus me-1"></i>アカウントをお持ちでない方はこちら
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
