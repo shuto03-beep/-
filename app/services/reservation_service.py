@@ -17,15 +17,18 @@ class BookingPeriodError(Exception):
     pass
 
 
-def get_available_slots(facility_id, target_date):
+def get_available_slots(facility_id, target_date, exclude_reservation_id=None):
     """指定施設・日付の利用可能な時間枠を返す"""
     all_slots = get_available_time_slots(target_date)
 
-    existing = Reservation.query.filter(
+    query = Reservation.query.filter(
         Reservation.facility_id == facility_id,
         Reservation.date == target_date,
         Reservation.status == Reservation.STATUS_CONFIRMED,
-    ).all()
+    )
+    if exclude_reservation_id:
+        query = query.filter(Reservation.id != exclude_reservation_id)
+    existing = query.all()
     booked_times = {(r.start_time, r.end_time) for r in existing}
 
     from app.models.facility import Facility
@@ -131,6 +134,62 @@ def create_reservation(facility_id, organization_id, user_id, target_date, start
         notes=notes,
     )
     db.session.add(reservation)
+    db.session.commit()
+    return reservation
+
+
+def update_reservation(reservation_id, user_id, facility_id, target_date, start_time, end_time, purpose, expected_participants=None, notes=None):
+    """予約を変更する（重複チェック・予約期間チェック付き）"""
+    from app.models.organization import Organization
+    from app.models.user import User
+    from app.models.facility import Facility
+
+    reservation = db.session.get(Reservation, reservation_id)
+    if not reservation:
+        raise ValueError('予約が見つかりません')
+
+    user = db.session.get(User, user_id)
+    if not user or not user.is_admin:
+        org = db.session.get(Organization, reservation.organization_id)
+        if org:
+            check_booking_period(org, target_date)
+
+    # 自分自身以外の同時間帯予約をチェック
+    existing = Reservation.query.filter(
+        Reservation.facility_id == facility_id,
+        Reservation.date == target_date,
+        Reservation.start_time == start_time,
+        Reservation.status == Reservation.STATUS_CONFIRMED,
+        Reservation.id != reservation_id,
+    ).first()
+
+    if existing:
+        raise ReservationConflictError('この時間帯は既に予約されています')
+
+    facility = db.session.get(Facility, facility_id)
+    blocks = SchoolBlock.query.filter(
+        SchoolBlock.school_id == facility.school_id,
+        SchoolBlock.date == target_date,
+        db.or_(
+            SchoolBlock.facility_id.is_(None),
+            SchoolBlock.facility_id == facility_id,
+        )
+    ).all()
+
+    for block in blocks:
+        if block.is_all_day:
+            raise SchoolBlockedError(f'学校行事のため利用できません（{block.reason}）')
+        if block.start_time and block.end_time:
+            if start_time < block.end_time and end_time > block.start_time:
+                raise SchoolBlockedError(f'学校行事のため利用できません（{block.reason}）')
+
+    reservation.facility_id = facility_id
+    reservation.date = target_date
+    reservation.start_time = start_time
+    reservation.end_time = end_time
+    reservation.purpose = purpose
+    reservation.expected_participants = expected_participants
+    reservation.notes = notes
     db.session.commit()
     return reservation
 

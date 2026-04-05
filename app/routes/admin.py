@@ -10,6 +10,8 @@ from app.models.school import School
 from app.forms.admin import OrganizationRegistrationForm, UserEditForm
 from app.services.notification_service import create_notification
 from app.utils.decorators import admin_required
+from app.services.activity_log_service import log_activity
+from app.models.activity_log import ActivityLog
 
 admin_bp = Blueprint('admin', __name__)
 
@@ -59,6 +61,7 @@ def approve_organization(id):
             + (f' 認定団体として{org.advance_days}日先まで優先予約が可能です。' if certify else ''),
         )
 
+    log_activity(current_user.id, '団体承認', 'organization', org.id, f'{org.name} {cert_text}')
     flash(f'「{org.name}」を{cert_text}承認しました。', 'success')
     return redirect(url_for('admin.organizations'))
 
@@ -87,6 +90,7 @@ def toggle_certification(id):
             f'「{org.name}」の認定ステータスが変更されました。{status_msg}',
         )
 
+    log_activity(current_user.id, 'いなチャレ認定変更', 'organization', org.id, f'{org.name}: {status_msg}')
     flash(f'「{org.name}」: {status_msg}', 'success')
     return redirect(url_for('admin.organization_detail', id=id))
 
@@ -107,9 +111,11 @@ def reject_organization(id):
             f'「{org.name}」の承認が見送られました。事務局にお問い合わせください。',
         )
 
+    org_name = org.name
     db.session.delete(org)
     db.session.commit()
-    flash(f'「{org.name}」の登録を却下しました。', 'info')
+    log_activity(current_user.id, '団体却下', 'organization', id, org_name)
+    flash(f'「{org_name}」の登録を却下しました。', 'info')
     return redirect(url_for('admin.organizations'))
 
 
@@ -174,10 +180,33 @@ def user_detail(id):
         user.role = form.role.data
         user.is_active = form.is_active.data
         db.session.commit()
+        log_activity(current_user.id, 'ユーザー編集', 'user', user.id, f'{user.display_name} role={user.role} active={user.is_active}')
         flash('ユーザー情報を更新しました。', 'success')
         return redirect(url_for('admin.users'))
 
     return render_template('admin/user_detail.html', user=user, form=form)
+
+
+# === 操作ログ ===
+
+@admin_bp.route('/admin/activity-log')
+@login_required
+@admin_required
+def activity_log():
+    page = request.args.get('page', 1, type=int)
+    query = ActivityLog.query.order_by(ActivityLog.created_at.desc())
+
+    action_filter = request.args.get('action', '')
+    if action_filter:
+        query = query.filter(ActivityLog.action == action_filter)
+
+    logs = query.paginate(page=page, per_page=30)
+
+    actions = db.session.query(ActivityLog.action).distinct().order_by(ActivityLog.action).all()
+    action_list = [a[0] for a in actions]
+
+    return render_template('admin/activity_log.html', logs=logs,
+                           action_filter=action_filter, action_list=action_list)
 
 
 # === レポート ===

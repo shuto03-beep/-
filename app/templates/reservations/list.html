@@ -7,27 +7,79 @@
         <h1><i class="bi bi-list-check"></i>予約一覧</h1>
         <p class="page-subtitle">施設の予約状況を一覧で確認できます</p>
     </div>
-    {% if current_user.can_make_reservation %}
-    <a href="{{ url_for('reservations.new_reservation') }}" class="btn btn-success">
-        <i class="bi bi-plus-circle me-1"></i>新規予約
-    </a>
-    {% endif %}
+    <div class="d-flex gap-2">
+        {% if current_user.is_admin %}
+        <a href="{{ url_for('reservations.export_csv', status=status_filter, facility_id=filters.facility_id, org_id=filters.org_id, date_from=filters.date_from, date_to=filters.date_to) }}" class="btn btn-outline-secondary">
+            <i class="bi bi-download me-1"></i>CSV
+        </a>
+        {% endif %}
+        {% if current_user.can_make_reservation %}
+        <a href="{{ url_for('reservations.new_reservation') }}" class="btn btn-success">
+            <i class="bi bi-plus-circle me-1"></i>新規予約
+        </a>
+        {% endif %}
+    </div>
 </div>
 
 <div class="mb-4">
     <div class="view-switcher d-inline-flex">
-        <a href="{{ url_for('reservations.list_reservations', status='confirmed') }}"
+        <a href="{{ url_for('reservations.list_reservations', status='confirmed', facility_id=filters.facility_id, org_id=filters.org_id, date_from=filters.date_from, date_to=filters.date_to) }}"
            class="btn {{ 'active' if status_filter == 'confirmed' }}">
            <i class="bi bi-check-circle me-1"></i>確定済み
         </a>
-        <a href="{{ url_for('reservations.list_reservations', status='cancelled') }}"
+        <a href="{{ url_for('reservations.list_reservations', status='cancelled', facility_id=filters.facility_id, org_id=filters.org_id, date_from=filters.date_from, date_to=filters.date_to) }}"
            class="btn {{ 'active' if status_filter == 'cancelled' }}">
            <i class="bi bi-x-circle me-1"></i>キャンセル済み
         </a>
-        <a href="{{ url_for('reservations.list_reservations', status='all') }}"
+        <a href="{{ url_for('reservations.list_reservations', status='all', facility_id=filters.facility_id, org_id=filters.org_id, date_from=filters.date_from, date_to=filters.date_to) }}"
            class="btn {{ 'active' if status_filter == 'all' }}">
            <i class="bi bi-list me-1"></i>全て
         </a>
+    </div>
+</div>
+
+<!-- 検索フィルタ -->
+<div class="card mb-4">
+    <div class="card-body py-3">
+        <form method="GET" class="row g-2 align-items-end">
+            <input type="hidden" name="status" value="{{ status_filter }}">
+            <div class="col-md-3">
+                <label class="form-label small text-muted mb-1">施設</label>
+                <select name="facility_id" class="form-select form-select-sm">
+                    <option value="">すべての施設</option>
+                    {% for f in facilities %}
+                    <option value="{{ f.id }}" {{ 'selected' if filters.facility_id == f.id|string }}>{{ f.full_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            {% if current_user.is_admin and organizations %}
+            <div class="col-md-3">
+                <label class="form-label small text-muted mb-1">団体</label>
+                <select name="org_id" class="form-select form-select-sm">
+                    <option value="">すべての団体</option>
+                    {% for org in organizations %}
+                    <option value="{{ org.id }}" {{ 'selected' if filters.org_id == org.id|string }}>{{ org.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            {% endif %}
+            <div class="col-md-2">
+                <label class="form-label small text-muted mb-1">開始日</label>
+                <input type="date" name="date_from" class="form-control form-control-sm" value="{{ filters.date_from }}">
+            </div>
+            <div class="col-md-2">
+                <label class="form-label small text-muted mb-1">終了日</label>
+                <input type="date" name="date_to" class="form-control form-control-sm" value="{{ filters.date_to }}">
+            </div>
+            <div class="col-md-2 d-flex gap-1">
+                <button type="submit" class="btn btn-sm btn-primary flex-grow-1">
+                    <i class="bi bi-search me-1"></i>検索
+                </button>
+                <a href="{{ url_for('reservations.list_reservations', status=status_filter) }}" class="btn btn-sm btn-outline-secondary">
+                    <i class="bi bi-x"></i>
+                </a>
+            </div>
+        </form>
     </div>
 </div>
 
@@ -74,7 +126,7 @@
     <ul class="pagination justify-content-center">
         {% if reservations.has_prev %}
         <li class="page-item">
-            <a class="page-link" href="{{ url_for('reservations.list_reservations', page=reservations.prev_num, status=status_filter) }}">
+            <a class="page-link" href="{{ url_for('reservations.list_reservations', page=reservations.prev_num, status=status_filter, facility_id=filters.facility_id, org_id=filters.org_id, date_from=filters.date_from, date_to=filters.date_to) }}">
                 <i class="bi bi-chevron-left"></i>
             </a>
         </li>
@@ -82,7 +134,7 @@
         {% for p in reservations.iter_pages() %}
         {% if p %}
         <li class="page-item {{ 'active' if p == reservations.page }}">
-            <a class="page-link" href="{{ url_for('reservations.list_reservations', page=p, status=status_filter) }}">{{ p }}</a>
+            <a class="page-link" href="{{ url_for('reservations.list_reservations', page=p, status=status_filter, facility_id=filters.facility_id, org_id=filters.org_id, date_from=filters.date_from, date_to=filters.date_to) }}">{{ p }}</a>
         </li>
         {% else %}
         <li class="page-item disabled"><span class="page-link">...</span></li>
@@ -90,7 +142,7 @@
         {% endfor %}
         {% if reservations.has_next %}
         <li class="page-item">
-            <a class="page-link" href="{{ url_for('reservations.list_reservations', page=reservations.next_num, status=status_filter) }}">
+            <a class="page-link" href="{{ url_for('reservations.list_reservations', page=reservations.next_num, status=status_filter, facility_id=filters.facility_id, org_id=filters.org_id, date_from=filters.date_from, date_to=filters.date_to) }}">
                 <i class="bi bi-chevron-right"></i>
             </a>
         </li>

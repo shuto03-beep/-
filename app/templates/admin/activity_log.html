@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block title %}操作ログ - いなチャレ施設予約{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1><i class="bi bi-journal-text"></i>操作ログ</h1>
+    <p class="page-subtitle">システム内の操作履歴を確認できます</p>
+</div>
+
+<div class="mb-4">
+    <form method="GET" class="d-flex gap-2 align-items-end flex-wrap">
+        <div>
+            <label class="form-label small text-muted">操作で絞り込み</label>
+            <select name="action" class="form-select form-select-sm" onchange="this.form.submit()">
+                <option value="">すべての操作</option>
+                {% for action in action_list %}
+                <option value="{{ action }}" {{ 'selected' if action_filter == action }}>{{ action }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        {% if action_filter %}
+        <a href="{{ url_for('admin.activity_log') }}" class="btn btn-sm btn-outline-secondary">
+            <i class="bi bi-x me-1"></i>フィルタ解除
+        </a>
+        {% endif %}
+    </form>
+</div>
+
+{% if logs.items %}
+<div class="card">
+    <div class="table-responsive">
+        <table class="table table-hover mb-0">
+            <thead>
+                <tr>
+                    <th>日時</th>
+                    <th>操作者</th>
+                    <th>操作</th>
+                    <th>対象</th>
+                    <th>詳細</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for log in logs.items %}
+                <tr>
+                    <td class="text-nowrap"><small>{{ log.created_at.strftime('%Y/%m/%d %H:%M') }}</small></td>
+                    <td>{{ log.user.display_name if log.user else 'システム' }}</td>
+                    <td><span class="badge bg-secondary">{{ log.action }}</span></td>
+                    <td>
+                        {% if log.target_type and log.target_id %}
+                        <small class="text-muted">{{ log.target_type }}#{{ log.target_id }}</small>
+                        {% else %}
+                        -
+                        {% endif %}
+                    </td>
+                    <td><small>{{ log.details or '-' }}</small></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% if logs.pages > 1 %}
+<nav class="mt-4">
+    <ul class="pagination justify-content-center">
+        {% if logs.has_prev %}
+        <li class="page-item">
+            <a class="page-link" href="{{ url_for('admin.activity_log', page=logs.prev_num, action=action_filter) }}">
+                <i class="bi bi-chevron-left"></i>
+            </a>
+        </li>
+        {% endif %}
+        {% for p in logs.iter_pages() %}
+        {% if p %}
+        <li class="page-item {{ 'active' if p == logs.page }}">
+            <a class="page-link" href="{{ url_for('admin.activity_log', page=p, action=action_filter) }}">{{ p }}</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled"><span class="page-link">...</span></li>
+        {% endif %}
+        {% endfor %}
+        {% if logs.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="{{ url_for('admin.activity_log', page=logs.next_num, action=action_filter) }}">
+                <i class="bi bi-chevron-right"></i>
+            </a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>
+{% endif %}
+
+{% else %}
+<div class="card">
+    <div class="card-body empty-state">
+        <i class="bi bi-journal-x d-block"></i>
+        <p>操作ログがありません</p>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
