@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}利用レポート - いなチャレ施設予約{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">利用レポート（{{ month }}）</h1>
+
+<div class="row mb-4">
+    <div class="col-md-6">
+        <div class="card text-white bg-primary">
+            <div class="card-body text-center">
+                <h3>{{ monthly_reservations }}</h3>
+                <p class="mb-0">今月の予約数</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card text-white bg-secondary">
+            <div class="card-body text-center">
+                <h3>{{ monthly_cancellations }}</h3>
+                <p class="mb-0">今月のキャンセル数</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card mb-4">
+            <div class="card-header">施設別利用状況</div>
+            <div class="card-body">
+                <table class="table table-sm">
+                    <thead><tr><th>施設</th><th>予約数</th></tr></thead>
+                    <tbody>
+                        {% for stat in facility_stats %}
+                        <tr>
+                            <td>{{ stat.facility.full_name }}</td>
+                            <td><span class="badge bg-primary">{{ stat.count }}</span></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card mb-4">
+            <div class="card-header">団体別利用状況</div>
+            <div class="card-body">
+                {% if org_stats %}
+                <table class="table table-sm">
+                    <thead><tr><th>団体</th><th>予約数</th></tr></thead>
+                    <tbody>
+                        {% for stat in org_stats %}
+                        <tr>
+                            <td>{{ stat.org.name }}</td>
+                            <td><span class="badge bg-success">{{ stat.count }}</span></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <p class="text-muted">承認済みの団体がありません。</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

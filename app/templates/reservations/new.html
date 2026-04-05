@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+{% block title %}新規予約 - いなチャレ施設予約{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">施設を予約する</h1>
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow">
+            <div class="card-body p-4">
+                <form method="POST" id="reservationForm">
+                    {{ form.hidden_tag() }}
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">学校を選択</label>
+                        <select id="schoolFilter" class="form-select">
+                            <option value="">全ての学校</option>
+                            {% for school in schools %}
+                            <option value="{{ school.id }}">{{ school.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form.facility_id.label(class="form-label fw-bold") }}
+                        {{ form.facility_id(class="form-select", id="facilitySelect") }}
+                        {% for error in form.facility_id.errors %}
+                        <div class="text-danger small">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form.date.label(class="form-label fw-bold") }}
+                        {{ form.date(class="form-control", type="date", min=today_str) }}
+                        {% for error in form.date.errors %}
+                        <div class="text-danger small">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form.time_slot.label(class="form-label fw-bold") }}
+                        <select name="time_slot" id="timeSlotSelect" class="form-select">
+                            <option value="">施設と日付を選択してください</option>
+                        </select>
+                        <div id="slotLoading" class="text-muted small mt-1" style="display:none;">読み込み中...</div>
+                        <div id="noSlots" class="text-warning small mt-1" style="display:none;">利用可能な時間枠がありません。</div>
+                        {% for error in form.time_slot.errors %}
+                        <div class="text-danger small">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form.purpose.label(class="form-label fw-bold") }}
+                        {{ form.purpose(class="form-control", rows="3", placeholder="例：サッカー練習") }}
+                        {% for error in form.purpose.errors %}
+                        <div class="text-danger small">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form.expected_participants.label(class="form-label fw-bold") }}
+                        {{ form.expected_participants(class="form-control", placeholder="例：20") }}
+                        {% for error in form.expected_participants.errors %}
+                        <div class="text-danger small">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form.notes.label(class="form-label fw-bold") }}
+                        {{ form.notes(class="form-control", rows="2") }}
+                    </div>
+
+                    <div class="d-grid">
+                        {{ form.submit(class="btn btn-success btn-lg") }}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const facilitySelect = document.getElementById('facilitySelect');
+    const dateInput = document.querySelector('input[name="date"]');
+    const timeSlotSelect = document.getElementById('timeSlotSelect');
+    const slotLoading = document.getElementById('slotLoading');
+    const noSlots = document.getElementById('noSlots');
+    const schoolFilter = document.getElementById('schoolFilter');
+
+    // 学校フィルターで施設選択肢を絞り込む
+    const allOptions = Array.from(facilitySelect.options);
+    schoolFilter.addEventListener('change', function() {
+        const schoolId = this.value;
+        facilitySelect.innerHTML = '';
+        allOptions.forEach(opt => {
+            if (!schoolId || opt.value === '0' || opt.textContent.includes(
+                schoolFilter.options[schoolFilter.selectedIndex].textContent
+            )) {
+                facilitySelect.appendChild(opt.cloneNode(true));
+            }
+        });
+    });
+
+    function loadSlots() {
+        const facilityId = facilitySelect.value;
+        const dateVal = dateInput.value;
+
+        if (!facilityId || facilityId === '0' || !dateVal) {
+            timeSlotSelect.innerHTML = '<option value="">施設と日付を選択してください</option>';
+            noSlots.style.display = 'none';
+            return;
+        }
+
+        slotLoading.style.display = 'block';
+        noSlots.style.display = 'none';
+        timeSlotSelect.innerHTML = '<option value="">読み込み中...</option>';
+
+        fetch(`/api/available_slots?facility_id=${facilityId}&date=${dateVal}`)
+            .then(r => r.json())
+            .then(slots => {
+                slotLoading.style.display = 'none';
+                timeSlotSelect.innerHTML = '<option value="">時間枠を選択してください</option>';
+
+                if (slots.length === 0) {
+                    noSlots.style.display = 'block';
+                    return;
+                }
+
+                slots.forEach(slot => {
+                    const opt = document.createElement('option');
+                    opt.value = slot.value;
+                    opt.textContent = slot.label;
+                    timeSlotSelect.appendChild(opt);
+                });
+            })
+            .catch(() => {
+                slotLoading.style.display = 'none';
+                timeSlotSelect.innerHTML = '<option value="">エラーが発生しました</option>';
+            });
+    }
+
+    facilitySelect.addEventListener('change', loadSlots);
+    dateInput.addEventListener('change', loadSlots);
+});
+</script>
+{% endblock %}

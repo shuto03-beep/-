@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}ブロック追加 - いなチャレ施設予約{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">学校ブロックを追加</h1>
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow">
+            <div class="card-body p-4">
+                <div class="alert alert-warning">
+                    ブロックを設定すると、対象の時間帯に既にある予約は自動的にキャンセルされます。
+                </div>
+                <form method="POST">
+                    {{ form.hidden_tag() }}
+                    <div class="mb-3">
+                        {{ form.school_id.label(class="form-label fw-bold") }}
+                        {{ form.school_id(class="form-select") }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.facility_id.label(class="form-label fw-bold") }}
+                        {{ form.facility_id(class="form-select") }}
+                        <small class="text-muted">「全施設」を選ぶとその学校の全施設がブロックされます。</small>
+                    </div>
+                    <div class="mb-3">
+                        {{ form.date.label(class="form-label fw-bold") }}
+                        {{ form.date(class="form-control", type="date") }}
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            {{ form.start_time.label(class="form-label fw-bold") }}
+                            {{ form.start_time(class="form-control", type="time") }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ form.end_time.label(class="form-label fw-bold") }}
+                            {{ form.end_time(class="form-control", type="time") }}
+                        </div>
+                        <small class="text-muted">空欄にすると終日ブロックになります。</small>
+                    </div>
+                    <div class="mb-3">
+                        {{ form.reason.label(class="form-label fw-bold") }}
+                        {{ form.reason(class="form-control", rows="2", placeholder="例：期末テスト、体育祭") }}
+                        {% for error in form.reason.errors %}
+                        <div class="text-danger small">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                    <div class="d-grid">
+                        {{ form.submit(class="btn btn-danger btn-lg") }}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

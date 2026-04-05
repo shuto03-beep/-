@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}カレンダー - いなチャレ施設予約{% endblock %}
+
+{% block extra_head %}
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">施設カレンダー</h1>
+
+<div class="row mb-3">
+    <div class="col-md-4">
+        <label for="schoolSelect" class="form-label">学校</label>
+        <select id="schoolSelect" class="form-select">
+            <option value="">全ての学校</option>
+            {% for school in schools %}
+            <option value="{{ school.id }}">{{ school.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="col-md-4">
+        <label for="facilitySelect" class="form-label">施設</label>
+        <select id="facilitySelect" class="form-select">
+            <option value="">全ての施設</option>
+            {% for f in facilities %}
+            <option value="{{ f.id }}" data-school="{{ f.school_id }}">{{ f.school.name }} - {{ f.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="col-md-4 d-flex align-items-end">
+        <div class="mt-2">
+            <span class="badge bg-primary me-1">予約</span>
+            <span class="badge bg-danger me-1">学校行事</span>
+        </div>
+    </div>
+</div>
+
+<div id="calendar"></div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
+<script src="{{ url_for('static', filename='js/calendar.js') }}"></script>
+{% endblock %}

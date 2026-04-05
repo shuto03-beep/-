@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}ユーザー編集 - いなチャレ施設予約{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">ユーザー編集</h1>
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow">
+            <div class="card-body p-4">
+                <table class="table table-borderless mb-4">
+                    <tr><th>ユーザー名</th><td>{{ user.username }}</td></tr>
+                    <tr><th>表示名</th><td>{{ user.display_name }}</td></tr>
+                    <tr><th>メール</th><td>{{ user.email }}</td></tr>
+                    <tr><th>電話番号</th><td>{{ user.phone or '-' }}</td></tr>
+                    <tr><th>団体</th><td>{{ user.organization.name if user.organization else '-' }}</td></tr>
+                    <tr><th>登録日</th><td>{{ user.created_at.strftime('%Y/%m/%d') }}</td></tr>
+                </table>
+
+                <form method="POST">
+                    {{ form.hidden_tag() }}
+                    <div class="mb-3">
+                        {{ form.role.label(class="form-label fw-bold") }}
+                        {{ form.role(class="form-select") }}
+                    </div>
+                    <div class="mb-3 form-check">
+                        {{ form.is_active(class="form-check-input") }}
+                        {{ form.is_active.label(class="form-check-label") }}
+                    </div>
+                    {{ form.submit(class="btn btn-primary") }}
+                </form>
+            </div>
+        </div>
+        <div class="mt-3">
+            <a href="{{ url_for('admin.users') }}" class="btn btn-outline-secondary">ユーザー一覧へ戻る</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}ユーザー管理 - いなチャレ施設予約{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">ユーザー管理</h1>
+
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead class="table-light">
+            <tr>
+                <th>ID</th>
+                <th>ユーザー名</th>
+                <th>表示名</th>
+                <th>ロール</th>
+                <th>団体</th>
+                <th>状態</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr class="{{ 'table-secondary' if not user.is_active }}">
+                <td>{{ user.id }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.display_name }}</td>
+                <td><span class="badge bg-info">{{ user.role_label }}</span></td>
+                <td>{{ user.organization.name if user.organization else '-' }}</td>
+                <td>{{ '有効' if user.is_active else '無効' }}</td>
+                <td>
+                    <a href="{{ url_for('admin.user_detail', id=user.id) }}" class="btn btn-sm btn-outline-primary">編集</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

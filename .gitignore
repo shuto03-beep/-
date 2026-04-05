@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+*.pyo
+instance/
+*.db
+cookies.txt
+org_cookies.txt
+.env

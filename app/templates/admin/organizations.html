@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}団体管理 - いなチャレ施設予約{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">団体管理</h1>
+
+{% if organizations %}
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead class="table-light">
+            <tr>
+                <th>団体名</th>
+                <th>代表者</th>
+                <th>登録番号</th>
+                <th>状態</th>
+                <th>メンバー数</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for org in organizations %}
+            <tr>
+                <td>{{ org.name }}</td>
+                <td>{{ org.representative }}</td>
+                <td>{{ org.registration_number or '-' }}</td>
+                <td>
+                    {% if org.is_approved %}
+                    <span class="badge bg-success">承認済み</span>
+                    {% else %}
+                    <span class="badge bg-warning text-dark">承認待ち</span>
+                    {% endif %}
+                </td>
+                <td>{{ org.members.count() }}</td>
+                <td>
+                    <a href="{{ url_for('admin.organization_detail', id=org.id) }}" class="btn btn-sm btn-outline-primary">詳細</a>
+                    {% if not org.is_approved %}
+                    <form method="POST" action="{{ url_for('admin.approve_organization', id=org.id) }}" class="d-inline">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                        <button class="btn btn-sm btn-success">承認</button>
+                    </form>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<div class="alert alert-info">登録された団体はありません。</div>
+{% endif %}
+{% endblock %}

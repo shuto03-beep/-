@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}お知らせ - いなチャレ施設予約{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">お知らせ</h1>
+
+{% if notifications %}
+<div class="list-group">
+    {% for n in notifications %}
+    <div class="list-group-item list-group-item-action {{ '' if n.is_read else 'list-group-item-light border-start border-4 border-primary' }}">
+        <div class="d-flex justify-content-between align-items-start">
+            <div>
+                <h6 class="mb-1 {{ 'fw-bold' if not n.is_read }}">{{ n.title }}</h6>
+                <p class="mb-1 text-muted small">{{ n.message }}</p>
+                <small class="text-muted">{{ n.created_at.strftime('%Y/%m/%d %H:%M') }}</small>
+            </div>
+            {% if not n.is_read %}
+            <form method="POST" action="{{ url_for('notifications.read_notification', id=n.id) }}">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <button class="btn btn-sm btn-outline-primary">{{ '確認' if n.link else '既読' }}</button>
+            </form>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="alert alert-info">お知らせはありません。</div>
+{% endif %}
+{% endblock %}

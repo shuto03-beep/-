@@ -1,0 +1,31 @@
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+.navbar-brand {
+    font-size: 1.3rem;
+}
+
+.card {
+    border-radius: 0.5rem;
+}
+
+.table th {
+    white-space: nowrap;
+}
+
+#calendar {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);
+}
+
+.fc-event {
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+footer {
+    border-top: 1px solid #dee2e6;
+}

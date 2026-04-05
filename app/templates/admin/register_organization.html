@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}団体登録申請 - いなチャレ施設予約{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">団体登録を申請する</h1>
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow">
+            <div class="card-body p-4">
+                <div class="alert alert-info">
+                    いなチャレに認定登録された団体は、学校施設を無償で利用できます。
+                    申請後、事務局の承認が必要です。
+                </div>
+                <form method="POST">
+                    {{ form.hidden_tag() }}
+                    <div class="mb-3">
+                        {{ form.name.label(class="form-label fw-bold") }}
+                        {{ form.name(class="form-control", placeholder="例：いなみサッカークラブ") }}
+                        {% for error in form.name.errors %}
+                        <div class="text-danger small">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.representative.label(class="form-label fw-bold") }}
+                        {{ form.representative(class="form-control", placeholder="例：田中太郎") }}
+                        {% for error in form.representative.errors %}
+                        <div class="text-danger small">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.contact_email.label(class="form-label fw-bold") }}
+                        {{ form.contact_email(class="form-control") }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.contact_phone.label(class="form-label fw-bold") }}
+                        {{ form.contact_phone(class="form-control") }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.registration_number.label(class="form-label fw-bold") }}
+                        {{ form.registration_number(class="form-control", placeholder="お持ちの場合はご記入ください") }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.notes.label(class="form-label fw-bold") }}
+                        {{ form.notes(class="form-control", rows="3") }}
+                    </div>
+                    <div class="d-grid">
+                        {{ form.submit(class="btn btn-success btn-lg") }}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
