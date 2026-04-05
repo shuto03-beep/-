@@ -1,0 +1,11 @@
+{
+  "portfolio": {
+    "capital": 1000000,
+    "positions": [],
+    "closed_trades": [],
+    "daily_pnl": {}
+  },
+  "last_run": null,
+  "last_full_screening": null,
+  "signals_history": []
+}
