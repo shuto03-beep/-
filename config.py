@@ -13,9 +13,9 @@ UNIVERSE_FILE = DATA_DIR / "universe.json"
 
 # === 資金設定 ===
 INITIAL_CAPITAL = 1_000_000
-MAX_POSITION_RATIO = 0.25
-MAX_TOTAL_EXPOSURE = 0.80
-MAX_POSITIONS = 5
+MAX_POSITION_RATIO = 0.30         # 1銘柄最大30%（100万→最大30万円/銘柄）
+MAX_TOTAL_EXPOSURE = 0.90         # ポートフォリオ最大90%
+MAX_POSITIONS = 3                 # 同時保有3銘柄（100万円で集中投資が効率的）
 
 # === スウィングトレード設定 ===
 HOLDING_PERIOD_MAX = 15
