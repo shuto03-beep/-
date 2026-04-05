@@ -76,7 +76,7 @@ def seed():
         school_user.set_password('school123')
         db.session.add(school_user)
 
-        # サンプル団体
+        # サンプル団体（いなチャレ認定）
         org = Organization(
             name='いなみサッカークラブ',
             representative='田中太郎',
@@ -84,11 +84,12 @@ def seed():
             contact_phone='079-xxx-xxxx',
             registration_number='INA-001',
             is_approved=True,
+            is_inachalle_certified=True,  # いなチャレ認定団体
         )
         db.session.add(org)
         db.session.flush()
 
-        # 団体責任者ユーザー
+        # 団体責任者ユーザー（いなチャレ認定団体）
         org_leader = User(
             username='tanaka',
             email='tanaka@example.com',
@@ -98,6 +99,30 @@ def seed():
         )
         org_leader.set_password('tanaka123')
         db.session.add(org_leader)
+
+        # サンプル団体（一般団体）
+        org2 = Organization(
+            name='稲美テニス同好会',
+            representative='鈴木一郎',
+            contact_email='tennis@inami.jp',
+            contact_phone='079-xxx-yyyy',
+            registration_number='GEN-001',
+            is_approved=True,
+            is_inachalle_certified=False,  # 一般団体
+        )
+        db.session.add(org2)
+        db.session.flush()
+
+        # 団体責任者ユーザー（一般団体）
+        org_leader2 = User(
+            username='suzuki',
+            email='suzuki@example.com',
+            display_name='鈴木一郎',
+            role=User.ROLE_ORG_LEADER,
+            organization_id=org2.id,
+        )
+        org_leader2.set_password('suzuki123')
+        db.session.add(org_leader2)
 
         # 一般住民ユーザー
         resident = User(
@@ -113,10 +138,11 @@ def seed():
         print('初期データを投入しました！')
         print()
         print('=== ログイン情報 ===')
-        print('事務局管理者: admin / admin123')
-        print('学校担当: school_inami / school123')
-        print('団体責任者: tanaka / tanaka123')
-        print('一般住民: yamada / yamada123')
+        print('事務局管理者:             admin / admin123')
+        print('学校担当:                 school_inami / school123')
+        print('団体責任者（いなチャレ認定）: tanaka / tanaka123   ← 30日先まで優先予約可能')
+        print('団体責任者（一般団体）:     suzuki / suzuki123  ← 7日先まで予約可能')
+        print('一般住民:                 yamada / yamada123')
 
 
 if __name__ == '__main__':

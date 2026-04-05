@@ -6,9 +6,10 @@ from app.models.reservation import Reservation
 from app.models.facility import Facility
 from app.models.school import School
 from app.forms.reservation import ReservationForm, CancelReservationForm
+from app.models.organization import Organization
 from app.services.reservation_service import (
     get_available_slots, create_reservation,
-    cancel_reservation, ReservationConflictError, SchoolBlockedError,
+    cancel_reservation, ReservationConflictError, SchoolBlockedError, BookingPeriodError,
 )
 from app.services.notification_service import create_notification
 from app.utils.decorators import role_required
@@ -95,8 +96,23 @@ def new_reservation():
             flash(str(e), 'danger')
         except SchoolBlockedError as e:
             flash(str(e), 'danger')
+        except BookingPeriodError as e:
+            flash(str(e), 'danger')
 
-    return render_template('reservations/new.html', form=form, schools=schools, today_str=date.today().isoformat())
+    # 予約可能期間の情報を渡す
+    booking_info = None
+    if current_user.organization_id:
+        org = db.session.get(Organization, current_user.organization_id)
+        if org:
+            booking_info = {
+                'is_certified': org.is_inachalle_certified,
+                'advance_days': org.advance_days,
+                'max_date': org.latest_bookable_date.isoformat(),
+                'label': 'いなチャレ認定団体' if org.is_inachalle_certified else '一般団体',
+            }
+
+    return render_template('reservations/new.html', form=form, schools=schools,
+                           today_str=date.today().isoformat(), booking_info=booking_info)
 
 
 @reservations_bp.route('/reservations/<int:id>')
@@ -153,6 +169,12 @@ def available_slots():
 
     if target_date < date.today():
         return jsonify([])
+
+    # 予約可能期間チェック（管理者は制限なし）
+    if not current_user.is_admin and current_user.organization_id:
+        org = db.session.get(Organization, current_user.organization_id)
+        if org and not org.can_book_date(target_date):
+            return jsonify({'error': True, 'message': f'この日付は予約可能期間外です。{org.advance_days}日先まで予約できます。'})
 
     slots = get_available_slots(facility_id, target_date)
     return jsonify([{

@@ -45,17 +45,50 @@ def approve_organization(id):
         return redirect(url_for('admin.organizations'))
 
     org.is_approved = True
+    # いなチャレ認定として承認するかどうか
+    certify = request.form.get('certify_inachalle') == '1'
+    org.is_inachalle_certified = certify
     db.session.commit()
 
+    cert_text = 'いなチャレ認定団体として' if certify else ''
     for member in org.members:
         create_notification(
             member.id,
             '団体が承認されました',
-            f'「{org.name}」がいなチャレ事務局に承認されました。施設の予約が可能になりました。',
+            f'「{org.name}」が{cert_text}事務局に承認されました。施設の予約が可能になりました。'
+            + (f' 認定団体として{org.advance_days}日先まで優先予約が可能です。' if certify else ''),
         )
 
-    flash(f'「{org.name}」を承認しました。', 'success')
+    flash(f'「{org.name}」を{cert_text}承認しました。', 'success')
     return redirect(url_for('admin.organizations'))
+
+
+@admin_bp.route('/admin/organizations/<int:id>/toggle_certification', methods=['POST'])
+@login_required
+@admin_required
+def toggle_certification(id):
+    org = db.session.get(Organization, id)
+    if not org:
+        flash('団体が見つかりません。', 'danger')
+        return redirect(url_for('admin.organizations'))
+
+    org.is_inachalle_certified = not org.is_inachalle_certified
+    db.session.commit()
+
+    if org.is_inachalle_certified:
+        status_msg = f'いなチャレ認定団体に設定しました（{org.advance_days}日先まで優先予約可能）'
+    else:
+        status_msg = f'いなチャレ認定を解除しました（{org.advance_days}日先まで予約可能）'
+
+    for member in org.members:
+        create_notification(
+            member.id,
+            'いなチャレ認定ステータスが変更されました',
+            f'「{org.name}」の認定ステータスが変更されました。{status_msg}',
+        )
+
+    flash(f'「{org.name}」: {status_msg}', 'success')
+    return redirect(url_for('admin.organization_detail', id=id))
 
 
 @admin_bp.route('/admin/organizations/<int:id>/reject', methods=['POST'])

@@ -6,6 +6,19 @@
 
 <div class="row justify-content-center">
     <div class="col-md-8">
+        {% if booking_info %}
+        <div class="alert {{ 'alert-success' if booking_info.is_certified else 'alert-info' }} mb-3">
+            {% if booking_info.is_certified %}
+            <strong>いなチャレ認定団体:</strong>
+            {{ booking_info.advance_days }}日先（{{ booking_info.max_date }}）まで<strong>優先予約</strong>が可能です。
+            {% else %}
+            <strong>一般団体:</strong>
+            {{ booking_info.advance_days }}日先（{{ booking_info.max_date }}）まで予約可能です。
+            いなチャレ認定団体は30日先まで優先予約できます。
+            {% endif %}
+        </div>
+        {% endif %}
+
         <div class="card shadow">
             <div class="card-body p-4">
                 <form method="POST" id="reservationForm">
@@ -31,7 +44,7 @@
 
                     <div class="mb-3">
                         {{ form.date.label(class="form-label fw-bold") }}
-                        {{ form.date(class="form-control", type="date", min=today_str) }}
+                        {{ form.date(class="form-control", type="date", min=today_str, max=booking_info.max_date if booking_info else '') }}
                         {% for error in form.date.errors %}
                         <div class="text-danger small">{{ error }}</div>
                         {% endfor %}
@@ -124,7 +137,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 slotLoading.style.display = 'none';
                 timeSlotSelect.innerHTML = '<option value="">時間枠を選択してください</option>';
 
+                // 予約期間外エラーの処理
+                if (slots.error) {
+                    noSlots.textContent = slots.message;
+                    noSlots.style.display = 'block';
+                    return;
+                }
+
                 if (slots.length === 0) {
+                    noSlots.textContent = '利用可能な時間枠がありません。';
                     noSlots.style.display = 'block';
                     return;
                 }

@@ -13,6 +13,10 @@ class SchoolBlockedError(Exception):
     pass
 
 
+class BookingPeriodError(Exception):
+    pass
+
+
 def get_available_slots(facility_id, target_date):
     """指定施設・日付の利用可能な時間枠を返す"""
     all_slots = get_available_time_slots(target_date)
@@ -58,8 +62,35 @@ def get_available_slots(facility_id, target_date):
     return available
 
 
+def check_booking_period(organization, target_date):
+    """団体の予約可能期間をチェックする"""
+    from app.models.organization import INACHALLE_ADVANCE_DAYS, GENERAL_ADVANCE_DAYS
+
+    if not organization.can_book_date(target_date):
+        if organization.is_inachalle_certified:
+            raise BookingPeriodError(
+                f'予約可能期間外です。いなチャレ認定団体は{INACHALLE_ADVANCE_DAYS}日先まで予約できます。'
+            )
+        else:
+            days = GENERAL_ADVANCE_DAYS
+            raise BookingPeriodError(
+                f'予約可能期間外です。一般団体は{days}日先まで予約できます。'
+                f'いなチャレ認定団体は{INACHALLE_ADVANCE_DAYS}日先まで予約可能です。'
+            )
+
+
 def create_reservation(facility_id, organization_id, user_id, target_date, start_time, end_time, purpose, expected_participants=None, notes=None):
-    """予約を作成する（重複チェック付き）"""
+    """予約を作成する（重複チェック・予約期間チェック付き）"""
+    from app.models.organization import Organization
+    from app.models.user import User
+
+    # 管理者は期間制限なし
+    user = db.session.get(User, user_id)
+    if not user or not user.is_admin:
+        org = db.session.get(Organization, organization_id)
+        if org:
+            check_booking_period(org, target_date)
+
     existing = Reservation.query.filter(
         Reservation.facility_id == facility_id,
         Reservation.date == target_date,
