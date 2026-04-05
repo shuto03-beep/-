@@ -1,41 +1,89 @@
 {% extends "base.html" %}
-{% block title %}カレンダー - いなチャレ施設予約{% endblock %}
+{% block title %}施設カレンダー - いなチャレ施設予約{% endblock %}
 
 {% block extra_head %}
 <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.css" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
-<h1 class="mb-4">施設カレンダー</h1>
+<div class="page-header d-flex justify-content-between align-items-start flex-wrap">
+    <div>
+        <h1><i class="bi bi-calendar3"></i>施設カレンダー</h1>
+        <p class="page-subtitle">施設の予約状況と学校行事をカレンダーで確認できます</p>
+    </div>
+    {% if current_user.can_make_reservation %}
+    <a href="{{ url_for('reservations.new_reservation') }}" class="btn btn-success">
+        <i class="bi bi-plus-circle me-1"></i>新規予約
+    </a>
+    {% endif %}
+</div>
 
-<div class="row mb-3">
-    <div class="col-md-4">
-        <label for="schoolSelect" class="form-label">学校</label>
-        <select id="schoolSelect" class="form-select">
-            <option value="">全ての学校</option>
-            {% for school in schools %}
-            <option value="{{ school.id }}">{{ school.name }}</option>
-            {% endfor %}
-        </select>
-    </div>
-    <div class="col-md-4">
-        <label for="facilitySelect" class="form-label">施設</label>
-        <select id="facilitySelect" class="form-select">
-            <option value="">全ての施設</option>
-            {% for f in facilities %}
-            <option value="{{ f.id }}" data-school="{{ f.school_id }}">{{ f.school.name }} - {{ f.name }}</option>
-            {% endfor %}
-        </select>
-    </div>
-    <div class="col-md-4 d-flex align-items-end">
-        <div class="mt-2">
-            <span class="badge bg-primary me-1">予約</span>
-            <span class="badge bg-danger me-1">学校行事</span>
+<!-- フィルター＆コントロールパネル -->
+<div class="calendar-filters">
+    <div class="row g-3 align-items-end">
+        <div class="col-md-3">
+            <label for="schoolSelect" class="form-label"><i class="bi bi-building me-1"></i>学校</label>
+            <select id="schoolSelect" class="form-select">
+                <option value="">全ての学校</option>
+                {% for school in schools %}
+                <option value="{{ school.id }}">{{ school.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label for="facilitySelect" class="form-label"><i class="bi bi-door-open me-1"></i>施設</label>
+            <select id="facilitySelect" class="form-select">
+                <option value="">全ての施設</option>
+                {% for f in facilities %}
+                <option value="{{ f.id }}" data-school="{{ f.school_id }}">{{ f.school.name }} - {{ f.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label class="form-label"><i class="bi bi-eye me-1"></i>表示切替</label>
+            <div class="view-switcher" id="viewSwitcher">
+                <button class="btn" data-view="multiMonthYear" title="年間表示">
+                    <i class="bi bi-calendar3-range me-1"></i>年間
+                </button>
+                <button class="btn" data-view="dayGridMonth" title="月間表示">
+                    <i class="bi bi-calendar3 me-1"></i>月間
+                </button>
+                <button class="btn active" data-view="timeGridWeek" title="週間表示">
+                    <i class="bi bi-calendar3-week me-1"></i>週間
+                </button>
+                <button class="btn" data-view="timeGridDay" title="日別表示">
+                    <i class="bi bi-calendar3-event me-1"></i>日別
+                </button>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <label class="form-label"><i class="bi bi-palette me-1"></i>凡例</label>
+            <div class="calendar-legend">
+                <span class="legend-item">
+                    <span class="legend-dot reservation"></span>予約
+                </span>
+                <span class="legend-item">
+                    <span class="legend-dot block"></span>学校行事
+                </span>
+            </div>
         </div>
     </div>
 </div>
 
 <div id="calendar"></div>
+
+<!-- イベント詳細モーダル -->
+<div class="modal fade" id="eventModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="border-radius: var(--border-radius); border: none; box-shadow: var(--shadow-lg);">
+            <div class="modal-header" id="eventModalHeader">
+                <h5 class="modal-title" id="eventModalTitle"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="eventModalBody"></div>
+        </div>
+    </div>
+</div>
 {% endblock %}
 
 {% block extra_scripts %}

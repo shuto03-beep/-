@@ -69,13 +69,12 @@ def check_booking_period(organization, target_date):
     if not organization.can_book_date(target_date):
         if organization.is_inachalle_certified:
             raise BookingPeriodError(
-                f'予約可能期間外です。いなチャレ認定団体は{INACHALLE_ADVANCE_DAYS}日先まで予約できます。'
+                f'予約可能期間外です。いなチャレ認定団体は3ヶ月先（{INACHALLE_ADVANCE_DAYS}日）まで予約できます。'
             )
         else:
-            days = GENERAL_ADVANCE_DAYS
             raise BookingPeriodError(
-                f'予約可能期間外です。一般団体は{days}日先まで予約できます。'
-                f'いなチャレ認定団体は{INACHALLE_ADVANCE_DAYS}日先まで予約可能です。'
+                f'予約可能期間外です。一般団体は1ヶ月先（{GENERAL_ADVANCE_DAYS}日）まで予約できます。'
+                f'いなチャレ認定団体は3ヶ月先まで優先予約が可能です。'
             )
 
 

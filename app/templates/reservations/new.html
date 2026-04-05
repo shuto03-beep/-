@@ -2,89 +2,107 @@
 {% block title %}新規予約 - いなチャレ施設予約{% endblock %}
 
 {% block content %}
-<h1 class="mb-4">施設を予約する</h1>
+<div class="page-header">
+    <h1><i class="bi bi-plus-circle"></i>施設を予約する</h1>
+    <p class="page-subtitle">学校、施設、日付を選んで予約を確定してください</p>
+</div>
 
 <div class="row justify-content-center">
     <div class="col-md-8">
         {% if booking_info %}
-        <div class="alert {{ 'alert-success' if booking_info.is_certified else 'alert-info' }} mb-3">
+        <div class="reservation-info-banner {{ 'certified' if booking_info.is_certified else 'general' }}">
             {% if booking_info.is_certified %}
-            <strong>いなチャレ認定団体:</strong>
-            {{ booking_info.advance_days }}日先（{{ booking_info.max_date }}）まで<strong>優先予約</strong>が可能です。
+            <i class="bi bi-award info-icon"></i>
+            <div>
+                <strong>いなチャレ認定団体 - 優先予約</strong>
+                <div class="small">3ヶ月先（{{ booking_info.max_date }}）まで予約可能です</div>
+            </div>
             {% else %}
-            <strong>一般団体:</strong>
-            {{ booking_info.advance_days }}日先（{{ booking_info.max_date }}）まで予約可能です。
-            いなチャレ認定団体は30日先まで優先予約できます。
+            <i class="bi bi-info-circle info-icon" style="color:#2196f3"></i>
+            <div>
+                <strong>一般団体</strong>
+                <div class="small">1ヶ月先（{{ booking_info.max_date }}）まで予約可能です。いなチャレ認定団体は3ヶ月先まで優先予約できます。</div>
+            </div>
             {% endif %}
         </div>
         {% endif %}
 
-        <div class="card shadow">
+        <div class="card">
+            <div class="card-header"><i class="bi bi-pencil-square me-2"></i>予約内容を入力</div>
             <div class="card-body p-4">
                 <form method="POST" id="reservationForm">
                     {{ form.hidden_tag() }}
 
-                    <div class="mb-3">
-                        <label class="form-label fw-bold">学校を選択</label>
+                    <!-- ステップ1: 学校選択 -->
+                    <div class="section-title">1. 学校を選択</div>
+                    <div class="mb-4">
                         <select id="schoolFilter" class="form-select">
-                            <option value="">全ての学校</option>
+                            <option value="">全ての学校から選ぶ</option>
                             {% for school in schools %}
                             <option value="{{ school.id }}">{{ school.name }}</option>
                             {% endfor %}
                         </select>
                     </div>
 
-                    <div class="mb-3">
-                        {{ form.facility_id.label(class="form-label fw-bold") }}
+                    <!-- ステップ2: 施設選択 -->
+                    <div class="section-title">2. 施設を選択</div>
+                    <div class="mb-4">
                         {{ form.facility_id(class="form-select", id="facilitySelect") }}
                         {% for error in form.facility_id.errors %}
-                        <div class="text-danger small">{{ error }}</div>
+                        <div class="text-danger small mt-1"><i class="bi bi-exclamation-circle me-1"></i>{{ error }}</div>
                         {% endfor %}
                     </div>
 
-                    <div class="mb-3">
-                        {{ form.date.label(class="form-label fw-bold") }}
-                        {{ form.date(class="form-control", type="date", min=today_str, max=booking_info.max_date if booking_info else '') }}
-                        {% for error in form.date.errors %}
-                        <div class="text-danger small">{{ error }}</div>
-                        {% endfor %}
+                    <!-- ステップ3: 日時選択 -->
+                    <div class="section-title">3. 日時を選択</div>
+                    <div class="row mb-4">
+                        <div class="col-md-6 mb-3 mb-md-0">
+                            <label class="form-label">利用日</label>
+                            {{ form.date(class="form-control", type="date", min=today_str, max=booking_info.max_date if booking_info else '') }}
+                            {% for error in form.date.errors %}
+                            <div class="text-danger small mt-1"><i class="bi bi-exclamation-circle me-1"></i>{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">時間枠（1時間・準備片付け含む）</label>
+                            <select name="time_slot" id="timeSlotSelect" class="form-select">
+                                <option value="">施設と日付を選択してください</option>
+                            </select>
+                            <div id="slotLoading" class="text-muted small mt-1" style="display:none;">
+                                <i class="bi bi-arrow-repeat spin me-1"></i>読み込み中...
+                            </div>
+                            <div id="noSlots" class="text-danger small mt-1" style="display:none;"></div>
+                            {% for error in form.time_slot.errors %}
+                            <div class="text-danger small mt-1"><i class="bi bi-exclamation-circle me-1"></i>{{ error }}</div>
+                            {% endfor %}
+                        </div>
                     </div>
 
+                    <!-- ステップ4: 利用内容 -->
+                    <div class="section-title">4. 利用内容</div>
                     <div class="mb-3">
-                        {{ form.time_slot.label(class="form-label fw-bold") }}
-                        <select name="time_slot" id="timeSlotSelect" class="form-select">
-                            <option value="">施設と日付を選択してください</option>
-                        </select>
-                        <div id="slotLoading" class="text-muted small mt-1" style="display:none;">読み込み中...</div>
-                        <div id="noSlots" class="text-warning small mt-1" style="display:none;">利用可能な時間枠がありません。</div>
-                        {% for error in form.time_slot.errors %}
-                        <div class="text-danger small">{{ error }}</div>
-                        {% endfor %}
-                    </div>
-
-                    <div class="mb-3">
-                        {{ form.purpose.label(class="form-label fw-bold") }}
-                        {{ form.purpose(class="form-control", rows="3", placeholder="例：サッカー練習") }}
+                        <label class="form-label">利用目的 <span class="text-danger">*</span></label>
+                        {{ form.purpose(class="form-control", rows="2", placeholder="例：サッカー練習、バレーボール大会、吹奏楽練習") }}
                         {% for error in form.purpose.errors %}
-                        <div class="text-danger small">{{ error }}</div>
+                        <div class="text-danger small mt-1"><i class="bi bi-exclamation-circle me-1"></i>{{ error }}</div>
                         {% endfor %}
                     </div>
-
-                    <div class="mb-3">
-                        {{ form.expected_participants.label(class="form-label fw-bold") }}
-                        {{ form.expected_participants(class="form-control", placeholder="例：20") }}
-                        {% for error in form.expected_participants.errors %}
-                        <div class="text-danger small">{{ error }}</div>
-                        {% endfor %}
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label">予定参加人数</label>
+                            {{ form.expected_participants(class="form-control", placeholder="例：20") }}
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">備考</label>
+                            {{ form.notes(class="form-control", placeholder="必要に応じてご記入ください") }}
+                        </div>
                     </div>
 
-                    <div class="mb-3">
-                        {{ form.notes.label(class="form-label fw-bold") }}
-                        {{ form.notes(class="form-control", rows="2") }}
-                    </div>
-
+                    <hr class="my-4">
                     <div class="d-grid">
-                        {{ form.submit(class="btn btn-success btn-lg") }}
+                        <button type="submit" class="btn btn-success btn-lg">
+                            <i class="bi bi-check-circle me-2"></i>予約を確定する
+                        </button>
                     </div>
                 </form>
             </div>
@@ -103,7 +121,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const noSlots = document.getElementById('noSlots');
     const schoolFilter = document.getElementById('schoolFilter');
 
-    // 学校フィルターで施設選択肢を絞り込む
     const allOptions = Array.from(facilitySelect.options);
     schoolFilter.addEventListener('change', function() {
         const schoolId = this.value;
@@ -137,15 +154,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 slotLoading.style.display = 'none';
                 timeSlotSelect.innerHTML = '<option value="">時間枠を選択してください</option>';
 
-                // 予約期間外エラーの処理
                 if (slots.error) {
-                    noSlots.textContent = slots.message;
+                    noSlots.innerHTML = '<i class="bi bi-exclamation-triangle me-1"></i>' + slots.message;
                     noSlots.style.display = 'block';
                     return;
                 }
-
                 if (slots.length === 0) {
-                    noSlots.textContent = '利用可能な時間枠がありません。';
+                    noSlots.innerHTML = '<i class="bi bi-calendar-x me-1"></i>利用可能な時間枠がありません。';
                     noSlots.style.display = 'block';
                     return;
                 }

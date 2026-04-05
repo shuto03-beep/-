@@ -2,60 +2,81 @@
 {% block title %}予約一覧 - いなチャレ施設予約{% endblock %}
 
 {% block content %}
-<h1 class="mb-4">予約一覧</h1>
+<div class="page-header d-flex justify-content-between align-items-start flex-wrap">
+    <div>
+        <h1><i class="bi bi-list-check"></i>予約一覧</h1>
+        <p class="page-subtitle">施設の予約状況を一覧で確認できます</p>
+    </div>
+    {% if current_user.can_make_reservation %}
+    <a href="{{ url_for('reservations.new_reservation') }}" class="btn btn-success">
+        <i class="bi bi-plus-circle me-1"></i>新規予約
+    </a>
+    {% endif %}
+</div>
 
-<div class="mb-3">
-    <a href="{{ url_for('reservations.list_reservations', status='confirmed') }}"
-       class="btn btn-sm {{ 'btn-primary' if status_filter == 'confirmed' else 'btn-outline-primary' }}">確定済み</a>
-    <a href="{{ url_for('reservations.list_reservations', status='cancelled') }}"
-       class="btn btn-sm {{ 'btn-secondary' if status_filter == 'cancelled' else 'btn-outline-secondary' }}">キャンセル済み</a>
-    <a href="{{ url_for('reservations.list_reservations', status='all') }}"
-       class="btn btn-sm {{ 'btn-dark' if status_filter == 'all' else 'btn-outline-dark' }}">全て</a>
+<div class="mb-4">
+    <div class="view-switcher d-inline-flex">
+        <a href="{{ url_for('reservations.list_reservations', status='confirmed') }}"
+           class="btn {{ 'active' if status_filter == 'confirmed' }}">
+           <i class="bi bi-check-circle me-1"></i>確定済み
+        </a>
+        <a href="{{ url_for('reservations.list_reservations', status='cancelled') }}"
+           class="btn {{ 'active' if status_filter == 'cancelled' }}">
+           <i class="bi bi-x-circle me-1"></i>キャンセル済み
+        </a>
+        <a href="{{ url_for('reservations.list_reservations', status='all') }}"
+           class="btn {{ 'active' if status_filter == 'all' }}">
+           <i class="bi bi-list me-1"></i>全て
+        </a>
+    </div>
 </div>
 
 {% if reservations.items %}
-<div class="table-responsive">
-    <table class="table table-hover">
-        <thead class="table-light">
-            <tr>
-                <th>日付</th>
-                <th>時間</th>
-                <th>施設</th>
-                <th>団体</th>
-                <th>目的</th>
-                <th>状態</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for r in reservations.items %}
-            <tr class="{{ 'table-secondary' if r.status == 'cancelled' }}">
-                <td>{{ r.date.strftime('%Y/%m/%d') }}</td>
-                <td>{{ r.time_range }}</td>
-                <td>{{ r.facility.full_name }}</td>
-                <td>{{ r.organization.name }}</td>
-                <td>{{ r.purpose }}</td>
-                <td>
-                    {% if r.status == 'confirmed' %}
-                    <span class="badge bg-success">{{ r.status_label }}</span>
-                    {% else %}
-                    <span class="badge bg-secondary">{{ r.status_label }}</span>
-                    {% endif %}
-                </td>
-                <td><a href="{{ url_for('reservations.detail', id=r.id) }}" class="btn btn-sm btn-outline-primary">詳細</a></td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+<div class="card">
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>日付</th>
+                    <th>時間</th>
+                    <th>施設</th>
+                    <th>団体</th>
+                    <th>目的</th>
+                    <th>状態</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for r in reservations.items %}
+                <tr>
+                    <td><i class="bi bi-calendar3 me-1 text-muted"></i>{{ r.date.strftime('%Y/%m/%d') }}</td>
+                    <td>{{ r.time_range }}</td>
+                    <td>{{ r.facility.full_name }}</td>
+                    <td>{{ r.organization.name }}</td>
+                    <td>{{ r.purpose }}</td>
+                    <td>
+                        {% if r.status == 'confirmed' %}
+                        <span class="badge badge-confirmed">確定</span>
+                        {% else %}
+                        <span class="badge badge-cancelled">キャンセル</span>
+                        {% endif %}
+                    </td>
+                    <td><a href="{{ url_for('reservations.detail', id=r.id) }}" class="btn btn-sm btn-outline-primary">詳細</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
 
-<!-- ページネーション -->
 {% if reservations.pages > 1 %}
-<nav>
+<nav class="mt-4">
     <ul class="pagination justify-content-center">
         {% if reservations.has_prev %}
         <li class="page-item">
-            <a class="page-link" href="{{ url_for('reservations.list_reservations', page=reservations.prev_num, status=status_filter) }}">前へ</a>
+            <a class="page-link" href="{{ url_for('reservations.list_reservations', page=reservations.prev_num, status=status_filter) }}">
+                <i class="bi bi-chevron-left"></i>
+            </a>
         </li>
         {% endif %}
         {% for p in reservations.iter_pages() %}
@@ -69,7 +90,9 @@
         {% endfor %}
         {% if reservations.has_next %}
         <li class="page-item">
-            <a class="page-link" href="{{ url_for('reservations.list_reservations', page=reservations.next_num, status=status_filter) }}">次へ</a>
+            <a class="page-link" href="{{ url_for('reservations.list_reservations', page=reservations.next_num, status=status_filter) }}">
+                <i class="bi bi-chevron-right"></i>
+            </a>
         </li>
         {% endif %}
     </ul>
@@ -77,6 +100,11 @@
 {% endif %}
 
 {% else %}
-<div class="alert alert-info">予約がありません。</div>
+<div class="card">
+    <div class="card-body empty-state">
+        <i class="bi bi-calendar-x d-block"></i>
+        <p>予約がありません</p>
+    </div>
+</div>
 {% endif %}
 {% endblock %}

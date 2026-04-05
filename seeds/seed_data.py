@@ -140,8 +140,8 @@ def seed():
         print('=== ログイン情報 ===')
         print('事務局管理者:             admin / admin123')
         print('学校担当:                 school_inami / school123')
-        print('団体責任者（いなチャレ認定）: tanaka / tanaka123   ← 30日先まで優先予約可能')
-        print('団体責任者（一般団体）:     suzuki / suzuki123  ← 7日先まで予約可能')
+        print('団体責任者（いなチャレ認定）: tanaka / tanaka123   ← 3ヶ月先まで優先予約可能')
+        print('団体責任者（一般団体）:     suzuki / suzuki123  ← 1ヶ月先まで予約可能')
         print('一般住民:                 yamada / yamada123')
 
 

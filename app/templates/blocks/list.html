@@ -2,47 +2,67 @@
 {% block title %}学校ブロック管理 - いなチャレ施設予約{% endblock %}
 
 {% block content %}
-<div class="d-flex justify-content-between align-items-center mb-4">
-    <h1>学校ブロック管理</h1>
-    <a href="{{ url_for('blocks.new_block') }}" class="btn btn-danger">新規ブロック追加</a>
+<div class="page-header d-flex justify-content-between align-items-start flex-wrap">
+    <div>
+        <h1><i class="bi bi-shield-lock"></i>学校ブロック管理</h1>
+        <p class="page-subtitle">学校行事等で施設を利用不可にする日程を管理します</p>
+    </div>
+    <a href="{{ url_for('blocks.new_block') }}" class="btn btn-danger">
+        <i class="bi bi-plus-circle me-1"></i>新規ブロック追加
+    </a>
 </div>
 
 {% if blocks %}
-<div class="table-responsive">
-    <table class="table table-hover">
-        <thead class="table-light">
-            <tr>
-                <th>日付</th>
-                <th>学校</th>
-                <th>施設</th>
-                <th>時間</th>
-                <th>理由</th>
-                <th>登録者</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for b in blocks %}
-            <tr>
-                <td>{{ b.date.strftime('%Y/%m/%d') }}</td>
-                <td>{{ b.school.name }}</td>
-                <td>{{ b.facility_name }}</td>
-                <td>{% if b.is_all_day %}終日{% else %}{{ b.start_time.strftime('%H:%M') }}〜{{ b.end_time.strftime('%H:%M') }}{% endif %}</td>
-                <td>{{ b.reason }}</td>
-                <td>{{ b.user.display_name }}</td>
-                <td>
-                    <form method="POST" action="{{ url_for('blocks.delete_block', id=b.id) }}"
-                          onsubmit="return confirm('このブロックを解除しますか？')" class="d-inline">
-                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-                        <button type="submit" class="btn btn-sm btn-outline-danger">解除</button>
-                    </form>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+<div class="card">
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>日付</th>
+                    <th>学校</th>
+                    <th>施設</th>
+                    <th>時間</th>
+                    <th>理由</th>
+                    <th>登録者</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for b in blocks %}
+                <tr>
+                    <td><i class="bi bi-calendar3 me-1 text-muted"></i>{{ b.date.strftime('%Y/%m/%d') }}</td>
+                    <td>{{ b.school.name }}</td>
+                    <td>{{ b.facility_name }}</td>
+                    <td>
+                        {% if b.is_all_day %}
+                        <span class="badge badge-cancelled">終日</span>
+                        {% else %}
+                        {{ b.start_time.strftime('%H:%M') }}〜{{ b.end_time.strftime('%H:%M') }}
+                        {% endif %}
+                    </td>
+                    <td>{{ b.reason }}</td>
+                    <td>{{ b.user.display_name }}</td>
+                    <td>
+                        <form method="POST" action="{{ url_for('blocks.delete_block', id=b.id) }}"
+                              onsubmit="return confirm('このブロックを解除しますか？')" class="d-inline">
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                            <button type="submit" class="btn btn-sm btn-outline-danger">
+                                <i class="bi bi-unlock me-1"></i>解除
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
 {% else %}
-<div class="alert alert-info">現在、ブロックは設定されていません。</div>
+<div class="card">
+    <div class="card-body empty-state">
+        <i class="bi bi-shield-check d-block"></i>
+        <p>現在、ブロックは設定されていません</p>
+    </div>
+</div>
 {% endif %}
 {% endblock %}

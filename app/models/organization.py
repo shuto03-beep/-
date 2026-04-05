@@ -2,8 +2,8 @@ from datetime import datetime, date, timedelta
 from app.extensions import db
 
 # 予約可能期間の設定
-INACHALLE_ADVANCE_DAYS = 30  # いなチャレ認定団体: 30日前から予約可能
-GENERAL_ADVANCE_DAYS = 7     # 一般団体: 7日前から予約可能
+INACHALLE_ADVANCE_DAYS = 90   # いなチャレ認定団体: 3ヶ月（90日）先まで予約可能
+GENERAL_ADVANCE_DAYS = 30     # 一般団体: 1ヶ月（30日）先まで予約可能
 
 
 class Organization(db.Model):

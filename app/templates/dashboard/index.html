@@ -2,56 +2,67 @@
 {% block title %}ダッシュボード - いなチャレ施設予約{% endblock %}
 
 {% block content %}
-<h1 class="mb-4">ダッシュボード</h1>
+<div class="page-header">
+    <h1><i class="bi bi-speedometer2"></i>ダッシュボード</h1>
+    <p class="page-subtitle">いなチャレ施設予約システムへようこそ</p>
+</div>
 
 {% if current_user.is_admin %}
-<!-- 事務局ダッシュボード -->
-<div class="row mb-4">
+<!-- ===== 事務局ダッシュボード ===== -->
+<div class="row g-4 mb-4">
     <div class="col-md-4">
-        <div class="card text-white bg-primary">
-            <div class="card-body text-center">
-                <h3>{{ today_reservations }}</h3>
-                <p class="mb-0">本日の予約数</p>
-            </div>
+        <div class="stat-card stat-primary p-4 text-center">
+            <div class="stat-value">{{ today_reservations }}</div>
+            <div class="stat-label"><i class="bi bi-calendar-check me-1"></i>本日の予約数</div>
         </div>
     </div>
     <div class="col-md-4">
-        <div class="card text-white bg-warning">
-            <div class="card-body text-center">
-                <h3>{{ pending_orgs }}</h3>
-                <p class="mb-0">承認待ち団体</p>
-            </div>
+        <div class="stat-card stat-accent p-4 text-center">
+            <div class="stat-value">{{ pending_orgs }}</div>
+            <div class="stat-label"><i class="bi bi-hourglass-split me-1"></i>承認待ち団体</div>
         </div>
     </div>
     <div class="col-md-4">
-        <div class="card text-white bg-success">
-            <div class="card-body text-center">
-                <h3>{{ total_orgs }}</h3>
-                <p class="mb-0">登録団体数</p>
-            </div>
+        <div class="stat-card stat-subtle p-4 text-center">
+            <div class="stat-value">{{ total_orgs }}</div>
+            <div class="stat-label"><i class="bi bi-people me-1"></i>登録団体数</div>
         </div>
     </div>
 </div>
-<div class="row">
+
+<div class="row g-4">
     <div class="col-md-6">
         <div class="card">
-            <div class="card-header">クイックアクション</div>
+            <div class="card-header"><i class="bi bi-lightning me-2"></i>クイックアクション</div>
             <div class="card-body">
-                <a href="{{ url_for('admin.organizations') }}" class="btn btn-outline-primary me-2 mb-2">団体管理</a>
-                <a href="{{ url_for('calendar.index') }}" class="btn btn-outline-primary me-2 mb-2">カレンダー</a>
-                <a href="{{ url_for('admin.reports') }}" class="btn btn-outline-primary me-2 mb-2">レポート</a>
-                <a href="{{ url_for('blocks.new_block') }}" class="btn btn-outline-danger me-2 mb-2">学校ブロック追加</a>
+                <div class="d-flex flex-wrap gap-2">
+                    <a href="{{ url_for('calendar.index') }}" class="btn btn-outline-primary">
+                        <i class="bi bi-calendar3 me-1"></i>カレンダー
+                    </a>
+                    <a href="{{ url_for('admin.organizations') }}" class="btn btn-outline-primary">
+                        <i class="bi bi-people me-1"></i>団体管理
+                    </a>
+                    <a href="{{ url_for('admin.reports') }}" class="btn btn-outline-primary">
+                        <i class="bi bi-bar-chart-line me-1"></i>レポート
+                    </a>
+                    <a href="{{ url_for('blocks.new_block') }}" class="btn btn-outline-danger">
+                        <i class="bi bi-shield-lock me-1"></i>学校ブロック追加
+                    </a>
+                </div>
             </div>
         </div>
     </div>
     <div class="col-md-6">
         <div class="card">
-            <div class="card-header">お知らせ</div>
+            <div class="card-header"><i class="bi bi-bell me-2"></i>お知らせ</div>
             <div class="card-body">
                 {% if unread_count > 0 %}
-                <p><a href="{{ url_for('notifications.list_notifications') }}">{{ unread_count }}件の未読のお知らせがあります</a></p>
+                <a href="{{ url_for('notifications.list_notifications') }}" class="d-flex align-items-center text-decoration-none">
+                    <span class="badge-notify" style="position:static; margin-right:10px;">{{ unread_count }}</span>
+                    <span>件の未読のお知らせがあります</span>
+                </a>
                 {% else %}
-                <p class="text-muted">新しいお知らせはありません。</p>
+                <div class="text-muted"><i class="bi bi-check-circle me-1"></i>新しいお知らせはありません</div>
                 {% endif %}
             </div>
         </div>
@@ -59,68 +70,90 @@
 </div>
 
 {% elif current_user.is_org_leader or current_user.role == 'org_member' %}
-<!-- 団体ダッシュボード -->
+<!-- ===== 団体ダッシュボード ===== -->
 {% if current_user.organization_id %}
-<div class="row mb-4">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-header d-flex justify-content-between align-items-center">
-                <span>今後の予約</span>
-                {% if current_user.can_make_reservation %}
-                <a href="{{ url_for('reservations.new_reservation') }}" class="btn btn-sm btn-success">新規予約</a>
-                {% endif %}
-            </div>
-            <div class="card-body">
-                {% if upcoming_reservations %}
-                <div class="table-responsive">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>日付</th>
-                                <th>時間</th>
-                                <th>施設</th>
-                                <th>目的</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for r in upcoming_reservations %}
-                            <tr>
-                                <td>{{ r.date.strftime('%m/%d') }}</td>
-                                <td>{{ r.time_range }}</td>
-                                <td>{{ r.facility.full_name }}</td>
-                                <td>{{ r.purpose }}</td>
-                                <td><a href="{{ url_for('reservations.detail', id=r.id) }}" class="btn btn-sm btn-outline-primary">詳細</a></td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-                {% else %}
-                <p class="text-muted">今後の予約はありません。</p>
-                {% endif %}
-            </div>
+    {% if current_user.organization and current_user.organization.is_inachalle_certified %}
+    <div class="reservation-info-banner certified">
+        <i class="bi bi-award info-icon"></i>
+        <div>
+            <strong>いなチャレ認定団体</strong>
+            <div class="small text-muted">3ヶ月先まで優先予約が可能です</div>
         </div>
+    </div>
+    {% endif %}
+
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <span><i class="bi bi-calendar-event me-2"></i>今後の予約</span>
+        {% if current_user.can_make_reservation %}
+        <a href="{{ url_for('reservations.new_reservation') }}" class="btn btn-success btn-sm">
+            <i class="bi bi-plus-circle me-1"></i>新規予約
+        </a>
+        {% endif %}
+    </div>
+    <div class="card-body">
+        {% if upcoming_reservations %}
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>日付</th>
+                        <th>時間</th>
+                        <th>施設</th>
+                        <th>目的</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for r in upcoming_reservations %}
+                    <tr>
+                        <td><i class="bi bi-calendar3 me-1 text-muted"></i>{{ r.date.strftime('%m/%d') }}</td>
+                        <td>{{ r.time_range }}</td>
+                        <td>{{ r.facility.full_name }}</td>
+                        <td>{{ r.purpose }}</td>
+                        <td><a href="{{ url_for('reservations.detail', id=r.id) }}" class="btn btn-sm btn-outline-primary">詳細</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="empty-state">
+            <i class="bi bi-calendar-x d-block"></i>
+            <p>今後の予約はありません</p>
+            {% if current_user.can_make_reservation %}
+            <a href="{{ url_for('reservations.new_reservation') }}" class="btn btn-success"><i class="bi bi-plus-circle me-1"></i>予約する</a>
+            {% endif %}
+        </div>
+        {% endif %}
     </div>
 </div>
 {% else %}
-<div class="alert alert-info">
-    <p>団体に所属していません。</p>
-    <a href="{{ url_for('admin.register_organization') }}" class="btn btn-primary">団体登録を申請する</a>
+<div class="card">
+    <div class="card-body text-center py-5">
+        <i class="bi bi-people d-block mb-3" style="font-size:3rem; color:var(--primary); opacity:0.5;"></i>
+        <h5>団体に所属していません</h5>
+        <p class="text-muted">施設を予約するには、団体登録が必要です。</p>
+        <a href="{{ url_for('admin.register_organization') }}" class="btn btn-success">
+            <i class="bi bi-pencil-square me-1"></i>団体登録を申請する
+        </a>
+    </div>
 </div>
 {% endif %}
 
 {% elif current_user.is_school %}
-<!-- 学校ダッシュボード -->
-<div class="card mb-4">
+<!-- ===== 学校ダッシュボード ===== -->
+<div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
-        <span>本日の予約</span>
-        <a href="{{ url_for('blocks.new_block') }}" class="btn btn-sm btn-danger">ブロック追加</a>
+        <span><i class="bi bi-calendar-event me-2"></i>本日の予約</span>
+        <a href="{{ url_for('blocks.new_block') }}" class="btn btn-sm btn-outline-danger">
+            <i class="bi bi-shield-lock me-1"></i>ブロック追加
+        </a>
     </div>
     <div class="card-body">
         {% if today_reservations_list %}
         <div class="table-responsive">
-            <table class="table">
+            <table class="table table-hover">
                 <thead>
                     <tr><th>時間</th><th>施設</th><th>団体</th><th>目的</th></tr>
                 </thead>
@@ -137,22 +170,30 @@
             </table>
         </div>
         {% else %}
-        <p class="text-muted">本日の予約はありません。</p>
+        <div class="empty-state">
+            <i class="bi bi-calendar-check d-block"></i>
+            <p>本日の予約はありません</p>
+        </div>
         {% endif %}
     </div>
 </div>
 
 {% else %}
-<!-- 一般住民ダッシュボード -->
+<!-- ===== 一般住民ダッシュボード ===== -->
 <div class="card">
-    <div class="card-body">
+    <div class="card-body text-center py-5">
+        <i class="bi bi-building d-block mb-3" style="font-size:3rem; color:var(--primary); opacity:0.5;"></i>
         <h5>施設の空き状況を確認</h5>
-        <p>カレンダーから各施設の予約状況を確認できます。</p>
-        <a href="{{ url_for('calendar.index') }}" class="btn btn-success">カレンダーを見る</a>
+        <p class="text-muted">カレンダーから各施設の予約状況を確認できます。</p>
+        <a href="{{ url_for('calendar.index') }}" class="btn btn-success mb-3">
+            <i class="bi bi-calendar3 me-1"></i>カレンダーを見る
+        </a>
         {% if not current_user.organization_id %}
         <hr>
-        <p>施設を予約するには団体登録が必要です。</p>
-        <a href="{{ url_for('admin.register_organization') }}" class="btn btn-outline-primary">団体登録を申請する</a>
+        <p class="text-muted mb-2">施設を予約するには団体登録が必要です</p>
+        <a href="{{ url_for('admin.register_organization') }}" class="btn btn-outline-primary">
+            <i class="bi bi-pencil-square me-1"></i>団体登録を申請する
+        </a>
         {% endif %}
     </div>
 </div>
