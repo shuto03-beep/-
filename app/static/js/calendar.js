@@ -16,8 +16,6 @@ document.addEventListener('DOMContentLoaded', function() {
             center: 'title',
             right: ''
         },
-        // 年間表示用のマルチマンス設定
-        multiMonthMaxColumns: 3,
         // タイムグリッド設定
         slotMinTime: '08:00:00',
         slotMaxTime: '22:00:00',
@@ -28,8 +26,8 @@ document.addEventListener('DOMContentLoaded', function() {
         height: 'auto',
         nowIndicator: true,
         navLinks: true,
-        dayMaxEvents: 4,
-        moreLinkText: function(num) { return '+' + num + '件'; },
+        dayMaxEvents: false,
+        expandRows: true,
         // 日本語ボタン
         buttonText: {
             today: '今日',
@@ -43,23 +41,22 @@ document.addEventListener('DOMContentLoaded', function() {
             multiMonthYear: {
                 type: 'multiMonth',
                 duration: { months: 12 },
-                buttonText: '年間',
-                multiMonthMaxColumns: 3
+                multiMonthMaxColumns: 3,
+                dayMaxEvents: 2,
+                moreLinkText: function(num) { return '+' + num; }
             },
             dayGridMonth: {
-                buttonText: '月間',
-                dayMaxEvents: 3
+                dayMaxEvents: 4,
+                moreLinkText: function(num) { return '他' + num + '件'; }
             },
             timeGridWeek: {
-                buttonText: '週間',
                 slotEventOverlap: false
             },
             timeGridDay: {
-                buttonText: '日別',
                 slotEventOverlap: false
             }
         },
-        // navLinkで日をクリックしたらその日の日別ビューへ
+        // 日クリックで日別ビューへ
         navLinkDayClick: function(date) {
             calendar.changeView('timeGridDay', date);
             updateViewSwitcher('timeGridDay');
@@ -70,89 +67,236 @@ document.addEventListener('DOMContentLoaded', function() {
                 start: info.startStr,
                 end: info.endStr
             });
-
             const facilityId = facilitySelect.value;
             const schoolId = schoolSelect.value;
-
             if (facilityId) params.set('facility_id', facilityId);
             else if (schoolId) params.set('school_id', schoolId);
 
             fetch('/api/events?' + params.toString())
-                .then(response => response.json())
+                .then(r => r.json())
                 .then(data => successCallback(data))
-                .catch(error => failureCallback(error));
+                .catch(err => failureCallback(err));
         },
-        // イベント表示カスタマイズ
+
+        // ========================================
+        // ビュー別イベント表示カスタマイズ
+        // ========================================
+        eventContent: function(arg) {
+            const viewType = arg.view.type;
+            const props = arg.event.extendedProps;
+
+            // --- 年間ビュー: コンパクトなドット+短い名前 ---
+            if (viewType === 'multiMonthYear') {
+                return renderYearView(arg, props);
+            }
+            // --- 月間ビュー: 施設名+団体名を一覧性高く ---
+            if (viewType === 'dayGridMonth') {
+                return renderMonthView(arg, props);
+            }
+            // --- 週間・日別ビュー: 詳細情報を表示 ---
+            if (viewType === 'timeGridWeek' || viewType === 'timeGridDay') {
+                return renderWeekDayView(arg, props, viewType);
+            }
+
+            // フォールバック
+            return { html: '<span>' + arg.event.title + '</span>' };
+        },
+
+        // イベント装飾
         eventDidMount: function(info) {
             const props = info.event.extendedProps;
+            const viewType = info.view.type;
+
+            if (props.type === 'block') {
+                // ブロックは常に赤系統
+                info.el.style.background = 'repeating-linear-gradient(45deg, #c0392b, #c0392b 4px, #e74c3c 4px, #e74c3c 8px)';
+                info.el.style.borderLeft = '4px solid #922b21';
+                info.el.style.color = '#fff';
+                info.el.classList.add('event-block');
+            } else if (props.type === 'reservation') {
+                info.el.style.borderLeft = '4px solid ' + (info.event.borderColor || '#0f4d2a');
+                info.el.classList.add('event-reservation');
+
+                // 認定団体マーク
+                if (props.isCertified && (viewType === 'timeGridWeek' || viewType === 'timeGridDay')) {
+                    info.el.classList.add('event-certified');
+                }
+            }
+
+            // ツールチップ（全ビュー共通）
             if (props.type === 'reservation') {
-                info.el.style.background = 'linear-gradient(135deg, #1a6b3c 0%, #0f4d2a 100%)';
-                info.el.style.borderLeft = '3px solid #c8a84e';
-            } else if (props.type === 'block') {
-                info.el.style.background = 'linear-gradient(135deg, #e63946 0%, #c0392b 100%)';
-                info.el.style.borderLeft = '3px solid #ff6b6b';
+                info.el.title = props.school + ' ' + props.facility + '\n'
+                    + props.organization + (props.isCertified ? ' ★認定' : '') + '\n'
+                    + props.timeRange + '\n'
+                    + (props.purpose ? '目的: ' + props.purpose : '');
+            } else {
+                info.el.title = '【学校行事】' + props.reason + '\n' + props.facility;
             }
         },
+
         // イベントクリックでモーダル表示
         eventClick: function(info) {
-            const props = info.event.extendedProps;
-            const header = document.getElementById('eventModalHeader');
-            const title = document.getElementById('eventModalTitle');
-            const body = document.getElementById('eventModalBody');
-
-            if (props.type === 'reservation') {
-                header.style.background = 'linear-gradient(135deg, #e8f5ee 0%, #d4edda 100%)';
-                header.style.borderBottom = '2px solid #1a6b3c';
-                title.innerHTML = '<i class="bi bi-calendar-check me-2" style="color:#1a6b3c"></i>予約情報';
-                body.innerHTML = `
-                    <table class="table table-borderless mb-0">
-                        <tr><th style="width:35%;color:#4a4a6a">施設</th><td><strong>${props.facility}</strong></td></tr>
-                        <tr><th style="color:#4a4a6a">団体</th><td>${props.organization}</td></tr>
-                        <tr><th style="color:#4a4a6a">利用目的</th><td>${props.purpose || '未記入'}</td></tr>
-                        <tr><th style="color:#4a4a6a">日時</th><td>${info.event.start ? formatDateTime(info.event.start, info.event.end) : '-'}</td></tr>
-                    </table>
-                `;
-            } else if (props.type === 'block') {
-                header.style.background = 'linear-gradient(135deg, #fde8e8 0%, #fadbd8 100%)';
-                header.style.borderBottom = '2px solid #e63946';
-                title.innerHTML = '<i class="bi bi-shield-lock me-2" style="color:#e63946"></i>学校行事';
-                body.innerHTML = `
-                    <table class="table table-borderless mb-0">
-                        <tr><th style="width:35%;color:#4a4a6a">施設</th><td><strong>${props.facility}</strong></td></tr>
-                        <tr><th style="color:#4a4a6a">理由</th><td>${props.reason}</td></tr>
-                        <tr><th style="color:#4a4a6a">日時</th><td>${info.event.allDay ? '終日' : formatDateTime(info.event.start, info.event.end)}</td></tr>
-                    </table>
-                    <div class="alert alert-danger mt-3 mb-0" style="font-size:0.85rem">
-                        <i class="bi bi-info-circle me-1"></i>この時間帯は学校行事のため予約できません。
-                    </div>
-                `;
-            }
-            eventModal.show();
+            showEventModal(info);
         }
     });
 
     calendar.render();
 
-    // --- 表示切替ボタン ---
+    // ==========================================
+    // ビュー別レンダリング関数
+    // ==========================================
+
+    // --- 年間ビュー ---
+    // コンパクト: 施設の色ドット + 団体の頭文字
+    function renderYearView(arg, props) {
+        if (props.type === 'block') {
+            return {
+                html: '<div class="year-event year-block">'
+                    + '<i class="bi bi-x-circle-fill"></i> '
+                    + truncate(props.reason, 6)
+                    + '</div>'
+            };
+        }
+        return {
+            html: '<div class="year-event year-reservation">'
+                + '<span class="facility-dot" style="background:' + arg.event.backgroundColor + '"></span>'
+                + truncate(props.organization, 5)
+                + '</div>'
+        };
+    }
+
+    // --- 月間ビュー ---
+    // 施設名 + 団体名 + 認定マーク
+    function renderMonthView(arg, props) {
+        if (props.type === 'block') {
+            return {
+                html: '<div class="month-event month-block">'
+                    + '<i class="bi bi-shield-lock-fill me-1"></i>'
+                    + '<span class="month-block-reason">' + truncate(props.reason, 10) + '</span>'
+                    + '</div>'
+            };
+        }
+        var certBadge = props.isCertified
+            ? '<span class="cert-mark" title="いなチャレ認定">★</span>'
+            : '';
+        return {
+            html: '<div class="month-event month-reservation">'
+                + '<span class="month-facility">' + props.facility + '</span>'
+                + '<span class="month-org">' + certBadge + truncate(props.organization, 8) + '</span>'
+                + '<span class="month-time">' + props.timeRange + '</span>'
+                + '</div>'
+        };
+    }
+
+    // --- 週間・日別ビュー ---
+    // 団体名 + 施設名 + 目的 + 参加人数
+    function renderWeekDayView(arg, props, viewType) {
+        if (props.type === 'block') {
+            return {
+                html: '<div class="week-event week-block">'
+                    + '<div class="week-block-label"><i class="bi bi-shield-lock-fill me-1"></i>学校行事</div>'
+                    + '<div class="week-block-reason">' + props.reason + '</div>'
+                    + '<div class="week-block-facility">' + props.facility + '</div>'
+                    + '</div>'
+            };
+        }
+
+        var certBadge = props.isCertified
+            ? '<span class="week-cert-badge">認定</span>'
+            : '';
+        var participantsHtml = props.participants > 0
+            ? '<span class="week-participants"><i class="bi bi-people-fill"></i>' + props.participants + '名</span>'
+            : '';
+        var purposeHtml = props.purpose
+            ? '<div class="week-purpose">' + truncate(props.purpose, viewType === 'timeGridDay' ? 20 : 12) + '</div>'
+            : '';
+
+        return {
+            html: '<div class="week-event week-reservation">'
+                + '<div class="week-org-line">'
+                + '<span class="week-org-name">' + props.organization + '</span>'
+                + certBadge
+                + '</div>'
+                + '<div class="week-facility-line">'
+                + '<i class="bi bi-geo-alt-fill me-1"></i>'
+                + props.facility
+                + ' <span class="week-school-tag">' + getSchoolShort(props.school) + '</span>'
+                + '</div>'
+                + purposeHtml
+                + '<div class="week-meta">'
+                + participantsHtml
+                + '</div>'
+                + '</div>'
+        };
+    }
+
+    // ==========================================
+    // モーダル表示
+    // ==========================================
+    function showEventModal(info) {
+        const props = info.event.extendedProps;
+        const header = document.getElementById('eventModalHeader');
+        const title = document.getElementById('eventModalTitle');
+        const body = document.getElementById('eventModalBody');
+
+        if (props.type === 'reservation') {
+            var certHtml = props.isCertified
+                ? '<span class="badge badge-certified ms-2"><i class="bi bi-award me-1"></i>いなチャレ認定</span>'
+                : '<span class="badge badge-general ms-2">一般団体</span>';
+
+            header.className = 'modal-header modal-header-reservation';
+            title.innerHTML = '<i class="bi bi-calendar-check me-2"></i>予約情報';
+            body.innerHTML =
+                '<div class="modal-org-name">' + props.organization + certHtml + '</div>'
+                + '<table class="table table-borderless modal-detail-table">'
+                + '<tr><td class="modal-label"><i class="bi bi-building"></i>学校</td><td>' + props.school + '</td></tr>'
+                + '<tr><td class="modal-label"><i class="bi bi-door-open"></i>施設</td><td><strong>' + props.facility + '</strong> <span class="badge badge-general">' + props.facilityType + '</span></td></tr>'
+                + '<tr><td class="modal-label"><i class="bi bi-clock"></i>日時</td><td>' + formatDateTime(info.event.start, info.event.end) + '</td></tr>'
+                + '<tr><td class="modal-label"><i class="bi bi-chat-text"></i>目的</td><td>' + (props.purpose || '未記入') + '</td></tr>'
+                + (props.participants > 0
+                    ? '<tr><td class="modal-label"><i class="bi bi-people"></i>参加人数</td><td>' + props.participants + '名</td></tr>'
+                    : '')
+                + '</table>';
+        } else {
+            header.className = 'modal-header modal-header-block';
+            title.innerHTML = '<i class="bi bi-shield-lock me-2"></i>学校行事ブロック';
+            body.innerHTML =
+                '<div class="modal-block-alert">'
+                + '<i class="bi bi-exclamation-triangle me-2"></i>この時間帯は学校行事のため予約できません'
+                + '</div>'
+                + '<table class="table table-borderless modal-detail-table">'
+                + '<tr><td class="modal-label"><i class="bi bi-building"></i>学校</td><td>' + props.school + '</td></tr>'
+                + '<tr><td class="modal-label"><i class="bi bi-door-open"></i>対象施設</td><td><strong>' + props.facility + '</strong></td></tr>'
+                + '<tr><td class="modal-label"><i class="bi bi-megaphone"></i>理由</td><td>' + props.reason + '</td></tr>'
+                + '<tr><td class="modal-label"><i class="bi bi-clock"></i>日時</td><td>' + (info.event.allDay ? '終日' : formatDateTime(info.event.start, info.event.end)) + '</td></tr>'
+                + '</table>';
+        }
+        eventModal.show();
+    }
+
+    // ==========================================
+    // 表示切替ボタン
+    // ==========================================
     function updateViewSwitcher(viewName) {
-        viewSwitcher.querySelectorAll('.btn').forEach(btn => {
+        viewSwitcher.querySelectorAll('.btn').forEach(function(btn) {
             btn.classList.toggle('active', btn.dataset.view === viewName);
         });
     }
 
-    viewSwitcher.querySelectorAll('.btn').forEach(btn => {
+    viewSwitcher.querySelectorAll('.btn').forEach(function(btn) {
         btn.addEventListener('click', function() {
-            const view = this.dataset.view;
+            var view = this.dataset.view;
             calendar.changeView(view);
             updateViewSwitcher(view);
         });
     });
 
-    // --- 学校フィルター ---
+    // ==========================================
+    // フィルター
+    // ==========================================
     schoolSelect.addEventListener('change', function() {
-        const schoolId = this.value;
-        const options = facilitySelect.querySelectorAll('option');
-        options.forEach(opt => {
+        var schoolId = this.value;
+        facilitySelect.querySelectorAll('option').forEach(function(opt) {
             if (!opt.value) return;
             opt.style.display = (!schoolId || opt.dataset.school === schoolId) ? '' : 'none';
         });
@@ -164,15 +308,27 @@ document.addEventListener('DOMContentLoaded', function() {
         calendar.refetchEvents();
     });
 
-    // --- 日時フォーマット ---
+    // ==========================================
+    // ヘルパー関数
+    // ==========================================
+    function truncate(str, len) {
+        if (!str) return '';
+        return str.length > len ? str.substring(0, len) + '…' : str;
+    }
+
+    function getSchoolShort(name) {
+        if (name.indexOf('北') >= 0) return '北中';
+        return '稲中';
+    }
+
     function formatDateTime(start, end) {
         if (!start) return '-';
-        const dateStr = start.toLocaleDateString('ja-JP', {
+        var dateStr = start.toLocaleDateString('ja-JP', {
             year: 'numeric', month: 'long', day: 'numeric', weekday: 'short'
         });
-        const startTime = start.toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' });
+        var startTime = start.toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' });
         if (!end) return dateStr + ' ' + startTime;
-        const endTime = end.toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' });
+        var endTime = end.toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' });
         return dateStr + ' ' + startTime + '〜' + endTime;
     }
 });

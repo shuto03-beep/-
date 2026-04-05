@@ -4,4 +4,7 @@ __pycache__/
 instance/
 *.db
 *cookies.txt
+a.txt
+s.txt
+t.txt
 .env
