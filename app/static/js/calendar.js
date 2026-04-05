@@ -153,14 +153,14 @@ document.addEventListener('DOMContentLoaded', function() {
             return {
                 html: '<div class="year-event year-block">'
                     + '<i class="bi bi-x-circle-fill"></i> '
-                    + truncate(props.reason, 6)
+                    + escapeHtml(truncate(props.reason, 6))
                     + '</div>'
             };
         }
         return {
             html: '<div class="year-event year-reservation">'
                 + '<span class="facility-dot" style="background:' + arg.event.backgroundColor + '"></span>'
-                + truncate(props.organization, 5)
+                + escapeHtml(truncate(props.organization, 5))
                 + '</div>'
         };
     }
@@ -172,7 +172,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return {
                 html: '<div class="month-event month-block">'
                     + '<i class="bi bi-shield-lock-fill me-1"></i>'
-                    + '<span class="month-block-reason">' + truncate(props.reason, 10) + '</span>'
+                    + '<span class="month-block-reason">' + escapeHtml(truncate(props.reason, 10)) + '</span>'
                     + '</div>'
             };
         }
@@ -181,8 +181,8 @@ document.addEventListener('DOMContentLoaded', function() {
             : '';
         return {
             html: '<div class="month-event month-reservation">'
-                + '<span class="month-facility">' + props.facility + '</span>'
-                + '<span class="month-org">' + certBadge + truncate(props.organization, 8) + '</span>'
+                + '<span class="month-facility">' + escapeHtml(props.facility) + '</span>'
+                + '<span class="month-org">' + certBadge + escapeHtml(truncate(props.organization, 8)) + '</span>'
                 + '<span class="month-time">' + props.timeRange + '</span>'
                 + '</div>'
         };
@@ -195,8 +195,8 @@ document.addEventListener('DOMContentLoaded', function() {
             return {
                 html: '<div class="week-event week-block">'
                     + '<div class="week-block-label"><i class="bi bi-shield-lock-fill me-1"></i>学校行事</div>'
-                    + '<div class="week-block-reason">' + props.reason + '</div>'
-                    + '<div class="week-block-facility">' + props.facility + '</div>'
+                    + '<div class="week-block-reason">' + escapeHtml(props.reason) + '</div>'
+                    + '<div class="week-block-facility">' + escapeHtml(props.facility) + '</div>'
                     + '</div>'
             };
         }
@@ -208,19 +208,19 @@ document.addEventListener('DOMContentLoaded', function() {
             ? '<span class="week-participants"><i class="bi bi-people-fill"></i>' + props.participants + '名</span>'
             : '';
         var purposeHtml = props.purpose
-            ? '<div class="week-purpose">' + truncate(props.purpose, viewType === 'timeGridDay' ? 20 : 12) + '</div>'
+            ? '<div class="week-purpose">' + escapeHtml(truncate(props.purpose, viewType === 'timeGridDay' ? 20 : 12)) + '</div>'
             : '';
 
         return {
             html: '<div class="week-event week-reservation">'
                 + '<div class="week-org-line">'
-                + '<span class="week-org-name">' + props.organization + '</span>'
+                + '<span class="week-org-name">' + escapeHtml(props.organization) + '</span>'
                 + certBadge
                 + '</div>'
                 + '<div class="week-facility-line">'
                 + '<i class="bi bi-geo-alt-fill me-1"></i>'
-                + props.facility
-                + ' <span class="week-school-tag">' + getSchoolShort(props.school) + '</span>'
+                + escapeHtml(props.facility)
+                + ' <span class="week-school-tag">' + escapeHtml(getSchoolShort(props.school)) + '</span>'
                 + '</div>'
                 + purposeHtml
                 + '<div class="week-meta">'
@@ -247,12 +247,12 @@ document.addEventListener('DOMContentLoaded', function() {
             header.className = 'modal-header modal-header-reservation';
             title.innerHTML = '<i class="bi bi-calendar-check me-2"></i>予約情報';
             body.innerHTML =
-                '<div class="modal-org-name">' + props.organization + certHtml + '</div>'
+                '<div class="modal-org-name">' + escapeHtml(props.organization) + certHtml + '</div>'
                 + '<table class="table table-borderless modal-detail-table">'
-                + '<tr><td class="modal-label"><i class="bi bi-building"></i>学校</td><td>' + props.school + '</td></tr>'
-                + '<tr><td class="modal-label"><i class="bi bi-door-open"></i>施設</td><td><strong>' + props.facility + '</strong> <span class="badge badge-general">' + props.facilityType + '</span></td></tr>'
+                + '<tr><td class="modal-label"><i class="bi bi-building"></i>学校</td><td>' + escapeHtml(props.school) + '</td></tr>'
+                + '<tr><td class="modal-label"><i class="bi bi-door-open"></i>施設</td><td><strong>' + escapeHtml(props.facility) + '</strong> <span class="badge badge-general">' + escapeHtml(props.facilityType) + '</span></td></tr>'
                 + '<tr><td class="modal-label"><i class="bi bi-clock"></i>日時</td><td>' + formatDateTime(info.event.start, info.event.end) + '</td></tr>'
-                + '<tr><td class="modal-label"><i class="bi bi-chat-text"></i>目的</td><td>' + (props.purpose || '未記入') + '</td></tr>'
+                + '<tr><td class="modal-label"><i class="bi bi-chat-text"></i>目的</td><td>' + escapeHtml(props.purpose || '未記入') + '</td></tr>'
                 + (props.participants > 0
                     ? '<tr><td class="modal-label"><i class="bi bi-people"></i>参加人数</td><td>' + props.participants + '名</td></tr>'
                     : '')
@@ -265,9 +265,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 + '<i class="bi bi-exclamation-triangle me-2"></i>この時間帯は学校行事のため予約できません'
                 + '</div>'
                 + '<table class="table table-borderless modal-detail-table">'
-                + '<tr><td class="modal-label"><i class="bi bi-building"></i>学校</td><td>' + props.school + '</td></tr>'
-                + '<tr><td class="modal-label"><i class="bi bi-door-open"></i>対象施設</td><td><strong>' + props.facility + '</strong></td></tr>'
-                + '<tr><td class="modal-label"><i class="bi bi-megaphone"></i>理由</td><td>' + props.reason + '</td></tr>'
+                + '<tr><td class="modal-label"><i class="bi bi-building"></i>学校</td><td>' + escapeHtml(props.school) + '</td></tr>'
+                + '<tr><td class="modal-label"><i class="bi bi-door-open"></i>対象施設</td><td><strong>' + escapeHtml(props.facility) + '</strong></td></tr>'
+                + '<tr><td class="modal-label"><i class="bi bi-megaphone"></i>理由</td><td>' + escapeHtml(props.reason) + '</td></tr>'
                 + '<tr><td class="modal-label"><i class="bi bi-clock"></i>日時</td><td>' + (info.event.allDay ? '終日' : formatDateTime(info.event.start, info.event.end)) + '</td></tr>'
                 + '</table>';
         }
@@ -314,6 +314,13 @@ document.addEventListener('DOMContentLoaded', function() {
     function truncate(str, len) {
         if (!str) return '';
         return str.length > len ? str.substring(0, len) + '…' : str;
+    }
+
+    function escapeHtml(str) {
+        if (!str) return '';
+        var div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
     }
 
     function getSchoolShort(name) {

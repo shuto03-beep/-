@@ -293,6 +293,7 @@ def edit_reservation(id):
 
 @reservations_bp.route('/reservations/<int:id>/cancel', methods=['POST'])
 @login_required
+@role_required('admin', 'org_leader')
 def cancel(id):
     reservation = db.session.get(Reservation, id)
     if not reservation:

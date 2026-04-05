@@ -1,3 +1,4 @@
+from urllib.parse import urlparse
 from flask import Blueprint, render_template, redirect, url_for, flash, request
 from flask_login import login_user, logout_user, login_required, current_user
 from app.extensions import db
@@ -22,6 +23,8 @@ def login():
             login_user(user)
             flash(f'{user.display_name}さん、ようこそ！', 'success')
             next_page = request.args.get('next')
+            if next_page and urlparse(next_page).netloc:
+                next_page = None
             return redirect(next_page or url_for('dashboard.index'))
         flash('ユーザー名またはパスワードが正しくありません。', 'danger')
 

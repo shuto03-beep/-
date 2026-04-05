@@ -4,7 +4,6 @@ from flask_login import login_required, current_user
 from app.models.reservation import Reservation
 from app.models.organization import Organization
 from app.models.notification import Notification
-from app.services.notification_service import get_unread_count
 
 dashboard_bp = Blueprint('dashboard', __name__)
 
@@ -19,9 +18,7 @@ def root():
 @login_required
 def index():
     today = date.today()
-    context = {
-        'unread_count': get_unread_count(current_user.id),
-    }
+    context = {}
 
     if current_user.is_admin:
         pending_orgs = Organization.query.filter_by(is_approved=False).count()

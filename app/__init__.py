@@ -34,6 +34,14 @@ def create_app(config_class=Config):
     app.register_blueprint(admin_bp)
     app.register_blueprint(notifications_bp)
 
+    @app.context_processor
+    def inject_unread_count():
+        from flask_login import current_user
+        from app.services.notification_service import get_unread_count
+        if current_user.is_authenticated:
+            return {'unread_count': get_unread_count(current_user.id)}
+        return {'unread_count': 0}
+
     @app.errorhandler(404)
     def not_found(e):
         return '<h1>404 - ページが見つかりません</h1><p><a href="/">トップへ戻る</a></p>', 404

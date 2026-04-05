@@ -35,7 +35,7 @@
                     {% endif %}
                 </table>
 
-                {% if reservation.is_active and (current_user.is_admin or reservation.organization_id == current_user.organization_id) %}
+                {% if reservation.is_active and (current_user.is_admin or (current_user.can_make_reservation and reservation.organization_id == current_user.organization_id)) %}
                 <hr>
                 <div class="d-flex gap-2 mb-4">
                     <a href="{{ url_for('reservations.edit_reservation', id=reservation.id) }}" class="btn btn-primary">
