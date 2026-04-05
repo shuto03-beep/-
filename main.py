@@ -178,37 +178,49 @@ def main():
     state = load_state()
 
     # === 起動通知（毎回送信） ===
-    send_startup_notification(state)
+    try:
+        send_startup_notification(state)
+    except Exception as e:
+        print(f"[WARN] 起動通知エラー: {e}")
 
     try:
         # === Phase 1: 既存ポジション監視（毎回実行） ===
         check_existing_positions(state)
+    except Exception as e:
+        print(f"[ERROR] ポジション監視エラー: {e}")
+        traceback.print_exc()
 
-        # === Phase 2: フルスクリーニング（毎時0分台のみ） ===
-        signal_count = 0
+    # === Phase 2: フルスクリーニング（毎時0分台のみ） ===
+    signal_count = 0
+    try:
         if now.minute < 15:
             signal_count = run_full_screening_and_signals(state)
         else:
             quick_check_watchlist(state)
             print(f"[MAIN] クイックチェックモード（次回フルスクリーニング: {now.hour + 1}:00）")
+    except Exception as e:
+        print(f"[ERROR] スクリーニングエラー: {e}")
+        traceback.print_exc()
 
-        # === Phase 3: 学習サイクル（週次） ===
+    # === Phase 3: 学習サイクル（週次） ===
+    try:
         if should_run_optimization(state):
             analysis = run_learning_cycle(state)
             report = generate_performance_report(state)
             send_learning_report(report)
+    except Exception as e:
+        print(f"[ERROR] 学習サイクルエラー: {e}")
 
-        # === デイリーサマリー（14:45以降の最終実行時） ===
+    # === デイリーサマリー（14:45以降の最終実行時） ===
+    try:
         if now.hour == 5 and now.minute >= 45:  # UTC 5:45 = JST 14:45
             summary = get_portfolio_summary(state)
             send_daily_summary(summary, signal_count)
-
     except Exception as e:
-        print(f"[ERROR] 致命的エラー: {e}")
-        traceback.print_exc()
-    finally:
-        save_state(state)
-        print(f"\n[MAIN] 完了 - state.json保存済み")
+        print(f"[ERROR] デイリーサマリーエラー: {e}")
+
+    save_state(state)
+    print(f"\n[MAIN] 完了 - state.json保存済み")
 
 
 if __name__ == "__main__":

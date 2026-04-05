@@ -151,16 +151,25 @@ def detect_rsi_divergence(close: pd.Series, rsi: pd.Series, lookback: int = 14) 
 
 def calculate_all_indicators(hist: pd.DataFrame) -> dict:
     """全テクニカル指標を計算して辞書で返す"""
-    if hist is None or len(hist) < 52:
+    if hist is None or len(hist) < 30:
         return None
 
-    close = hist["Close"]
+    try:
+        close = hist["Close"]
+        # yfinance MultiIndex対応: DataFrameならSeriesに変換
+        if isinstance(close, pd.DataFrame):
+            close = close.iloc[:, 0]
+        for col in ["High", "Low", "Volume"]:
+            if isinstance(hist[col], pd.DataFrame):
+                hist[col] = hist[col].iloc[:, 0]
+    except Exception:
+        return None
     current_price = close.iloc[-1]
 
     # 移動平均線
     sma5 = calculate_sma(close, 5)
     sma25 = calculate_sma(close, 25)
-    sma75 = calculate_sma(close, 75)
+    sma75 = calculate_sma(close, 75) if len(close) >= 75 else pd.Series([np.nan] * len(close), index=close.index)
     ema5 = calculate_ema(close, 5)
     ema25 = calculate_ema(close, 25)
 
