@@ -3,6 +3,5 @@ __pycache__/
 *.pyo
 instance/
 *.db
-cookies.txt
-org_cookies.txt
+*cookies.txt
 .env
