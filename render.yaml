@@ -1,0 +1,22 @@
+databases:
+  - name: inachalle-db
+    plan: free
+    databaseName: inachalle
+    user: inachalle
+
+services:
+  - type: web
+    name: inachalle
+    runtime: python
+    plan: free
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn run:app --bind 0.0.0.0:$PORT"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: inachalle-db
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: PYTHON_VERSION
+        value: "3.11.0"
