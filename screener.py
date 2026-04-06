@@ -76,7 +76,10 @@ def quick_filter(universe: list[dict]) -> list[dict]:
                 has_price_move = abs(price_change_5d) >= 0.02  # 3%→2%に緩和
 
                 # 前日比変動（±1.5%以上）
-                price_change_1d = (close.iloc[-1] - close.iloc[-2]) / close.iloc[-2] if len(close) >= 2 else 0
+                if len(close) >= 2 and close.iloc[-2] != 0:
+                    price_change_1d = (close.iloc[-1] - close.iloc[-2]) / close.iloc[-2]
+                else:
+                    price_change_1d = 0
                 has_daily_move = abs(price_change_1d) >= 0.015
 
                 # SMAクロス検出

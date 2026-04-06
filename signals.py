@@ -61,12 +61,15 @@ def calculate_buy_score(indicators: dict, weights: dict = None) -> tuple[int, li
 
     # 4. RSI
     rsi = indicators.get("rsi", 50)
-    if 30 <= rsi <= 50:
-        score += weights["rsi"]
-        reasons.append(f"RSI回復中（{rsi:.1f}）")
-    elif rsi < 30:
+    if rsi < 30:
         score += weights["rsi"]
         reasons.append(f"RSI売られすぎ（{rsi:.1f}）")
+    elif 30 <= rsi <= 50:
+        score += weights["rsi"]
+        reasons.append(f"RSI回復中（{rsi:.1f}）")
+    elif 50 < rsi < 70:
+        score += weights["rsi"] // 2  # 上昇モメンタム（半分のスコア）
+        reasons.append(f"RSI上昇モメンタム（{rsi:.1f}）")
     if indicators.get("rsi_divergence") == "BULLISH":
         score += 5
         reasons.append("RSI強気ダイバージェンス")

@@ -18,7 +18,8 @@ def load_state() -> dict:
     try:
         with open(STATE_FILE, "r", encoding="utf-8") as f:
             state = json.load(f)
-    except (FileNotFoundError, json.JSONDecodeError):
+    except (OSError, json.JSONDecodeError, ValueError):
+        print(f"[WARN] state.json読み込みエラー。初期状態で起動します。")
         state = {}
 
     # マルチ戦略対応: strategies キーがなければ初期化

@@ -290,9 +290,9 @@ def main():
     except Exception as e:
         print(f"[ERROR] 学習サイクルエラー: {e}")
 
-    # === デイリーサマリー（14:45以降） ===
+    # === デイリーサマリー（14:45 JST以降） ===
     try:
-        if now.hour == 5 and now.minute >= 45:  # UTC 5:45 = JST 14:45
+        if now.hour == 14 and now.minute >= 45:
             send_strategies_summary(state, signal_count)
     except Exception as e:
         print(f"[ERROR] デイリーサマリーエラー: {e}")
