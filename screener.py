@@ -69,11 +69,15 @@ def quick_filter(universe: list[dict]) -> list[dict]:
 
                 # 出来高異常検出
                 vol_ratio = volume.iloc[-1] / avg_vol if avg_vol > 0 else 0
-                has_volume_spike = vol_ratio >= 1.3
+                has_volume_spike = vol_ratio >= 1.15  # 1.3→1.15に緩和
 
-                # 価格変動フィルタ（5日間で±3%以上）
+                # 価格変動フィルタ（5日間で±2%以上）
                 price_change_5d = (close.iloc[-1] - close.iloc[-5]) / close.iloc[-5] if len(close) >= 5 else 0
-                has_price_move = abs(price_change_5d) >= 0.03
+                has_price_move = abs(price_change_5d) >= 0.02  # 3%→2%に緩和
+
+                # 前日比変動（±1.5%以上）
+                price_change_1d = (close.iloc[-1] - close.iloc[-2]) / close.iloc[-2] if len(close) >= 2 else 0
+                has_daily_move = abs(price_change_1d) >= 0.015
 
                 # SMAクロス検出
                 sma5 = calculate_sma(close, 5)
@@ -91,14 +95,15 @@ def quick_filter(universe: list[dict]) -> list[dict]:
                 # RSIフィルタ
                 rsi = calculate_rsi(close)
                 rsi_val = rsi.iloc[-1] if not pd.isna(rsi.iloc[-1]) else 50
-                rsi_extreme = rsi_val < 35 or rsi_val > 65
+                rsi_extreme = rsi_val < 38 or rsi_val > 62  # 35/65→38/62に緩和
 
                 # いずれかの条件を満たす場合候補
-                if has_volume_spike or has_price_move or trend_change or rsi_extreme:
+                if has_volume_spike or has_price_move or has_daily_move or trend_change or rsi_extreme:
                     info = ticker_map.get(ticker, {"ticker": ticker, "name": ticker})
                     info["quick_score"] = (
                         (10 if has_volume_spike else 0)
                         + (10 if has_price_move else 0)
+                        + (8 if has_daily_move else 0)
                         + (15 if trend_change else 0)
                         + (10 if rsi_extreme else 0)
                     )
@@ -115,7 +120,11 @@ def quick_filter(universe: list[dict]) -> list[dict]:
     # スコア順にソート
     candidates.sort(key=lambda x: x.get("quick_score", 0), reverse=True)
     selected = candidates[:50]
-    print(f"  → {len(selected)}銘柄が候補に残りました")
+    print(f"  → {len(selected)}銘柄が候補に残りました（全候補: {len(candidates)}）")
+    if selected:
+        for c in selected[:5]:
+            print(f"    📌 {c.get('name', c['ticker'])}: スコア{c.get('quick_score', 0)} "
+                  f"(出来高{c.get('vol_ratio', 0):.1f}x, 5日変動{c.get('price_change_5d', 0):+.1%}, RSI{c.get('rsi_quick', 0):.0f})")
     return selected
 
 
