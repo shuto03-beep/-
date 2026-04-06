@@ -79,7 +79,7 @@
                          style="width: {{ cat.avg_progress }}%"></div>
                 </div>
 
-                {% for imp in cat.items %}
+                {% for imp in cat['items'] %}
                 <div class="vn-improvement-item p-3 mb-2 bg-light rounded">
                     <div class="d-flex justify-content-between align-items-start">
                         <strong>{{ imp.title }}</strong>

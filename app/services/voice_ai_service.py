@@ -2,15 +2,18 @@
 import json
 import os
 
-ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY")
 AI_MODEL = "claude-sonnet-4-20250514"
+
+
+def _get_api_key():
+    return os.environ.get("ANTHROPIC_API_KEY")
 
 
 def _call_claude(system_prompt: str, user_prompt: str, max_tokens: int = 4000) -> str:
     """Claude APIを呼び出してテキスト応答を返す"""
     import anthropic
 
-    client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
+    client = anthropic.Anthropic(api_key=_get_api_key())
     response = client.messages.create(
         model=AI_MODEL,
         max_tokens=max_tokens,
@@ -36,7 +39,7 @@ def _extract_json(text: str) -> dict:
 
 def run_full_analysis(content: str, today_str: str) -> dict:
     """5つのロールで完全分析を実行し、結果をまとめて返す"""
-    if not ANTHROPIC_API_KEY:
+    if not _get_api_key():
         return {"error": "ANTHROPIC_API_KEY未設定"}
 
     results = {}
