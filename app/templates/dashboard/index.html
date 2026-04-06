@@ -19,7 +19,7 @@
                 <i class="bi bi-sun me-2"></i>おはようございます、管理者さん
             </h2>
             <p class="mb-0" style="color:rgba(255,255,255,0.85); font-size:0.9rem;">
-                {{ today.strftime('%Y年%-m月%-d日') }}（{{ ['月','火','水','木','金','土','日'][today.weekday()] }}）
+                {{ today.strftime('%Y年%m月%d日') }}（{{ ['月','火','水','木','金','土','日'][today.weekday()] }}）
             </p>
         </div>
         <div class="d-flex align-items-center gap-2">
@@ -76,7 +76,7 @@
                     {% set current_date.value = r.date %}
                     <div class="timeline-date-header">
                         <span class="timeline-date-badge {% if r.date == today %}timeline-date-today{% endif %}">
-                            {{ r.date.strftime('%-m/%-d') }}（{{ ['月','火','水','木','金','土','日'][r.date.weekday()] }}）
+                            {{ r.date.strftime('%m/%d') }}（{{ ['月','火','水','木','金','土','日'][r.date.weekday()] }}）
                             {% if r.date == today %}<small class="ms-1">今日</small>{% endif %}
                         </span>
                     </div>
@@ -191,7 +191,7 @@
                 <i class="bi bi-people-fill me-2"></i>{{ current_user.organization.name }}
             </h2>
             <p class="mb-0" style="color:rgba(255,255,255,0.85); font-size:0.9rem;">
-                {{ today.strftime('%Y年%-m月%-d日') }}（{{ ['月','火','水','木','金','土','日'][today.weekday()] }}）
+                {{ today.strftime('%Y年%m月%d日') }}（{{ ['月','火','水','木','金','土','日'][today.weekday()] }}）
             </p>
         </div>
         {% if current_user.can_make_reservation %}
@@ -212,7 +212,7 @@
         <div class="flex-grow-1">
             <div class="text-uppercase fw-bold mb-1" style="font-size:0.72rem; letter-spacing:1px; opacity:0.7;">次の予約</div>
             <div class="d-flex align-items-baseline gap-2 flex-wrap">
-                <span class="fw-bold" style="font-size:1.4rem;">{{ upcoming_reservations[0].date.strftime('%-m月%-d日') }}（{{ ['月','火','水','木','金','土','日'][upcoming_reservations[0].date.weekday()] }}）</span>
+                <span class="fw-bold" style="font-size:1.4rem;">{{ upcoming_reservations[0].date.strftime('%m月%d日') }}（{{ ['月','火','水','木','金','土','日'][upcoming_reservations[0].date.weekday()] }}）</span>
                 <span style="font-size:1.1rem; color:var(--primary);">{{ upcoming_reservations[0].time_range }}</span>
             </div>
             <div class="mt-1" style="font-size:0.95rem;">
