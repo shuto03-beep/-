@@ -169,7 +169,7 @@ def compute_final_score(
 ) -> int:
     """TA + ヒストリカル + AI の最終スコアを計算"""
     hist_win_rate = 0.5
-    if historical_data:
+    if historical_data and isinstance(historical_data, dict):
         outcomes = historical_data.get("pattern_outcomes", {})
         if outcomes.get("pattern_count", 0) >= 3:
             hist_win_rate = outcomes.get("win_rate", 0.5)

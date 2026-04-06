@@ -123,8 +123,9 @@ def check_exit_conditions(position: dict, current_price: float) -> str | None:
     if current_price >= position["take_profit"]:
         return "TAKE_PROFIT"
 
+    # トレーリングストップ: 最高値が購入価格を超えた後、最高値から3%下落で発動
     highest = position.get("highest_price", entry_price)
-    if current_price < highest * (1 - TRAILING_STOP_PCT) and current_price > entry_price:
+    if highest > entry_price and current_price < highest * (1 - TRAILING_STOP_PCT):
         return "TRAILING_STOP"
 
     entry_date = datetime.strptime(position["entry_date"], "%Y-%m-%d")

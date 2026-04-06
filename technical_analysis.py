@@ -15,6 +15,7 @@ def calculate_rsi(close: pd.Series, period: int = 14) -> pd.Series:
     delta = close.diff()
     gain = delta.where(delta > 0, 0.0).rolling(window=period).mean()
     loss = (-delta.where(delta < 0, 0.0)).rolling(window=period).mean()
+    loss = loss.replace(0, 1e-10)  # ゼロ除算防止
     rs = gain / loss
     return 100 - (100 / (1 + rs))
 

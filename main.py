@@ -186,6 +186,9 @@ def _auto_open_all_strategies(state: dict, signal):
             continue
 
         capital = portfolio["capital"]
+        if capital <= 0:
+            continue
+
         max_ratio = strategy_config.get("max_position_ratio", 0.20)
         shares = calculate_position_size(capital, price, atr, max_position_ratio=max_ratio)
         if shares <= 0 or shares * price > capital:
@@ -231,9 +234,17 @@ def main():
     except Exception as e:
         print(f"[WARN] 起動通知エラー: {e}")
 
-    # === 祝日・休場日チェック ===
+    # === 休場日・昼休みチェック ===
     if not is_market_open(now):
-        print(f"[MAIN] 本日は休場日です。スクリーニングをスキップします。")
+        print(f"[MAIN] 本日は休場日です。スキップします。")
+        save_state(state)
+        print(f"\n[MAIN] 完了 - state.json保存済み")
+        return
+
+    # 昼休み（11:30-12:30 JST = UTC 2:30-3:30）
+    jst_hour, jst_min = now.hour, now.minute
+    if (jst_hour == 11 and jst_min >= 30) or (jst_hour == 12 and jst_min < 30):
+        print(f"[MAIN] 昼休み中（{jst_hour}:{jst_min:02d} JST）。スキップします。")
         save_state(state)
         print(f"\n[MAIN] 完了 - state.json保存済み")
         return

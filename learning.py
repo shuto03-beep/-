@@ -24,11 +24,19 @@ def load_learning_state() -> dict:
         }
 
 
+class _NumpyEncoder(json.JSONEncoder):
+    """numpy型をPython型に変換するエンコーダー"""
+    def default(self, obj):
+        if hasattr(obj, 'item'):  # numpy scalar
+            return obj.item()
+        return super().default(obj)
+
+
 def save_learning_state(learning_data: dict):
     """learning.jsonに保存"""
     LEARNING_FILE.parent.mkdir(parents=True, exist_ok=True)
     with open(LEARNING_FILE, "w", encoding="utf-8") as f:
-        json.dump(learning_data, f, ensure_ascii=False, indent=2)
+        json.dump(learning_data, f, ensure_ascii=False, indent=2, cls=_NumpyEncoder)
 
 
 def should_run_optimization(state: dict) -> bool:
@@ -150,6 +158,11 @@ def optimize_weights(analysis: dict) -> dict:
     if total > 0:
         scale = 100 / total
         new_weights = {k: max(1, int(v * scale)) for k, v in new_weights.items()}
+        # 端数を最大ウェイトの項目に加算して合計100を保証
+        diff = 100 - sum(new_weights.values())
+        if diff != 0:
+            max_key = max(new_weights, key=new_weights.get)
+            new_weights[max_key] += diff
 
     return new_weights
 

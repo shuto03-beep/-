@@ -73,7 +73,7 @@ FULL_SCREENING_INTERVAL = 60  # 分
 TA_SHORT_PERIOD = "3mo"   # 短期分析用データ期間
 TA_LONG_PERIOD = "10y"    # ヒストリカル分析用データ期間
 BATCH_SIZE = 50           # yfinance一括取得の最大銘柄数
-BATCH_DELAY = 2.0         # バッチ間のスリープ秒数
+BATCH_DELAY = 1.0         # バッチ間のスリープ秒数（2.0→1.0に短縮）
 
 # === スコアリングのデフォルト重み ===
 DEFAULT_WEIGHTS = {
