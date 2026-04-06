@@ -1,0 +1,161 @@
+{% extends "base.html" %}
+{% block title %}音声ノート分析 - ダッシュボード{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/voice_notes.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="vn-header">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="vn-title"><i class="bi bi-mic-fill me-2"></i>音声ノート分析</h1>
+            <p class="text-muted mb-0">Plaud Note Pin S の録音から人生を分析・改善</p>
+        </div>
+        <a href="{{ url_for('voice_notes.upload') }}" class="btn btn-primary btn-lg">
+            <i class="bi bi-cloud-upload me-1"></i>録音をアップロード
+        </a>
+    </div>
+</div>
+
+<!-- 統計カード -->
+<div class="row g-3 mb-4">
+    <div class="col-6 col-lg-3">
+        <div class="vn-stat-card">
+            <div class="vn-stat-icon bg-primary-subtle"><i class="bi bi-mic"></i></div>
+            <div class="vn-stat-value">{{ total_notes }}</div>
+            <div class="vn-stat-label">録音分析数</div>
+        </div>
+    </div>
+    <div class="col-6 col-lg-3">
+        <div class="vn-stat-card">
+            <div class="vn-stat-icon bg-warning-subtle"><i class="bi bi-list-task"></i></div>
+            <div class="vn-stat-value">{{ total_tasks }}</div>
+            <div class="vn-stat-label">未完了タスク</div>
+        </div>
+    </div>
+    <div class="col-6 col-lg-3">
+        <div class="vn-stat-card">
+            <div class="vn-stat-icon bg-success-subtle"><i class="bi bi-check-circle"></i></div>
+            <div class="vn-stat-value">{{ completed_tasks }}</div>
+            <div class="vn-stat-label">完了タスク</div>
+        </div>
+    </div>
+    <div class="col-6 col-lg-3">
+        <div class="vn-stat-card">
+            <div class="vn-stat-icon bg-info-subtle"><i class="bi bi-brain"></i></div>
+            <div class="vn-stat-value">{{ patterns_count }}</div>
+            <div class="vn-stat-label">思考パターン</div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-4">
+    <!-- 緊急タスク -->
+    <div class="col-lg-6">
+        <div class="vn-card">
+            <div class="vn-card-header">
+                <h5><i class="bi bi-exclamation-triangle text-danger me-2"></i>今すぐやるべきタスク</h5>
+                <a href="{{ url_for('voice_notes.tasks') }}" class="btn btn-sm btn-outline-primary">全て見る</a>
+            </div>
+            {% if urgent_tasks %}
+            <div class="list-group list-group-flush">
+                {% for task in urgent_tasks %}
+                <div class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">{{ task.title }}</div>
+                        {% if task.deadline %}
+                        <small class="{{ 'text-danger' if task.is_overdue else 'text-muted' }}">
+                            <i class="bi bi-calendar me-1"></i>期限: {{ task.deadline }}
+                            {% if task.is_overdue %}<span class="badge bg-danger ms-1">超過</span>{% endif %}
+                        </small>
+                        {% endif %}
+                    </div>
+                    <span class="badge bg-danger rounded-pill">緊急×重要</span>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="vn-empty">
+                <i class="bi bi-check-circle text-success"></i>
+                <p>緊急タスクはありません</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- 期限超過タスク -->
+    <div class="col-lg-6">
+        <div class="vn-card">
+            <div class="vn-card-header">
+                <h5><i class="bi bi-clock-history text-warning me-2"></i>期限超過タスク</h5>
+            </div>
+            {% if overdue_tasks %}
+            <div class="list-group list-group-flush">
+                {% for task in overdue_tasks %}
+                <div class="list-group-item">
+                    <div class="d-flex justify-content-between">
+                        <span class="fw-bold">{{ task.title }}</span>
+                        <span class="badge bg-danger">{{ task.deadline }}</span>
+                    </div>
+                    <small class="text-muted">{{ task.quadrant_label }}</small>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="vn-empty">
+                <i class="bi bi-emoji-smile text-success"></i>
+                <p>期限超過のタスクはありません</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- 最近の録音 -->
+    <div class="col-12">
+        <div class="vn-card">
+            <div class="vn-card-header">
+                <h5><i class="bi bi-clock me-2"></i>最近の録音分析</h5>
+            </div>
+            {% if recent_notes %}
+            <div class="table-responsive">
+                <table class="table table-hover mb-0">
+                    <thead>
+                        <tr>
+                            <th>タイトル</th>
+                            <th>録音日</th>
+                            <th>要約</th>
+                            <th>タスク数</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for note in recent_notes %}
+                        <tr>
+                            <td class="fw-bold">{{ note.title }}</td>
+                            <td>{{ note.recorded_date }}</td>
+                            <td class="text-muted">{{ note.summary[:80] if note.summary else '-' }}...</td>
+                            <td><span class="badge bg-secondary">{{ note.tasks.count() }}</span></td>
+                            <td>
+                                <a href="{{ url_for('voice_notes.detail', note_id=note.id) }}" class="btn btn-sm btn-outline-primary">
+                                    <i class="bi bi-eye"></i> 詳細
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <div class="vn-empty">
+                <i class="bi bi-mic-mute"></i>
+                <p>まだ録音がアップロードされていません</p>
+                <a href="{{ url_for('voice_notes.upload') }}" class="btn btn-primary">
+                    <i class="bi bi-cloud-upload me-1"></i>最初の録音をアップロード
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

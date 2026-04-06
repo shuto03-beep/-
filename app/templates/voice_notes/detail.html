@@ -1,0 +1,296 @@
+{% extends "base.html" %}
+{% block title %}{{ note.title }} - 音声ノート分析{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/voice_notes.css') }}">
+{% endblock %}
+
+{% block content %}
+<nav aria-label="breadcrumb" class="mb-3">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ url_for('voice_notes.dashboard') }}">音声ノート</a></li>
+        <li class="breadcrumb-item active">{{ note.title }}</li>
+    </ol>
+</nav>
+
+<div class="d-flex justify-content-between align-items-start mb-4">
+    <div>
+        <h2><i class="bi bi-mic-fill me-2"></i>{{ note.title }}</h2>
+        <p class="text-muted">
+            <i class="bi bi-calendar me-1"></i>{{ note.recorded_date }}
+            {% if note.source_file %}
+            <span class="ms-3"><i class="bi bi-file-earmark me-1"></i>{{ note.source_file }}</span>
+            {% endif %}
+        </p>
+    </div>
+</div>
+
+<!-- 要約カード -->
+{% if note.summary %}
+<div class="vn-card vn-summary-card mb-4">
+    <h5><i class="bi bi-chat-square-text me-2"></i>AI要約</h5>
+    <p class="mb-0">{{ note.summary }}</p>
+</div>
+{% endif %}
+
+<!-- 抽出タスク -->
+{% if tasks %}
+<div class="vn-card mb-4">
+    <div class="vn-card-header">
+        <h5><i class="bi bi-list-task me-2"></i>抽出されたタスク ({{ tasks|length }})</h5>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover mb-0">
+            <thead>
+                <tr>
+                    <th>タスク</th>
+                    <th class="text-center">緊急度</th>
+                    <th class="text-center">重要度</th>
+                    <th>象限</th>
+                    <th>期限</th>
+                    <th>ステータス</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for task in tasks %}
+                <tr>
+                    <td>
+                        <div class="fw-bold">{{ task.title }}</div>
+                        {% if task.description %}<small class="text-muted">{{ task.description[:60] }}...</small>{% endif %}
+                    </td>
+                    <td class="text-center">
+                        <div class="vn-score-bar">
+                            {% for i in range(5) %}
+                            <span class="vn-score-dot {{ 'active urgency' if i < task.urgency else '' }}"></span>
+                            {% endfor %}
+                        </div>
+                    </td>
+                    <td class="text-center">
+                        <div class="vn-score-bar">
+                            {% for i in range(5) %}
+                            <span class="vn-score-dot {{ 'active importance' if i < task.importance else '' }}"></span>
+                            {% endfor %}
+                        </div>
+                    </td>
+                    <td>
+                        <span class="badge vn-quadrant-badge {{ task.quadrant }}">{{ task.quadrant_label }}</span>
+                    </td>
+                    <td>
+                        {% if task.deadline %}
+                        <span class="{{ 'text-danger fw-bold' if task.is_overdue else '' }}">{{ task.deadline }}</span>
+                        {% else %}-{% endif %}
+                    </td>
+                    <td>
+                        <span class="badge bg-{{ 'warning' if task.status == 'pending' else 'primary' if task.status == 'in_progress' else 'success' if task.status == 'completed' else 'secondary' }}">
+                            {{ task.status_label }}
+                        </span>
+                    </td>
+                    <td>
+                        <form method="POST" action="{{ url_for('voice_notes.update_task_status', task_id=task.id) }}" class="d-inline">
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                            {% if task.status != 'completed' %}
+                            <input type="hidden" name="status" value="completed">
+                            <button type="submit" class="btn btn-sm btn-outline-success" title="完了にする">
+                                <i class="bi bi-check-lg"></i>
+                            </button>
+                            {% endif %}
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endif %}
+
+<!-- 5ロール分析結果（タブ表示） -->
+<div class="vn-card mb-4">
+    <h5 class="mb-3"><i class="bi bi-people me-2"></i>5つの専門家による分析</h5>
+
+    <ul class="nav nav-pills mb-3" role="tablist">
+        {% set roles = [
+            ('task_extractor', 'bi-list-check', 'タスク抽出'),
+            ('life_coach', 'bi-heart', 'ライフコーチ'),
+            ('psychologist', 'bi-brain', '心理分析'),
+            ('strategist', 'bi-compass', '戦略プランナー'),
+            ('critic', 'bi-search', '批評家')
+        ] %}
+        {% for role_key, icon, label in roles %}
+        <li class="nav-item">
+            <button class="nav-link {{ 'active' if loop.first }}" data-bs-toggle="pill"
+                    data-bs-target="#role-{{ role_key }}" type="button">
+                <i class="bi {{ icon }} me-1"></i>{{ label }}
+            </button>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <div class="tab-content">
+        {% for role_key, icon, label in roles %}
+        <div class="tab-pane fade {{ 'show active' if loop.first }}" id="role-{{ role_key }}">
+            {% if role_key in analyses %}
+            {% set data = analyses[role_key].parsed_content %}
+            <div class="vn-analysis-content">
+                {% if role_key == 'task_extractor' %}
+                    <p class="text-muted">{{ data.get('summary', '') }}</p>
+
+                {% elif role_key == 'life_coach' %}
+                    {% if data.get('achievements') %}
+                    <h6 class="text-success"><i class="bi bi-trophy me-1"></i>達成事項</h6>
+                    <ul>
+                        {% for a in data.get('achievements', []) %}
+                        <li><strong>{{ a.title }}</strong>: {{ a.description }}
+                            <span class="badge bg-{{ 'success' if a.impact == 'high' else 'warning' if a.impact == 'medium' else 'secondary' }}">{{ a.impact }}</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+
+                    {% if data.get('challenges') %}
+                    <h6 class="text-warning"><i class="bi bi-exclamation-triangle me-1"></i>課題</h6>
+                    <ul>
+                        {% for c in data.get('challenges', []) %}
+                        <li><strong>{{ c.title }}</strong>: {{ c.description }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+
+                    {% if data.get('suggestions') %}
+                    <h6 class="text-primary"><i class="bi bi-lightbulb me-1"></i>改善提案</h6>
+                    <ul>
+                        {% for s in data.get('suggestions', []) %}
+                        <li><strong>{{ s.title }}</strong>: {{ s.description }}
+                            <span class="badge bg-info">{{ s.category }}</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+
+                    {% if data.get('encouragement') %}
+                    <div class="alert alert-success mt-3">
+                        <i class="bi bi-emoji-smile me-2"></i>{{ data.encouragement }}
+                    </div>
+                    {% endif %}
+
+                {% elif role_key == 'psychologist' %}
+                    {% if data.get('thinking_patterns') %}
+                    <h6><i class="bi bi-diagram-3 me-1"></i>検出された思考パターン</h6>
+                    {% for p in data.get('thinking_patterns', []) %}
+                    <div class="vn-pattern-card mb-2">
+                        <div class="d-flex justify-content-between">
+                            <strong>{{ p.name }}</strong>
+                            <span class="badge bg-{{ 'danger' if p.type == 'cognitive_bias' else 'info' if p.type == 'habit' else 'success' if p.type == 'strength' else 'warning' }}">
+                                {{ p.type }}
+                            </span>
+                        </div>
+                        <p class="mb-1 small">{{ p.description }}</p>
+                        {% if p.get('evidence') %}<p class="text-muted small mb-1"><i class="bi bi-quote me-1"></i>{{ p.evidence }}</p>{% endif %}
+                        {% if p.get('suggestion') %}<p class="text-primary small mb-0"><i class="bi bi-arrow-right me-1"></i>{{ p.suggestion }}</p>{% endif %}
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+
+                    {% if data.get('emotional_state') %}
+                    <div class="mt-3 p-3 bg-light rounded">
+                        <h6><i class="bi bi-emoji-neutral me-1"></i>感情状態</h6>
+                        <p class="mb-1">主要感情: <strong>{{ data.emotional_state.get('primary_emotion', '-') }}</strong></p>
+                        <p class="mb-0">エネルギーレベル: <strong>{{ data.emotional_state.get('energy_level', '-') }}</strong></p>
+                    </div>
+                    {% endif %}
+
+                    {% if data.get('cognitive_summary') %}
+                    <p class="mt-3 text-muted">{{ data.cognitive_summary }}</p>
+                    {% endif %}
+
+                {% elif role_key == 'strategist' %}
+                    {% if data.get('key_focus') %}
+                    <div class="alert alert-primary">
+                        <i class="bi bi-crosshair me-2"></i><strong>最優先フォーカス:</strong> {{ data.key_focus }}
+                    </div>
+                    {% endif %}
+
+                    {% for imp in data.get('improvements', []) %}
+                    <div class="vn-improvement-card mb-3">
+                        <h6>
+                            <span class="badge bg-primary me-1">{{ imp.category }}</span>
+                            {{ imp.title }}
+                        </h6>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <small class="text-muted">現状:</small>
+                                <p class="small">{{ imp.current_state }}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <small class="text-success">目標:</small>
+                                <p class="small">{{ imp.target_state }}</p>
+                            </div>
+                        </div>
+                        {% if imp.get('steps') %}
+                        <div class="vn-steps">
+                            {% for step in imp.steps %}
+                            <div class="vn-step">
+                                <span class="vn-step-phase">{{ step.phase }}</span>
+                                <span>{{ step.action }}</span>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+
+                    {% if data.get('strategic_advice') %}
+                    <p class="mt-3 fst-italic text-muted">{{ data.strategic_advice }}</p>
+                    {% endif %}
+
+                {% elif role_key == 'critic' %}
+                    {% set review = data.get('review', {}) %}
+                    {% if review.get('strengths') %}
+                    <h6 class="text-success"><i class="bi bi-hand-thumbs-up me-1"></i>良い点</h6>
+                    <ul>{% for s in review.strengths %}<li>{{ s }}</li>{% endfor %}</ul>
+                    {% endif %}
+
+                    {% if review.get('weaknesses') %}
+                    <h6 class="text-warning"><i class="bi bi-exclamation-circle me-1"></i>改善点</h6>
+                    <ul>{% for w in review.weaknesses %}<li>{{ w }}</li>{% endfor %}</ul>
+                    {% endif %}
+
+                    {% if review.get('missing_perspectives') %}
+                    <h6 class="text-info"><i class="bi bi-eye me-1"></i>欠けている視点</h6>
+                    <ul>{% for m in review.missing_perspectives %}<li>{{ m }}</li>{% endfor %}</ul>
+                    {% endif %}
+
+                    {% if data.get('additional_insights') %}
+                    <h6><i class="bi bi-lightbulb me-1"></i>追加の洞察</h6>
+                    <ul>{% for ins in data.additional_insights %}<li><strong>{{ ins.title }}</strong>: {{ ins.description }}</li>{% endfor %}</ul>
+                    {% endif %}
+
+                    {% if data.get('quality_score') %}
+                    <div class="mt-3 text-center">
+                        <div class="display-4 fw-bold text-primary">{{ data.quality_score }}/10</div>
+                        <p class="text-muted">分析品質スコア</p>
+                    </div>
+                    {% endif %}
+
+                    {% if data.get('overall_review') %}
+                    <p class="mt-3 fst-italic">{{ data.overall_review }}</p>
+                    {% endif %}
+                {% endif %}
+            </div>
+            {% else %}
+            <p class="text-muted">この分析ロールの結果はありません。</p>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- 元のテキスト -->
+<div class="vn-card mb-4">
+    <details>
+        <summary class="fw-bold"><i class="bi bi-file-text me-2"></i>元の録音テキスト</summary>
+        <div class="mt-3 p-3 bg-light rounded" style="white-space: pre-wrap; max-height: 400px; overflow-y: auto;">{{ note.content }}</div>
+    </details>
+</div>
+{% endblock %}

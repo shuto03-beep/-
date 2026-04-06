@@ -25,6 +25,7 @@ def create_app(config_class=Config):
     from app.routes.blocks import blocks_bp
     from app.routes.admin import admin_bp
     from app.routes.notifications import notifications_bp
+    from app.routes.voice_notes import voice_notes_bp
 
     app.register_blueprint(auth_bp)
     app.register_blueprint(dashboard_bp)
@@ -33,6 +34,7 @@ def create_app(config_class=Config):
     app.register_blueprint(blocks_bp)
     app.register_blueprint(admin_bp)
     app.register_blueprint(notifications_bp)
+    app.register_blueprint(voice_notes_bp)
 
     @app.errorhandler(404)
     def not_found(e):

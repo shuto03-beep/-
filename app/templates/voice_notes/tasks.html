@@ -1,0 +1,211 @@
+{% extends "base.html" %}
+{% block title %}タスク管理 - アイゼンハワーマトリクス{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/voice_notes.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h2><i class="bi bi-grid-3x3-gap me-2"></i>アイゼンハワーマトリクス</h2>
+        <p class="text-muted mb-0">緊急度と重要度でタスクを整理・可視化</p>
+    </div>
+    <div class="btn-group">
+        <a href="{{ url_for('voice_notes.tasks', status='active') }}"
+           class="btn btn-{{ 'primary' if status_filter == 'active' else 'outline-primary' }}">アクティブ</a>
+        <a href="{{ url_for('voice_notes.tasks', status='all') }}"
+           class="btn btn-{{ 'primary' if status_filter == 'all' else 'outline-primary' }}">全て</a>
+        <a href="{{ url_for('voice_notes.tasks', status='completed') }}"
+           class="btn btn-{{ 'primary' if status_filter == 'completed' else 'outline-primary' }}">完了</a>
+    </div>
+</div>
+
+<!-- 4象限マトリクス -->
+<div class="vn-matrix mb-4">
+    <div class="vn-matrix-label-y">
+        <span>重要</span>
+    </div>
+    <div class="vn-matrix-grid">
+        <!-- Q2: 重要 × 非緊急 = 計画する -->
+        <div class="vn-matrix-cell schedule">
+            <div class="vn-matrix-cell-header">
+                <span class="vn-matrix-cell-icon">&#x1F7E1;</span>
+                <strong>計画する</strong>
+                <small>重要 / 非緊急</small>
+            </div>
+            <div class="vn-matrix-cell-tasks">
+                {% for task in quadrants.schedule %}
+                <div class="vn-matrix-task">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <span>{{ task.title }}</span>
+                        {% if task.deadline %}
+                        <small class="text-muted ms-2 text-nowrap">{{ task.deadline.strftime('%m/%d') }}</small>
+                        {% endif %}
+                    </div>
+                    <form method="POST" action="{{ url_for('voice_notes.update_task_status', task_id=task.id) }}" class="mt-1">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                        <input type="hidden" name="status" value="completed">
+                        <button type="submit" class="btn btn-sm btn-outline-success py-0 px-1"><i class="bi bi-check"></i></button>
+                    </form>
+                </div>
+                {% endfor %}
+                {% if not quadrants.schedule %}
+                <div class="text-muted small text-center py-3">タスクなし</div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Q1: 重要 × 緊急 = 今すぐやる -->
+        <div class="vn-matrix-cell do_first">
+            <div class="vn-matrix-cell-header">
+                <span class="vn-matrix-cell-icon">&#x1F534;</span>
+                <strong>今すぐやる</strong>
+                <small>重要 / 緊急</small>
+            </div>
+            <div class="vn-matrix-cell-tasks">
+                {% for task in quadrants.do_first %}
+                <div class="vn-matrix-task">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <span class="fw-bold">{{ task.title }}</span>
+                        {% if task.deadline %}
+                        <small class="{{ 'text-danger' if task.is_overdue else 'text-muted' }} ms-2 text-nowrap">
+                            {{ task.deadline.strftime('%m/%d') }}
+                            {% if task.is_overdue %}!{% endif %}
+                        </small>
+                        {% endif %}
+                    </div>
+                    <form method="POST" action="{{ url_for('voice_notes.update_task_status', task_id=task.id) }}" class="mt-1">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                        <input type="hidden" name="status" value="completed">
+                        <button type="submit" class="btn btn-sm btn-outline-success py-0 px-1"><i class="bi bi-check"></i></button>
+                    </form>
+                </div>
+                {% endfor %}
+                {% if not quadrants.do_first %}
+                <div class="text-muted small text-center py-3">タスクなし</div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Q4: 非重要 × 非緊急 = 排除する -->
+        <div class="vn-matrix-cell eliminate">
+            <div class="vn-matrix-cell-header">
+                <span class="vn-matrix-cell-icon">&#x26AA;</span>
+                <strong>排除する</strong>
+                <small>非重要 / 非緊急</small>
+            </div>
+            <div class="vn-matrix-cell-tasks">
+                {% for task in quadrants.eliminate %}
+                <div class="vn-matrix-task">
+                    <span class="text-muted">{{ task.title }}</span>
+                </div>
+                {% endfor %}
+                {% if not quadrants.eliminate %}
+                <div class="text-muted small text-center py-3">タスクなし</div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Q3: 非重要 × 緊急 = 任せる -->
+        <div class="vn-matrix-cell delegate">
+            <div class="vn-matrix-cell-header">
+                <span class="vn-matrix-cell-icon">&#x1F7E0;</span>
+                <strong>任せる</strong>
+                <small>非重要 / 緊急</small>
+            </div>
+            <div class="vn-matrix-cell-tasks">
+                {% for task in quadrants.delegate %}
+                <div class="vn-matrix-task">
+                    <span>{{ task.title }}</span>
+                </div>
+                {% endfor %}
+                {% if not quadrants.delegate %}
+                <div class="text-muted small text-center py-3">タスクなし</div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="vn-matrix-label-x">
+        <span>緊急</span>
+    </div>
+</div>
+
+<!-- 散布図 -->
+<div class="vn-card mb-4">
+    <h5><i class="bi bi-graph-up me-2"></i>タスク分布（散布図）</h5>
+    <canvas id="matrixChart" height="300"></canvas>
+</div>
+
+<!-- タスク一覧テーブル -->
+<div class="vn-card">
+    <h5><i class="bi bi-list-ul me-2"></i>タスク一覧 ({{ tasks|length }}件)</h5>
+    {% if tasks %}
+    <div class="table-responsive">
+        <table class="table table-hover mb-0">
+            <thead>
+                <tr>
+                    <th>タスク</th>
+                    <th class="text-center">緊急度</th>
+                    <th class="text-center">重要度</th>
+                    <th>象限</th>
+                    <th>期限</th>
+                    <th>ステータス</th>
+                    <th>アクション</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for task in tasks %}
+                <tr>
+                    <td>
+                        <strong>{{ task.title }}</strong>
+                        {% if task.description %}<br><small class="text-muted">{{ task.description[:80] }}</small>{% endif %}
+                    </td>
+                    <td class="text-center">{{ task.urgency }}/5</td>
+                    <td class="text-center">{{ task.importance }}/5</td>
+                    <td><span class="badge vn-quadrant-badge {{ task.quadrant }}">{{ task.quadrant_label }}</span></td>
+                    <td>
+                        {% if task.deadline %}
+                        <span class="{{ 'text-danger fw-bold' if task.is_overdue }}">{{ task.deadline }}</span>
+                        {% else %}-{% endif %}
+                    </td>
+                    <td>
+                        <span class="badge bg-{{ 'warning text-dark' if task.status == 'pending' else 'primary' if task.status == 'in_progress' else 'success' if task.status == 'completed' else 'secondary' }}">
+                            {{ task.status_label }}
+                        </span>
+                    </td>
+                    <td>
+                        <form method="POST" action="{{ url_for('voice_notes.update_task_status', task_id=task.id) }}" class="d-inline">
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                            {% if task.status == 'pending' %}
+                            <input type="hidden" name="status" value="in_progress">
+                            <button class="btn btn-sm btn-outline-primary" title="開始"><i class="bi bi-play"></i></button>
+                            {% elif task.status == 'in_progress' %}
+                            <input type="hidden" name="status" value="completed">
+                            <button class="btn btn-sm btn-outline-success" title="完了"><i class="bi bi-check-lg"></i></button>
+                            {% endif %}
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <div class="vn-empty">
+        <i class="bi bi-inbox"></i>
+        <p>タスクがありません</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="{{ url_for('static', filename='js/voice_notes.js') }}"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    initMatrixChart('{{ url_for("voice_notes.api_matrix_data") }}');
+});
+</script>
+{% endblock %}

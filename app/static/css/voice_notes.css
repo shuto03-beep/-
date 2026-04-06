@@ -1,0 +1,269 @@
+/* ============================================
+   音声ノート分析 - スタイルシート
+   ============================================ */
+
+/* --- ヘッダー --- */
+.vn-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* --- 統計カード --- */
+.vn-stat-card {
+    background: var(--bg-card);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+.vn-stat-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+.vn-stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+}
+.vn-stat-value {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--text-primary);
+    line-height: 1;
+}
+.vn-stat-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 0.25rem;
+}
+
+/* --- カード --- */
+.vn-card {
+    background: var(--bg-card);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 0;
+}
+.vn-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+}
+.vn-card-header h5 {
+    margin-bottom: 0;
+}
+
+/* --- 要約カード --- */
+.vn-summary-card {
+    background: linear-gradient(135deg, #e8f5ee 0%, #f0f7ff 100%);
+    border-left: 4px solid var(--primary);
+}
+
+/* --- 空状態 --- */
+.vn-empty {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--text-muted);
+}
+.vn-empty i {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+/* --- スコアドット --- */
+.vn-score-bar {
+    display: flex;
+    gap: 3px;
+    justify-content: center;
+}
+.vn-score-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #e2e4ec;
+}
+.vn-score-dot.active.urgency {
+    background: #dc3545;
+}
+.vn-score-dot.active.importance {
+    background: #0d6efd;
+}
+
+/* --- 象限バッジ --- */
+.vn-quadrant-badge {
+    font-size: 0.75rem;
+    padding: 0.3em 0.7em;
+}
+.vn-quadrant-badge.do_first { background: #dc3545; color: #fff; }
+.vn-quadrant-badge.schedule { background: #ffc107; color: #000; }
+.vn-quadrant-badge.delegate { background: #ff8c00; color: #fff; }
+.vn-quadrant-badge.eliminate { background: #adb5bd; color: #fff; }
+
+/* --- アイゼンハワーマトリクス --- */
+.vn-matrix {
+    position: relative;
+    padding-left: 40px;
+    padding-bottom: 40px;
+}
+.vn-matrix-label-y {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+    font-weight: 700;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+}
+.vn-matrix-label-x {
+    text-align: center;
+    font-weight: 700;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    margin-top: 8px;
+}
+.vn-matrix-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 8px;
+    min-height: 500px;
+}
+.vn-matrix-cell {
+    border-radius: 12px;
+    padding: 1rem;
+    min-height: 220px;
+    overflow-y: auto;
+}
+.vn-matrix-cell.do_first {
+    background: linear-gradient(135deg, #fff5f5 0%, #ffe0e0 100%);
+    border: 2px solid #f8d7da;
+}
+.vn-matrix-cell.schedule {
+    background: linear-gradient(135deg, #fffbeb 0%, #fef3cd 100%);
+    border: 2px solid #ffeeba;
+}
+.vn-matrix-cell.delegate {
+    background: linear-gradient(135deg, #fff8f0 0%, #ffe5cc 100%);
+    border: 2px solid #ffd6a5;
+}
+.vn-matrix-cell.eliminate {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border: 2px solid #dee2e6;
+}
+.vn-matrix-cell-header {
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.vn-matrix-cell-header strong {
+    display: block;
+    font-size: 0.95rem;
+}
+.vn-matrix-cell-header small {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+}
+.vn-matrix-cell-icon {
+    font-size: 1.2rem;
+    margin-right: 4px;
+}
+.vn-matrix-task {
+    padding: 0.5rem;
+    margin-bottom: 0.25rem;
+    background: rgba(255,255,255,0.7);
+    border-radius: 8px;
+    font-size: 0.85rem;
+}
+
+/* --- パターンカード --- */
+.vn-pattern-card {
+    padding: 0.75rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 3px solid #0dcaf0;
+}
+
+/* --- 改善ステップ --- */
+.vn-steps {
+    margin-top: 0.5rem;
+}
+.vn-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.4rem 0;
+    font-size: 0.85rem;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.vn-step:last-child {
+    border-bottom: none;
+}
+.vn-step-phase {
+    background: var(--primary-light);
+    color: var(--primary);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* --- インサイトカード --- */
+.vn-insight-card {
+    padding: 1rem;
+    background: var(--bg-card);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+/* --- 改善アイテム --- */
+.vn-improvement-card {
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+/* --- ドロップゾーン --- */
+.vn-dropzone {
+    border: 2px dashed var(--border-color);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    transition: var(--transition);
+    cursor: pointer;
+}
+.vn-dropzone:hover {
+    border-color: var(--primary);
+    background: var(--primary-light);
+}
+
+/* --- 分析コンテンツ --- */
+.vn-analysis-content {
+    padding: 1rem 0;
+}
+
+/* --- レスポンシブ --- */
+@media (max-width: 768px) {
+    .vn-matrix-grid {
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+    .vn-stat-value {
+        font-size: 1.5rem;
+    }
+}

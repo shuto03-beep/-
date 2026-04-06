@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+{% block title %}インサイト - 思考パターン & 改善プラン{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/voice_notes.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="mb-4">
+    <h2><i class="bi bi-brain me-2"></i>インサイト</h2>
+    <p class="text-muted">あなたの思考パターンと人生改善プランの分析</p>
+</div>
+
+<div class="row g-4">
+    <!-- 思考パターン -->
+    <div class="col-lg-6">
+        <div class="vn-card">
+            <div class="vn-card-header">
+                <h5><i class="bi bi-diagram-3 me-2"></i>思考パターン ({{ patterns|length }}種類)</h5>
+            </div>
+
+            {% if patterns %}
+            <!-- パターンタイプ分布 -->
+            <div class="mb-4">
+                <canvas id="patternTypeChart" height="200"></canvas>
+            </div>
+
+            {% for pattern in patterns %}
+            <div class="vn-insight-card mb-3">
+                <div class="d-flex justify-content-between align-items-start">
+                    <div>
+                        <h6 class="mb-1">{{ pattern.name }}</h6>
+                        <span class="badge bg-{{ 'danger' if pattern.type == 'cognitive_bias' else 'info' if pattern.type == 'habit' else 'success' if pattern.type == 'strength' else 'warning' }}">
+                            {{ pattern.type_label }}
+                        </span>
+                    </div>
+                    <div class="text-end">
+                        <span class="badge bg-secondary rounded-pill">{{ pattern.count }}回検出</span>
+                    </div>
+                </div>
+                <p class="text-muted small mt-2 mb-0">{{ pattern.description }}</p>
+                <small class="text-muted">
+                    初回: {{ pattern.first_detected }} / 最新: {{ pattern.last_detected }}
+                </small>
+            </div>
+            {% endfor %}
+            {% else %}
+            <div class="vn-empty">
+                <i class="bi bi-search"></i>
+                <p>まだ思考パターンが検出されていません</p>
+                <small class="text-muted">録音をアップロードすると、AIが思考パターンを分析します</small>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- 改善プラン -->
+    <div class="col-lg-6">
+        <div class="vn-card">
+            <div class="vn-card-header">
+                <h5><i class="bi bi-rocket me-2"></i>改善プラン ({{ improvements|length }}件)</h5>
+            </div>
+
+            {% if improvement_categories %}
+            <!-- カテゴリ別進捗レーダー -->
+            <div class="mb-4">
+                <canvas id="improvementRadar" height="200"></canvas>
+            </div>
+
+            {% for cat_key, cat in improvement_categories.items() %}
+            <div class="mb-4">
+                <h6 class="text-primary">
+                    <i class="bi bi-{{ 'heart-pulse' if cat_key == 'health' else 'briefcase' if cat_key == 'career' else 'people' if cat_key == 'relationship' else 'lightbulb' if cat_key == 'mindset' else 'tools' if cat_key == 'skill' else 'cash-stack' if cat_key == 'finance' else 'house' }} me-1"></i>
+                    {{ cat.label }}
+                    <small class="text-muted">(平均進捗: {{ cat.avg_progress }}%)</small>
+                </h6>
+                <div class="progress mb-2" style="height: 8px;">
+                    <div class="progress-bar bg-{{ 'success' if cat.avg_progress >= 70 else 'warning' if cat.avg_progress >= 30 else 'danger' }}"
+                         style="width: {{ cat.avg_progress }}%"></div>
+                </div>
+
+                {% for imp in cat.items %}
+                <div class="vn-improvement-item p-3 mb-2 bg-light rounded">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <strong>{{ imp.title }}</strong>
+                        <span class="badge bg-primary">{{ imp.progress }}%</span>
+                    </div>
+                    {% if imp.current_state %}
+                    <div class="mt-2">
+                        <small class="text-muted d-block"><i class="bi bi-geo-alt me-1"></i>現状: {{ imp.current_state }}</small>
+                        <small class="text-success d-block"><i class="bi bi-flag me-1"></i>目標: {{ imp.target_state }}</small>
+                    </div>
+                    {% endif %}
+
+                    {% if imp.parsed_steps %}
+                    <div class="mt-2">
+                        {% for step in imp.parsed_steps %}
+                        <div class="d-flex align-items-start mt-1">
+                            <span class="badge bg-outline-primary me-2 text-nowrap" style="font-size: 0.7rem;">{{ step.phase }}</span>
+                            <small>{{ step.action }}</small>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+            {% endfor %}
+            {% else %}
+            <div class="vn-empty">
+                <i class="bi bi-rocket"></i>
+                <p>まだ改善プランが作成されていません</p>
+                <small class="text-muted">録音をアップロードすると、AIが改善プランを提案します</small>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="{{ url_for('static', filename='js/voice_notes.js') }}"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    initPatternChart('{{ url_for("voice_notes.api_pattern_data") }}');
+    initImprovementRadar('{{ url_for("voice_notes.api_improvement_data") }}');
+});
+</script>
+{% endblock %}
