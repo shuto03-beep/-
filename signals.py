@@ -208,6 +208,19 @@ def generate_signal(
 
     final_score = compute_final_score(ta_score, historical_data, ai_assessment)
 
+    # 市場サイクル補正（曜日・時間帯・月次・SQ）
+    try:
+        from market_cycles import get_total_cycle_adjustment
+        cycle = get_total_cycle_adjustment()
+        cycle_bias = cycle["total_bias"]
+        final_score += cycle_bias
+        if cycle["reasons"]:
+            reasons_list = buy_reasons if final_score >= 0 else sell_reasons
+            for r in cycle["reasons"][:3]:
+                reasons_list.append(f"📅 {r}")
+    except Exception:
+        cycle_bias = 0
+
     # シグナル判定
     if final_score >= BUY_SCORE_THRESHOLD:
         signal_type = "BUY"

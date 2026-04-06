@@ -226,6 +226,20 @@ def main():
     for key, s in STRATEGIES.items():
         print(f"  {s['emoji']} {s['label']}")
 
+    # 市場サイクル情報を表示
+    try:
+        from market_cycles import get_total_cycle_adjustment
+        cycle = get_total_cycle_adjustment(now)
+        print(f"[CYCLE] サイクル補正: {cycle['total_bias']:+d} "
+              f"(曜日{cycle['day_of_week_bias']:+d}, "
+              f"時間帯{cycle['intraday_bias']:+d}, "
+              f"月次{cycle['monthly_bias']:+d}, "
+              f"SQ{cycle['sq_bias']:+d})")
+        for r in cycle.get("reasons", []):
+            print(f"  📅 {r}")
+    except Exception as e:
+        print(f"[CYCLE] サイクル情報取得エラー: {e}")
+
     state = load_state()
 
     # === 起動通知 ===

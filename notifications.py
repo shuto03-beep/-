@@ -174,7 +174,7 @@ def send_learning_report(report: str):
 
 
 def send_startup_notification(state: dict):
-    """起動通知（マルチ戦略対応）"""
+    """起動通知（マルチ戦略対応 + サイクル情報）"""
     from datetime import datetime, timezone, timedelta
     now = datetime.now(timezone(timedelta(hours=9)))
 
@@ -199,6 +199,17 @@ def send_startup_notification(state: dict):
 
         msg += f"\n\n{s_config['emoji']} {s_config['label']}"
         msg += f"\n  💰 資産: {total_value:,.0f}円 | 保有: {len(positions)}件 | 取引: {len(closed)}件"
+
+    # サイクル情報
+    try:
+        from market_cycles import get_total_cycle_adjustment
+        cycle = get_total_cycle_adjustment(now)
+        if cycle["reasons"]:
+            msg += f"\n\n📅 市場サイクル（補正{cycle['total_bias']:+d}pt）"
+            for r in cycle["reasons"][:4]:
+                msg += f"\n  • {r}"
+    except Exception:
+        pass
 
     msg += "\n━━━━━━━━━━━━━━━━━━━"
     _send_discord(msg)
