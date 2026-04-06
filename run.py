@@ -19,6 +19,8 @@ try:
         if not School.query.first():
             from seeds.seed_data import seed
             seed()
+        from seeds.demo_data import create_demo_data
+        create_demo_data()
 except Exception as e:
     print(f'DB初期化エラー: {e}')
     print(f'DB URI: {app.config["SQLALCHEMY_DATABASE_URI"]}')

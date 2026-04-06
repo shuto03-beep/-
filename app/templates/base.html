@@ -121,6 +121,14 @@
                 {{ message }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
             </div>
+            {% if category == 'success' and ('予約が確定' in message or '予約内容を変更' in message) %}
+            <div class="celebration-overlay" id="celebrationOverlay">
+                <div class="celebration-content">
+                    <div class="celebration-icon">✓</div>
+                    <div class="celebration-text">予約完了！</div>
+                </div>
+            </div>
+            {% endif %}
             {% endfor %}
             {% endif %}
             {% endwith %}

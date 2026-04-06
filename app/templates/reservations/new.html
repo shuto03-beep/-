@@ -29,6 +29,15 @@
 
         <div class="card">
             <div class="card-header"><i class="bi bi-pencil-square me-2"></i>予約内容を入力</div>
+            <div class="booking-steps">
+                <div class="step active" data-step="1"><span class="step-number">1</span><span class="step-label">学校</span></div>
+                <div class="step-connector"></div>
+                <div class="step" data-step="2"><span class="step-number">2</span><span class="step-label">施設</span></div>
+                <div class="step-connector"></div>
+                <div class="step" data-step="3"><span class="step-number">3</span><span class="step-label">日時</span></div>
+                <div class="step-connector"></div>
+                <div class="step" data-step="4"><span class="step-number">4</span><span class="step-label">内容</span></div>
+            </div>
             <div class="card-body p-4">
                 <form method="POST" id="reservationForm">
                     {{ form.hidden_tag() }}
@@ -180,6 +189,36 @@ document.addEventListener('DOMContentLoaded', function() {
 
     facilitySelect.addEventListener('change', loadSlots);
     dateInput.addEventListener('change', loadSlots);
+
+    // Step indicator updates
+    function updateSteps() {
+        const steps = document.querySelectorAll('.booking-steps .step');
+        const schoolVal = document.getElementById('schoolFilter').value;
+        const facilityVal = facilitySelect.value;
+        const dateVal = dateInput.value;
+
+        steps.forEach(s => { s.classList.remove('active','completed'); });
+
+        if (!schoolVal && (!facilityVal || facilityVal === '0')) {
+            steps[0].classList.add('active');
+        } else if (!facilityVal || facilityVal === '0') {
+            steps[0].classList.add('completed');
+            steps[1].classList.add('active');
+        } else if (!dateVal) {
+            steps[0].classList.add('completed');
+            steps[1].classList.add('completed');
+            steps[2].classList.add('active');
+        } else {
+            steps[0].classList.add('completed');
+            steps[1].classList.add('completed');
+            steps[2].classList.add('completed');
+            steps[3].classList.add('active');
+        }
+    }
+    schoolFilter.addEventListener('change', updateSteps);
+    facilitySelect.addEventListener('change', updateSteps);
+    dateInput.addEventListener('change', updateSteps);
+    updateSteps();
 });
 </script>
 {% endblock %}

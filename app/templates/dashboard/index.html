@@ -9,30 +9,131 @@
 
 {% if current_user.is_admin %}
 <!-- ===== 事務局ダッシュボード ===== -->
+
+{% set weekdays = ['月', '火', '水', '木', '金', '土', '日'] %}
+{% set now = import('datetime').datetime.now() if false else none %}
+<div class="welcome-banner fade-in">
+    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+        <div>
+            <h2 class="mb-1" style="font-size:1.3rem; font-weight:700; color:#fff;">
+                <i class="bi bi-sun me-2"></i>おはようございます、管理者さん
+            </h2>
+            <p class="mb-0" style="color:rgba(255,255,255,0.85); font-size:0.9rem;">
+                {{ today.strftime('%Y年%-m月%-d日') }}（{{ ['月','火','水','木','金','土','日'][today.weekday()] }}）
+            </p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+            {% if unread_count > 0 %}
+            <a href="{{ url_for('notifications.list_notifications') }}" class="btn btn-sm" style="background:rgba(255,255,255,0.2); color:#fff; border:1px solid rgba(255,255,255,0.3);">
+                <i class="bi bi-bell me-1"></i><span class="badge-notify pulse" style="position:static;">{{ unread_count }}</span> 件の通知
+            </a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
 <div class="row g-4 mb-4">
-    <div class="col-md-4">
-        <div class="stat-card stat-primary p-4 text-center">
+    <div class="col-md-3">
+        <div class="stat-card stat-primary p-4 text-center fade-in">
             <div class="stat-value">{{ today_reservations }}</div>
             <div class="stat-label"><i class="bi bi-calendar-check me-1"></i>本日の予約数</div>
         </div>
     </div>
-    <div class="col-md-4">
-        <div class="stat-card stat-accent p-4 text-center">
+    <div class="col-md-3">
+        <div class="stat-card stat-accent p-4 text-center fade-in">
             <div class="stat-value">{{ pending_orgs }}</div>
             <div class="stat-label"><i class="bi bi-hourglass-split me-1"></i>承認待ち団体</div>
         </div>
     </div>
-    <div class="col-md-4">
-        <div class="stat-card stat-subtle p-4 text-center">
+    <div class="col-md-3">
+        <div class="stat-card stat-subtle p-4 text-center fade-in">
             <div class="stat-value">{{ total_orgs }}</div>
             <div class="stat-label"><i class="bi bi-people me-1"></i>登録団体数</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="stat-card stat-info p-4 text-center fade-in">
+            <div class="stat-value">{{ monthly_reservations }}</div>
+            <div class="stat-label"><i class="bi bi-calendar-range me-1"></i>今月の予約数</div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-4 mb-4">
+    <!-- 今週の予約 -->
+    <div class="col-md-7">
+        <div class="card fade-in">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <span><i class="bi bi-calendar-week me-2"></i>今週の予約（7日間）</span>
+                <a href="{{ url_for('calendar.index') }}" class="btn btn-sm btn-outline-primary">カレンダーへ</a>
+            </div>
+            <div class="card-body p-0">
+                {% if this_week_reservations %}
+                <div class="timeline-list">
+                    {% set current_date = namespace(value=none) %}
+                    {% for r in this_week_reservations %}
+                    {% if current_date.value != r.date %}
+                    {% set current_date.value = r.date %}
+                    <div class="timeline-date-header">
+                        <span class="timeline-date-badge {% if r.date == today %}timeline-date-today{% endif %}">
+                            {{ r.date.strftime('%-m/%-d') }}（{{ ['月','火','水','木','金','土','日'][r.date.weekday()] }}）
+                            {% if r.date == today %}<small class="ms-1">今日</small>{% endif %}
+                        </span>
+                    </div>
+                    {% endif %}
+                    <div class="timeline-item">
+                        <div class="timeline-time">{{ r.time_range }}</div>
+                        <div class="timeline-content">
+                            <span class="timeline-facility">{{ r.facility.name }}</span>
+                            {% if r.organization %}
+                            <span class="timeline-org text-muted">{{ r.organization.name }}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <div class="empty-state" style="padding:32px;">
+                    <i class="bi bi-calendar-check d-block" style="font-size:2rem;"></i>
+                    <p class="mb-0">今週の予約はありません</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- 施設稼働率 -->
+    <div class="col-md-5">
+        <div class="card fade-in">
+            <div class="card-header"><i class="bi bi-bar-chart me-2"></i>施設稼働率（今月）</div>
+            <div class="card-body">
+                {% if facility_usage %}
+                {% set max_count = facility_usage[0].count if facility_usage else 1 %}
+                {% for fu in facility_usage %}
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                        <span class="fw-semibold" style="font-size:0.85rem;">{{ fu.name }}</span>
+                        <span class="text-muted" style="font-size:0.8rem;">{{ fu.count }}件</span>
+                    </div>
+                    <div class="progress-bar-facility-wrapper">
+                        <div class="progress-bar-facility" style="width: {{ (fu.count / max_count * 100) | int }}%;"></div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% else %}
+                <div class="text-muted text-center py-3">
+                    <i class="bi bi-inbox d-block mb-2" style="font-size:1.5rem; opacity:0.4;"></i>
+                    今月のデータはまだありません
+                </div>
+                {% endif %}
+            </div>
         </div>
     </div>
 </div>
 
 <div class="row g-4">
     <div class="col-md-6">
-        <div class="card">
+        <div class="card fade-in">
             <div class="card-header"><i class="bi bi-lightning me-2"></i>クイックアクション</div>
             <div class="card-body">
                 <div class="d-flex flex-wrap gap-2">
@@ -53,12 +154,12 @@
         </div>
     </div>
     <div class="col-md-6">
-        <div class="card">
+        <div class="card fade-in">
             <div class="card-header"><i class="bi bi-bell me-2"></i>お知らせ</div>
             <div class="card-body">
                 {% if unread_count > 0 %}
                 <a href="{{ url_for('notifications.list_notifications') }}" class="d-flex align-items-center text-decoration-none">
-                    <span class="badge-notify" style="position:static; margin-right:10px;">{{ unread_count }}</span>
+                    <span class="badge-notify pulse" style="position:static; margin-right:10px;">{{ unread_count }}</span>
                     <span>件の未読のお知らせがあります</span>
                 </a>
                 {% else %}
@@ -82,7 +183,52 @@
     </div>
     {% endif %}
 
-<div class="card">
+<!-- Organization name banner -->
+<div class="welcome-banner fade-in" style="margin-bottom:24px;">
+    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+        <div>
+            <h2 class="mb-1" style="font-size:1.3rem; font-weight:700; color:#fff;">
+                <i class="bi bi-people-fill me-2"></i>{{ current_user.organization.name }}
+            </h2>
+            <p class="mb-0" style="color:rgba(255,255,255,0.85); font-size:0.9rem;">
+                {{ today.strftime('%Y年%-m月%-d日') }}（{{ ['月','火','水','木','金','土','日'][today.weekday()] }}）
+            </p>
+        </div>
+        {% if current_user.can_make_reservation %}
+        <a href="{{ url_for('reservations.new_reservation') }}" class="btn btn-sm" style="background:rgba(255,255,255,0.2); color:#fff; border:1px solid rgba(255,255,255,0.3);">
+            <i class="bi bi-plus-circle me-1"></i>新規予約
+        </a>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Next reservation highlight -->
+{% if upcoming_reservations and upcoming_reservations|length > 0 %}
+<div class="next-reservation-highlight fade-in">
+    <div class="d-flex align-items-start gap-3">
+        <div class="next-reservation-icon">
+            <i class="bi bi-calendar-event"></i>
+        </div>
+        <div class="flex-grow-1">
+            <div class="text-uppercase fw-bold mb-1" style="font-size:0.72rem; letter-spacing:1px; opacity:0.7;">次の予約</div>
+            <div class="d-flex align-items-baseline gap-2 flex-wrap">
+                <span class="fw-bold" style="font-size:1.4rem;">{{ upcoming_reservations[0].date.strftime('%-m月%-d日') }}（{{ ['月','火','水','木','金','土','日'][upcoming_reservations[0].date.weekday()] }}）</span>
+                <span style="font-size:1.1rem; color:var(--primary);">{{ upcoming_reservations[0].time_range }}</span>
+            </div>
+            <div class="mt-1" style="font-size:0.95rem;">
+                <i class="bi bi-building me-1 text-muted"></i>{{ upcoming_reservations[0].facility.full_name }}
+                {% if upcoming_reservations[0].purpose %}
+                <span class="text-muted ms-2"><i class="bi bi-chat-left-text me-1"></i>{{ upcoming_reservations[0].purpose }}</span>
+                {% endif %}
+            </div>
+        </div>
+        <a href="{{ url_for('reservations.detail', id=upcoming_reservations[0].id) }}" class="btn btn-outline-primary btn-sm align-self-center">詳細</a>
+    </div>
+</div>
+{% endif %}
+
+<!-- Remaining reservations table -->
+<div class="card fade-in">
     <div class="card-header d-flex justify-content-between align-items-center">
         <span><i class="bi bi-calendar-event me-2"></i>今後の予約</span>
         {% if current_user.can_make_reservation %}
@@ -92,7 +238,7 @@
         {% endif %}
     </div>
     <div class="card-body">
-        {% if upcoming_reservations %}
+        {% if upcoming_reservations and upcoming_reservations|length > 1 %}
         <div class="table-responsive">
             <table class="table table-hover">
                 <thead>
@@ -105,7 +251,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for r in upcoming_reservations %}
+                    {% for r in upcoming_reservations[1:] %}
                     <tr>
                         <td><i class="bi bi-calendar3 me-1 text-muted"></i>{{ r.date.strftime('%m/%d') }}</td>
                         <td>{{ r.time_range }}</td>
@@ -117,7 +263,8 @@
                 </tbody>
             </table>
         </div>
-        {% else %}
+        {% elif not upcoming_reservations or upcoming_reservations|length <= 1 %}
+            {% if not upcoming_reservations %}
         <div class="empty-state">
             <i class="bi bi-calendar-x d-block"></i>
             <p>今後の予約はありません</p>
@@ -125,11 +272,14 @@
             <a href="{{ url_for('reservations.new_reservation') }}" class="btn btn-success"><i class="bi bi-plus-circle me-1"></i>予約する</a>
             {% endif %}
         </div>
+            {% else %}
+        <div class="text-muted text-center py-3">他の予約はありません</div>
+            {% endif %}
         {% endif %}
     </div>
 </div>
 {% else %}
-<div class="card">
+<div class="card fade-in">
     <div class="card-body text-center py-5">
         <i class="bi bi-people d-block mb-3" style="font-size:3rem; color:var(--primary); opacity:0.5;"></i>
         <h5>団体に所属していません</h5>
@@ -143,7 +293,7 @@
 
 {% elif current_user.is_school %}
 <!-- ===== 学校ダッシュボード ===== -->
-<div class="card">
+<div class="card fade-in">
     <div class="card-header d-flex justify-content-between align-items-center">
         <span><i class="bi bi-calendar-event me-2"></i>本日の予約</span>
         <a href="{{ url_for('blocks.new_block') }}" class="btn btn-sm btn-outline-danger">
@@ -180,21 +330,47 @@
 
 {% else %}
 <!-- ===== 一般住民ダッシュボード ===== -->
-<div class="card">
-    <div class="card-body text-center py-5">
-        <i class="bi bi-building d-block mb-3" style="font-size:3rem; color:var(--primary); opacity:0.5;"></i>
-        <h5>施設の空き状況を確認</h5>
-        <p class="text-muted">カレンダーから各施設の予約状況を確認できます。</p>
-        <a href="{{ url_for('calendar.index') }}" class="btn btn-success mb-3">
-            <i class="bi bi-calendar3 me-1"></i>カレンダーを見る
-        </a>
-        {% if not current_user.organization_id %}
-        <hr>
-        <p class="text-muted mb-2">施設を予約するには団体登録が必要です</p>
-        <a href="{{ url_for('admin.register_organization') }}" class="btn btn-outline-primary">
-            <i class="bi bi-pencil-square me-1"></i>団体登録を申請する
-        </a>
-        {% endif %}
+<div class="welcome-banner fade-in" style="margin-bottom:24px;">
+    <div>
+        <h2 class="mb-1" style="font-size:1.3rem; font-weight:700; color:#fff;">
+            <i class="bi bi-hand-wave me-2"></i>ようこそ、いなチャレ施設予約システムへ！
+        </h2>
+        <p class="mb-0" style="color:rgba(255,255,255,0.85); font-size:0.9rem;">
+            地域のスポーツ施設をかんたんに予約・確認できます
+        </p>
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-md-6">
+        <div class="card fade-in" style="border-top: 3px solid var(--primary);">
+            <div class="card-body text-center py-4">
+                <i class="bi bi-calendar3 d-block mb-3" style="font-size:2.5rem; color:var(--primary);"></i>
+                <h5 class="fw-bold">施設の空き状況を確認</h5>
+                <p class="text-muted mb-3">カレンダーから各施設の予約状況をリアルタイムで確認できます。</p>
+                <a href="{{ url_for('calendar.index') }}" class="btn btn-success">
+                    <i class="bi bi-calendar3 me-1"></i>カレンダーを見る
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card fade-in" style="border-top: 3px solid var(--accent);">
+            <div class="card-body text-center py-4">
+                {% if not current_user.organization_id %}
+                <i class="bi bi-people d-block mb-3" style="font-size:2.5rem; color:var(--accent);"></i>
+                <h5 class="fw-bold">団体登録して予約しよう</h5>
+                <p class="text-muted mb-3">施設を予約するには団体登録が必要です。登録は無料で簡単です。</p>
+                <a href="{{ url_for('admin.register_organization') }}" class="btn btn-accent">
+                    <i class="bi bi-pencil-square me-1"></i>団体登録を申請する
+                </a>
+                {% else %}
+                <i class="bi bi-check-circle d-block mb-3" style="font-size:2.5rem; color:var(--primary);"></i>
+                <h5 class="fw-bold">団体に所属しています</h5>
+                <p class="text-muted mb-3">カレンダーから施設の空き状況を確認して予約できます。</p>
+                {% endif %}
+            </div>
+        </div>
     </div>
 </div>
 {% endif %}

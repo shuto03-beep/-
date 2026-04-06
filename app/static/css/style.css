@@ -812,3 +812,352 @@ body {
     .calendar-filters { padding: 12px; }
     .view-switcher .btn { padding: 6px 10px; font-size: 0.75rem; }
 }
+
+/* --- 予約完了アニメーション --- */
+.celebration-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(26,107,60,0.9);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: celebrationFadeOut 2.5s ease-in-out forwards;
+    pointer-events: none;
+}
+.celebration-content {
+    text-align: center;
+    color: #fff;
+    animation: celebrationPop 0.5s ease-out;
+}
+.celebration-icon {
+    font-size: 5rem;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    border: 3px solid rgba(255,255,255,0.5);
+}
+.celebration-text {
+    font-size: 2rem;
+    font-weight: 900;
+    letter-spacing: 4px;
+}
+@keyframes celebrationPop {
+    0% { transform: scale(0); opacity: 0; }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); opacity: 1; }
+}
+@keyframes celebrationFadeOut {
+    0%, 60% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* --- 予約ステッパー --- */
+.booking-steps {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 20px;
+    gap: 0;
+    border-bottom: 1px solid var(--border-color);
+}
+.booking-steps .step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    opacity: 0.4;
+    transition: all 0.3s ease;
+}
+.booking-steps .step.active {
+    opacity: 1;
+}
+.booking-steps .step.completed {
+    opacity: 1;
+}
+.booking-steps .step.completed .step-number {
+    background: var(--primary);
+    color: #fff;
+    border-color: var(--primary);
+}
+.step-number {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 2px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    background: #fff;
+    color: var(--text-secondary);
+}
+.step.active .step-number {
+    border-color: var(--primary);
+    background: var(--primary);
+    color: #fff;
+    box-shadow: 0 0 0 4px rgba(26,107,60,0.15);
+}
+.step-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+.step-connector {
+    flex: 1;
+    max-width: 60px;
+    height: 2px;
+    background: var(--border-color);
+    margin: 0 8px;
+    margin-bottom: 18px;
+}
+
+/* ============================================
+   ダッシュボード追加スタイル
+   ============================================ */
+
+/* --- ウェルカムバナー --- */
+.welcome-banner {
+    background: linear-gradient(135deg, var(--primary) 0%, #1b7d45 40%, var(--primary-dark) 100%);
+    border-radius: var(--border-radius);
+    padding: 22px 28px;
+    box-shadow: 0 4px 20px rgba(26,107,60,0.3);
+    position: relative;
+    overflow: hidden;
+}
+.welcome-banner::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    right: -10%;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+.welcome-banner::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: 10%;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(200,168,78,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+/* --- タイムラインリスト (今週の予約) --- */
+.timeline-list {
+    padding: 0;
+}
+.timeline-date-header {
+    padding: 10px 20px 4px;
+    background: #fafbfd;
+    border-bottom: 1px solid var(--border-color);
+}
+.timeline-date-badge {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    letter-spacing: 0.3px;
+}
+.timeline-date-badge.timeline-date-today {
+    color: var(--primary);
+}
+.timeline-date-badge small {
+    background: var(--primary);
+    color: #fff;
+    font-size: 0.65rem;
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    vertical-align: middle;
+}
+.timeline-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 20px;
+    border-bottom: 1px solid #f0f1f5;
+    transition: background 0.2s ease;
+    position: relative;
+}
+.timeline-item:last-child {
+    border-bottom: none;
+}
+.timeline-item:hover {
+    background: var(--primary-light);
+}
+.timeline-item::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: var(--primary);
+    border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 3px rgba(26,107,60,0.12);
+}
+.timeline-time {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--primary);
+    white-space: nowrap;
+    min-width: 100px;
+}
+.timeline-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    min-width: 0;
+}
+.timeline-facility {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.timeline-org {
+    font-size: 0.8rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* --- 施設稼働率プログレスバー --- */
+.progress-bar-facility-wrapper {
+    width: 100%;
+    height: 8px;
+    background: #eef0f5;
+    border-radius: 4px;
+    overflow: hidden;
+}
+.progress-bar-facility {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary) 0%, #2ecc71 100%);
+    border-radius: 4px;
+    transition: width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    min-width: 4px;
+}
+
+/* --- 次の予約ハイライトカード --- */
+.next-reservation-highlight {
+    background: linear-gradient(135deg, #ffffff 0%, var(--primary-light) 100%);
+    border: 2px solid rgba(26,107,60,0.2);
+    border-radius: var(--border-radius);
+    padding: 24px 28px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 16px rgba(26,107,60,0.1);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.next-reservation-highlight:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(26,107,60,0.15);
+}
+.next-reservation-highlight::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--primary) 0%, #2ecc71 100%);
+}
+.next-reservation-icon {
+    width: 52px;
+    height: 52px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(26,107,60,0.25);
+}
+
+/* --- フェードインアニメーション --- */
+.fade-in {
+    animation: fadeInUp 0.5s ease-out both;
+}
+.fade-in:nth-child(1) { animation-delay: 0.05s; }
+.fade-in:nth-child(2) { animation-delay: 0.1s; }
+.fade-in:nth-child(3) { animation-delay: 0.15s; }
+.fade-in:nth-child(4) { animation-delay: 0.2s; }
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- パルスアニメーション (通知バッジ) --- */
+.pulse {
+    animation: pulseGlow 2s ease-in-out infinite;
+}
+@keyframes pulseGlow {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(230,57,70,0.5);
+    }
+    50% {
+        box-shadow: 0 0 0 6px rgba(230,57,70,0);
+    }
+}
+
+/* --- スムーズホバーエフェクト --- */
+.btn,
+.card,
+.stat-card,
+.timeline-item,
+.next-reservation-highlight,
+.nav-link {
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- サブタイルな背景パターン --- */
+body {
+    background:
+        radial-gradient(circle at 20% 20%, rgba(26,107,60,0.02) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(200,168,78,0.02) 0%, transparent 50%),
+        var(--bg-body);
+}
+
+/* --- レスポンシブ追加 (ダッシュボード) --- */
+@media (max-width: 768px) {
+    .welcome-banner {
+        padding: 16px 20px;
+    }
+    .next-reservation-highlight {
+        padding: 16px 20px;
+    }
+    .next-reservation-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+    }
+    .timeline-item {
+        padding: 8px 14px;
+        gap: 10px;
+    }
+    .timeline-time {
+        min-width: auto;
+        font-size: 0.75rem;
+    }
+}
