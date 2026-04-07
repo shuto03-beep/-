@@ -51,9 +51,9 @@ TAKE_PROFIT_PCT = 0.08
 TRAILING_STOP_PCT = 0.03
 
 # === シグナル閾値 ===
-BUY_SCORE_THRESHOLD = 50           # 60→50に下げ（候補を広げる）
-SELL_SCORE_THRESHOLD = -35         # -40→-35に調整
-STRONG_SIGNAL_THRESHOLD = 65       # 75→65に下げ（自動ポジション開設の敷居を下げる）
+BUY_SCORE_THRESHOLD = 45           # 買いシグナル最低スコア
+SELL_SCORE_THRESHOLD = -35
+STRONG_SIGNAL_THRESHOLD = 55       # 強シグナル（自動ポジション開設）
 
 # === AI設定 ===
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY")

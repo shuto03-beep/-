@@ -17,22 +17,32 @@ def calculate_position_size(
     # 最大投入額
     max_invest = capital * max_position_ratio
 
-    # 投入額で買える最大株数（100株単位）
-    max_shares = int(max_invest / price / 100) * 100
+    # 100株が買えるか確認
+    cost_100 = price * 100
+    if cost_100 > max_invest:
+        # 100株が上限を超える場合、上限を緩和して1銘柄に集中
+        # ただし資金の50%を超えない
+        if cost_100 <= capital * 0.5:
+            return 100
+        return 0  # 資金の50%超えは危険なのでスキップ
 
     # リスクベースの株数計算
     risk_amount = capital * risk_per_trade
-    per_share_risk = atr * 2
-    risk_shares = int(risk_amount / per_share_risk / 100) * 100
+    per_share_risk = max(atr * 2, price * 0.02)  # ATR×2 or 2%の大きい方
+    risk_shares = int(risk_amount / per_share_risk)
 
-    # リスクベースと最大投入額の小さい方を採用
-    shares = min(risk_shares, max_shares) if risk_shares > 0 else max_shares
+    # 最大投入額ベースの株数
+    max_shares = int(max_invest / price)
 
-    # 100株未満でも買える場合は100株で試す
-    if shares == 0 and price * 100 <= max_invest:
+    # 小さい方を採用、100株単位に丸め
+    shares = min(risk_shares, max_shares)
+    shares = (shares // 100) * 100
+
+    # 最低100株
+    if shares < 100:
         shares = 100
 
-    # 最終チェック: 購入金額が資金を超えないか
+    # 最終チェック
     if shares * price > capital:
         return 0
 
@@ -86,7 +96,6 @@ def calculate_risk_reward_ratio(entry: float, stop_loss: float, take_profit: flo
 
 
 def check_daily_loss_limit_strategy(state: dict, strategy_key: str, limit_pct: float = 0.05) -> bool:
-    """指定戦略の日次損失限度チェック"""
     from datetime import datetime
     today = datetime.now().strftime("%Y-%m-%d")
     portfolio = state.get("strategies", {}).get(strategy_key, {})

@@ -143,8 +143,8 @@ def run_full_screening_and_signals(state: dict):
             send_signal_notification(signal)
             signal_count += 1
 
-            # 全戦略に対してポジション開設を試行
-            if signal.signal_type == "BUY" and signal.strength == "STRONG":
+            # 全戦略に対してポジション開設を試行（STRONG + MEDIUM両方）
+            if signal.signal_type == "BUY" and signal.strength in ("STRONG", "MEDIUM"):
                 _auto_open_all_strategies(state, signal)
 
     # シグナル履歴保存
@@ -280,11 +280,13 @@ def main():
         if last_screening:
             try:
                 last_dt = datetime.fromisoformat(last_screening)
+                # naive datetimeの場合はnowもnaiveで比較
                 elapsed_min = (datetime.now() - last_dt).total_seconds() / 60
                 should_screen = elapsed_min >= FULL_SCREENING_INTERVAL
                 if not should_screen:
-                    print(f"[MAIN] 前回スクリーニングから{elapsed_min:.0f}分経過（次回まであと{FULL_SCREENING_INTERVAL - elapsed_min:.0f}分）")
-            except (ValueError, TypeError):
+                    print(f"[MAIN] 前回スクリーニングから{elapsed_min:.0f}分経過（間隔: {FULL_SCREENING_INTERVAL}分）")
+            except (ValueError, TypeError) as e:
+                print(f"[WARN] スクリーニング間隔チェックエラー: {e}。フルスクリーニング実行します。")
                 should_screen = True
 
         if should_screen:

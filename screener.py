@@ -33,7 +33,8 @@ def fetch_batch_data(tickers: list[str], period: str = "1mo", retries: int = 3) 
                         ticker_data = data[ticker].dropna(how="all")
                         if len(ticker_data) > 5:
                             result[ticker] = ticker_data
-                    except (KeyError, TypeError):
+                    except (KeyError, TypeError) as e:
+                        print(f"    [SCREENER] {ticker} データ取得スキップ: {e}")
                         continue
             return result
         except Exception as e:

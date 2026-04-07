@@ -214,7 +214,9 @@ def generate_signal(
     # 市場サイクル補正（曜日・時間帯・月次・SQ）
     try:
         from market_cycles import get_total_cycle_adjustment
-        cycle = get_total_cycle_adjustment()
+        from datetime import datetime, timezone, timedelta
+        jst_now = datetime.now(timezone(timedelta(hours=9)))
+        cycle = get_total_cycle_adjustment(jst_now)
         cycle_bias = cycle["total_bias"]
         final_score += cycle_bias
         if cycle["reasons"]:
