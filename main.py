@@ -271,12 +271,26 @@ def main():
         traceback.print_exc()
 
     # === Phase 2: フルスクリーニング ===
+    # GitHub Actionsのcronは5-60分遅延するため、時刻ベースではなく間隔ベースで判定
     signal_count = 0
     try:
-        if now.minute < 15:
+        from config import FULL_SCREENING_INTERVAL
+        last_screening = state.get("last_full_screening")
+        should_screen = True
+        if last_screening:
+            try:
+                last_dt = datetime.fromisoformat(last_screening)
+                elapsed_min = (datetime.now() - last_dt).total_seconds() / 60
+                should_screen = elapsed_min >= FULL_SCREENING_INTERVAL
+                if not should_screen:
+                    print(f"[MAIN] 前回スクリーニングから{elapsed_min:.0f}分経過（次回まであと{FULL_SCREENING_INTERVAL - elapsed_min:.0f}分）")
+            except (ValueError, TypeError):
+                should_screen = True
+
+        if should_screen:
             signal_count = run_full_screening_and_signals(state)
         else:
-            print(f"[MAIN] クイックチェックモード（次回フルスクリーニング: {now.hour + 1}:00）")
+            print(f"[MAIN] ポジション監視モード")
     except Exception as e:
         print(f"[ERROR] スクリーニングエラー: {e}")
         traceback.print_exc()
