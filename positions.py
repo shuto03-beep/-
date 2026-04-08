@@ -55,18 +55,18 @@ def open_position(
     position = {
         "ticker": ticker,
         "name": name,
-        "entry_price": price,
+        "entry_price": round(float(price), 1),
         "quantity": quantity,
         "entry_date": datetime.now().strftime("%Y-%m-%d"),
-        "stop_loss": stop_loss,
-        "take_profit": take_profit,
-        "highest_price": price,
+        "stop_loss": round(float(stop_loss), 1),
+        "take_profit": round(float(take_profit), 1),
+        "highest_price": round(float(price), 1),
         "signal_score": signal_score,
         "signal_reasons": signal_reasons or [],
         "ai_confidence": ai_confidence,
     }
     portfolio["positions"].append(position)
-    portfolio["capital"] -= price * quantity
+    portfolio["capital"] = round(portfolio["capital"] - price * quantity, 1)
     return position
 
 
@@ -85,8 +85,9 @@ def close_position(state: dict, strategy_key: str, ticker: str, exit_price: floa
     if position is None:
         return None
 
-    pnl = (exit_price - position["entry_price"]) * position["quantity"]
-    pnl_pct = (exit_price - position["entry_price"]) / position["entry_price"]
+    exit_price = round(float(exit_price), 1)
+    pnl = round((exit_price - position["entry_price"]) * position["quantity"], 1)
+    pnl_pct = (exit_price - position["entry_price"]) / position["entry_price"] if position["entry_price"] > 0 else 0
 
     trade_record = {
         "ticker": ticker,
@@ -105,7 +106,7 @@ def close_position(state: dict, strategy_key: str, ticker: str, exit_price: floa
     }
 
     portfolio["closed_trades"].append(trade_record)
-    portfolio["capital"] += exit_price * position["quantity"]
+    portfolio["capital"] = round(portfolio["capital"] + exit_price * position["quantity"], 1)
     positions.pop(idx)
 
     today = datetime.now().strftime("%Y-%m-%d")
@@ -140,7 +141,7 @@ def check_exit_conditions(position: dict, current_price: float) -> str | None:
 def update_trailing_stop(position: dict, current_price: float):
     """最高値を更新"""
     if current_price > position.get("highest_price", 0):
-        position["highest_price"] = current_price
+        position["highest_price"] = round(float(current_price), 1)
 
 
 def get_portfolio_summary(state: dict, strategy_key: str) -> dict:
