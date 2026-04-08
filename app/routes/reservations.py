@@ -141,6 +141,18 @@ def new_reservation():
     form.facility_id.choices = [(0, '施設を選択してください')] + facility_choices
     form.time_slot.choices = [('', '日付を選択後に表示されます')]
 
+    booking_info = None
+    if current_user.organization_id:
+        org = db.session.get(Organization, current_user.organization_id)
+        if org:
+            booking_info = {
+                'is_certified': org.is_inachalle_certified,
+                'advance_days': org.advance_days,
+                'max_date': org.latest_bookable_date.isoformat(),
+                'label': 'いなチャレ認定団体' if org.is_inachalle_certified else '一般団体',
+            }
+    organizations = Organization.query.filter_by(is_approved=True).all() if current_user.is_admin else []
+
     if form.validate_on_submit():
         try:
             parts = form.time_slot.data.split('-')
@@ -148,14 +160,14 @@ def new_reservation():
             end_time = time(int(parts[2]), int(parts[3]))
         except (ValueError, IndexError):
             flash('時間枠の形式が正しくありません。', 'danger')
-            return render_template('reservations/new.html', form=form, schools=schools, today_str=date.today().isoformat())
+            return render_template('reservations/new.html', form=form, schools=schools, today_str=date.today().isoformat(), booking_info=booking_info, organizations=organizations)
 
         org_id = current_user.organization_id
         if current_user.is_admin and not org_id:
             org_id = request.form.get('organization_id', type=int)
             if not org_id:
                 flash('団体を選択してください。', 'danger')
-                return render_template('reservations/new.html', form=form, schools=schools, today_str=date.today().isoformat())
+                return render_template('reservations/new.html', form=form, schools=schools, today_str=date.today().isoformat(), booking_info=booking_info, organizations=organizations)
 
         try:
             reservation = create_reservation(
@@ -180,20 +192,9 @@ def new_reservation():
         except BookingPeriodError as e:
             flash(str(e), 'danger')
 
-    # 予約可能期間の情報を渡す
-    booking_info = None
-    if current_user.organization_id:
-        org = db.session.get(Organization, current_user.organization_id)
-        if org:
-            booking_info = {
-                'is_certified': org.is_inachalle_certified,
-                'advance_days': org.advance_days,
-                'max_date': org.latest_bookable_date.isoformat(),
-                'label': 'いなチャレ認定団体' if org.is_inachalle_certified else '一般団体',
-            }
-
     return render_template('reservations/new.html', form=form, schools=schools,
-                           today_str=date.today().isoformat(), booking_info=booking_info)
+                           today_str=date.today().isoformat(), booking_info=booking_info,
+                           organizations=organizations)
 
 
 @reservations_bp.route('/reservations/<int:id>')
