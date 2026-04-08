@@ -67,7 +67,7 @@ DISCORD_WEBHOOK_URL = os.environ.get("DISCORD_WEBHOOK_URL")
 
 # === スクリーニング設定 ===
 SCREENING_MIN_VOLUME = 500_000
-FULL_SCREENING_INTERVAL = 60  # 分
+FULL_SCREENING_INTERVAL = 30  # スクリーニング間隔（分）※60→30に短縮
 
 # === テクニカル分析設定 ===
 TA_SHORT_PERIOD = "3mo"   # 短期分析用データ期間

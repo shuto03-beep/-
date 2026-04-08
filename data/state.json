@@ -1,7 +1,7 @@
 {
   "strategies": {
     "A_3銘柄": {
-      "capital": 243040.00244140625,
+      "capital": 243040.0,
       "positions": [
         {
           "ticker": "6976.T",
@@ -9,8 +9,8 @@
           "entry_price": 4969.0,
           "quantity": 100,
           "entry_date": "2026-04-08",
-          "stop_loss": 4819.93,
-          "take_profit": 5787.837206355573,
+          "stop_loss": 4819.9,
+          "take_profit": 5787.8,
           "highest_price": 5026.0,
           "signal_score": 48,
           "signal_reasons": [
@@ -25,12 +25,12 @@
         {
           "ticker": "7211.T",
           "name": "三菱自動車",
-          "entry_price": 322.3999938964844,
+          "entry_price": 322.4,
           "quantity": 400,
           "entry_date": "2026-04-08",
-          "stop_loss": 312.72799407958985,
-          "take_profit": 358.8444069833148,
-          "highest_price": 322.6000061035156,
+          "stop_loss": 312.7,
+          "take_profit": 358.8,
+          "highest_price": 322.6,
           "signal_score": 47,
           "signal_reasons": [
             "MACD買いシグナル",
@@ -47,8 +47,8 @@
           "entry_price": 1311.0,
           "quantity": 100,
           "entry_date": "2026-04-08",
-          "stop_loss": 1271.67,
-          "take_profit": 1454.5714285714284,
+          "stop_loss": 1271.7,
+          "take_profit": 1454.6,
           "highest_price": 1315.0,
           "signal_score": 45,
           "signal_reasons": [
@@ -65,7 +65,7 @@
       "daily_pnl": {}
     },
     "B_5銘柄": {
-      "capital": 275280.0018310547,
+      "capital": 275280.0,
       "positions": [
         {
           "ticker": "6976.T",
@@ -73,8 +73,8 @@
           "entry_price": 4969.0,
           "quantity": 100,
           "entry_date": "2026-04-08",
-          "stop_loss": 4819.93,
-          "take_profit": 5787.837206355573,
+          "stop_loss": 4819.9,
+          "take_profit": 5787.8,
           "highest_price": 5026.0,
           "signal_score": 48,
           "signal_reasons": [
@@ -89,12 +89,12 @@
         {
           "ticker": "7211.T",
           "name": "三菱自動車",
-          "entry_price": 322.3999938964844,
+          "entry_price": 322.4,
           "quantity": 300,
           "entry_date": "2026-04-08",
-          "stop_loss": 312.72799407958985,
-          "take_profit": 358.8444069833148,
-          "highest_price": 322.6000061035156,
+          "stop_loss": 312.7,
+          "take_profit": 358.8,
+          "highest_price": 322.6,
           "signal_score": 47,
           "signal_reasons": [
             "MACD買いシグナル",
@@ -111,8 +111,8 @@
           "entry_price": 1311.0,
           "quantity": 100,
           "entry_date": "2026-04-08",
-          "stop_loss": 1271.67,
-          "take_profit": 1454.5714285714284,
+          "stop_loss": 1271.7,
+          "take_profit": 1454.6,
           "highest_price": 1315.0,
           "signal_score": 45,
           "signal_reasons": [
@@ -129,7 +129,7 @@
       "daily_pnl": {}
     },
     "C_10銘柄": {
-      "capital": 169960.00061035156,
+      "capital": 169960.0,
       "positions": [
         {
           "ticker": "6976.T",
@@ -137,8 +137,8 @@
           "entry_price": 4969.0,
           "quantity": 100,
           "entry_date": "2026-04-08",
-          "stop_loss": 4819.93,
-          "take_profit": 5787.837206355573,
+          "stop_loss": 4819.9,
+          "take_profit": 5787.8,
           "highest_price": 5026.0,
           "signal_score": 48,
           "signal_reasons": [
@@ -153,12 +153,12 @@
         {
           "ticker": "7211.T",
           "name": "三菱自動車",
-          "entry_price": 322.3999938964844,
+          "entry_price": 322.4,
           "quantity": 100,
           "entry_date": "2026-04-08",
-          "stop_loss": 312.72799407958985,
-          "take_profit": 358.8444069833148,
-          "highest_price": 322.6000061035156,
+          "stop_loss": 312.7,
+          "take_profit": 358.8,
+          "highest_price": 322.6,
           "signal_score": 47,
           "signal_reasons": [
             "MACD買いシグナル",
@@ -175,8 +175,8 @@
           "entry_price": 1311.0,
           "quantity": 100,
           "entry_date": "2026-04-08",
-          "stop_loss": 1271.67,
-          "take_profit": 1454.5714285714284,
+          "stop_loss": 1271.7,
+          "take_profit": 1454.6,
           "highest_price": 1315.0,
           "signal_score": 45,
           "signal_reasons": [
@@ -194,8 +194,8 @@
           "entry_price": 1698.0,
           "quantity": 100,
           "entry_date": "2026-04-08",
-          "stop_loss": 1647.06,
-          "take_profit": 1833.8400000000001,
+          "stop_loss": 1647.1,
+          "take_profit": 1833.8,
           "highest_price": 1698.0,
           "signal_score": 50,
           "signal_reasons": [

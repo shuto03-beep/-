@@ -20,11 +20,14 @@ def calculate_position_size(
     # 100株が買えるか確認
     cost_100 = price * 100
     if cost_100 > max_invest:
-        # 100株が上限を超える場合、上限を緩和して1銘柄に集中
-        # ただし資金の50%を超えない
-        if cost_100 <= capital * 0.5:
+        # 上限緩和: 戦略別に適切な緩和幅を設定
+        # 集中型(0.30): 2倍→0.60, cap 0.40 = 400,000円まで
+        # バランス型(0.20): 3倍→0.60, cap 0.40 = 400,000円まで
+        # 分散型(0.10): 3倍→0.30, cap 0.40 = 300,000円まで
+        relax_limit = min(max_position_ratio * 3, 0.50)
+        if cost_100 <= capital * relax_limit:
             return 100
-        return 0  # 資金の50%超えは危険なのでスキップ
+        return 0
 
     # リスクベースの株数計算
     risk_amount = capital * risk_per_trade
