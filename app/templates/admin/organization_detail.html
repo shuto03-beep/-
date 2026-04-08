@@ -56,7 +56,7 @@
             </form>
         </div>
         {% elif org.is_approved %}
-        <div class="mb-3">
+        <div class="d-flex gap-2 mb-3 flex-wrap">
             <form method="POST" action="{{ url_for('admin.toggle_certification', id=org.id) }}"
                   onsubmit="return confirm('認定ステータスを変更しますか？')">
                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
@@ -65,6 +65,30 @@
                 {% else %}
                 <button class="btn btn-success">いなチャレ認定に切り替える</button>
                 {% endif %}
+            </form>
+
+            <form method="POST" action="{{ url_for('admin.suspend_organization', id=org.id) }}"
+                  onsubmit="return confirm('この団体の利用を停止しますか？\n今後の予約も一括キャンセルされます。')">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="cancel_reservations" value="1">
+                <button class="btn btn-danger"><i class="bi bi-slash-circle me-1"></i>利用停止（予約も一括取消）</button>
+            </form>
+        </div>
+        {% else %}
+        <!-- 利用停止中 -->
+        <div class="alert alert-danger mb-3">
+            <i class="bi bi-exclamation-triangle me-2"></i><strong>この団体は利用停止中です。</strong> 予約はできません。
+        </div>
+        <div class="d-flex gap-2 mb-3">
+            <form method="POST" action="{{ url_for('admin.reinstate_organization', id=org.id) }}"
+                  onsubmit="return confirm('この団体の利用を再開しますか？')">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <button class="btn btn-success"><i class="bi bi-arrow-counterclockwise me-1"></i>利用を再開する</button>
+            </form>
+            <form method="POST" action="{{ url_for('admin.reject_organization', id=org.id) }}"
+                  onsubmit="return confirm('完全に削除しますか？この操作は取り消せません。')">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <button class="btn btn-outline-danger">完全に削除する</button>
             </form>
         </div>
         {% endif %}

@@ -95,6 +95,79 @@ def toggle_certification(id):
     return redirect(url_for('admin.organization_detail', id=id))
 
 
+@admin_bp.route('/admin/organizations/<int:id>/suspend', methods=['POST'])
+@login_required
+@admin_required
+def suspend_organization(id):
+    """団体の利用停止（承認取消）+ 未来の予約を一括キャンセル"""
+    org = db.session.get(Organization, id)
+    if not org:
+        flash('団体が見つかりません。', 'danger')
+        return redirect(url_for('admin.organizations'))
+
+    cancel_future = request.form.get('cancel_reservations') == '1'
+
+    # 承認取消
+    org.is_approved = False
+    org.is_inachalle_certified = False
+
+    cancelled_count = 0
+    if cancel_future:
+        from datetime import date as date_cls
+        future_reservations = Reservation.query.filter(
+            Reservation.organization_id == org.id,
+            Reservation.date >= date_cls.today(),
+            Reservation.status == Reservation.STATUS_CONFIRMED,
+        ).all()
+        for r in future_reservations:
+            r.status = Reservation.STATUS_CANCELLED
+            r.cancelled_by = current_user.id
+            r.cancellation_reason = '事務局による団体利用停止のため自動キャンセル'
+            from datetime import datetime
+            r.cancelled_at = datetime.utcnow()
+            cancelled_count += 1
+
+    db.session.commit()
+
+    for member in org.members:
+        msg = f'「{org.name}」の利用が停止されました。'
+        if cancelled_count > 0:
+            msg += f' 今後の予約{cancelled_count}件が自動キャンセルされました。'
+        msg += ' 詳しくは事務局にお問い合わせください。'
+        create_notification(member.id, '団体の利用が停止されました', msg)
+
+    log_activity(current_user.id, '団体利用停止', 'organization', org.id,
+                 f'{org.name} 予約{cancelled_count}件キャンセル')
+
+    result_msg = f'「{org.name}」の利用を停止しました。'
+    if cancelled_count > 0:
+        result_msg += f' 今後の予約{cancelled_count}件を自動キャンセルしました。'
+    flash(result_msg, 'warning')
+    return redirect(url_for('admin.organization_detail', id=id))
+
+
+@admin_bp.route('/admin/organizations/<int:id>/reinstate', methods=['POST'])
+@login_required
+@admin_required
+def reinstate_organization(id):
+    """団体の利用再開"""
+    org = db.session.get(Organization, id)
+    if not org:
+        flash('団体が見つかりません。', 'danger')
+        return redirect(url_for('admin.organizations'))
+
+    org.is_approved = True
+    db.session.commit()
+
+    for member in org.members:
+        create_notification(member.id, '団体の利用が再開されました',
+                            f'「{org.name}」の利用が再開されました。施設の予約が可能です。')
+
+    log_activity(current_user.id, '団体利用再開', 'organization', org.id, org.name)
+    flash(f'「{org.name}」の利用を再開しました。', 'success')
+    return redirect(url_for('admin.organization_detail', id=id))
+
+
 @admin_bp.route('/admin/organizations/<int:id>/reject', methods=['POST'])
 @login_required
 @admin_required
