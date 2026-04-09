@@ -1,27 +1,8 @@
 {
   "strategies": {
     "A_3銘柄": {
-      "capital": 205240.0,
+      "capital": 691540.0,
       "positions": [
-        {
-          "ticker": "6976.T",
-          "name": "太陽誘電",
-          "entry_price": 4969.0,
-          "quantity": 100,
-          "entry_date": "2026-04-08",
-          "stop_loss": 4819.9,
-          "take_profit": 5787.8,
-          "highest_price": 5026.0,
-          "signal_score": 48,
-          "signal_reasons": [
-            "ゴールデンクロス（SMA5×SMA25）",
-            "MACD買いシグナル",
-            "RSI上昇モメンタム（62.5）",
-            "RSI強気ダイバージェンス",
-            "一目均衡表: 雲上抜け"
-          ],
-          "ai_confidence": 0
-        },
         {
           "ticker": "7211.T",
           "name": "三菱自動車",
@@ -82,24 +63,18 @@
             "📅 4月バイアス（補正+5）; 新年度リアロケーション売り（-3）"
           ],
           "ai_confidence": 0
-        }
-      ],
-      "daily_pnl": {
-        "2026-04-09": -3900.0
-      }
-    },
-    "B_5銘柄": {
-      "capital": 237480.0,
-      "positions": [
+        },
         {
           "ticker": "6976.T",
           "name": "太陽誘電",
           "entry_price": 4969.0,
+          "exit_price": 4863.0,
           "quantity": 100,
           "entry_date": "2026-04-08",
-          "stop_loss": 4819.9,
-          "take_profit": 5787.8,
-          "highest_price": 5026.0,
+          "exit_date": "2026-04-09",
+          "pnl": -10600.0,
+          "pnl_pct": -0.021332260012074864,
+          "reason": "TRAILING_STOP",
           "signal_score": 48,
           "signal_reasons": [
             "ゴールデンクロス（SMA5×SMA25）",
@@ -109,7 +84,15 @@
             "一目均衡表: 雲上抜け"
           ],
           "ai_confidence": 0
-        },
+        }
+      ],
+      "daily_pnl": {
+        "2026-04-09": -14500.0
+      }
+    },
+    "B_5銘柄": {
+      "capital": 723780.0,
+      "positions": [
         {
           "ticker": "7211.T",
           "name": "三菱自動車",
@@ -170,24 +153,18 @@
             "📅 4月バイアス（補正+5）; 新年度リアロケーション売り（-3）"
           ],
           "ai_confidence": 0
-        }
-      ],
-      "daily_pnl": {
-        "2026-04-09": -3900.0
-      }
-    },
-    "C_10銘柄": {
-      "capital": 297160.0,
-      "positions": [
+        },
         {
           "ticker": "6976.T",
           "name": "太陽誘電",
           "entry_price": 4969.0,
+          "exit_price": 4863.0,
           "quantity": 100,
           "entry_date": "2026-04-08",
-          "stop_loss": 4819.9,
-          "take_profit": 5787.8,
-          "highest_price": 5026.0,
+          "exit_date": "2026-04-09",
+          "pnl": -10600.0,
+          "pnl_pct": -0.021332260012074864,
+          "reason": "TRAILING_STOP",
           "signal_score": 48,
           "signal_reasons": [
             "ゴールデンクロス（SMA5×SMA25）",
@@ -197,7 +174,15 @@
             "一目均衡表: 雲上抜け"
           ],
           "ai_confidence": 0
-        },
+        }
+      ],
+      "daily_pnl": {
+        "2026-04-09": -14500.0
+      }
+    },
+    "C_10銘柄": {
+      "capital": 783460.0,
+      "positions": [
         {
           "ticker": "7211.T",
           "name": "三菱自動車",
@@ -258,15 +243,36 @@
             "📅 4月バイアス（補正+5）; 新年度リアロケーション売り（-3）"
           ],
           "ai_confidence": 0
+        },
+        {
+          "ticker": "6976.T",
+          "name": "太陽誘電",
+          "entry_price": 4969.0,
+          "exit_price": 4863.0,
+          "quantity": 100,
+          "entry_date": "2026-04-08",
+          "exit_date": "2026-04-09",
+          "pnl": -10600.0,
+          "pnl_pct": -0.021332260012074864,
+          "reason": "TRAILING_STOP",
+          "signal_score": 48,
+          "signal_reasons": [
+            "ゴールデンクロス（SMA5×SMA25）",
+            "MACD買いシグナル",
+            "RSI上昇モメンタム（62.5）",
+            "RSI強気ダイバージェンス",
+            "一目均衡表: 雲上抜け"
+          ],
+          "ai_confidence": 0
         }
       ],
       "daily_pnl": {
-        "2026-04-09": -3900.0
+        "2026-04-09": -14500.0
       }
     }
   },
-  "last_run": "2026-04-09T06:23:48.163153",
-  "last_full_screening": "2026-04-09T06:23:48.162560",
+  "last_run": "2026-04-09T07:45:06.283993",
+  "last_full_screening": "2026-04-09T07:45:06.283307",
   "signals_history": [
     {
       "ticker": "6976.T",
@@ -344,6 +350,13 @@
       "type": "BUY",
       "score": 47,
       "date": "2026-04-09 06:23"
+    },
+    {
+      "ticker": "6861.T",
+      "name": "キーエンス",
+      "type": "BUY",
+      "score": 58,
+      "date": "2026-04-09 07:45"
     }
   ]
 }
