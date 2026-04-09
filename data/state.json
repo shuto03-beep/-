@@ -1,7 +1,7 @@
 {
   "strategies": {
     "A_3銘柄": {
-      "capital": 243040.0,
+      "capital": 370240.0,
       "positions": [
         {
           "ticker": "6976.T",
@@ -40,16 +40,20 @@
             "📅 大引けにかけて（出来高急増。機関投資家の活動。+1〜3bpsの正のドリフト）"
           ],
           "ai_confidence": 0
-        },
+        }
+      ],
+      "closed_trades": [
         {
           "ticker": "4443.T",
           "name": "Sansan",
           "entry_price": 1311.0,
+          "exit_price": 1272.0,
           "quantity": 100,
           "entry_date": "2026-04-08",
-          "stop_loss": 1271.7,
-          "take_profit": 1454.6,
-          "highest_price": 1315.0,
+          "exit_date": "2026-04-09",
+          "pnl": -3900.0,
+          "pnl_pct": -0.029748283752860413,
+          "reason": "TRAILING_STOP",
           "signal_score": 45,
           "signal_reasons": [
             "MACD買いシグナル",
@@ -61,11 +65,12 @@
           "ai_confidence": 0
         }
       ],
-      "closed_trades": [],
-      "daily_pnl": {}
+      "daily_pnl": {
+        "2026-04-09": -3900.0
+      }
     },
     "B_5銘柄": {
-      "capital": 275280.0,
+      "capital": 402480.0,
       "positions": [
         {
           "ticker": "6976.T",
@@ -104,16 +109,20 @@
             "📅 大引けにかけて（出来高急増。機関投資家の活動。+1〜3bpsの正のドリフト）"
           ],
           "ai_confidence": 0
-        },
+        }
+      ],
+      "closed_trades": [
         {
           "ticker": "4443.T",
           "name": "Sansan",
           "entry_price": 1311.0,
+          "exit_price": 1272.0,
           "quantity": 100,
           "entry_date": "2026-04-08",
-          "stop_loss": 1271.7,
-          "take_profit": 1454.6,
-          "highest_price": 1315.0,
+          "exit_date": "2026-04-09",
+          "pnl": -3900.0,
+          "pnl_pct": -0.029748283752860413,
+          "reason": "TRAILING_STOP",
           "signal_score": 45,
           "signal_reasons": [
             "MACD買いシグナル",
@@ -125,11 +134,12 @@
           "ai_confidence": 0
         }
       ],
-      "closed_trades": [],
-      "daily_pnl": {}
+      "daily_pnl": {
+        "2026-04-09": -3900.0
+      }
     },
     "C_10銘柄": {
-      "capital": 169960.0,
+      "capital": 297160.0,
       "positions": [
         {
           "ticker": "6976.T",
@@ -170,25 +180,6 @@
           "ai_confidence": 0
         },
         {
-          "ticker": "4443.T",
-          "name": "Sansan",
-          "entry_price": 1311.0,
-          "quantity": 100,
-          "entry_date": "2026-04-08",
-          "stop_loss": 1271.7,
-          "take_profit": 1454.6,
-          "highest_price": 1315.0,
-          "signal_score": 45,
-          "signal_reasons": [
-            "MACD買いシグナル",
-            "一目均衡表: 雲上抜け",
-            "📅 水曜バイアス（補正+3）",
-            "📅 大引けにかけて（出来高急増。機関投資家の活動。+1〜3bpsの正のドリフト）",
-            "📅 4月バイアス（補正+5）; 新年度リアロケーション売り（-3）"
-          ],
-          "ai_confidence": 0
-        },
-        {
           "ticker": "7956.T",
           "name": "ピジョン",
           "entry_price": 1698.0,
@@ -208,12 +199,36 @@
           "ai_confidence": 0
         }
       ],
-      "closed_trades": [],
-      "daily_pnl": {}
+      "closed_trades": [
+        {
+          "ticker": "4443.T",
+          "name": "Sansan",
+          "entry_price": 1311.0,
+          "exit_price": 1272.0,
+          "quantity": 100,
+          "entry_date": "2026-04-08",
+          "exit_date": "2026-04-09",
+          "pnl": -3900.0,
+          "pnl_pct": -0.029748283752860413,
+          "reason": "TRAILING_STOP",
+          "signal_score": 45,
+          "signal_reasons": [
+            "MACD買いシグナル",
+            "一目均衡表: 雲上抜け",
+            "📅 水曜バイアス（補正+3）",
+            "📅 大引けにかけて（出来高急増。機関投資家の活動。+1〜3bpsの正のドリフト）",
+            "📅 4月バイアス（補正+5）; 新年度リアロケーション売り（-3）"
+          ],
+          "ai_confidence": 0
+        }
+      ],
+      "daily_pnl": {
+        "2026-04-09": -3900.0
+      }
     }
   },
-  "last_run": "2026-04-09T02:25:46.540401",
-  "last_full_screening": "2026-04-09T02:25:46.539716",
+  "last_run": "2026-04-09T04:57:52.453673",
+  "last_full_screening": "2026-04-09T04:57:52.453086",
   "signals_history": [
     {
       "ticker": "6976.T",
