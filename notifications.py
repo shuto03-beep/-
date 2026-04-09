@@ -132,6 +132,7 @@ def send_position_update(positions: list, current_prices: dict, strategy_config:
 def send_strategies_summary(state: dict, signal_count: int):
     """全戦略の比較サマリー（デイリー）"""
     from positions import get_all_strategies_summary
+    from config import INITIAL_CAPITAL
 
     summaries = get_all_strategies_summary(state)
 
@@ -142,15 +143,23 @@ def send_strategies_summary(state: dict, signal_count: int):
         s = summaries.get(key, {})
         emoji = s_config["emoji"]
         label = s_config["label"]
-        pnl_emoji = "📈" if s.get("total_pnl", 0) >= 0 else "📉"
+
+        total_value = s.get("total_value", 0)
+        total_return = (total_value - INITIAL_CAPITAL) / INITIAL_CAPITAL * 100
+        realized_pnl = s.get("total_pnl", 0)
+        unrealized_pnl = total_value - s.get("cash", 0) - sum(
+            p["entry_price"] * p["quantity"]
+            for p in state.get("strategies", {}).get(key, {}).get("positions", [])
+        )
+
+        return_emoji = "📈" if total_return >= 0 else "📉"
 
         msg += f"\n\n{emoji} {label}"
-        msg += f"\n  💰 総資産: {s.get('total_value', 0):,.0f}円"
+        msg += f"\n  💰 総資産: {total_value:,.0f}円（{return_emoji}{total_return:+.2f}%）"
         msg += f"\n  📈 保有: {s.get('position_count', 0)}件"
-        msg += f"\n  📊 トレード: {s.get('total_trades', 0)}件"
         if s.get("total_trades", 0) > 0:
-            msg += f"\n  🎯 勝率: {s.get('win_rate', 0):.0%}"
-            msg += f"\n  {pnl_emoji} 累計損益: {s.get('total_pnl', 0):+,.0f}円"
+            msg += f"\n  🎯 勝率: {s.get('win_rate', 0):.0%}（{s.get('total_trades', 0)}件中）"
+            msg += f"\n  💹 確定損益: {realized_pnl:+,.0f}円"
 
     # ベスト戦略を判定
     if any(s.get("total_trades", 0) > 0 for s in summaries.values()):

@@ -79,15 +79,23 @@ def can_open_position(state: dict) -> bool:
 
 
 def calculate_stop_loss(entry_price: float, atr: float) -> float:
-    atr_stop = entry_price - atr * 2
-    pct_stop = entry_price * (1 + STOP_LOSS_PCT)
-    return max(atr_stop, pct_stop)
+    """ATRベースの動的ストップロス（ボラに応じた幅）"""
+    # ATR × 2.5（通常の変動を吸収しつつ異常下落で発動）
+    atr_stop = entry_price - atr * 2.5
+    # 最低でも-5%、最大でも-2%のストップ幅を保証
+    min_stop = entry_price * 0.95  # -5%
+    max_stop = entry_price * 0.98  # -2%
+    return max(min(atr_stop, max_stop), min_stop)
 
 
 def calculate_take_profit(entry_price: float, atr: float) -> float:
-    atr_target = entry_price + atr * 3
-    pct_target = entry_price * (1 + TAKE_PROFIT_PCT)
-    return max(atr_target, pct_target)
+    """ATRベースの動的利確目標"""
+    # ATR × 4（リスクリワード比 1.6:1 以上を確保）
+    atr_target = entry_price + atr * 4
+    # 最低でも+5%、最大でも+15%
+    min_target = entry_price * 1.05  # +5%
+    max_target = entry_price * 1.15  # +15%
+    return min(max(atr_target, min_target), max_target)
 
 
 def calculate_risk_reward_ratio(entry: float, stop_loss: float, take_profit: float) -> float:
