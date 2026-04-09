@@ -125,10 +125,16 @@ def check_exit_conditions(position: dict, current_price: float) -> str | None:
     if current_price >= position["take_profit"]:
         return "TAKE_PROFIT"
 
-    # トレーリングストップ: 最高値が購入価格を超えた後、最高値から3%下落で発動
+    # トレーリングストップ: 含み益が+3%以上になってから有効化
+    # 最高値から3%下落で発動（ただし購入価格以上で決済を保証）
     highest = position.get("highest_price", entry_price)
-    if highest > entry_price and current_price < highest * (1 - TRAILING_STOP_PCT):
-        return "TRAILING_STOP"
+    min_profit_for_trailing = entry_price * 1.03  # +3%以上の含み益が必要
+    if highest >= min_profit_for_trailing:
+        trailing_trigger = highest * (1 - TRAILING_STOP_PCT)
+        # 最低でも購入価格以上で決済（利益確保）
+        trailing_trigger = max(trailing_trigger, entry_price * 1.005)
+        if current_price < trailing_trigger:
+            return "TRAILING_STOP"
 
     entry_date = datetime.strptime(position["entry_date"], "%Y-%m-%d")
     holding_days = (datetime.now() - entry_date).days
