@@ -39,6 +39,27 @@ def calculate_buy_score(indicators: dict, weights: dict = None) -> tuple[int, li
     score = 0
     reasons = []
 
+    # === エントリー位置チェック（天井買い防止）===
+    current_price = indicators.get("current_price", 0)
+    sr = indicators.get("support_resistance", {})
+    recent_high = sr.get("recent_high", current_price)
+    recent_low = sr.get("recent_low", current_price)
+
+    if recent_high > recent_low > 0:
+        # 現在価格が直近レンジのどこにいるか（0-1、0=底、1=天井）
+        position_in_range = (current_price - recent_low) / (recent_high - recent_low)
+
+        # 天井付近（95%以上）では減点、底付近（30%以下）では加点
+        if position_in_range >= 0.95:
+            score -= 10
+            reasons.append(f"⚠️ 直近高値付近（レンジ{position_in_range*100:.0f}%）")
+        elif position_in_range <= 0.30:
+            score += 8
+            reasons.append(f"✨ 直近安値付近（押し目買いチャンス）")
+        elif position_in_range <= 0.60:
+            score += 3
+            reasons.append("レンジ中位（適正エントリー）")
+
     # 1. MAクロス
     if indicators.get("golden_cross"):
         score += weights["ma_cross"]
@@ -88,6 +109,9 @@ def calculate_buy_score(indicators: dict, weights: dict = None) -> tuple[int, li
     if vol_ratio >= 1.5:
         score += weights["volume"]
         reasons.append(f"出来高急増（{vol_ratio:.1f}倍）")
+    elif vol_ratio >= 1.2:
+        score += weights["volume"] // 2
+        reasons.append(f"出来高増加（{vol_ratio:.1f}倍）")
     elif vol_ratio >= 1.2:
         score += weights["volume"] // 2
         reasons.append(f"出来高増加（{vol_ratio:.1f}倍）")
@@ -161,6 +185,21 @@ def calculate_sell_score(indicators: dict, weights: dict = None) -> tuple[int, l
     if cloud == "BELOW":
         score -= weights["ichimoku"]
         reasons.append("一目均衡表: 雲下抜け")
+
+    # 出来高チェック（売りシグナルでも有効化）
+    vol_ratio = indicators.get("volume_ratio", 1.0)
+    if vol_ratio >= 1.5 and score < 0:
+        score -= weights["volume"] // 2
+        reasons.append(f"売り出来高増（{vol_ratio:.1f}倍）")
+
+    # レジスタンス突破失敗の検知
+    current_price = indicators.get("current_price", 0)
+    sr = indicators.get("support_resistance", {})
+    recent_high = sr.get("recent_high", current_price)
+    if recent_high > 0 and current_price > 0:
+        if 0.97 <= current_price / recent_high <= 1.0:
+            score -= 5
+            reasons.append("直近高値で跳ね返り")
 
     return max(score, -100), reasons
 
