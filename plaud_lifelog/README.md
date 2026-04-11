@@ -20,7 +20,15 @@ export PLAUD_AI_MODEL=claude-sonnet-4-5   # 任意
 ### 取り込み
 
 ```bash
+# 単一ファイル
 python -m plaud_lifelog ingest path/to/2026-04-11_朝会.docx
+
+# フォルダ一括
+python -m plaud_lifelog ingest path/to/plaud_exports/
+python -m plaud_lifelog ingest path/to/plaud_exports/ -r   # サブフォルダも再帰
+
+# 既存IDを上書き
+python -m plaud_lifelog ingest path/to/file.docx --force
 ```
 
 - Word からタイトル・収録日・要約・文字起こしを自動抽出
@@ -28,7 +36,9 @@ python -m plaud_lifelog ingest path/to/2026-04-11_朝会.docx
 - `data/plaud/entries/<YYYY-MM-DD>_<slug>.json` に保存
 - `data/plaud/index.json` と `data/plaud/tasks.json` を更新
 
-`--dry-run` を付けると保存せず結果だけ表示する。
+ディレクトリを指定すると `.docx` を一括取り込み（`~$` で始まる Word 一時
+ファイルはスキップ）。同じ ID のエントリが既に存在する場合はスキップし、
+`--force` で再取り込み。`--dry-run` を付けると保存せず結果だけ表示する。
 
 ### タイムライン
 
@@ -60,6 +70,20 @@ python -m plaud_lifelog mark t_20260411_01 --open     # open に戻す
 ```
 
 `tasks.json` と対応するエントリ JSON の両方の `status` を同期更新する。
+
+### 統計サマリー
+
+```bash
+python -m plaud_lifelog stats            # 整形表示
+python -m plaud_lifelog stats --json     # 生の JSON（外部処理向け）
+```
+
+全エントリを走査して以下を集計する:
+
+- エントリ総数 / 収録期間
+- タスク total / done / open / 完了率 / 優先度内訳
+- タグ TOP10 / カテゴリ TOP10 / 気分の出現頻度
+- **月次推移** — 月ごとのエントリ数・タスク数・完了数・完了率
 
 ### 全文検索
 

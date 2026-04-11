@@ -11,6 +11,7 @@ from .config import AI_ENABLED, AI_MODEL
 from .docx_parser import parse_docx
 from .exporter import entry_to_markdown, report_to_markdown
 from .report_generator import build_report
+from .stats import compute_stats
 from .storage import (
     build_entry_id,
     iter_entries_in_range,
@@ -33,9 +34,14 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
     sub = parser.add_subparsers(dest="command", required=True)
 
-    p_ingest = sub.add_parser("ingest", help="Word ファイルを取り込む")
-    p_ingest.add_argument("path", type=Path, help=".docx ファイルのパス")
+    p_ingest = sub.add_parser("ingest", help="Word ファイル/フォルダを取り込む")
+    p_ingest.add_argument("path", type=Path, help=".docx ファイル or フォルダのパス")
     p_ingest.add_argument("--dry-run", action="store_true", help="保存せずに結果を表示するだけ")
+    p_ingest.add_argument("--force", action="store_true", help="既存IDも上書きして再取り込み")
+    p_ingest.add_argument(
+        "--recursive", "-r", action="store_true",
+        help="フォルダ指定時にサブフォルダも再帰走査する",
+    )
 
     p_list = sub.add_parser("list", help="タイムラインを表示する")
     p_list.add_argument("--limit", type=int, default=20)
@@ -69,6 +75,9 @@ def main(argv: list[str] | None = None) -> int:
     g_target.add_argument("--report", dest="report_id", help="レポート period (例: 2026-04-05_to_2026-04-11)")
     p_export.add_argument("-o", "--output", type=Path, help="出力ファイル (未指定なら標準出力)")
 
+    p_stats = sub.add_parser("stats", help="蓄積したライフログ全体の統計を表示する")
+    p_stats.add_argument("--json", action="store_true", help="JSON 形式で出力する")
+
     args = parser.parse_args(argv)
 
     if args.command == "ingest":
@@ -87,6 +96,8 @@ def main(argv: list[str] | None = None) -> int:
         return cmd_search(args)
     if args.command == "export":
         return cmd_export(args)
+    if args.command == "stats":
+        return cmd_stats(args)
 
     parser.print_help()
     return 1
@@ -97,22 +108,78 @@ def main(argv: list[str] | None = None) -> int:
 def cmd_ingest(args) -> int:
     path: Path = args.path
     if not path.exists():
-        print(f"[error] ファイルが見つかりません: {path}", file=sys.stderr)
+        print(f"[error] パスが見つかりません: {path}", file=sys.stderr)
         return 2
 
-    print(f"[1/3] パース: {path}")
-    parsed = parse_docx(path)
-    print(f"      title={parsed.title!r}")
-    print(f"      recorded_at={parsed.recorded_at.date().isoformat()}")
-    print(f"      summary={_truncate(parsed.summary)}")
-    print(f"      transcript_chars={len(parsed.transcript)}")
+    if path.is_dir():
+        return _ingest_directory(path, args)
+    try:
+        _ingest_single(path, args, verbose=True)
+    except Exception as e:  # noqa: BLE001
+        print(f"[error] {e}", file=sys.stderr)
+        return 1
+    return 0
 
-    print(f"[2/3] AI 処理 (model={AI_MODEL}, enabled={AI_ENABLED})")
+
+def _ingest_directory(root: Path, args) -> int:
+    pattern = "**/*.docx" if args.recursive else "*.docx"
+    files = sorted(
+        p for p in root.glob(pattern)
+        if p.is_file() and not p.name.startswith("~$")
+    )
+    if not files:
+        print(f"[warn] {root} に .docx が見つかりません")
+        return 0
+
+    print(f"[bulk] {len(files)} 件を取り込みます (recursive={args.recursive})")
+    processed = 0
+    skipped = 0
+    failed = 0
+    for i, f in enumerate(files, start=1):
+        print(f"\n--- [{i}/{len(files)}] {f.name} ---")
+        try:
+            status = _ingest_single(f, args, verbose=False)
+        except Exception as e:  # noqa: BLE001
+            print(f"  [error] {e}")
+            failed += 1
+            continue
+        if status == "skipped":
+            skipped += 1
+        else:
+            processed += 1
+
+    print(
+        f"\n[bulk] done: processed={processed} skipped={skipped} failed={failed}"
+    )
+    return 0 if failed == 0 else 1
+
+
+def _ingest_single(path: Path, args, *, verbose: bool) -> str:
+    parsed = parse_docx(path)
+    entry_id = build_entry_id(parsed.recorded_at, parsed.title)
+
+    # 既存スキップ（--force 未指定時）
+    if not args.force and not args.dry_run:
+        try:
+            load_entry(entry_id)
+            print(f"  [skip] 既存エントリあり: {entry_id} (--force で上書き)")
+            return "skipped"
+        except FileNotFoundError:
+            pass
+
+    if verbose:
+        print(f"[1/3] パース: {path}")
+    print(f"  title={parsed.title!r}")
+    print(f"  recorded_at={parsed.recorded_at.date().isoformat()}")
+    print(f"  summary={_truncate(parsed.summary)}")
+    print(f"  transcript_chars={len(parsed.transcript)}")
+
+    if verbose:
+        print(f"[2/3] AI 処理 (model={AI_MODEL}, enabled={AI_ENABLED})")
     lifelog = generate_lifelog(parsed)
     task_result = extract_tasks(parsed)
     tasks = _attach_task_ids(task_result["tasks"], parsed.recorded_at)
 
-    entry_id = build_entry_id(parsed.recorded_at, parsed.title)
     for i, t in enumerate(tasks):
         t["id"] = f"t_{parsed.recorded_at.strftime('%Y%m%d')}_{i+1:02d}"
         t["status"] = "open"
@@ -136,27 +203,16 @@ def cmd_ingest(args) -> int:
     }
 
     if args.dry_run:
-        print("[3/3] --dry-run のため保存しません。結果プレビュー:")
+        print("  [dry-run] 保存しません。プレビュー:")
         print(json.dumps(entry, ensure_ascii=False, indent=2))
-        return 0
+        return "dry-run"
 
-    print("[3/3] 保存")
+    if verbose:
+        print("[3/3] 保存")
     saved_path = save_entry(entry)
-    print(f"      -> {saved_path}")
-    print()
-    print("=== Lifelog ===")
-    print(f"  headline : {lifelog.get('headline', '')}")
-    print(f"  narrative: {lifelog.get('narrative', '')}")
-    print(f"  tags     : {', '.join(lifelog.get('tags', []))}")
-    print(f"  mood     : {lifelog.get('mood', '')}")
-    print()
-    print(f"=== Tasks ({len(tasks)}) ===")
-    for t in tasks:
-        due = t.get("due") or "-"
-        print(f"  [{t['priority']:<6}] {t['title']}  (due={due}, cat={t.get('category') or '-'})")
-    print()
-    print(f"effort_summary: {task_analysis.get('effort_summary', '')}")
-    return 0
+    print(f"  saved -> {saved_path}")
+    print(f"  tasks={len(tasks)}  tags={', '.join(lifelog.get('tags', []))}")
+    return "saved"
 
 
 def cmd_list(args) -> int:
@@ -301,6 +357,60 @@ def cmd_export(args) -> int:
         print(f"wrote: {args.output}")
     else:
         sys.stdout.write(md)
+    return 0
+
+
+def cmd_stats(args) -> int:
+    data = compute_stats()
+    if args.json:
+        print(json.dumps(data, ensure_ascii=False, indent=2))
+        return 0
+
+    print(f"エントリ総数 : {data['entry_count']}")
+    span = data.get("span")
+    if span:
+        print(f"期間         : {span['first']} 〜 {span['last']}")
+    tasks = data["tasks"]
+    print()
+    print(
+        f"タスク       : total={tasks['total']}  done={tasks['done']}  "
+        f"open={tasks['open']}  完了率={tasks['completion_rate']*100:.1f}%"
+    )
+    pri = data["priority_breakdown"]
+    print(
+        f"優先度内訳   : high={pri.get('high', 0)}  "
+        f"medium={pri.get('medium', 0)}  low={pri.get('low', 0)}"
+    )
+    print()
+
+    if data["top_tags"]:
+        print("-- タグ TOP --")
+        for tag, count in data["top_tags"]:
+            print(f"  {tag:<20} {count}")
+        print()
+
+    if data["top_categories"]:
+        print("-- カテゴリ TOP --")
+        for cat, count in data["top_categories"]:
+            print(f"  {cat:<20} {count}")
+        print()
+
+    if data["moods"]:
+        print("-- 気分 --")
+        for mood, count in sorted(data["moods"].items(), key=lambda kv: -kv[1]):
+            print(f"  {mood:<20} {count}")
+        print()
+
+    monthly = data["monthly"]
+    if monthly:
+        print("-- 月次推移 --")
+        print(f"  {'月':<10} {'件数':>5} {'タスク':>6} {'完了':>5} {'完了率':>8}")
+        for month, rec in monthly.items():
+            rate = (rec["done"] / rec["tasks"] * 100) if rec["tasks"] else 0.0
+            print(
+                f"  {month:<10} {rec['entries']:>5} "
+                f"{rec['tasks']:>6} {rec['done']:>5} {rate:>7.1f}%"
+            )
     return 0
 
 
