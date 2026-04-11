@@ -63,6 +63,20 @@ python -m plaud_lifelog tasks --all     # 完了含む
 python -m plaud_lifelog show 2026-04-11_asa-kai
 ```
 
+### メモ追記
+
+Claude が生成したライフログに、あとから自分の主観を上書き追記する。
+
+```bash
+python -m plaud_lifelog note 2026-04-11_asa-kai "田中さんはリリース前で少し疲れていた"
+cat memo.txt | python -m plaud_lifelog note 2026-04-11_asa-kai --stdin
+```
+
+- エントリ JSON に `notes: [{id, text, created_at}]` として追記（上書きはしない）
+- `show` で JSON として表示される
+- `export --entry <id>` の Markdown では `### メモ` セクションに箇条書き
+- 存在しないエントリIDはエラー終了
+
 ### タスクの完了・再オープン
 
 ```bash
@@ -143,6 +157,22 @@ python -m plaud_lifelog report --days 7 --notify
 - Discord の 2000 文字上限に合わせて自動分割
 - webhook 未設定時はコンソールにプレビュー出力してスキップ（エラーにしない）
 - `report --dry-run --notify` で JSON 保存せず投稿だけ行うことも可能
+
+## GitHub Actions による週次自動配信
+
+`.github/workflows/plaud_weekly.yml` が毎週月曜 JST 07:00 (= UTC 22:00 日曜)
+に `report --days 7 --notify` を自動実行する。
+
+セットアップ手順:
+
+1. GitHub リポジトリの Settings → Secrets and variables → Actions で以下を登録
+   - `ANTHROPIC_API_KEY`: Claude 用 API キー（未設定時はフォールバック経路で動作）
+   - `PLAUD_DISCORD_WEBHOOK_URL`: Discord の webhook URL
+2. 初回は Actions タブから workflow_dispatch で手動実行して動作確認
+3. 生成されたレポートは `data/plaud/reports/<period>.json` に自動コミットされる
+
+ワークフローは concurrency group `plaud-weekly` で自己シリアライズされ、
+同居するトレードBot (`.github/workflows/run.yml`) とは完全に独立して動く。
 
 ## データレイアウト
 

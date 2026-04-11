@@ -66,6 +66,22 @@ def list_open_tasks(include_done: bool = False) -> list[dict]:
     return tasks
 
 
+def append_note(entry_id: str, text: str) -> dict:
+    """エントリに手書きノートを追記し、保存する。戻り値は追加されたノート dict。"""
+    if not text or not text.strip():
+        raise ValueError("note text is empty")
+    entry = load_entry(entry_id)
+    notes = entry.setdefault("notes", [])
+    note = {
+        "id": f"n_{len(notes) + 1:02d}",
+        "text": text.strip(),
+        "created_at": datetime.now().isoformat(timespec="seconds"),
+    }
+    notes.append(note)
+    _dump_json(ENTRIES_DIR / f"{entry_id}.json", entry)
+    return note
+
+
 def update_task_status(task_id: str, status: str) -> dict:
     """指定タスクの status を更新し、同期的にエントリJSONにも反映する。"""
     if status not in ("open", "done"):

@@ -46,6 +46,15 @@ def entry_to_markdown(entry: dict) -> str:
             lines.append(f"- {k}")
         lines.append("")
 
+    # 手書きメモ
+    notes = entry.get("notes") or []
+    if notes:
+        lines.append("### メモ")
+        for n in notes:
+            created = (n.get("created_at") or "")[:10]
+            lines.append(f"- {n.get('text', '')}  _(追記: {created})_")
+        lines.append("")
+
     # タスク
     if tasks:
         lines.append(f"### タスク ({len(tasks)})")

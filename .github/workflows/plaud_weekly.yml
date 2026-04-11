@@ -1,0 +1,44 @@
+name: Plaud Weekly Report
+
+on:
+  schedule:
+    # 毎週月曜 JST 07:00 = UTC 22:00 日曜
+    - cron: '0 22 * * 0'
+  workflow_dispatch:
+
+concurrency:
+  group: plaud-weekly
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: リポジトリ取得
+        uses: actions/checkout@v4
+
+      - name: Python セットアップ
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 依存インストール
+        run: pip install python-docx anthropic requests
+
+      - name: 週次レポート生成 + Discord 投稿
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          PLAUD_DISCORD_WEBHOOK_URL: ${{ secrets.PLAUD_DISCORD_WEBHOOK_URL }}
+        run: python -m plaud_lifelog report --days 7 --notify
+
+      - name: レポート保存
+        run: |
+          git config user.name "Plaud Bot"
+          git config user.email "bot@plaud.local"
+          git add data/plaud/reports/
+          git diff --cached --quiet || git commit -m "Plaud weekly report $(date +%Y-%m-%d)"
+          git push

@@ -14,6 +14,7 @@ from .notifier import format_report, send_text
 from .report_generator import build_report
 from .stats import compute_stats, generate_trend_analysis
 from .storage import (
+    append_note,
     build_entry_id,
     iter_entries_in_range,
     list_entries,
@@ -80,6 +81,11 @@ def main(argv: list[str] | None = None) -> int:
     g_target.add_argument("--report", dest="report_id", help="レポート period (例: 2026-04-05_to_2026-04-11)")
     p_export.add_argument("-o", "--output", type=Path, help="出力ファイル (未指定なら標準出力)")
 
+    p_note = sub.add_parser("note", help="エントリに手書きメモを追記する")
+    p_note.add_argument("entry_id", help="対象エントリID")
+    p_note.add_argument("text", nargs="*", help="メモ本文（--stdin 指定時は不要）")
+    p_note.add_argument("--stdin", action="store_true", help="標準入力からメモを読み込む")
+
     p_stats = sub.add_parser("stats", help="蓄積したライフログ全体の統計を表示する")
     p_stats.add_argument("--json", action="store_true", help="JSON 形式で出力する")
     p_stats.add_argument(
@@ -105,6 +111,8 @@ def main(argv: list[str] | None = None) -> int:
         return cmd_search(args)
     if args.command == "export":
         return cmd_export(args)
+    if args.command == "note":
+        return cmd_note(args)
     if args.command == "stats":
         return cmd_stats(args)
 
@@ -378,6 +386,29 @@ def cmd_export(args) -> int:
         print(f"wrote: {args.output}")
     else:
         sys.stdout.write(md)
+    return 0
+
+
+def cmd_note(args) -> int:
+    if args.stdin:
+        text = sys.stdin.read()
+    else:
+        text = " ".join(args.text).strip()
+    if not text.strip():
+        print("[error] メモ本文が空です", file=sys.stderr)
+        return 2
+    try:
+        note = append_note(args.entry_id, text)
+    except (FileNotFoundError, ValueError) as e:
+        print(f"[error] {e}", file=sys.stderr)
+        return 2
+    print(
+        f"{args.entry_id} <- {note['id']} ({note['created_at']})"
+    )
+    preview = note["text"].replace("\n", " ")
+    if len(preview) > 80:
+        preview = preview[:80] + "…"
+    print(f"  {preview}")
     return 0
 
 
