@@ -65,6 +65,7 @@ def main(argv: list[str] | None = None) -> int:
     p_report.add_argument("--days", type=int, default=7, help="直近 N 日（デフォルト 7）")
     p_report.add_argument("--from", dest="date_from", help="開始日 YYYY-MM-DD")
     p_report.add_argument("--to", dest="date_to", help="終了日 YYYY-MM-DD (含む)")
+    p_report.add_argument("--month", help="対象月 YYYY-MM（月初〜月末を自動範囲設定）")
     p_report.add_argument("--dry-run", action="store_true", help="保存せずに結果を表示")
     p_report.add_argument(
         "--notify", action="store_true",
@@ -79,7 +80,8 @@ def main(argv: list[str] | None = None) -> int:
     g_target = p_export.add_mutually_exclusive_group(required=True)
     g_target.add_argument("--entry", help="エントリID (例: 2026-04-11_asa-kai)")
     g_target.add_argument("--report", dest="report_id", help="レポート period (例: 2026-04-05_to_2026-04-11)")
-    p_export.add_argument("-o", "--output", type=Path, help="出力ファイル (未指定なら標準出力)")
+    g_target.add_argument("--all", action="store_true", help="全エントリを Markdown でフォルダに書き出す")
+    p_export.add_argument("-o", "--output", type=Path, help="出力先 (--all の場合はディレクトリ、それ以外はファイル)")
 
     p_note = sub.add_parser("note", help="エントリに手書きメモを追記する")
     p_note.add_argument("entry_id", help="対象エントリID")
@@ -289,7 +291,11 @@ def cmd_mark(args) -> int:
 
 
 def cmd_report(args) -> int:
-    start, end = _resolve_range(args)
+    try:
+        start, end = _resolve_range(args)
+    except ValueError as e:
+        print(f"[error] {e}", file=sys.stderr)
+        return 2
     print(
         f"[1/2] 期間 {start.date().isoformat()} 〜 "
         f"{(end - timedelta(days=1)).date().isoformat()} のエントリを収集"
@@ -365,6 +371,26 @@ def cmd_search(args) -> int:
 
 
 def cmd_export(args) -> int:
+    if args.all:
+        out_dir = args.output or Path("data/plaud/export_md")
+        out_dir.mkdir(parents=True, exist_ok=True)
+        entries = list_entries()
+        if not entries:
+            print("(エントリがありません)")
+            return 0
+        written = 0
+        for meta in entries:
+            entry_id = meta["id"]
+            try:
+                entry = load_entry(entry_id)
+            except FileNotFoundError:
+                continue
+            md = entry_to_markdown(entry)
+            (out_dir / f"{entry_id}.md").write_text(md, encoding="utf-8")
+            written += 1
+        print(f"wrote {written} files -> {out_dir}")
+        return 0
+
     if args.entry:
         try:
             entry = load_entry(args.entry)
@@ -490,7 +516,22 @@ def cmd_stats(args) -> int:
 
 
 def _resolve_range(args) -> tuple[datetime, datetime]:
-    """--from/--to と --days から [start, end) の範囲を決定する。"""
+    """--month / --from/--to / --days から [start, end) の範囲を決定する。"""
+    month = getattr(args, "month", None)
+    if month:
+        try:
+            y, m = month.split("-")
+            year, mon = int(y), int(m)
+        except ValueError as e:
+            raise ValueError(f"--month は YYYY-MM 形式で指定してください: {month}") from e
+        start = datetime(year, mon, 1)
+        # 翌月1日
+        if mon == 12:
+            end = datetime(year + 1, 1, 1)
+        else:
+            end = datetime(year, mon + 1, 1)
+        return start, end
+
     if args.date_from:
         start = datetime.fromisoformat(args.date_from)
     else:

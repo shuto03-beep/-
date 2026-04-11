@@ -1,0 +1,76 @@
+{
+  "id": "2026-04-11_朝会",
+  "source_file": "plaud_lifelog/samples/2026-04-11_asa-kai.docx",
+  "recorded_at": "2026-04-11T00:00:00",
+  "ingested_at": "2026-04-11T17:54:06",
+  "title": "朝会",
+  "raw": {
+    "transcript": "田中: 提案書のドラフトを15日までに作成します。\n佐藤: 水曜の顧客MTGに向けて資料をまとめます。",
+    "summary": "今週の優先案件は提案書の初版作成。田中さんと15日までに仕上げる方針を共有した。"
+  },
+  "lifelog": {
+    "headline": "朝会",
+    "narrative": "今週の優先案件は提案書の初版作成。田中さんと15日までに仕上げる方針を共有した。",
+    "tags": [
+      "仕事",
+      "会議",
+      "plaud"
+    ],
+    "people": [],
+    "locations": [],
+    "mood": "集中",
+    "key_points": [],
+    "source": "fallback"
+  },
+  "tasks": [
+    {
+      "id": "t_20260411_01",
+      "title": "提案書のドラフト作成",
+      "priority": "high",
+      "due": "2026-04-15",
+      "category": "仕事",
+      "status": "done",
+      "source_entry_id": "2026-04-11_朝会"
+    },
+    {
+      "id": "t_20260411_02",
+      "title": "顧客MTG資料の準備",
+      "priority": "medium",
+      "due": "2026-04-14",
+      "category": "仕事",
+      "status": "open",
+      "source_entry_id": "2026-04-11_朝会"
+    },
+    {
+      "id": "t_20260411_03",
+      "title": "本を1冊読む",
+      "priority": "low",
+      "due": null,
+      "category": "学習",
+      "status": "open",
+      "source_entry_id": "2026-04-11_朝会"
+    }
+  ],
+  "task_analysis": {
+    "total": 0,
+    "by_priority": {
+      "high": 0,
+      "medium": 0,
+      "low": 0
+    },
+    "effort_summary": "(AI 未使用のためタスク抽出はスキップ)",
+    "blockers": []
+  },
+  "notes": [
+    {
+      "id": "n_01",
+      "text": "田中さんはリリース前で少し疲れていた。次回はケアを優先",
+      "created_at": "2026-04-11T23:33:48"
+    },
+    {
+      "id": "n_02",
+      "text": "stdin経由で長めのメモを追記。複数行の感想もOK。",
+      "created_at": "2026-04-11T23:33:48"
+    }
+  ]
+}

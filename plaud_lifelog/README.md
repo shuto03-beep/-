@@ -123,23 +123,30 @@ python -m plaud_lifelog export --entry 2026-04-11_asa-kai
 python -m plaud_lifelog export --entry 2026-04-11_asa-kai -o out.md
 python -m plaud_lifelog export --report 2026-04-05_to_2026-04-11
 python -m plaud_lifelog export --report 2026-04-05_to_2026-04-11 -o weekly.md
+python -m plaud_lifelog export --all                     # 全エントリ一括 → data/plaud/export_md/
+python -m plaud_lifelog export --all -o ~/obsidian/plaud/ # Obsidian Vault へ書き出し
 ```
 
 - エントリはメタ情報 / ライフログ本文 / タスク / 原文（要約・文字起こし）の
   順に整形される
 - レポートはサマリー / ハイライト / 次の注力 / タグ集計 / エントリ一覧 /
   タスクサマリーで構成される
-- `-o` 省略時は標準出力
+- narrative やメモの中の `@<entry_id>` 参照は自動的に Obsidian 風の
+  `[[<entry_id>]]` リンクに変換される
+- `--all` は全エントリを個別ファイルとして指定ディレクトリに書き出す
+  （Obsidian Vault にそのまま投入可能）
+- `-o` 省略時はエントリ/レポートは標準出力、`--all` は `data/plaud/export_md/`
 
-### 週次レポート
+### 週次 / 月次レポート
 
-直近 7 日間のエントリを集約し、Claude でライフログを俯瞰する振り返り
+指定期間のエントリを集約し、Claude でライフログを俯瞰する振り返り
 （要約 / ハイライト / 次の注力テーマ）を生成する。
 
 ```bash
 python -m plaud_lifelog report                 # 直近 7 日
 python -m plaud_lifelog report --days 14       # 直近 14 日
 python -m plaud_lifelog report --from 2026-04-05 --to 2026-04-11
+python -m plaud_lifelog report --month 2026-04 # 月初〜月末を自動範囲
 python -m plaud_lifelog report --dry-run       # 保存せず結果だけ表示
 ```
 
@@ -158,10 +165,27 @@ python -m plaud_lifelog report --days 7 --notify
 - webhook 未設定時はコンソールにプレビュー出力してスキップ（エラーにしない）
 - `report --dry-run --notify` で JSON 保存せず投稿だけ行うことも可能
 
-## GitHub Actions による週次自動配信
+## GitHub Actions による自動運用
 
-`.github/workflows/plaud_weekly.yml` が毎週月曜 JST 07:00 (= UTC 22:00 日曜)
-に `report --days 7 --notify` を自動実行する。
+### 日次 inbox 取り込み（`.github/workflows/plaud_inbox.yml`）
+
+`data/plaud/inbox/` に .docx ファイルを push するだけで、翌朝 JST 06:00
+(= UTC 21:00) に自動的に ingest され、生成されたエントリが
+`data/plaud/entries/` にコミットされる。
+
+```
+data/plaud/inbox/       ← ここに Plaud Web の Word を追加
+  └── 2026-04-12_meeting.docx
+```
+
+- サブフォルダ対応（`-r` 付きで走査）
+- inbox 配下の生 docx は `.gitignore` で除外されるためリポジトリには残らない
+- 既存IDは自動スキップ、`--force` 相当の上書きはしないので安全
+
+### 週次自動配信（`.github/workflows/plaud_weekly.yml`）
+
+毎週月曜 JST 07:00 (= UTC 22:00 日曜) に `report --days 7 --notify`
+を自動実行する。
 
 セットアップ手順:
 

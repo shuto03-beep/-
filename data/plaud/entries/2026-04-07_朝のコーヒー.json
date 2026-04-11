@@ -1,0 +1,34 @@
+{
+  "id": "2026-04-07_朝のコーヒー",
+  "source_file": "plaud_lifelog/samples/bulk/sub/2026-04-07_coffee.docx",
+  "recorded_at": "2026-04-07T00:00:00",
+  "ingested_at": "2026-04-11T17:54:33",
+  "title": "朝のコーヒー",
+  "raw": {
+    "transcript": "",
+    "summary": "カフェで朝活。読書と日記。"
+  },
+  "lifelog": {
+    "headline": "朝のコーヒー",
+    "narrative": "カフェで朝活。読書と日記。",
+    "tags": [
+      "plaud"
+    ],
+    "people": [],
+    "locations": [],
+    "mood": "",
+    "key_points": [],
+    "source": "fallback"
+  },
+  "tasks": [],
+  "task_analysis": {
+    "total": 0,
+    "by_priority": {
+      "high": 0,
+      "medium": 0,
+      "low": 0
+    },
+    "effort_summary": "(AI 未使用のためタスク抽出はスキップ)",
+    "blockers": []
+  }
+}

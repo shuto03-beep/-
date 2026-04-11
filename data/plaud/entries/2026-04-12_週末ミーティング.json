@@ -1,0 +1,34 @@
+{
+  "id": "2026-04-12_週末ミーティング",
+  "source_file": "plaud_lifelog/samples/bulk/2026-04-12_2.docx",
+  "recorded_at": "2026-04-12T00:00:00",
+  "ingested_at": "2026-04-11T17:54:28",
+  "title": "週末ミーティング",
+  "raw": {
+    "transcript": "詳細な会話ログ: 次週のリリースに向けた最終チェック。QAは完了。",
+    "summary": "次週のリリースに向けた最終チェック。QAは完了。"
+  },
+  "lifelog": {
+    "headline": "週末ミーティング",
+    "narrative": "次週のリリースに向けた最終チェック。QAは完了。",
+    "tags": [
+      "plaud"
+    ],
+    "people": [],
+    "locations": [],
+    "mood": "",
+    "key_points": [],
+    "source": "fallback"
+  },
+  "tasks": [],
+  "task_analysis": {
+    "total": 0,
+    "by_priority": {
+      "high": 0,
+      "medium": 0,
+      "low": 0
+    },
+    "effort_summary": "(AI 未使用のためタスク抽出はスキップ)",
+    "blockers": []
+  }
+}

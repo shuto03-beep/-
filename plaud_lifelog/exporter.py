@@ -1,5 +1,17 @@
 """エントリ / レポートを Markdown にレンダリングする。"""
+import re
 from typing import Iterable
+
+# @2026-04-11_朝会 のような参照を検出する
+# スラグには日本語も入るので \w+ ではなく非空白・非記号の連続を許容
+_ENTRY_REF_RE = re.compile(r"@(\d{4}-\d{2}-\d{2}_[^\s、。,.!?\"'()（）\[\]]+)")
+
+
+def linkify_refs(text: str) -> str:
+    """@<entry_id> を Markdown リンクに変換する（Obsidian 互換の [[...]] 風）。"""
+    if not text:
+        return text
+    return _ENTRY_REF_RE.sub(r"[[\1]]", text)
 
 
 def entry_to_markdown(entry: dict) -> str:
@@ -35,7 +47,7 @@ def entry_to_markdown(entry: dict) -> str:
         lines.append("")
     narrative = lifelog.get("narrative")
     if narrative:
-        lines.append(narrative)
+        lines.append(linkify_refs(narrative))
         lines.append("")
 
     # キーポイント
@@ -52,7 +64,7 @@ def entry_to_markdown(entry: dict) -> str:
         lines.append("### メモ")
         for n in notes:
             created = (n.get("created_at") or "")[:10]
-            lines.append(f"- {n.get('text', '')}  _(追記: {created})_")
+            lines.append(f"- {linkify_refs(n.get('text', ''))}  _(追記: {created})_")
         lines.append("")
 
     # タスク
