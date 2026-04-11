@@ -1,0 +1,58 @@
+{
+  "period": "2026-04-05_to_2026-04-12",
+  "start": "2026-04-05",
+  "end": "2026-04-12",
+  "generated_at": "2026-04-11T17:45:03",
+  "entry_count": 2,
+  "headlines": [
+    {
+      "id": "2026-04-10_プロジェクト定例",
+      "date": "2026-04-10",
+      "title": "プロジェクト定例",
+      "headline": "プロジェクト定例"
+    },
+    {
+      "id": "2026-04-11_朝会",
+      "date": "2026-04-11",
+      "title": "朝会",
+      "headline": "朝会"
+    }
+  ],
+  "top_tags": [
+    [
+      "plaud",
+      2
+    ]
+  ],
+  "moods": {},
+  "tasks": {
+    "total": 2,
+    "open": 1,
+    "done": 1,
+    "by_priority": {
+      "high": 0,
+      "medium": 1,
+      "low": 0
+    },
+    "open_list": [
+      {
+        "id": "t_20260411_02",
+        "title": "顧客MTG資料の準備",
+        "priority": "medium",
+        "due": "2026-04-14",
+        "category": "仕事",
+        "status": "open",
+        "source_entry_id": "2026-04-11_朝会"
+      }
+    ]
+  },
+  "narrative": {
+    "summary": "2026-04-05〜2026-04-12 の 2 件のエントリ。",
+    "highlights": [
+      "- 2026-04-10: プロジェクト定例",
+      "- 2026-04-11: 朝会"
+    ],
+    "next_focus": [],
+    "source": "fallback"
+  }
+}
