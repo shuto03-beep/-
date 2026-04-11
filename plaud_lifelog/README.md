@@ -52,12 +52,38 @@ python -m plaud_lifelog tasks --all     # 完了含む
 python -m plaud_lifelog show 2026-04-11_asa-kai
 ```
 
+### タスクの完了・再オープン
+
+```bash
+python -m plaud_lifelog mark t_20260411_01            # done にする（デフォルト）
+python -m plaud_lifelog mark t_20260411_01 --open     # open に戻す
+```
+
+`tasks.json` と対応するエントリ JSON の両方の `status` を同期更新する。
+
+### 週次レポート
+
+直近 7 日間のエントリを集約し、Claude でライフログを俯瞰する振り返り
+（要約 / ハイライト / 次の注力テーマ）を生成する。
+
+```bash
+python -m plaud_lifelog report                 # 直近 7 日
+python -m plaud_lifelog report --days 14       # 直近 14 日
+python -m plaud_lifelog report --from 2026-04-05 --to 2026-04-11
+python -m plaud_lifelog report --dry-run       # 保存せず結果だけ表示
+```
+
+`data/plaud/reports/<period>.json` に保存され、期間内のタグ集計・
+気分集計・オープンタスク上位も含まれる。
+
 ## データレイアウト
 
 ```
 data/plaud/
 ├── entries/
 │   └── 2026-04-11_asa-kai.json
+├── reports/
+│   └── 2026-04-05_to_2026-04-11.json   # report コマンドで生成
 ├── index.json    # タイムライン（id, title, recorded_at, headline, tags, task_count）
 └── tasks.json    # 全エントリから集約したタスク（priority, due, status など）
 ```

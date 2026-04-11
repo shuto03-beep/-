@@ -6,7 +6,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
-from .config import ENTRIES_DIR, INDEX_FILE, TASKS_FILE, ensure_dirs
+from .config import ENTRIES_DIR, INDEX_FILE, REPORTS_DIR, TASKS_FILE, ensure_dirs
 
 
 _PRIORITY_ORDER = {"high": 0, "medium": 1, "low": 2}
@@ -64,6 +64,75 @@ def list_open_tasks(include_done: bool = False) -> list[dict]:
         )
     )
     return tasks
+
+
+def update_task_status(task_id: str, status: str) -> dict:
+    """指定タスクの status を更新し、同期的にエントリJSONにも反映する。"""
+    if status not in ("open", "done"):
+        raise ValueError(f"status must be 'open' or 'done', got: {status!r}")
+
+    # tasks.json を更新
+    if not TASKS_FILE.exists():
+        raise FileNotFoundError("tasks.json が存在しません。先に ingest してください。")
+    tasks = _load_json(TASKS_FILE)
+    if not isinstance(tasks, list):
+        raise RuntimeError("tasks.json が不正な形式です")
+
+    target: dict | None = None
+    for t in tasks:
+        if t.get("id") == task_id:
+            t["status"] = status
+            target = t
+            break
+    if target is None:
+        raise KeyError(f"task not found: {task_id}")
+    _dump_json(TASKS_FILE, tasks)
+
+    # 元エントリの tasks 配列にも反映
+    entry_id = target.get("source_entry_id")
+    if entry_id:
+        entry_path = ENTRIES_DIR / f"{entry_id}.json"
+        if entry_path.exists():
+            entry = _load_json(entry_path)
+            for t in entry.get("tasks", []):
+                if t.get("id") == task_id:
+                    t["status"] = status
+            _dump_json(entry_path, entry)
+
+    return target
+
+
+def iter_entries_in_range(start: datetime, end: datetime) -> list[dict]:
+    """[start, end) の範囲に収まるエントリの完全版をリストで返す。"""
+    if not INDEX_FILE.exists():
+        return []
+    index = _load_json(INDEX_FILE)
+    if not isinstance(index, list):
+        return []
+
+    selected: list[dict] = []
+    for meta in index:
+        rec = meta.get("recorded_at") or ""
+        try:
+            dt = datetime.fromisoformat(rec)
+        except ValueError:
+            continue
+        if start <= dt < end:
+            try:
+                selected.append(load_entry(meta["id"]))
+            except FileNotFoundError:
+                continue
+    selected.sort(key=lambda e: e.get("recorded_at", ""))
+    return selected
+
+
+def save_report(report: dict) -> Path:
+    """週次/期間レポートを data/plaud/reports/<period>.json に保存する。"""
+    ensure_dirs()
+    period = report.get("period") or datetime.now().strftime("%Y-%m-%d")
+    path = REPORTS_DIR / f"{period}.json"
+    _dump_json(path, report)
+    return path
 
 
 # ---------- 内部ヘルパー ----------

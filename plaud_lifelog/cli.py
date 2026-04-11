@@ -2,14 +2,24 @@
 import argparse
 import json
 import sys
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 
 from . import __version__
 from .ai_processor import extract_tasks, generate_lifelog
 from .config import AI_ENABLED, AI_MODEL
 from .docx_parser import parse_docx
-from .storage import build_entry_id, list_entries, list_open_tasks, load_entry, save_entry
+from .report_generator import build_report
+from .storage import (
+    build_entry_id,
+    iter_entries_in_range,
+    list_entries,
+    list_open_tasks,
+    load_entry,
+    save_entry,
+    save_report,
+    update_task_status,
+)
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -33,6 +43,19 @@ def main(argv: list[str] | None = None) -> int:
     p_show = sub.add_parser("show", help="指定エントリの詳細を表示する")
     p_show.add_argument("entry_id", help="エントリID (例: 2026-04-11_asa-kai)")
 
+    p_mark = sub.add_parser("mark", help="タスクの done/open を切り替える")
+    p_mark.add_argument("task_id", help="タスクID (例: t_20260411_01)")
+    group = p_mark.add_mutually_exclusive_group()
+    group.add_argument("--done", dest="status", action="store_const", const="done")
+    group.add_argument("--open", dest="status", action="store_const", const="open")
+    p_mark.set_defaults(status="done")
+
+    p_report = sub.add_parser("report", help="期間ライフログ振り返りを生成する")
+    p_report.add_argument("--days", type=int, default=7, help="直近 N 日（デフォルト 7）")
+    p_report.add_argument("--from", dest="date_from", help="開始日 YYYY-MM-DD")
+    p_report.add_argument("--to", dest="date_to", help="終了日 YYYY-MM-DD (含む)")
+    p_report.add_argument("--dry-run", action="store_true", help="保存せずに結果を表示")
+
     args = parser.parse_args(argv)
 
     if args.command == "ingest":
@@ -43,6 +66,10 @@ def main(argv: list[str] | None = None) -> int:
         return cmd_tasks(args)
     if args.command == "show":
         return cmd_show(args)
+    if args.command == "mark":
+        return cmd_mark(args)
+    if args.command == "report":
+        return cmd_report(args)
 
     parser.print_help()
     return 1
@@ -156,6 +183,93 @@ def cmd_show(args) -> int:
         return 2
     print(json.dumps(entry, ensure_ascii=False, indent=2))
     return 0
+
+
+def cmd_mark(args) -> int:
+    try:
+        task = update_task_status(args.task_id, args.status)
+    except (KeyError, FileNotFoundError, ValueError) as e:
+        print(f"[error] {e}", file=sys.stderr)
+        return 2
+    print(
+        f"{task['id']} -> {task['status']}  "
+        f"({task.get('priority', 'medium')}) {task.get('title', '')}"
+    )
+    return 0
+
+
+def cmd_report(args) -> int:
+    start, end = _resolve_range(args)
+    print(
+        f"[1/2] 期間 {start.date().isoformat()} 〜 "
+        f"{(end - timedelta(days=1)).date().isoformat()} のエントリを収集"
+    )
+    entries = iter_entries_in_range(start, end)
+    print(f"      -> {len(entries)} 件")
+
+    print(f"[2/2] レポート生成 (model={AI_MODEL}, enabled={AI_ENABLED})")
+    report = build_report(entries, start, end)
+
+    if args.dry_run:
+        print(json.dumps(report, ensure_ascii=False, indent=2))
+        return 0
+
+    path = save_report(report)
+    print(f"      -> {path}")
+    print()
+    print("=== Weekly Lifelog ===")
+    print(f"  period : {report['period']}")
+    print(f"  entries: {report['entry_count']}")
+    if report["top_tags"]:
+        tags_str = ", ".join(f"{t}({c})" for t, c in report["top_tags"])
+        print(f"  tags   : {tags_str}")
+    print()
+    print("--- summary ---")
+    print(report["narrative"]["summary"])
+    if report["narrative"]["highlights"]:
+        print()
+        print("--- highlights ---")
+        for h in report["narrative"]["highlights"]:
+            print(f"  * {h}")
+    if report["narrative"]["next_focus"]:
+        print()
+        print("--- next focus ---")
+        for f in report["narrative"]["next_focus"]:
+            print(f"  * {f}")
+    open_count = report["tasks"]["open"]
+    if open_count:
+        print()
+        print(f"--- open tasks ({open_count}) ---")
+        for t in report["tasks"]["open_list"][:10]:
+            due = t.get("due") or "-"
+            print(
+                f"  [{t.get('priority', 'medium'):<6}] {t.get('title', '')}  (due={due})"
+            )
+    return 0
+
+
+def _resolve_range(args) -> tuple[datetime, datetime]:
+    """--from/--to と --days から [start, end) の範囲を決定する。"""
+    if args.date_from:
+        start = datetime.fromisoformat(args.date_from)
+    else:
+        start = None
+
+    if args.date_to:
+        end_inclusive = datetime.fromisoformat(args.date_to)
+        end = end_inclusive + timedelta(days=1)
+    else:
+        end = None
+
+    if start is None and end is None:
+        end = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0) + timedelta(days=1)
+        start = end - timedelta(days=args.days)
+    elif start is None:
+        start = end - timedelta(days=args.days)
+    elif end is None:
+        end = start + timedelta(days=args.days)
+
+    return start, end
 
 
 # ---------- 補助関数 ----------
