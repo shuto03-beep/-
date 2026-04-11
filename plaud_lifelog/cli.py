@@ -10,8 +10,9 @@ from .ai_processor import extract_tasks, generate_lifelog
 from .config import AI_ENABLED, AI_MODEL
 from .docx_parser import parse_docx
 from .exporter import entry_to_markdown, report_to_markdown
+from .notifier import format_report, send_text
 from .report_generator import build_report
-from .stats import compute_stats
+from .stats import compute_stats, generate_trend_analysis
 from .storage import (
     build_entry_id,
     iter_entries_in_range,
@@ -64,6 +65,10 @@ def main(argv: list[str] | None = None) -> int:
     p_report.add_argument("--from", dest="date_from", help="開始日 YYYY-MM-DD")
     p_report.add_argument("--to", dest="date_to", help="終了日 YYYY-MM-DD (含む)")
     p_report.add_argument("--dry-run", action="store_true", help="保存せずに結果を表示")
+    p_report.add_argument(
+        "--notify", action="store_true",
+        help="Discord webhook (PLAUD_DISCORD_WEBHOOK_URL) に投稿する",
+    )
 
     p_search = sub.add_parser("search", help="全エントリを全文検索する")
     p_search.add_argument("keyword", help="検索キーワード")
@@ -77,6 +82,10 @@ def main(argv: list[str] | None = None) -> int:
 
     p_stats = sub.add_parser("stats", help="蓄積したライフログ全体の統計を表示する")
     p_stats.add_argument("--json", action="store_true", help="JSON 形式で出力する")
+    p_stats.add_argument(
+        "--analyze", action="store_true",
+        help="Claude で傾向分析コメントを生成する（APIキー未設定時はフォールバック）",
+    )
 
     args = parser.parse_args(argv)
 
@@ -285,6 +294,9 @@ def cmd_report(args) -> int:
 
     if args.dry_run:
         print(json.dumps(report, ensure_ascii=False, indent=2))
+        if args.notify:
+            result = send_text(format_report(report))
+            print(f"[notify] {result}")
         return 0
 
     path = save_report(report)
@@ -318,6 +330,15 @@ def cmd_report(args) -> int:
             print(
                 f"  [{t.get('priority', 'medium'):<6}] {t.get('title', '')}  (due={due})"
             )
+
+    if args.notify:
+        print()
+        print("[notify] Discord webhook に投稿中…")
+        result = send_text(format_report(report))
+        if result.get("sent"):
+            print(f"[notify] 送信成功 ({result['chunks']}/{result['total_chunks']} chunks)")
+        else:
+            print(f"[notify] 未送信: reason={result.get('reason')} errors={result.get('errors', [])}")
     return 0
 
 
@@ -362,6 +383,8 @@ def cmd_export(args) -> int:
 
 def cmd_stats(args) -> int:
     data = compute_stats()
+    if args.analyze:
+        data["trend_analysis"] = generate_trend_analysis(data)
     if args.json:
         print(json.dumps(data, ensure_ascii=False, indent=2))
         return 0
@@ -411,6 +434,27 @@ def cmd_stats(args) -> int:
                 f"  {month:<10} {rec['entries']:>5} "
                 f"{rec['tasks']:>6} {rec['done']:>5} {rate:>7.1f}%"
             )
+        print()
+
+    if args.analyze:
+        trend = data.get("trend_analysis") or {}
+        print("-- AI 傾向分析 --")
+        print(f"  source: {trend.get('source', 'unknown')}")
+        if trend.get("summary"):
+            print()
+            print(trend["summary"])
+        observations = trend.get("observations") or []
+        if observations:
+            print()
+            print("観察:")
+            for o in observations:
+                print(f"  * {o}")
+        suggestions = trend.get("suggestions") or []
+        if suggestions:
+            print()
+            print("提案:")
+            for s in suggestions:
+                print(f"  * {s}")
     return 0
 
 

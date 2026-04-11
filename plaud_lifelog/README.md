@@ -13,6 +13,7 @@ pip install python-docx anthropic
 
 export ANTHROPIC_API_KEY=sk-ant-xxxxx     # 未設定ならフォールバックで動作
 export PLAUD_AI_MODEL=claude-sonnet-4-5   # 任意
+export PLAUD_DISCORD_WEBHOOK_URL=https://discord.com/api/webhooks/...   # 通知用（任意）
 ```
 
 ## 使い方
@@ -76,6 +77,7 @@ python -m plaud_lifelog mark t_20260411_01 --open     # open に戻す
 ```bash
 python -m plaud_lifelog stats            # 整形表示
 python -m plaud_lifelog stats --json     # 生の JSON（外部処理向け）
+python -m plaud_lifelog stats --analyze  # Claude で傾向分析コメントを追加
 ```
 
 全エントリを走査して以下を集計する:
@@ -84,6 +86,10 @@ python -m plaud_lifelog stats --json     # 生の JSON（外部処理向け）
 - タスク total / done / open / 完了率 / 優先度内訳
 - タグ TOP10 / カテゴリ TOP10 / 気分の出現頻度
 - **月次推移** — 月ごとのエントリ数・タスク数・完了数・完了率
+
+`--analyze` を付けると、集計データを Claude に渡して「全体所感 / 観察 /
+次にやると良いこと」の3要素を JSON で生成する。APIキー未設定時は
+ローカルのヒューリスティック（完了率・主要タグ・月次差分）で代替する。
 
 ### 全文検索
 
@@ -125,6 +131,18 @@ python -m plaud_lifelog report --dry-run       # 保存せず結果だけ表示
 
 `data/plaud/reports/<period>.json` に保存され、期間内のタグ集計・
 気分集計・オープンタスク上位も含まれる。
+
+#### Discord webhook への自動投稿
+
+```bash
+export PLAUD_DISCORD_WEBHOOK_URL=https://discord.com/api/webhooks/...
+python -m plaud_lifelog report --days 7 --notify
+```
+
+- 投稿内容はサマリー / ハイライト / 次の注力 / タグ / オープンタスク上位5件
+- Discord の 2000 文字上限に合わせて自動分割
+- webhook 未設定時はコンソールにプレビュー出力してスキップ（エラーにしない）
+- `report --dry-run --notify` で JSON 保存せず投稿だけ行うことも可能
 
 ## データレイアウト
 
