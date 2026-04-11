@@ -9,3 +9,9 @@ s.txt
 t.txt
 .env
 data/cache/
+
+# plaud_lifelog のユーザーデータ（エントリ・インデックス・タスクは手元のみ）
+data/plaud/entries/*.json
+data/plaud/index.json
+data/plaud/tasks.json
+plaud_lifelog/samples/*.docx
