@@ -61,6 +61,32 @@ python -m plaud_lifelog mark t_20260411_01 --open     # open に戻す
 
 `tasks.json` と対応するエントリ JSON の両方の `status` を同期更新する。
 
+### 全文検索
+
+```bash
+python -m plaud_lifelog search 提案書
+python -m plaud_lifelog search 田中 --limit 5
+```
+
+- エントリの title / headline / narrative / tags / 要約 / 文字起こし / タスク名 を
+  走査し、最初にヒットしたフィールドと前後 40 字のスニペットを表示する
+- 新しい順に最大 `--limit` 件
+
+### Markdown エクスポート
+
+```bash
+python -m plaud_lifelog export --entry 2026-04-11_asa-kai
+python -m plaud_lifelog export --entry 2026-04-11_asa-kai -o out.md
+python -m plaud_lifelog export --report 2026-04-05_to_2026-04-11
+python -m plaud_lifelog export --report 2026-04-05_to_2026-04-11 -o weekly.md
+```
+
+- エントリはメタ情報 / ライフログ本文 / タスク / 原文（要約・文字起こし）の
+  順に整形される
+- レポートはサマリー / ハイライト / 次の注力 / タグ集計 / エントリ一覧 /
+  タスクサマリーで構成される
+- `-o` 省略時は標準出力
+
 ### 週次レポート
 
 直近 7 日間のエントリを集約し、Claude でライフログを俯瞰する振り返り

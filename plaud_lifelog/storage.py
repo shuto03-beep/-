@@ -126,6 +126,84 @@ def iter_entries_in_range(start: datetime, end: datetime) -> list[dict]:
     return selected
 
 
+def load_report(period: str) -> dict:
+    """期間指定でレポート JSON を読み込む。"""
+    path = REPORTS_DIR / f"{period}.json"
+    if not path.exists():
+        raise FileNotFoundError(f"report not found: {period}")
+    return _load_json(path)
+
+
+def search_entries(keyword: str, limit: int | None = None) -> list[dict]:
+    """エントリ全件を走査して、キーワードを含むものを返す。
+
+    検索対象: title / headline / narrative / tags / raw.summary /
+    raw.transcript / tasks[].title
+
+    戻り値は `{id, date, title, headline, field, snippet}` のリスト。
+    """
+    if not keyword:
+        return []
+    needle = keyword.lower()
+    ensure_dirs()
+
+    results: list[dict] = []
+    for path in sorted(ENTRIES_DIR.glob("*.json"), reverse=True):
+        try:
+            entry = _load_json(path)
+        except (json.JSONDecodeError, OSError):
+            continue
+        hit = _match_entry(entry, needle)
+        if hit is None:
+            continue
+        results.append({
+            "id": entry.get("id"),
+            "date": (entry.get("recorded_at") or "")[:10],
+            "title": entry.get("title", ""),
+            "headline": (entry.get("lifelog") or {}).get("headline", ""),
+            "field": hit[0],
+            "snippet": hit[1],
+        })
+        if limit and len(results) >= limit:
+            break
+    return results
+
+
+def _match_entry(entry: dict, needle: str) -> tuple[str, str] | None:
+    """エントリ内の検索対象フィールドを順に調べ、最初にヒットしたものを返す。"""
+    lifelog = entry.get("lifelog") or {}
+    raw = entry.get("raw") or {}
+
+    candidates: list[tuple[str, str]] = [
+        ("title", str(entry.get("title", ""))),
+        ("headline", str(lifelog.get("headline", ""))),
+        ("narrative", str(lifelog.get("narrative", ""))),
+        ("tags", ",".join(lifelog.get("tags") or [])),
+        ("summary", str(raw.get("summary", ""))),
+        ("transcript", str(raw.get("transcript", ""))),
+    ]
+    for t in entry.get("tasks") or []:
+        candidates.append(("task", str(t.get("title", ""))))
+
+    for field, text in candidates:
+        if not text:
+            continue
+        low = text.lower()
+        idx = low.find(needle)
+        if idx >= 0:
+            return field, _make_snippet(text, idx, len(needle))
+    return None
+
+
+def _make_snippet(text: str, idx: int, needle_len: int, width: int = 40) -> str:
+    start = max(0, idx - width)
+    end = min(len(text), idx + needle_len + width)
+    prefix = "…" if start > 0 else ""
+    suffix = "…" if end < len(text) else ""
+    snippet = text[start:end].replace("\n", " ")
+    return f"{prefix}{snippet}{suffix}"
+
+
 def save_report(report: dict) -> Path:
     """週次/期間レポートを data/plaud/reports/<period>.json に保存する。"""
     ensure_dirs()

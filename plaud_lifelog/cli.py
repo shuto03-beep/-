@@ -9,6 +9,7 @@ from . import __version__
 from .ai_processor import extract_tasks, generate_lifelog
 from .config import AI_ENABLED, AI_MODEL
 from .docx_parser import parse_docx
+from .exporter import entry_to_markdown, report_to_markdown
 from .report_generator import build_report
 from .storage import (
     build_entry_id,
@@ -16,8 +17,10 @@ from .storage import (
     list_entries,
     list_open_tasks,
     load_entry,
+    load_report,
     save_entry,
     save_report,
+    search_entries,
     update_task_status,
 )
 
@@ -56,6 +59,16 @@ def main(argv: list[str] | None = None) -> int:
     p_report.add_argument("--to", dest="date_to", help="終了日 YYYY-MM-DD (含む)")
     p_report.add_argument("--dry-run", action="store_true", help="保存せずに結果を表示")
 
+    p_search = sub.add_parser("search", help="全エントリを全文検索する")
+    p_search.add_argument("keyword", help="検索キーワード")
+    p_search.add_argument("--limit", type=int, default=20)
+
+    p_export = sub.add_parser("export", help="エントリ/レポートを Markdown で出力する")
+    g_target = p_export.add_mutually_exclusive_group(required=True)
+    g_target.add_argument("--entry", help="エントリID (例: 2026-04-11_asa-kai)")
+    g_target.add_argument("--report", dest="report_id", help="レポート period (例: 2026-04-05_to_2026-04-11)")
+    p_export.add_argument("-o", "--output", type=Path, help="出力ファイル (未指定なら標準出力)")
+
     args = parser.parse_args(argv)
 
     if args.command == "ingest":
@@ -70,6 +83,10 @@ def main(argv: list[str] | None = None) -> int:
         return cmd_mark(args)
     if args.command == "report":
         return cmd_report(args)
+    if args.command == "search":
+        return cmd_search(args)
+    if args.command == "export":
+        return cmd_export(args)
 
     parser.print_help()
     return 1
@@ -245,6 +262,45 @@ def cmd_report(args) -> int:
             print(
                 f"  [{t.get('priority', 'medium'):<6}] {t.get('title', '')}  (due={due})"
             )
+    return 0
+
+
+def cmd_search(args) -> int:
+    hits = search_entries(args.keyword, limit=args.limit)
+    if not hits:
+        print(f"(キーワード {args.keyword!r} にヒットなし)")
+        return 0
+    print(f"{'日付':<12} {'ID':<40} {'フィールド':<10} スニペット")
+    print("-" * 120)
+    for h in hits:
+        print(
+            f"{h['date']:<12} {h['id']:<40} {h['field']:<10} {h['snippet']}"
+        )
+    return 0
+
+
+def cmd_export(args) -> int:
+    if args.entry:
+        try:
+            entry = load_entry(args.entry)
+        except FileNotFoundError as e:
+            print(f"[error] {e}", file=sys.stderr)
+            return 2
+        md = entry_to_markdown(entry)
+    else:
+        try:
+            report = load_report(args.report_id)
+        except FileNotFoundError as e:
+            print(f"[error] {e}", file=sys.stderr)
+            return 2
+        md = report_to_markdown(report)
+
+    if args.output:
+        args.output.parent.mkdir(parents=True, exist_ok=True)
+        args.output.write_text(md, encoding="utf-8")
+        print(f"wrote: {args.output}")
+    else:
+        sys.stdout.write(md)
     return 0
 
 
