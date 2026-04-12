@@ -18,11 +18,18 @@ from typing import Any
 import requests
 
 # API ドメイン（リージョンによって異なる）
-# US: api-usw2.plaud.ai / EU: api-euc1.plaud.ai / Asia: api-apne1.plaud.ai
-_DEFAULT_API_DOMAIN = "https://api.plaud.ai"
+_API_DOMAINS = [
+    "https://api-apne1.plaud.ai",  # Asia Pacific (Japan)
+    "https://api-euc1.plaud.ai",   # EU
+    "https://api-usw2.plaud.ai",   # US West
+    "https://api.plaud.ai",        # Generic
+]
 
 # 取得するページサイズ
 _PAGE_SIZE = 50
+
+
+_resolved_domain: str | None = None  # 一度見つけたらキャッシュ
 
 
 def _get_config() -> tuple[str, str]:
@@ -34,11 +41,37 @@ def _get_config() -> tuple[str, str]:
             "web.plaud.ai → F12 → Console → localStorage.getItem('tokenstr') "
             "で取得してください。"
         )
-    # PLAUD_API_DOMAIN が未設定 or 空の場合はデフォルトを使う
+    # 明示指定がある場合はそれを使う
     domain = os.environ.get("PLAUD_API_DOMAIN") or ""
-    if not domain:
-        domain = _DEFAULT_API_DOMAIN
-    return token, domain
+    if domain:
+        return token, domain
+    # 自動検出: 複数のリージョンを試して最初に成功したものを使う
+    global _resolved_domain
+    if _resolved_domain:
+        return token, _resolved_domain
+    _resolved_domain = _auto_detect_domain(token)
+    return token, _resolved_domain
+
+
+def _auto_detect_domain(token: str) -> str:
+    """複数の API ドメインを試して正しいリージョンを自動検出する。"""
+    for domain in _API_DOMAINS:
+        try:
+            url = f"{domain}/file/simple/web"
+            resp = requests.get(
+                url,
+                headers=_headers(token),
+                params={"pageSize": 1, "page": 1},
+                timeout=10,
+            )
+            if resp.status_code != 401:
+                print(f"  [plaud] API domain detected: {domain}")
+                return domain
+        except requests.RequestException:
+            continue
+    # すべて失敗した場合は最初のドメインで試す
+    print(f"  [plaud] auto-detect failed, trying {_API_DOMAINS[0]}")
+    return _API_DOMAINS[0]
 
 
 def _headers(token: str) -> dict[str, str]:
