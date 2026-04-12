@@ -26,14 +26,17 @@ _PAGE_SIZE = 50
 
 def _get_config() -> tuple[str, str]:
     """トークンと API ドメインを環境変数から取得する。"""
-    token = os.environ.get("PLAUD_BEARER_TOKEN", "")
+    token = os.environ.get("PLAUD_BEARER_TOKEN") or ""
     if not token:
         raise RuntimeError(
             "PLAUD_BEARER_TOKEN が未設定です。\n"
             "web.plaud.ai → F12 → Console → localStorage.getItem('tokenstr') "
             "で取得してください。"
         )
-    domain = os.environ.get("PLAUD_API_DOMAIN", _DEFAULT_API_DOMAIN)
+    # PLAUD_API_DOMAIN が未設定 or 空の場合はデフォルトを使う
+    domain = os.environ.get("PLAUD_API_DOMAIN") or ""
+    if not domain:
+        domain = _DEFAULT_API_DOMAIN
     return token, domain
 
 
