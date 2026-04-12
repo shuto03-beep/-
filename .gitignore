@@ -15,3 +15,6 @@ data/cache/
 # 処理済みファイルは processed/ に移動後、Actions が自動コミット
 plaud_lifelog/samples/**/*.docx
 data/plaud/inbox/processed/**/*.docx
+
+# Obsidian
+.obsidian/
