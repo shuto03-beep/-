@@ -121,15 +121,48 @@ def list_recordings(limit: int = _PAGE_SIZE) -> list[dict]:
     # 非公式 API: /file/simple/web がファイル一覧
     url = f"{domain}/file/simple/web"
     data = _get(url, token, params={"pageSize": limit, "page": 1})
-    # レスポンス構造: {data: {list: [...], ...}} or {data: [...]}
-    inner = data.get("data") or data
-    if isinstance(inner, dict):
-        files = inner.get("list") or inner.get("items") or inner.get("records") or []
-    elif isinstance(inner, list):
-        files = inner
-    else:
-        files = []
+
+    # デバッグ: レスポンス構造を出力して正しいキーを特定する
+    if isinstance(data, dict):
+        print(f"  [plaud] response keys: {list(data.keys())}")
+        for k, v in data.items():
+            if isinstance(v, dict):
+                print(f"  [plaud]   {k}: dict with keys {list(v.keys())}")
+            elif isinstance(v, list):
+                print(f"  [plaud]   {k}: list of {len(v)} items")
+                if v:
+                    first = v[0]
+                    if isinstance(first, dict):
+                        print(f"  [plaud]   {k}[0] keys: {list(first.keys())}")
+            else:
+                print(f"  [plaud]   {k}: {type(v).__name__} = {str(v)[:80]}")
+
+    # レスポンス構造を柔軟にパース
+    files = _extract_file_list(data)
+    print(f"  [plaud] parsed {len(files)} recordings")
     return files
+
+
+def _extract_file_list(data: Any) -> list[dict]:
+    """API レスポンスから録音リストを柔軟に抽出する。"""
+    if isinstance(data, list):
+        return data
+
+    if not isinstance(data, dict):
+        return []
+
+    # 直接 list/items/records キーを探す
+    for key in ("list", "items", "records", "files", "data"):
+        val = data.get(key)
+        if isinstance(val, list) and val:
+            return val
+        if isinstance(val, dict):
+            # ネスト: data.data.list 等
+            inner = _extract_file_list(val)
+            if inner:
+                return inner
+
+    return []
 
 
 def get_recording_detail(file_id: str) -> dict:
