@@ -172,17 +172,23 @@ def get_recording_detail(file_id: str) -> dict:
     data = _get(url, token)
     inner = data.get("data") or data
 
-    # デバッグ: 最初の1件だけレスポンス構造をログ出力
+    # デバッグ: 最初の1件だけ data_content を持つキーを探してログ出力
     global _detail_debug_done
     if not _detail_debug_done and isinstance(inner, dict):
         _detail_debug_done = True
-        dcl = inner.get("data_content_list") or []
-        if isinstance(dcl, list) and dcl:
-            first = dcl[0] if isinstance(dcl[0], dict) else {}
-            text = first.get("data_content", "")
-            print(f"  [plaud-detail] data_content_list: {len(dcl)} items, first content len={len(text)}")
-        else:
-            print(f"  [plaud-detail] data_content_list: empty or missing. keys={sorted(inner.keys())}")
+        found = False
+        for key, val in inner.items():
+            if isinstance(val, list) and val:
+                for item in val:
+                    if isinstance(item, dict) and "data_content" in item:
+                        text = item.get("data_content", "")
+                        print(f"  [plaud-detail] FOUND: key={key!r}, data_content len={len(text)}, preview={text[:80]!r}")
+                        found = True
+                        break
+            if found:
+                break
+        if not found:
+            print(f"  [plaud-detail] data_content NOT FOUND in any list. keys={sorted(inner.keys())}")
 
     return inner
 

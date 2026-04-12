@@ -782,23 +782,24 @@ def _resolve_range(args) -> tuple[datetime, datetime]:
 # ---------- 補助関数 ----------
 
 def _extract_content_from_detail(detail: dict) -> str:
-    """detail レスポンスから data_content_list の本文を抽出する。"""
-    # data_content_list[].data_content が Plaud API の実際の構造
-    content_list = detail.get("data_content_list") or []
-    if isinstance(content_list, list):
-        for item in content_list:
+    """detail レスポンスから本文テキストを抽出する。
+
+    Plaud API は data_content をさまざまなキー名のリストに格納するため、
+    data_content を含むすべてのリストを走査する。
+    """
+    if not isinstance(detail, dict):
+        return ""
+
+    # すべてのキーを走査し、list 型で中に data_content を持つ dict があれば抽出
+    for key, val in detail.items():
+        if not isinstance(val, list) or not val:
+            continue
+        for item in val:
             if isinstance(item, dict):
                 text = item.get("data_content") or ""
-                if text:
-                    return str(text)
-    # content[].data_content も探す
-    content = detail.get("content") or []
-    if isinstance(content, list):
-        for item in content:
-            if isinstance(item, dict):
-                text = item.get("data_content") or ""
-                if text:
-                    return str(text)
+                if isinstance(text, str) and len(text) > 10:
+                    return text
+
     return ""
 
 
