@@ -18,7 +18,8 @@ from typing import Any
 import requests
 
 # API ドメイン（リージョンによって異なる）
-_DEFAULT_API_DOMAIN = "https://api-usw2.plaud.ai"
+# US: api-usw2.plaud.ai / EU: api-euc1.plaud.ai / Asia: api-apne1.plaud.ai
+_DEFAULT_API_DOMAIN = "https://api.plaud.ai"
 
 # 取得するページサイズ
 _PAGE_SIZE = 50
@@ -65,18 +66,25 @@ def list_recordings(limit: int = _PAGE_SIZE) -> list[dict]:
     戻り値は [{id, name, duration, created_at, status, ...}, ...] のリスト。
     """
     token, domain = _get_config()
-    url = f"{domain}/v1/files"
-    data = _get(url, token, params={"page_size": limit, "page": 1})
-    files = data.get("data") or data.get("files") or []
-    if isinstance(files, dict):
-        files = files.get("list") or files.get("items") or []
+    # 非公式 API: /file/simple/web がファイル一覧
+    url = f"{domain}/file/simple/web"
+    data = _get(url, token, params={"pageSize": limit, "page": 1})
+    # レスポンス構造: {data: {list: [...], ...}} or {data: [...]}
+    inner = data.get("data") or data
+    if isinstance(inner, dict):
+        files = inner.get("list") or inner.get("items") or inner.get("records") or []
+    elif isinstance(inner, list):
+        files = inner
+    else:
+        files = []
     return files
 
 
 def get_recording_detail(file_id: str) -> dict:
     """1 件の録音の詳細（メタデータ + 文字起こし + 要約）を取得する。"""
     token, domain = _get_config()
-    url = f"{domain}/v1/files/{file_id}"
+    # 非公式 API: /file/detail/{file_id}
+    url = f"{domain}/file/detail/{file_id}"
     data = _get(url, token)
     return data.get("data") or data
 
