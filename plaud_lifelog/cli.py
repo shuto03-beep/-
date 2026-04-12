@@ -11,6 +11,7 @@ from .config import AI_ENABLED, AI_MODEL
 from .docx_parser import parse_docx
 from .exporter import entry_to_markdown, report_to_markdown
 from .notifier import format_report, send_text
+from .notion_export import push_entry_to_notion
 from .plaud_client import (
     get_recording_date,
     get_recording_detail,
@@ -568,9 +569,16 @@ def cmd_sync(args) -> int:
         saved_path = save_entry(entry)
         existing_ids.add(entry_id)
         created += 1
+
+        # Notion に自動追加（設定済みの場合のみ）
+        notion_result = push_entry_to_notion(entry)
+        notion_msg = ""
+        if notion_result:
+            notion_msg = f"  notion={notion_result.get('url', 'ok')}"
+
         print(
             f"       -> {saved_path}  tasks={len(tasks)}  "
-            f"tags={', '.join(lifelog.get('tags', []))}"
+            f"tags={', '.join(lifelog.get('tags', []))}{notion_msg}"
         )
 
     if date_skipped:
