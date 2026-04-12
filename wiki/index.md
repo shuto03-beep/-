@@ -141,8 +141,13 @@ updated: 2026-04-12
 | [[shibuya-united-reform]] | 渋谷区「渋谷ユナイテッド」部活動改革プロジェクト | draft |
 | [[inami-inachalle-official]] | 稲美町「いなチャレ」公式情報の統合 | draft |
 
-### シンセシス (syntheses/) — 0件
-<!-- 3つ以上のソースを横断する分析。/wiki-compile で生成 -->
+### シンセシス (syntheses/) — 3件
+
+| ページ | タイトル | ステータス |
+|--------|---------|----------|
+| [[inachalle-vs-senkou-jirei]] | いなチャレと全国先行事例の比較分析 | draft |
+| [[shigoto-katei-shiko-framework]] | 仕事と家庭を貫く思考フレームワーク | draft |
+| [[ai-gyousei-katsuyou]] | AIが行政業務を変える | draft |
 
 ### アウトプット (outputs/) — 1件
 
