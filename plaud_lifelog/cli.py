@@ -94,7 +94,8 @@ def main(argv: list[str] | None = None) -> int:
     p_export.add_argument("-o", "--output", type=Path, help="出力先 (--all の場合はディレクトリ、それ以外はファイル)")
 
     p_sync = sub.add_parser("sync", help="Plaud Web から新しい録音を自動取得してエントリ作成")
-    p_sync.add_argument("--limit", type=int, default=20, help="取得する録音の最大数")
+    p_sync.add_argument("--limit", type=int, default=50, help="API から取得する最大件数")
+    p_sync.add_argument("--days", type=int, default=0, help="直近 N 日の録音だけ処理（0=全件）")
     p_sync.add_argument("--dry-run", action="store_true", help="取得だけして保存しない")
 
     p_reindex = sub.add_parser("reindex", help="entries/ を再走査して index.json と tasks.json を再構築")
@@ -479,12 +480,32 @@ def cmd_sync(args) -> int:
 
     print(f"[sync] Plaud Web から {len(recordings)} 件の録音を取得")
 
+    # 日付フィルタ: --days が指定されていれば直近 N 日のみ
+    cutoff = None
+    if args.days and args.days > 0:
+        cutoff = datetime.now() - timedelta(days=args.days)
+        print(f"[sync] {cutoff.date()} 以降の録音のみ処理")
+
     # 既存エントリの ID 集合（重複スキップ用）
     existing_ids = {e["id"] for e in list_entries()}
 
     created = 0
     skipped = 0
+    date_skipped = 0
     for i, rec in enumerate(recordings, start=1):
+        # リスト段階で日付フィルタ（API 詳細を取る前に判定）
+        recorded_at = get_recording_date(rec)
+        title = get_recording_title(rec)
+        entry_id = build_entry_id(recorded_at, title)
+
+        if cutoff and recorded_at < cutoff:
+            date_skipped += 1
+            continue
+
+        if entry_id in existing_ids:
+            skipped += 1
+            continue
+
         file_id = rec.get("id") or rec.get("file_id") or ""
         try:
             detail = get_recording_detail(file_id)
@@ -495,10 +516,6 @@ def cmd_sync(args) -> int:
         title = get_recording_title(detail)
         recorded_at = get_recording_date(detail)
         entry_id = build_entry_id(recorded_at, title)
-
-        if entry_id in existing_ids:
-            skipped += 1
-            continue
 
         print(f"  [{i}] {recorded_at.date()} {title}")
 
@@ -556,7 +573,9 @@ def cmd_sync(args) -> int:
             f"tags={', '.join(lifelog.get('tags', []))}"
         )
 
-    print(f"\n[sync] done: created={created} skipped={skipped}")
+    if date_skipped:
+        print(f"  (日付フィルタで {date_skipped} 件スキップ)")
+    print(f"\n[sync] done: created={created} skipped={skipped} date_filtered={date_skipped}")
     return 0
 
 
