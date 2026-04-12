@@ -1,0 +1,29 @@
+{
+  "id": "2026-03-28_plaud.aiへようこそ!",
+  "source_file": "plaud-web:4388c92954f148cbb260256a5f88c6f3",
+  "recorded_at": "2026-03-28T13:21:42.527000",
+  "ingested_at": "2026-04-12T10:43:35",
+  "title": "Plaud.aiへようこそ！",
+  "raw": {
+    "transcript": "",
+    "summary": ""
+  },
+  "lifelog": {
+    "headline": "Plaud.aiへようこそ！",
+    "tags": [
+      "plaud"
+    ],
+    "source": "raw"
+  },
+  "tasks": [],
+  "task_analysis": {
+    "total": 0,
+    "by_priority": {
+      "high": 0,
+      "medium": 0,
+      "low": 0
+    },
+    "effort_summary": "",
+    "blockers": []
+  }
+}

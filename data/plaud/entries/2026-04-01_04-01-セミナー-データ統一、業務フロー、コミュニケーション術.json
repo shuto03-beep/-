@@ -1,0 +1,29 @@
+{
+  "id": "2026-04-01_04-01-セミナー-データ統一、業務フロー、コミュニケーション術",
+  "source_file": "plaud-web:8a920fe3884f5486fc155127fca52c58",
+  "recorded_at": "2026-04-01T02:41:20",
+  "ingested_at": "2026-04-12T10:43:28",
+  "title": "04-01 セミナー: データ統一、業務フロー、コミュニケーション術",
+  "raw": {
+    "transcript": "",
+    "summary": ""
+  },
+  "lifelog": {
+    "headline": "04-01 セミナー: データ統一、業務フロー、コミュニケーション術",
+    "tags": [
+      "plaud"
+    ],
+    "source": "raw"
+  },
+  "tasks": [],
+  "task_analysis": {
+    "total": 0,
+    "by_priority": {
+      "high": 0,
+      "medium": 0,
+      "low": 0
+    },
+    "effort_summary": "",
+    "blockers": []
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "2026-04-05_04-06-締め切り逼迫下での優先順位再構築重要度×緊急度による自動選別とgoo",
+  "source_file": "plaud-web:d71c0b4404a1d2ca0f3cba7be3935857",
+  "recorded_at": "2026-04-05T22:30:28",
+  "ingested_at": "2026-04-12T10:43:17",
+  "title": "04-06 締め切り逼迫下での優先順位再構築：重要度×緊急度による自動選別とGoogleカレンダー一元実行ワークフロー",
+  "raw": {
+    "transcript": "",
+    "summary": ""
+  },
+  "lifelog": {
+    "headline": "04-06 締め切り逼迫下での優先順位再構築：重要度×緊急度による自動選別とGoogleカレンダー一元実行ワークフロー",
+    "tags": [
+      "plaud"
+    ],
+    "source": "raw"
+  },
+  "tasks": [],
+  "task_analysis": {
+    "total": 0,
+    "by_priority": {
+      "high": 0,
+      "medium": 0,
+      "low": 0
+    },
+    "effort_summary": "",
+    "blockers": []
+  }
+}
