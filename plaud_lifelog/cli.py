@@ -11,6 +11,14 @@ from .config import AI_ENABLED, AI_MODEL
 from .docx_parser import parse_docx
 from .exporter import entry_to_markdown, report_to_markdown
 from .notifier import format_report, send_text
+from .plaud_client import (
+    get_recording_date,
+    get_recording_detail,
+    get_recording_title,
+    get_summary,
+    get_transcript,
+    list_recordings,
+)
 from .report_generator import build_report
 from .stats import compute_stats, generate_trend_analysis
 from .storage import (
@@ -85,6 +93,10 @@ def main(argv: list[str] | None = None) -> int:
     g_target.add_argument("--all", action="store_true", help="全エントリを Markdown でフォルダに書き出す")
     p_export.add_argument("-o", "--output", type=Path, help="出力先 (--all の場合はディレクトリ、それ以外はファイル)")
 
+    p_sync = sub.add_parser("sync", help="Plaud Web から新しい録音を自動取得してエントリ作成")
+    p_sync.add_argument("--limit", type=int, default=20, help="取得する録音の最大数")
+    p_sync.add_argument("--dry-run", action="store_true", help="取得だけして保存しない")
+
     p_reindex = sub.add_parser("reindex", help="entries/ を再走査して index.json と tasks.json を再構築")
     p_delete = sub.add_parser("delete", help="指定エントリを削除する")
     p_delete.add_argument("entry_id", help="削除するエントリID")
@@ -120,6 +132,8 @@ def main(argv: list[str] | None = None) -> int:
         return cmd_search(args)
     if args.command == "export":
         return cmd_export(args)
+    if args.command == "sync":
+        return cmd_sync(args)
     if args.command == "reindex":
         return cmd_reindex(args)
     if args.command == "delete":
@@ -442,6 +456,107 @@ def cmd_export(args) -> int:
         print(f"wrote: {args.output}")
     else:
         sys.stdout.write(md)
+    return 0
+
+
+def cmd_sync(args) -> int:
+    """Plaud Web から新しい録音を取得し、エントリを自動作成する。"""
+    try:
+        recordings = list_recordings(limit=args.limit)
+    except Exception as e:
+        print(f"[error] Plaud Web への接続に失敗: {e}", file=sys.stderr)
+        print(
+            "  PLAUD_BEARER_TOKEN を設定してください。\n"
+            "  取得方法: web.plaud.ai → F12 → Console → "
+            "localStorage.getItem('tokenstr')",
+            file=sys.stderr,
+        )
+        return 2
+
+    if not recordings:
+        print("[sync] 録音が見つかりません")
+        return 0
+
+    print(f"[sync] Plaud Web から {len(recordings)} 件の録音を取得")
+
+    # 既存エントリの ID 集合（重複スキップ用）
+    existing_ids = {e["id"] for e in list_entries()}
+
+    created = 0
+    skipped = 0
+    for i, rec in enumerate(recordings, start=1):
+        file_id = rec.get("id") or rec.get("file_id") or ""
+        try:
+            detail = get_recording_detail(file_id)
+        except Exception as e:
+            print(f"  [{i}] error: {e}")
+            continue
+
+        title = get_recording_title(detail)
+        recorded_at = get_recording_date(detail)
+        entry_id = build_entry_id(recorded_at, title)
+
+        if entry_id in existing_ids:
+            skipped += 1
+            continue
+
+        print(f"  [{i}] {recorded_at.date()} {title}")
+
+        transcript = get_transcript(file_id)
+        summary = get_summary(file_id)
+
+        # ParsedDoc 相当のデータを手動構築
+        from .models import ParsedDoc
+
+        parsed = ParsedDoc(
+            title=title,
+            recorded_at=recorded_at,
+            transcript=transcript,
+            summary=summary,
+            raw_text=f"{summary}\n\n{transcript}",
+            source_file=f"plaud-web:{file_id}",
+        )
+
+        print(f"       transcript={len(transcript)}字  summary={len(summary)}字")
+        print(f"       AI 処理中...")
+
+        lifelog = generate_lifelog(parsed)
+        task_result = extract_tasks(parsed)
+        tasks = [dict(t) for t in task_result.get("tasks", [])]
+
+        for j, t in enumerate(tasks):
+            t["id"] = f"t_{recorded_at.strftime('%Y%m%d')}_{j+1:02d}"
+            t["status"] = "open"
+            t["source_entry_id"] = entry_id
+
+        task_analysis = _summarize_task_analysis(tasks, task_result.get("analysis", {}))
+
+        entry = {
+            "id": entry_id,
+            "source_file": f"plaud-web:{file_id}",
+            "recorded_at": recorded_at.isoformat(),
+            "ingested_at": datetime.now().isoformat(timespec="seconds"),
+            "title": title,
+            "raw": {"transcript": transcript, "summary": summary},
+            "lifelog": lifelog,
+            "tasks": tasks,
+            "task_analysis": task_analysis,
+        }
+
+        if args.dry_run:
+            print(f"       [dry-run] スキップ")
+            created += 1
+            continue
+
+        saved_path = save_entry(entry)
+        existing_ids.add(entry_id)
+        created += 1
+        print(
+            f"       -> {saved_path}  tasks={len(tasks)}  "
+            f"tags={', '.join(lifelog.get('tags', []))}"
+        )
+
+    print(f"\n[sync] done: created={created} skipped={skipped}")
     return 0
 
 
