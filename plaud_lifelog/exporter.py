@@ -1,20 +1,51 @@
 """エントリ / レポートを Markdown にレンダリングする。"""
 import re
-from typing import Iterable
 
 # @2026-04-11_朝会 のような参照を検出する
-# スラグには日本語も入るので \w+ ではなく非空白・非記号の連続を許容
-_ENTRY_REF_RE = re.compile(r"@(\d{4}-\d{2}-\d{2}_[^\s、。,.!?\"'()（）\[\]]+)")
+# スラグには日本語も入るので、既知 ID セットでの最長マッチで曖昧さを解く
+_ENTRY_REF_START_RE = re.compile(r"@(\d{4}-\d{2}-\d{2}_)")
+# known_ids を使えない場合のフォールバック（空白・記号で切る素朴版）
+_ENTRY_REF_NAIVE_RE = re.compile(r"@(\d{4}-\d{2}-\d{2}_[^\s、。,.!?\"'()（）\[\]]+)")
 
 
-def linkify_refs(text: str) -> str:
-    """@<entry_id> を Markdown リンクに変換する（Obsidian 互換の [[...]] 風）。"""
+def linkify_refs(text: str, known_ids: set[str] | None = None) -> str:
+    """@<entry_id> を Obsidian 互換の [[<entry_id>]] に変換する。
+
+    known_ids が指定された場合はそれとの最長一致で置換するため、
+    日本語の単語境界がなくても正確にリンク化できる。
+    """
     if not text:
         return text
-    return _ENTRY_REF_RE.sub(r"[[\1]]", text)
+    if known_ids is None:
+        # 後方互換: 素朴な正規表現（日本語スラグでは誤マッチし得る）
+        return _ENTRY_REF_NAIVE_RE.sub(r"[[\1]]", text)
+
+    # 既知 ID を長い順にソートして最長プレフィックスマッチ
+    sorted_ids = sorted(known_ids, key=len, reverse=True)
+
+    out: list[str] = []
+    i = 0
+    while i < len(text):
+        if text[i] == "@":
+            # @ 直後が日付プレフィックスか確認
+            m = _ENTRY_REF_START_RE.match(text, i)
+            if m:
+                after_at = text[i + 1:]
+                best: str | None = None
+                for id_ in sorted_ids:
+                    if after_at.startswith(id_):
+                        best = id_
+                        break
+                if best is not None:
+                    out.append(f"[[{best}]]")
+                    i += 1 + len(best)
+                    continue
+        out.append(text[i])
+        i += 1
+    return "".join(out)
 
 
-def entry_to_markdown(entry: dict) -> str:
+def entry_to_markdown(entry: dict, known_ids: set[str] | None = None) -> str:
     """1 エントリを読み返し用の Markdown に整形する。"""
     lifelog = entry.get("lifelog") or {}
     raw = entry.get("raw") or {}
@@ -47,7 +78,7 @@ def entry_to_markdown(entry: dict) -> str:
         lines.append("")
     narrative = lifelog.get("narrative")
     if narrative:
-        lines.append(linkify_refs(narrative))
+        lines.append(linkify_refs(narrative, known_ids))
         lines.append("")
 
     # キーポイント
@@ -64,7 +95,9 @@ def entry_to_markdown(entry: dict) -> str:
         lines.append("### メモ")
         for n in notes:
             created = (n.get("created_at") or "")[:10]
-            lines.append(f"- {linkify_refs(n.get('text', ''))}  _(追記: {created})_")
+            lines.append(
+                f"- {linkify_refs(n.get('text', ''), known_ids)}  _(追記: {created})_"
+            )
         lines.append("")
 
     # タスク

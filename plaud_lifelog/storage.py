@@ -273,8 +273,13 @@ def _dump_json(path: Path, data: Any) -> None:
     )
 
 
-def _load_json(path: Path) -> Any:
+def load_json(path: Path) -> Any:
+    """JSON ファイルを読み込む薄いラッパー（stats などから利用）。"""
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+# 後方互換の private 別名（旧コードが `_load_json` を import していた場合用）
+_load_json = load_json
 
 
 def _slugify(text: str) -> str:

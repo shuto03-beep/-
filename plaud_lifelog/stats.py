@@ -4,7 +4,7 @@ from pathlib import Path
 from typing import Any
 
 from .config import AI_ENABLED, AI_MODEL, AI_TIMEOUT, ANTHROPIC_API_KEY, ENTRIES_DIR
-from .storage import _load_json  # type: ignore[attr-defined]
+from .storage import load_json
 
 
 def compute_stats() -> dict[str, Any]:
@@ -215,7 +215,7 @@ def _load_all_entries() -> list[dict]:
         return entries
     for path in sorted(ENTRIES_DIR.glob("*.json")):
         try:
-            entries.append(_load_json(Path(path)))
+            entries.append(load_json(Path(path)))
         except Exception:  # noqa: BLE001
             continue
     return entries

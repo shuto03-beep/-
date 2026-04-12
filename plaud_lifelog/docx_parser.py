@@ -60,8 +60,10 @@ def parse_docx(path: Path) -> ParsedDoc:
 
 def _extract_title(paragraphs: list[str], path: Path) -> str:
     for p in paragraphs:
-        # 行頭の日付（と直後の区切り）を除去してからタイトル候補にする
-        stripped = _DATE_RE.sub("", p, count=1).strip(" \u3000-:：")
+        # 行頭の日付（と直後の区切り）を除去してからタイトル候補にする。
+        # 「YYYY年MM月DD日 会議」のように日本語日付末尾の「日」が残るケースも
+        # あるので、区切り候補に「日」「月」「年」も含めてストリップする。
+        stripped = _DATE_RE.sub("", p, count=1).strip(" \u3000-:：日月年")
         if not stripped:
             continue
         if 2 <= len(stripped) <= 80:

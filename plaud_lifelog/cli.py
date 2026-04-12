@@ -371,6 +371,9 @@ def cmd_search(args) -> int:
 
 
 def cmd_export(args) -> int:
+    # 既知エントリID集合（@ref の最長マッチ照合用）
+    known_ids = {e["id"] for e in list_entries()}
+
     if args.all:
         out_dir = args.output or Path("data/plaud/export_md")
         out_dir.mkdir(parents=True, exist_ok=True)
@@ -385,7 +388,7 @@ def cmd_export(args) -> int:
                 entry = load_entry(entry_id)
             except FileNotFoundError:
                 continue
-            md = entry_to_markdown(entry)
+            md = entry_to_markdown(entry, known_ids=known_ids)
             (out_dir / f"{entry_id}.md").write_text(md, encoding="utf-8")
             written += 1
         print(f"wrote {written} files -> {out_dir}")
@@ -397,7 +400,7 @@ def cmd_export(args) -> int:
         except FileNotFoundError as e:
             print(f"[error] {e}", file=sys.stderr)
             return 2
-        md = entry_to_markdown(entry)
+        md = entry_to_markdown(entry, known_ids=known_ids)
     else:
         try:
             report = load_report(args.report_id)
@@ -550,6 +553,12 @@ def _resolve_range(args) -> tuple[datetime, datetime]:
         start = end - timedelta(days=args.days)
     elif end is None:
         end = start + timedelta(days=args.days)
+
+    if end <= start:
+        raise ValueError(
+            f"期間の終点が始点以前です: {start.date()} 〜 {end.date()} "
+            "(--days は正の値、--from/--to は from <= to を指定してください)"
+        )
 
     return start, end
 
