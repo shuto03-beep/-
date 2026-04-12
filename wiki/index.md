@@ -13,18 +13,25 @@
 - [[nikkei225]] — 日経225（株価指数）
 - [[sharpe-ratio]] — シャープレシオ（リスク調整後リターン） `stub`
 - [[sector-analysis]] — セクター分析（業種別パフォーマンス比較） `stub`
+- [[bukatsu-chiiki-tenkai]] — 部活動の地域展開（公立中学校の部活動改革） `stub`
+- [[chiiki-club-nintei-seido]] — 地域クラブ活動認定制度 `stub`
+- [[kyouin-hatarakikata-kaikaku]] — 教員の働き方改革 `stub`
+- [[shoshika-taiou]] — 少子化対応 `stub`
 
 ## Entities
 
 - [[yamamoto-kenichi]] — 山本健一（MACD戦略の著者）
 - [[suzuki-miho]] — 鈴木美穂（RSIダイバージェンス戦略の著者）
 - [[j-welles-wilder]] — J. Welles Wilder（RSI・ATRの開発者）
+- [[monbukagakusho]] — 文部科学省
+- [[sports-cho]] — スポーツ庁
 
 ## Sources
 
 - [[yamamoto-2026-macd-swing-strategy]] — MACDを活用したスウィングトレード戦略（2026-03-15）
 - [[suzuki-2025-rsi-divergence]] — RSIダイバージェンスによる逆張り戦略（2025-11-20）
 - [[nikkei225-sector-performance-2025]] — 日経225セクター別パフォーマンス 2025年
+- [[mext-2025-bukatsu-chiiki-tenkai-guideline]] — 部活動改革及び地域クラブ活動の推進等に関する総合的なガイドライン（2025-12-22）
 
 ## Syntheses
 

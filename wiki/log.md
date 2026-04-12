@@ -12,3 +12,4 @@
 | 2026-04-12 | Query | macd-rsi-combined-strategy-effectiveness | 「MACDとRSI併用戦略の有効性」を検索。glossary→Grep→5ファイル読み込みで回答生成。outputs/に保存 |
 | 2026-04-12 | Lint | index.md | outputs/macd-rsi-combined-strategy-effectiveness がindex未登録 → 自動追加 |
 | 2026-04-12 | Lint | 全体 | 全チェック完了。壊れたリンク0、glossary不整合0、矛盾0、古い情報0、未処理ソース0、原文参照切れ0。自動修正1件 |
+| 2026-04-12 | Ingest | mext-2025-bukatsu-chiiki-tenkai-guideline | Web検索で情報収集→raw/articles/に保存→ソース要約作成。概念: bukatsu-chiiki-tenkai(stub), chiiki-club-nintei-seido(stub), kyouin-hatarakikata-kaikaku(stub), shoshika-taiou(stub)。エンティティ: monbukagakusho, sports-cho |
