@@ -170,7 +170,22 @@ def get_recording_detail(file_id: str) -> dict:
     # 非公式 API: /file/detail/{file_id}
     url = f"{domain}/file/detail/{file_id}"
     data = _get(url, token)
-    return data.get("data") or data
+    inner = data.get("data") or data
+
+    # デバッグ: 初回のみレスポンス構造をログ出力
+    if isinstance(inner, dict):
+        print(f"  [plaud] detail keys: {sorted(inner.keys())}")
+        # 文字起こし・要約の候補フィールドを探す
+        for key in sorted(inner.keys()):
+            val = inner[key]
+            if isinstance(val, str) and len(val) > 50:
+                print(f"  [plaud]   {key}: str len={len(val)} preview={val[:60]}...")
+            elif isinstance(val, list) and val:
+                print(f"  [plaud]   {key}: list of {len(val)}")
+            elif isinstance(val, dict) and val:
+                print(f"  [plaud]   {key}: dict keys={list(val.keys())[:10]}")
+
+    return inner
 
 
 def get_transcript(file_id: str) -> str:

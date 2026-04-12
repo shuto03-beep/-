@@ -97,6 +97,7 @@ def main(argv: list[str] | None = None) -> int:
     p_sync = sub.add_parser("sync", help="Plaud Web から新しい録音を自動取得してエントリ作成")
     p_sync.add_argument("--limit", type=int, default=50, help="API から取得する最大件数")
     p_sync.add_argument("--days", type=int, default=0, help="直近 N 日の録音だけ処理（0=全件）")
+    p_sync.add_argument("--no-analyze", action="store_true", help="Claude 分析をスキップ（生データ保存のみ）")
     p_sync.add_argument("--dry-run", action="store_true", help="取得だけして保存しない")
 
     p_reindex = sub.add_parser("reindex", help="entries/ を再走査して index.json と tasks.json を再構築")
@@ -536,11 +537,16 @@ def cmd_sync(args) -> int:
         )
 
         print(f"       transcript={len(transcript)}字  summary={len(summary)}字")
-        print(f"       AI 処理中...")
-
-        lifelog = generate_lifelog(parsed)
-        task_result = extract_tasks(parsed)
-        tasks = [dict(t) for t in task_result.get("tasks", [])]
+        if args.no_analyze:
+            # 生データ保存モード（GitHub Actions 用）
+            lifelog = {"headline": title, "tags": ["plaud"], "source": "raw"}
+            tasks = []
+            task_result = {"analysis": {}}
+        else:
+            print(f"       AI 処理中...")
+            lifelog = generate_lifelog(parsed)
+            task_result = extract_tasks(parsed)
+            tasks = [dict(t) for t in task_result.get("tasks", [])]
 
         for j, t in enumerate(tasks):
             t["id"] = f"t_{recorded_at.strftime('%Y%m%d')}_{j+1:02d}"

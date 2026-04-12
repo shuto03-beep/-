@@ -31,12 +31,9 @@ jobs:
 
       - name: Plaud Web から新しい録音を自動取得
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           PLAUD_BEARER_TOKEN: ${{ secrets.PLAUD_BEARER_TOKEN }}
           PLAUD_API_DOMAIN: ${{ secrets.PLAUD_API_DOMAIN }}
-          NOTION_API_TOKEN: ${{ secrets.NOTION_API_TOKEN }}
-          NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
-        run: python -m plaud_lifelog sync --days 2
+        run: python -m plaud_lifelog sync --days 2 --no-analyze
 
       - name: エントリを保存
         run: |
