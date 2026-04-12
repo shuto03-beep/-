@@ -1,0 +1,34 @@
+{
+  "id": "2026-04-05_04-05-カジュアル会話-朝の挨拶・天気・花見の予定共有",
+  "source_file": "plaud-web:6b87e6354d3585e06886009bad905280",
+  "recorded_at": "2026-04-05T01:38:14",
+  "ingested_at": "2026-04-12T07:48:58",
+  "title": "04-05 カジュアル会話: 朝の挨拶・天気・花見の予定共有",
+  "raw": {
+    "transcript": "",
+    "summary": ""
+  },
+  "lifelog": {
+    "headline": "04-05 カジュアル会話: 朝の挨拶・天気・花見の予定共有",
+    "narrative": "",
+    "tags": [
+      "plaud"
+    ],
+    "people": [],
+    "locations": [],
+    "mood": "",
+    "key_points": [],
+    "source": "fallback"
+  },
+  "tasks": [],
+  "task_analysis": {
+    "total": 0,
+    "by_priority": {
+      "high": 0,
+      "medium": 0,
+      "low": 0
+    },
+    "effort_summary": "(AI 未使用のためタスク抽出はスキップ)",
+    "blockers": []
+  }
+}

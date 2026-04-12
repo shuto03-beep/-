@@ -1,0 +1,34 @@
+{
+  "id": "2026-04-02_04-02-定例会議-コミセン設備・オンライン申請運用・イベント天候対応・ai活",
+  "source_file": "plaud-web:ed255b56a97cd16c312842b4b2e4a856",
+  "recorded_at": "2026-04-02T01:32:35",
+  "ingested_at": "2026-04-12T07:49:19",
+  "title": "04-02 定例会議: コミセン設備・オンライン申請運用・イベント天候対応・AI活用・地域クラブ登録",
+  "raw": {
+    "transcript": "",
+    "summary": ""
+  },
+  "lifelog": {
+    "headline": "04-02 定例会議: コミセン設備・オンライン申請運用・イベント天候対応・AI",
+    "narrative": "",
+    "tags": [
+      "plaud"
+    ],
+    "people": [],
+    "locations": [],
+    "mood": "",
+    "key_points": [],
+    "source": "fallback"
+  },
+  "tasks": [],
+  "task_analysis": {
+    "total": 0,
+    "by_priority": {
+      "high": 0,
+      "medium": 0,
+      "low": 0
+    },
+    "effort_summary": "(AI 未使用のためタスク抽出はスキップ)",
+    "blockers": []
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "2026-04-02_04-03-日常、学習、仕事、自己啓発が混在する音声記録の分析",
+  "source_file": "plaud-web:f198f445749c14f0d5f70d0d2201aa73",
+  "recorded_at": "2026-04-02T21:48:30",
+  "ingested_at": "2026-04-12T07:49:13",
+  "title": "04-03 日常、学習、仕事、自己啓発が混在する音声記録の分析",
+  "raw": {
+    "transcript": "",
+    "summary": ""
+  },
+  "lifelog": {
+    "headline": "04-03 日常、学習、仕事、自己啓発が混在する音声記録の分析",
+    "narrative": "",
+    "tags": [
+      "plaud"
+    ],
+    "people": [],
+    "locations": [],
+    "mood": "",
+    "key_points": [],
+    "source": "fallback"
+  },
+  "tasks": [],
+  "task_analysis": {
+    "total": 0,
+    "by_priority": {
+      "high": 0,
+      "medium": 0,
+      "low": 0
+    },
+    "effort_summary": "(AI 未使用のためタスク抽出はスキップ)",
+    "blockers": []
+  }
+}

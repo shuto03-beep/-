@@ -1,0 +1,34 @@
+{
+  "id": "2026-04-09_新規録音-26",
+  "source_file": "plaud-web:dc1165cd44b945a7c55627c3bab9f015",
+  "recorded_at": "2026-04-09T07:45:56",
+  "ingested_at": "2026-04-12T07:48:22",
+  "title": "新規録音 26",
+  "raw": {
+    "transcript": "",
+    "summary": ""
+  },
+  "lifelog": {
+    "headline": "新規録音 26",
+    "narrative": "",
+    "tags": [
+      "plaud"
+    ],
+    "people": [],
+    "locations": [],
+    "mood": "",
+    "key_points": [],
+    "source": "fallback"
+  },
+  "tasks": [],
+  "task_analysis": {
+    "total": 0,
+    "by_priority": {
+      "high": 0,
+      "medium": 0,
+      "low": 0
+    },
+    "effort_summary": "(AI 未使用のためタスク抽出はスキップ)",
+    "blockers": []
+  }
+}
