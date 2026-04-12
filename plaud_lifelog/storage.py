@@ -66,6 +66,61 @@ def list_open_tasks(include_done: bool = False) -> list[dict]:
     return tasks
 
 
+def reindex() -> dict[str, int]:
+    """entries/ を全走査して index.json と tasks.json を完全再構築する。
+
+    手動編集や外部ツールによる直接書き込みで index/tasks と entries が
+    不整合になった場合に、ワンコマンドで修復するためのユーティリティ。
+    """
+    ensure_dirs()
+    index: list[dict] = []
+    all_tasks: list[dict] = []
+
+    for path in sorted(ENTRIES_DIR.glob("*.json")):
+        try:
+            entry = load_json(path)
+        except (json.JSONDecodeError, OSError):
+            continue
+        if not isinstance(entry, dict) or "id" not in entry:
+            continue
+        index.append({
+            "id": entry["id"],
+            "title": entry.get("title", ""),
+            "recorded_at": entry.get("recorded_at"),
+            "headline": (entry.get("lifelog") or {}).get("headline", ""),
+            "tags": (entry.get("lifelog") or {}).get("tags", []),
+            "task_count": len(entry.get("tasks") or []),
+        })
+        for t in entry.get("tasks") or []:
+            all_tasks.append(t)
+
+    _dump_json(INDEX_FILE, index)
+    _dump_json(TASKS_FILE, all_tasks)
+    return {"entries": len(index), "tasks": len(all_tasks)}
+
+
+def delete_entry(entry_id: str) -> None:
+    """エントリを削除し、index.json と tasks.json からも除去する。"""
+    path = ENTRIES_DIR / f"{entry_id}.json"
+    if not path.exists():
+        raise FileNotFoundError(f"entry not found: {entry_id}")
+    path.unlink()
+
+    # index 更新
+    if INDEX_FILE.exists():
+        idx = load_json(INDEX_FILE)
+        if isinstance(idx, list):
+            idx = [e for e in idx if e.get("id") != entry_id]
+            _dump_json(INDEX_FILE, idx)
+
+    # tasks 更新
+    if TASKS_FILE.exists():
+        tasks = load_json(TASKS_FILE)
+        if isinstance(tasks, list):
+            tasks = [t for t in tasks if t.get("source_entry_id") != entry_id]
+            _dump_json(TASKS_FILE, tasks)
+
+
 def append_note(entry_id: str, text: str) -> dict:
     """エントリに手書きノートを追記し、保存する。戻り値は追加されたノート dict。"""
     if not text or not text.strip():

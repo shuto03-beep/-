@@ -48,6 +48,25 @@ python -m plaud_lifelog list
 python -m plaud_lifelog list --limit 5
 ```
 
+### インデックス再構築
+
+```bash
+python -m plaud_lifelog reindex
+```
+
+- `data/plaud/entries/*.json` を全走査して `index.json` と `tasks.json` を
+  完全に再構築する。手動で JSON を編集した場合や、外部ツールでエントリを
+  直接追加した場合に整合性を復旧する用途。
+
+### エントリ削除
+
+```bash
+python -m plaud_lifelog delete 2026-04-11_朝会
+python -m plaud_lifelog delete 2026-04-11_朝会 --yes   # 確認スキップ
+```
+
+- エントリ JSON ファイルを削除し、index.json と tasks.json からも除去する。
+
 ### タスク一覧
 
 ```bash
@@ -181,6 +200,7 @@ data/plaud/inbox/       ← ここに Plaud Web の Word を追加
 - サブフォルダ対応（`-r` 付きで走査）
 - inbox 配下の生 docx は `.gitignore` で除外されるためリポジトリには残らない
 - 既存IDは自動スキップ、`--force` 相当の上書きはしないので安全
+- 取り込みに成功した docx は自動的に `inbox/processed/` に移動される
 
 ### 週次自動配信（`.github/workflows/plaud_weekly.yml`）
 

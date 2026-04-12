@@ -1,0 +1,34 @@
+{
+  "id": "2026-04-13_テスト取込",
+  "source_file": "data/plaud/inbox/2026-04-13_test.docx",
+  "recorded_at": "2026-04-13T00:00:00",
+  "ingested_at": "2026-04-12T01:58:56",
+  "title": "テスト取込",
+  "raw": {
+    "transcript": "",
+    "summary": "inbox自動テスト"
+  },
+  "lifelog": {
+    "headline": "テスト取込",
+    "narrative": "inbox自動テスト",
+    "tags": [
+      "plaud"
+    ],
+    "people": [],
+    "locations": [],
+    "mood": "",
+    "key_points": [],
+    "source": "fallback"
+  },
+  "tasks": [],
+  "task_analysis": {
+    "total": 0,
+    "by_priority": {
+      "high": 0,
+      "medium": 0,
+      "low": 0
+    },
+    "effort_summary": "(AI 未使用のためタスク抽出はスキップ)",
+    "blockers": []
+  }
+}

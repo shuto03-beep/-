@@ -16,11 +16,13 @@ from .stats import compute_stats, generate_trend_analysis
 from .storage import (
     append_note,
     build_entry_id,
+    delete_entry,
     iter_entries_in_range,
     list_entries,
     list_open_tasks,
     load_entry,
     load_report,
+    reindex,
     save_entry,
     save_report,
     search_entries,
@@ -83,6 +85,11 @@ def main(argv: list[str] | None = None) -> int:
     g_target.add_argument("--all", action="store_true", help="全エントリを Markdown でフォルダに書き出す")
     p_export.add_argument("-o", "--output", type=Path, help="出力先 (--all の場合はディレクトリ、それ以外はファイル)")
 
+    p_reindex = sub.add_parser("reindex", help="entries/ を再走査して index.json と tasks.json を再構築")
+    p_delete = sub.add_parser("delete", help="指定エントリを削除する")
+    p_delete.add_argument("entry_id", help="削除するエントリID")
+    p_delete.add_argument("--yes", "-y", action="store_true", help="確認プロンプトをスキップ")
+
     p_note = sub.add_parser("note", help="エントリに手書きメモを追記する")
     p_note.add_argument("entry_id", help="対象エントリID")
     p_note.add_argument("text", nargs="*", help="メモ本文（--stdin 指定時は不要）")
@@ -113,6 +120,10 @@ def main(argv: list[str] | None = None) -> int:
         return cmd_search(args)
     if args.command == "export":
         return cmd_export(args)
+    if args.command == "reindex":
+        return cmd_reindex(args)
+    if args.command == "delete":
+        return cmd_delete(args)
     if args.command == "note":
         return cmd_note(args)
     if args.command == "stats":
@@ -145,15 +156,17 @@ def _ingest_directory(root: Path, args) -> int:
     files = sorted(
         p for p in root.glob(pattern)
         if p.is_file() and not p.name.startswith("~$")
+        and "processed" not in p.parts  # processed/ 配下はスキップ
     )
     if not files:
         print(f"[warn] {root} に .docx が見つかりません")
         return 0
 
     print(f"[bulk] {len(files)} 件を取り込みます (recursive={args.recursive})")
-    processed = 0
+    processed_count = 0
     skipped = 0
     failed = 0
+    ingested_files: list[Path] = []
     for i, f in enumerate(files, start=1):
         print(f"\n--- [{i}/{len(files)}] {f.name} ---")
         try:
@@ -165,10 +178,24 @@ def _ingest_directory(root: Path, args) -> int:
         if status == "skipped":
             skipped += 1
         else:
-            processed += 1
+            processed_count += 1
+            if status == "saved":
+                ingested_files.append(f)
+
+    # 成功した元ファイルを processed/ に移動（inbox 運用向け）
+    if ingested_files and not args.dry_run:
+        processed_dir = root / "processed"
+        processed_dir.mkdir(exist_ok=True)
+        for f in ingested_files:
+            dest = processed_dir / f.name
+            if f.exists() and not dest.exists():
+                try:
+                    f.rename(dest)
+                except OSError:
+                    pass
 
     print(
-        f"\n[bulk] done: processed={processed} skipped={skipped} failed={failed}"
+        f"\n[bulk] done: processed={processed_count} skipped={skipped} failed={failed}"
     )
     return 0 if failed == 0 else 1
 
@@ -415,6 +442,29 @@ def cmd_export(args) -> int:
         print(f"wrote: {args.output}")
     else:
         sys.stdout.write(md)
+    return 0
+
+
+def cmd_reindex(args) -> int:
+    result = reindex()
+    print(f"reindex done: entries={result['entries']}, tasks={result['tasks']}")
+    return 0
+
+
+def cmd_delete(args) -> int:
+    entry_id = args.entry_id
+    if not args.yes:
+        print(f"エントリ {entry_id!r} を削除しますか？ [y/N] ", end="", flush=True)
+        answer = input().strip().lower()
+        if answer not in ("y", "yes"):
+            print("キャンセル")
+            return 0
+    try:
+        delete_entry(entry_id)
+    except FileNotFoundError as e:
+        print(f"[error] {e}", file=sys.stderr)
+        return 2
+    print(f"deleted: {entry_id}")
     return 0
 
 

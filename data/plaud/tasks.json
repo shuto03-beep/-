@@ -1,1 +1,38 @@
-[]
+[
+  {
+    "id": "t_20260410_01",
+    "title": "QAレポート更新",
+    "priority": "medium",
+    "due": "2026-04-13",
+    "category": "仕事",
+    "status": "done",
+    "source_entry_id": "2026-04-10_プロジェクト定例"
+  },
+  {
+    "id": "t_20260411_01",
+    "title": "提案書のドラフト作成",
+    "priority": "high",
+    "due": "2026-04-15",
+    "category": "仕事",
+    "status": "done",
+    "source_entry_id": "2026-04-11_朝会"
+  },
+  {
+    "id": "t_20260411_02",
+    "title": "顧客MTG資料の準備",
+    "priority": "medium",
+    "due": "2026-04-14",
+    "category": "仕事",
+    "status": "open",
+    "source_entry_id": "2026-04-11_朝会"
+  },
+  {
+    "id": "t_20260411_03",
+    "title": "本を1冊読む",
+    "priority": "low",
+    "due": null,
+    "category": "学習",
+    "status": "open",
+    "source_entry_id": "2026-04-11_朝会"
+  }
+]
