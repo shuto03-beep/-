@@ -1,0 +1,29 @@
+{
+  "id": "2026-03-29_03-29-proud-pin-s運用標準化による録音資産のインサイト化sop確",
+  "source_file": "plaud-web:8256dc424beb9dfe666906bffad44198",
+  "recorded_at": "2026-03-29T01:29:00",
+  "ingested_at": "2026-04-12T10:48:28",
+  "title": "03-29 Proud Pin S運用標準化による録音資産のインサイト化SOP確立",
+  "raw": {
+    "transcript": "[{\"timestamp\":571000,\"mark_type\":4,\"mark_type_string\":null,\"mark_content\":\"テストとして音声のインポートを試した後、一度録音を停止してみます。\",\"content\":null,\"title\":null,\"expanded_content\":null,\"picture_link\":null,\"mark_id\":\"66f1ad2fd711234917b4951ade2e8919\",\"ocr_data_link\":null,\"link_expire_timestamp\":null,\"picture_local_path\":\"/var/mobile/Containers/Data/Application/6E0B6380-96B0-4553-8F4E-8C93F03ED7B3/Documents/audio_marks/PLAUD_mark_Audio_00:09:31_1774748313578.opus\",\"picture_full_url\":null,\"is_user_edited\":null,\"mark_status\":3,\"error_message\":null,\"retry_count\":null,\"last_failed_time\":null,\"is_user_deleted\":null}]",
+    "summary": ""
+  },
+  "lifelog": {
+    "headline": "03-29 Proud Pin S運用標準化による録音資産のインサイト化SOP確立",
+    "tags": [
+      "plaud"
+    ],
+    "source": "raw"
+  },
+  "tasks": [],
+  "task_analysis": {
+    "total": 0,
+    "by_priority": {
+      "high": 0,
+      "medium": 0,
+      "low": 0
+    },
+    "effort_summary": "",
+    "blockers": []
+  }
+}

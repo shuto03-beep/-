@@ -1,0 +1,29 @@
+{
+  "id": "2026-03-29_2026-03-29-103934",
+  "source_file": "plaud-web:2ed6732940fd3996b5259c0486144bef",
+  "recorded_at": "2026-03-29T01:39:34",
+  "ingested_at": "2026-04-12T10:48:28",
+  "title": "2026-03-29 10:39:34",
+  "raw": {
+    "transcript": "[{\"timestamp\":36107,\"mark_type\":2,\"mark_type_string\":null,\"mark_content\":\"この画像は、会話をインテリジェンスに変換することを目的とした、世界で最もウェアラブルな AI ノートテイカー「Plaud NotePin S」を紹介しています。\",\"content\":null,\"title\":null,\"expanded_content\":null,\"picture_link\":\"permanent/6a96f9e9f528462da5eceab0567a9512/mark/20260329_014025_c9c1f7d2.jpg\",\"mark_id\":\"a955e51002e9e6935f20618f2be17b40\",\"ocr_data_link\":null,\"link_expire_timestamp\":null,\"picture_local_path\":\"plaud_images/note_recording_session_1774748374_36107.jpg\",\"picture_full_url\":null,\"is_user_edited\":false,\"mark_status\":3,\"error_message\":null,\"retry_count\":null,\"last_failed_time\":null,\"is_user_deleted\":null},{\"timestamp\":51687,\"mark_type\":3,\"mark_type_string\":null,\"mark_content\":\"長押しで、録音スタート！\",\"content\":null,\"title\":null,\"expanded_content\":null,\"picture_link\":null,\"mark_id\":null,\"ocr_data_link\":null,\"link_expire_timestamp\":null,\"picture_local_path\":null,\"picture_full_url\":null,\"is_user_edited\":null,\"mark_status\":null,\"error_message\":null,\"retry_count\":null,\"last_failed_time\":null,\"is_user_deleted\":null}]",
+    "summary": ""
+  },
+  "lifelog": {
+    "headline": "2026-03-29 10:39:34",
+    "tags": [
+      "plaud"
+    ],
+    "source": "raw"
+  },
+  "tasks": [],
+  "task_analysis": {
+    "total": 0,
+    "by_priority": {
+      "high": 0,
+      "medium": 0,
+      "low": 0
+    },
+    "effort_summary": "",
+    "blockers": []
+  }
+}

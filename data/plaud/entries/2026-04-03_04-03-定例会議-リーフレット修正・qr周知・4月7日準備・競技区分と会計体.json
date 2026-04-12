@@ -1,0 +1,29 @@
+{
+  "id": "2026-04-03_04-03-定例会議-リーフレット修正・qr周知・4月7日準備・競技区分と会計体",
+  "source_file": "plaud-web:e80c9147da507cc2204da03c7ca4c399",
+  "recorded_at": "2026-04-03T05:40:29",
+  "ingested_at": "2026-04-12T10:48:17",
+  "title": "04-03 定例会議: リーフレット修正・QR周知・4月7日準備・競技区分と会計体制の整備",
+  "raw": {
+    "transcript": "[{\"timestamp\":3440,\"mark_type\":4,\"mark_type_string\":null,\"mark_content\":\"話し言葉が認識されませんでした\",\"content\":null,\"title\":null,\"expanded_content\":null,\"picture_link\":null,\"mark_id\":\"5c5a74dfc7e74dfa0515740c17bab0ee\",\"ocr_data_link\":null,\"link_expire_timestamp\":null,\"picture_local_path\":null,\"picture_full_url\":null,\"is_user_edited\":false,\"mark_status\":3,\"error_message\":null,\"retry_count\":null,\"last_failed_time\":null,\"is_user_deleted\":null}]",
+    "summary": ""
+  },
+  "lifelog": {
+    "headline": "04-03 定例会議: リーフレット修正・QR周知・4月7日準備・競技区分と会計体制の整備",
+    "tags": [
+      "plaud"
+    ],
+    "source": "raw"
+  },
+  "tasks": [],
+  "task_analysis": {
+    "total": 0,
+    "by_priority": {
+      "high": 0,
+      "medium": 0,
+      "low": 0
+    },
+    "effort_summary": "",
+    "blockers": []
+  }
+}

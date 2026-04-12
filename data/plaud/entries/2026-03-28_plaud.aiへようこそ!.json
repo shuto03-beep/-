@@ -1,0 +1,29 @@
+{
+  "id": "2026-03-28_plaud.aiへようこそ!",
+  "source_file": "plaud-web:4388c92954f148cbb260256a5f88c6f3",
+  "recorded_at": "2026-03-28T13:21:42.527000",
+  "ingested_at": "2026-04-12T10:48:29",
+  "title": "Plaud.aiへようこそ！",
+  "raw": {
+    "transcript": "[{\"timestamp\":183000,\"mark_type\":2,\"mark_type_string\":\"image\",\"mark_content\":\"\",\"content\":\"対面録音と通話録音の2つのモードを提供。\\n • 日常環境での対面録音に対応。\\n • 電話で会話の際は、通話録音可能。\\n • 様々な仕事や生活シーンに適応し、製品の汎用性を向上。\",\"title\":\"Plaud Note Pro\",\"expanded_content\":null,\"picture_link\":\"https://plaud-welcome-files-online.s3.us-west-2.amazonaws.com/images/20250917-103540.png\",\"mark_id\":null,\"ocr_data_link\":null,\"link_expire_timestamp\":null,\"picture_local_path\":null,\"picture_full_url\":null,\"is_user_edited\":null,\"mark_status\":null,\"error_message\":null,\"retry_count\":null,\"last_failed_time\":null,\"is_user_deleted\":null},{\"timestamp\":240000,\"mark_type\":2,\"mark_type_string\":\"image\",\"mark_content\":\"\",\"content\":\"対面録音と通話録音を搭載したポータブルレコーダー。高いコストパフォーマンスと多様なシーンでの活用を実現します。\\n • Note Proとの差別化を意識した位置付け。\\n • 対面と通話の２つのモードが主な録音ニーズに対応。\\n • 価格と機能のバランスがとれ、コストパフォーマンスの高さを強調。\",\"title\":\"Plaud Note\",\"expanded_content\":null,\"picture_link\":\"https://plaud-welcome-files-online.s3.us-west-2.amazonaws.com/images/20250917-103618.png\",\"mark_id\":null,\"ocr_data_link\":null,\"link_expire_timestamp\":null,\"picture_local_path\":null,\"picture_full_url\":null,\"is_user_edited\":null,\"mark_status\":null,\"error_message\":null,\"retry_count\":null,\"last_failed_time\":null,\"is_user_deleted\":null},{\"timestamp\":279000,\"mark_type\":2,\"mark_type_string\":\"image\",\"mark_content\":\"\",\"content\":\"世界で最も携帯性に優れた、簡単に取り付け可能なウェアラブル ボイスレコーダー。\\n • 「最も携帯性に優れた」録音デバイスとして定義。\\n • 装着型の体験を提供し、使用のハードルを下げる。\\n • 従来型レコーダーとの差別化を図り、「瞬間を逃さず捉える」ミニマルな利用シーンを狙う。\",\"title\":\"Plaud NotePin\",\"expanded_content\":null,\"picture_link\":\"https://plaud-welcome-files-online.s3.us-west-2.amazonaws.com/images/20250917-103622.png\",\"mark_id\":null,\"ocr_data_link\":null,\"link_expire_timestamp\":null,\"picture_local_path\":null,\"picture_full_url\":null,\"is_user_edited\":null,\"mark_status\":null,\"error_message\":null,\"retry_count\":null,\"last_failed_time\":null,\"is_user_deleted\":null}]",
+    "summary": ""
+  },
+  "lifelog": {
+    "headline": "Plaud.aiへようこそ！",
+    "tags": [
+      "plaud"
+    ],
+    "source": "raw"
+  },
+  "tasks": [],
+  "task_analysis": {
+    "total": 0,
+    "by_priority": {
+      "high": 0,
+      "medium": 0,
+      "low": 0
+    },
+    "effort_summary": "",
+    "blockers": []
+  }
+}
