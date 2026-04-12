@@ -13,4 +13,4 @@ data/cache/
 # plaud_lifelog: サンプル入力と inbox の生 docx のみ除外
 # （entries/reports/index/tasks は GitHub Actions 運用でコミットする方針）
 plaud_lifelog/samples/**/*.docx
-data/plaud/inbox/*.docx
+data/plaud/inbox/**/*.docx
