@@ -151,13 +151,12 @@ def _extract_file_list(data: Any) -> list[dict]:
     if not isinstance(data, dict):
         return []
 
-    # 直接 list/items/records キーを探す
-    for key in ("list", "items", "records", "files", "data"):
+    # 直接キーを探す（data_file_list が Plaud の実際のキー）
+    for key in ("data_file_list", "list", "items", "records", "files", "data"):
         val = data.get(key)
         if isinstance(val, list) and val:
             return val
         if isinstance(val, dict):
-            # ネスト: data.data.list 等
             inner = _extract_file_list(val)
             if inner:
                 return inner
@@ -209,7 +208,8 @@ def get_summary(file_id: str) -> str:
 def get_recording_title(detail: dict) -> str:
     """録音のタイトルを取得する。"""
     return (
-        detail.get("name")
+        detail.get("filename")
+        or detail.get("name")
         or detail.get("title")
         or detail.get("file_name")
         or "(無題)"
@@ -218,7 +218,7 @@ def get_recording_title(detail: dict) -> str:
 
 def get_recording_date(detail: dict) -> datetime:
     """録音の日時を取得する。"""
-    for key in ("created_at", "create_time", "record_time", "timestamp"):
+    for key in ("start_time", "created_at", "create_time", "record_time", "timestamp"):
         val = detail.get(key)
         if not val:
             continue
