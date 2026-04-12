@@ -3,7 +3,7 @@ title: はるま
 type: entity
 created: 2026-04-12
 updated: 2026-04-12
-status: stub
+status: draft
 sources:
   - plaud-0404-kazoku-gakushu-game
   - plaud-0405-kazoku-atsumori

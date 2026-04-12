@@ -3,7 +3,7 @@ title: コーチング思考
 type: concept
 created: 2026-04-12
 updated: 2026-04-12
-status: stub
+status: draft
 sources:
   - plaud-0405-coaching-karupisu
   - plaud-0405-adhd-game-priority

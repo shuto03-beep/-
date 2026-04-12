@@ -23,7 +23,7 @@ tags: [部活動地域展開, 投資, NISA]
 
 ## 抽出された概念
 - [[nisa-toshi]] — NISA投資
-- [[bukatsu-chiiki-tenkai]] — 部活動地域展開（推定）
+- [[bukatsu-chiiki-ikou]] — 部活動地域展開（推定）
 
 ## 抽出されたエンティティ
 （なし）

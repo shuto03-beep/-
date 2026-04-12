@@ -37,7 +37,7 @@ tags: [業務連絡, 印刷, 派遣契約, 部活動地域移行, 会議]
 
 ## 抽出されたエンティティ
 - [[interac]] （インタラック社）
-- [[inami-kyouiku-iinkai]] （稲美町教育委員会）
+- [[kyouiku-iinkai]] （稲美町教育委員会）
 - [[shougai-gakushuu-ka]] （生涯学習課）
 - [[maeda-kachou]] （前田課長）
-- [[mizuno]] （水野）
+- [[mizuno-fuku-kacho]] （水野）

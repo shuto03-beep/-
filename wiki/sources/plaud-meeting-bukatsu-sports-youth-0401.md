@@ -42,4 +42,4 @@ tags: [plaud, bukatsu, sports-facility, youth-council, education-admin]
 
 ## 抽出されたエンティティ
 - [[kyouiku-iinkai]]
-- [[inami-town]]
+- [[inami-chou]]

@@ -34,11 +34,11 @@ tags: [予算, 補助金, 部活動地域展開, 専門指導員, 会議]
 - 部長レベルでの最終判断待ち
 
 ## 抽出された概念
-- [[bukatsu-chiiki-tenkai]] — 部活動地域展開
+- [[bukatsu-chiiki-ikou]] — 部活動地域展開
 - [[yosan-shikko]] — 予算執行
 - [[hojokin-shinsei]] — 補助金申請
 - [[senmon-shidouin]] — 専門指導員制度
 
 ## 抽出されたエンティティ
-- [[shogai-gakushu-ka]] — 生涯学習課
+- [[shougai-gakushuu-ka]] — 生涯学習課
 - [[kyouiku-ka]] — 教育課

@@ -47,4 +47,4 @@ tags: [半導体, 兼職兼業, 地域クラブ, QRコード, 投資]
 - [[kobe-shi]] （神戸市）
 - [[kakogawa-shi]] （加古川市）
 - [[warren-buffett]] （ウォーレン・バフェット）
-- [[inami-kyouiku-iinkai]] （稲美町教育委員会）
+- [[kyouiku-iinkai]] （稲美町教育委員会）

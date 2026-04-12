@@ -37,15 +37,15 @@ tags: [感情ミュート社会, 明六社, 福沢諭吉, 予算, 繰越, 兼職
 ## 抽出された概念
 - [[kanjo-mute-shakai]] — 感情ミュート社会
 - [[meirokusha]] — 明六社
-- [[bukatsu-chiiki-tenkai]] — 部活動地域展開
+- [[bukatsu-chiiki-ikou]] — 部活動地域展開
 - [[kurikoshi-meikyo-hi]] — 繰越明許費
-- [[kenshoku-kengyo]] — 兼職兼業
+- [[kenshoku-kengyou]] — 兼職兼業
 - [[yosan-shikko]] — 予算執行
 
 ## 抽出されたエンティティ
-- [[shogai-gakushu-ka]] — 生涯学習課
+- [[shougai-gakushuu-ka]] — 生涯学習課
 - [[kyouiku-ka]] — 教育課
 - [[mizuno-sensei]] — 水野先生
 - [[inoue-bucho]] — 井上部長
 - [[fukuzawa-yukichi]] — 福沢諭吉
-- [[inami-cho]] — 稲美町
+- [[inami-chou]] — 稲美町

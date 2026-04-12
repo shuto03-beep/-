@@ -41,4 +41,4 @@ tags: [plaud, workplace, koho, cultural-heritage, printer, ai, personnel]
 
 ## 抽出されたエンティティ
 - [[shougai-gakushuu-ka]]
-- [[inami-town]]
+- [[inami-chou]]

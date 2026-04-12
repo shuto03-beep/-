@@ -3,7 +3,7 @@ title: 水野副課長
 type: entity
 created: 2026-04-12
 updated: 2026-04-12
-status: stub
+status: draft
 sources:
   - plaud-0403-jimu-renraku-shiryou-sakusei
   - plaud-0403-inachalle-kaishi-taisei

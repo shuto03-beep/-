@@ -47,4 +47,4 @@ AIツール導入では、Cursor＋Claudeでの開発不明点即時解消の運
 - [[shougai-gakushuu-ka]] （生涯学習課）
 - [[interac]] （インタラック）
 - [[cursor]] （Cursor）
-- [[claude]] （Claude）
+- [[claude-ai]] （Claude）

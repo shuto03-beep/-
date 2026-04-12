@@ -29,7 +29,7 @@ tags: [教員, 部活動地域展開, 使命, 自己省察, 生徒]
 - 事業成功が生徒への恩返しであるという決意
 
 ## 抽出された概念
-- [[bukatsu-chiiki-tenkai]] — 部活動地域展開
+- [[bukatsu-chiiki-ikou]] — 部活動地域展開
 - [[kyouin-no-shimei]] — 教員の使命
 - [[ibasho-soushutsu]] — 居場所創出
 

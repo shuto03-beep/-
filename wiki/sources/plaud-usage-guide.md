@@ -28,4 +28,4 @@ Plaudの基本操作を紹介するチュートリアルコンテンツ。録音
 - [[ai-voice-recorder]]
 
 ## 抽出されたエンティティ
-- [[plaud]]
+- [[plaud-device]]

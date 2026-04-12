@@ -40,5 +40,5 @@ AI活用に関しては「生成AI活用の3ステージ」として、プロン
 - [[hojokin-unyou]] （補助金運用）
 
 ## 抽出されたエンティティ
-- [[inami-kyouiku-iinkai]] （稲美町教育委員会）
+- [[kyouiku-iinkai]] （稲美町教育委員会）
 - [[shougai-gakushuu-ka]] （生涯学習課）

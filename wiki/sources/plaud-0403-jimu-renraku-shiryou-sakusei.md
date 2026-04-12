@@ -37,7 +37,7 @@ tags: [部活動地域展開, 事務処理, 資料作成, 広報, 補助金, フ
 - AI画像生成は参考・単純作業補助としての活用が現実的
 
 ## 抽出された概念
-- [[bukatsu-chiiki-tenkai]] — 部活動地域展開
+- [[bukatsu-chiiki-ikou]] — 部活動地域展開
 - [[inachalle]] — いなチャレ（部活動地域移行プログラム）
 - [[hojokin-shinsei]] — 補助金申請
 - [[koho-chirashi-design]] — 広報チラシデザイン
@@ -45,7 +45,7 @@ tags: [部活動地域展開, 事務処理, 資料作成, 広報, 補助金, フ
 - [[file-kanri-taisei]] — ファイル管理体制
 
 ## 抽出されたエンティティ
-- [[shogai-gakushu-ka]] — 生涯学習課
+- [[shougai-gakushuu-ka]] — 生涯学習課
 - [[kyouiku-iinkai]] — 教育委員会
 - [[mizuno-fuku-kacho]] — 水野副課長
 - [[shioyama-sensei]] — 塩山先生

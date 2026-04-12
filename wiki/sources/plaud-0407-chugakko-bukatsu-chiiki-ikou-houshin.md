@@ -28,12 +28,12 @@ tags: [部活動地域移行, いなチャレ, 令和8-10年度, 施設, 財政,
 - 備品引継ぎ・光熱費減免が確認事項
 
 ## 抽出された概念
-- [[bukatsu-chiiki-tenkai]] — 部活動地域展開
+- [[bukatsu-chiiki-ikou]] — 部活動地域展開
 - [[inachalle]] — いなチャレ
 - [[3kanen-ikou-keikaku]] — 3カ年移行計画
 - [[shisetsu-seibi]] — 施設整備
 
 ## 抽出されたエンティティ
-- [[shogai-gakushu-ka]] — 生涯学習課（生涯学習部）
+- [[shougai-gakushuu-ka]] — 生涯学習課（生涯学習部）
 - [[kyouiku-iinkai]] — 教育委員会
-- [[inami-cho]] — 稲美町
+- [[inami-chou]] — 稲美町

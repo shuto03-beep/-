@@ -26,4 +26,4 @@ tags: [plaud, workplace]
 - [[ai-voice-recorder]]
 
 ## 抽出されたエンティティ
-- [[plaud]]
+- [[plaud-device]]

@@ -3,7 +3,7 @@ title: Plaud（AIボイスレコーダー）
 type: entity
 created: 2026-04-12
 updated: 2026-04-12
-status: stub
+status: draft
 sources:
   - plaud-nagatomo-interview-communication
   - plaud-welcome

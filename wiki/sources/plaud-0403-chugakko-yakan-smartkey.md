@@ -37,7 +37,7 @@ tags: [施設管理, スマートキー, 夜間利用, 照明, 予算, 部活動
 - 令和8年度9〜10月までに方針決定必要
 
 ## 抽出された概念
-- [[bukatsu-chiiki-tenkai]] — 部活動地域展開
+- [[bukatsu-chiiki-ikou]] — 部活動地域展開
 - [[shisetsu-yakan-riyo]] — 施設夜間利用
 - [[smart-key-donyu]] — スマートキー導入
 - [[security-taisaku]] — セキュリティ対策
@@ -48,6 +48,6 @@ tags: [施設管理, スマートキー, 夜間利用, 照明, 予算, 部活動
 - [[inami-chu]] — 稲美中学校
 - [[inami-kita-chu]] — 稲美北中学校
 - [[mizuno-fuku-kacho]] — 水野副課長
-- [[shogai-gakushu-ka]] — 生涯学習課
+- [[shougai-gakushuu-ka]] — 生涯学習課
 - [[kakogawa-shi]] — 加古川市（事例参考）
 - [[kubo-shi]] — 久保氏

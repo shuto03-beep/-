@@ -40,6 +40,6 @@ tags: [ゲーム, あつ森, ぷよぷよ, 家族, いなチャレ, 地域クラ
 - [[game-play-kazoku]] — ゲームプレイ（家族）
 
 ## 抽出されたエンティティ
-- [[chutairen]] — 中学校体育連盟（中体連）
+- [[chuutairen]] — 中学校体育連盟（中体連）
 - [[soccer-kyokai]] — サッカー協会
-- [[inami-cho]] — 稲美町
+- [[inami-chou]] — 稲美町

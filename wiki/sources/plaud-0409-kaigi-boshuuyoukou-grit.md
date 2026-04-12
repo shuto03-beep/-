@@ -34,7 +34,7 @@ tags: [部活動地域移行, 募集要項, グリッド, アンケート分析,
 - 非競技志向の生徒にも多様な参加形態を提供すべき
 
 ## 抽出された概念
-- [[inachare]] （いなみチャレンジクラブ）
+- [[inachalle]] （いなみチャレンジクラブ）
 - [[bukatsu-chiiki-ikou]] （部活動地域移行）
 - [[grit]] （やり抜く力・グリッド）
 - [[boshuuyoukou]] （募集要項）
@@ -43,4 +43,4 @@ tags: [部活動地域移行, 募集要項, グリッド, アンケート分析,
 - [[inami-chou]] （稲美町）
 - [[inami-chuugakkou]] （稲美中学校）
 - [[inami-kita-chuugakkou]] （稲美北中学校）
-- [[inami-kyouiku-iinkai]] （稲美町教育委員会）
+- [[kyouiku-iinkai]] （稲美町教育委員会）

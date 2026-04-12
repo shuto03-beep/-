@@ -28,4 +28,4 @@ tags: [保険, 民謡通知, 年度替わり, 事務処理]
 - [[nendo-gawari-tetsuzuki]] — 年度替わり手続き
 
 ## 抽出されたエンティティ
-- [[shogai-gakushu-ka]] — 生涯学習課
+- [[shougai-gakushuu-ka]] — 生涯学習課

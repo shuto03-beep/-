@@ -37,14 +37,14 @@ AIの社会的影響に関する巨視的な議論と、部活動地域移行の
 ## 抽出された概念
 - [[ai-shakai-jisso]] — AIの社会実装
 - [[drone-hishou-sen]] — ドローン非対称戦
-- [[bukatsu-chiiki-tenkai]] — 部活動地域展開
+- [[bukatsu-chiiki-ikou]] — 部活動地域展開
 - [[inachalle]] — いなチャレ
 - [[shisetsu-riyo-genmen]] — 施設利用料減免
 
 ## 抽出されたエンティティ
-- [[shogai-gakushu-ka]] — 生涯学習課
+- [[shougai-gakushuu-ka]] — 生涯学習課
 - [[kyouiku-iinkai]] — 教育委員会
 - [[toshi-keikaku-ka]] — 都市計画課
 - [[mizuno-fuku-kacho]] — 水野副課長
 - [[haraguchi-san]] — 原口さん（企画課）
-- [[inami-cho]] — 稲美町
+- [[inami-chou]] — 稲美町

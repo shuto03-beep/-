@@ -24,8 +24,8 @@ tags: [生涯学習課, 名簿, 組織図, 事業計画, 部活動地域展開, 
 - スポーツ推進委員に地域クラブ移行の人材紹介を要請
 
 ## 抽出された概念
-- [[bukatsu-chiiki-tenkai]] — 部活動地域展開
+- [[bukatsu-chiiki-ikou]] — 部活動地域展開
 - [[sports-suishin-iin]] — スポーツ推進委員
 
 ## 抽出されたエンティティ
-- [[shogai-gakushu-ka]] — 生涯学習課
+- [[shougai-gakushuu-ka]] — 生涯学習課
