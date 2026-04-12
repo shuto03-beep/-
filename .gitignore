@@ -10,7 +10,8 @@ t.txt
 .env
 data/cache/
 
-# plaud_lifelog: サンプル入力と inbox の生 docx のみ除外
-# （entries/reports/index/tasks は GitHub Actions 運用でコミットする方針）
+# plaud_lifelog: サンプル入力のみ除外
+# inbox の docx は GitHub push → 自動処理のためトラッキングする
+# 処理済みファイルは processed/ に移動後、Actions が自動コミット
 plaud_lifelog/samples/**/*.docx
-data/plaud/inbox/**/*.docx
+data/plaud/inbox/processed/**/*.docx

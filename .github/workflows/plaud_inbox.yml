@@ -1,6 +1,9 @@
 name: Plaud Inbox Ingest
 
 on:
+  push:
+    paths:
+      - 'data/plaud/inbox/**'
   schedule:
     # 毎日 JST 06:00 = UTC 21:00 前日
     - cron: '0 21 * * *'
@@ -33,16 +36,22 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
-          if [ -z "$(find data/plaud/inbox -name '*.docx' 2>/dev/null)" ]; then
+          # .gitignore で docx は除外されているので、push されたファイルを復元
+          git checkout HEAD -- 'data/plaud/inbox/*.docx' 2>/dev/null || true
+          git checkout HEAD -- 'data/plaud/inbox/**/*.docx' 2>/dev/null || true
+          if [ -z "$(find data/plaud/inbox -name '*.docx' -not -path '*/processed/*' 2>/dev/null)" ]; then
             echo "inbox に .docx がないのでスキップ"
             exit 0
           fi
           python -m plaud_lifelog ingest data/plaud/inbox/ -r
 
-      - name: 取り込み済みエントリを push
+      - name: 取り込み済みエントリを push し、inbox の元ファイルを削除
         run: |
           git config user.name "Plaud Bot"
           git config user.email "bot@plaud.local"
+          # 生成されたエントリを追加
           git add data/plaud/entries/ data/plaud/index.json data/plaud/tasks.json 2>/dev/null || true
+          # inbox の docx を削除（取り込み済みなので不要）
+          find data/plaud/inbox -name '*.docx' -not -path '*/processed/*' -exec git rm -f {} \; 2>/dev/null || true
           git diff --cached --quiet || git commit -m "Plaud inbox ingest $(date +%Y-%m-%d)"
           git push || true
