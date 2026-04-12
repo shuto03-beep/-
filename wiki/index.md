@@ -10,8 +10,8 @@ updated: 2026-04-12
 
 このWikiはKarpathy 3層アーキテクチャに基づくLLMナレッジベースです。
 
-- **raw/**: ソース素材（読み取り専用） — 79件
-- **wiki/**: AI生成・管理のWikiページ — 94件
+- **raw/**: ソース素材（読み取り専用） — 83件（plaud/ 79件 + articles/ 4件）
+- **wiki/**: AI生成・管理のWikiページ — 99件
 - **CLAUDE.md**: スキーマと手順（Layer 3）
 
 操作コマンド: `/wiki-ingest` `/wiki-compile` `/wiki-query` `/wiki-lint`
@@ -132,11 +132,23 @@ updated: 2026-04-12
 - [[plaud-0412-shuumatsu-meeting]] — 週末ミーティング
 - [[plaud-0413-test-torikomi]] — テスト取込
 
+### 外部記事ソース (sources/ — articles由来) — 4件
+
+| ページ | タイトル | ステータス |
+|--------|---------|----------|
+| [[sports-agency-guideline-2025]] | スポーツ庁 部活動改革ガイドライン（2025年12月） | draft |
+| [[tsukuba-bukatsu-model]] | つくば市 部活動地域移行の先行事例 | draft |
+| [[shibuya-united-reform]] | 渋谷区「渋谷ユナイテッド」部活動改革プロジェクト | draft |
+| [[inami-inachalle-official]] | 稲美町「いなチャレ」公式情報の統合 | draft |
+
 ### シンセシス (syntheses/) — 0件
 <!-- 3つ以上のソースを横断する分析。/wiki-compile で生成 -->
 
-### アウトプット (outputs/) — 0件
-<!-- 成果物・レポート・意思決定記録 -->
+### アウトプット (outputs/) — 1件
+
+| ページ | タイトル |
+|--------|---------|
+| [[query-2026-04-12-bukatsu-chiiki-ikou-genjo-kadai]] | 部活動地域移行の現状と課題 |
 
 ---
 最終コンパイル: 2026-04-12（初回 Ingest）
