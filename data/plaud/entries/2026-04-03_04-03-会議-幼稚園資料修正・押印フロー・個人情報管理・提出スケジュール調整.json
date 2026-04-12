@@ -1,0 +1,29 @@
+{
+  "id": "2026-04-03_04-03-会議-幼稚園資料修正・押印フロー・個人情報管理・提出スケジュール調整",
+  "source_file": "plaud-web:92d8fe490f2431b225ee47b974d2d3b3",
+  "recorded_at": "2026-04-03T04:49:31",
+  "ingested_at": "2026-04-12T10:37:20",
+  "title": "04-03 会議: 幼稚園資料修正・押印フロー・個人情報管理・提出スケジュール調整",
+  "raw": {
+    "transcript": "",
+    "summary": ""
+  },
+  "lifelog": {
+    "headline": "04-03 会議: 幼稚園資料修正・押印フロー・個人情報管理・提出スケジュール調整",
+    "tags": [
+      "plaud"
+    ],
+    "source": "raw"
+  },
+  "tasks": [],
+  "task_analysis": {
+    "total": 0,
+    "by_priority": {
+      "high": 0,
+      "medium": 0,
+      "low": 0
+    },
+    "effort_summary": "",
+    "blockers": []
+  }
+}

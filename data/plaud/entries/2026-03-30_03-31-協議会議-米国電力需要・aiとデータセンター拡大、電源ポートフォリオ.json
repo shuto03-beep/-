@@ -1,0 +1,29 @@
+{
+  "id": "2026-03-30_03-31-協議会議-米国電力需要・aiとデータセンター拡大、電源ポートフォリオ",
+  "source_file": "plaud-web:991887d534266533d5fc8ac75389a665",
+  "recorded_at": "2026-03-30T22:41:43",
+  "ingested_at": "2026-04-12T10:37:40",
+  "title": "03-31 協議会議: 米国電力需要・AIとデータセンター拡大、電源ポートフォリオ、送電網課題、政策・投資、学校運営実務",
+  "raw": {
+    "transcript": "",
+    "summary": ""
+  },
+  "lifelog": {
+    "headline": "03-31 協議会議: 米国電力需要・AIとデータセンター拡大、電源ポートフォリオ、送電網課題、政策・投資、学校運営実務",
+    "tags": [
+      "plaud"
+    ],
+    "source": "raw"
+  },
+  "tasks": [],
+  "task_analysis": {
+    "total": 0,
+    "by_priority": {
+      "high": 0,
+      "medium": 0,
+      "low": 0
+    },
+    "effort_summary": "",
+    "blockers": []
+  }
+}

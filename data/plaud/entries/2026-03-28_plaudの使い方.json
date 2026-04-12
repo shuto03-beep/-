@@ -1,0 +1,29 @@
+{
+  "id": "2026-03-28_plaudの使い方",
+  "source_file": "plaud-web:361ddbadd211adf8f5774d542dc9e760",
+  "recorded_at": "2026-03-28T13:21:41.527000",
+  "ingested_at": "2026-04-12T10:37:59",
+  "title": "Plaudの使い方",
+  "raw": {
+    "transcript": "",
+    "summary": ""
+  },
+  "lifelog": {
+    "headline": "Plaudの使い方",
+    "tags": [
+      "plaud"
+    ],
+    "source": "raw"
+  },
+  "tasks": [],
+  "task_analysis": {
+    "total": 0,
+    "by_priority": {
+      "high": 0,
+      "medium": 0,
+      "low": 0
+    },
+    "effort_summary": "",
+    "blockers": []
+  }
+}
