@@ -30,6 +30,12 @@ raw/ の未処理ファイルを検出し、sources/ に要約を作成。
 概念・エンティティを抽出して該当ページを作成/更新。
 **必ず glossary.md を参照し、既存用語との表記揺れを防止すること。**
 
+### Ingest from URL (`/wiki-ingest-url [URL]`)
+URLを指定して自動取り込み。WebFetchで本文取得→raw/保存→Ingest。
+
+### Ingest from Search (`/wiki-ingest-search [トピック]`)
+Web検索で情報収集→統合レポートをraw/に保存→Ingest。
+
 ### Compile (`/wiki-compile`)
 index.md・glossary.md を再構築。リンク検証・重複統合・整合性修復。
 

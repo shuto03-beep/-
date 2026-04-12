@@ -88,6 +88,29 @@ CLAUDE.md を読んで、Lint操作を実行してください。
 
 ---
 
+## 🔗 プロンプト: URLから自動取り込み（スラッシュコマンド）
+
+```
+/wiki-ingest-url https://example.com/article-url
+```
+
+WebFetchで本文取得→raw/articles/に自動保存→通常のIngestフローを実行します。
+403エラーなど取得失敗時はWebSearchでフォールバック。
+
+---
+
+## 🔎 プロンプト: Web検索で自動取り込み（スラッシュコマンド）
+
+```
+/wiki-ingest-search 部活動 地域展開 最新動向
+```
+
+Web検索で情報収集→複数ソースを統合したレポートをraw/に保存→通常のIngestフロー。
+**注意**: これは一次ソースそのものではなくLLMによる統合レポートです。
+原文の忠実性が必要な場合は `/wiki-ingest-url` を使ってください。
+
+---
+
 ## 🔀 プロンプト: Notionからの移行
 
 ```
