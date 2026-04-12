@@ -98,6 +98,7 @@ def main(argv: list[str] | None = None) -> int:
     p_sync.add_argument("--limit", type=int, default=50, help="API から取得する最大件数")
     p_sync.add_argument("--days", type=int, default=0, help="直近 N 日の録音だけ処理（0=全件）")
     p_sync.add_argument("--no-analyze", action="store_true", help="Claude 分析をスキップ（生データ保存のみ）")
+    p_sync.add_argument("--force-detail-debug", action="store_true", help="既存でも1件目の詳細を取得してログ出力")
     p_sync.add_argument("--dry-run", action="store_true", help="取得だけして保存しない")
 
     p_reindex = sub.add_parser("reindex", help="entries/ を再走査して index.json と tasks.json を再構築")
@@ -505,6 +506,22 @@ def cmd_sync(args) -> int:
             continue
 
         if entry_id in existing_ids:
+            # デバッグモード: 最初の1件だけ詳細を取得してログ出力
+            if getattr(args, "force_detail_debug", False) and skipped == 0 and created == 0:
+                file_id = rec.get("id") or rec.get("file_id") or ""
+                print(f"  [debug] 既存エントリの詳細を取得: {entry_id}")
+                try:
+                    detail = get_recording_detail(file_id)
+                    transcript = get_transcript(file_id)
+                    summary = get_summary(file_id)
+                    print(f"  [debug] transcript len={len(transcript)}")
+                    print(f"  [debug] summary len={len(summary)}")
+                    if transcript:
+                        print(f"  [debug] transcript preview: {transcript[:200]!r}")
+                    if summary:
+                        print(f"  [debug] summary preview: {summary[:200]!r}")
+                except Exception as e:
+                    print(f"  [debug] detail error: {e}")
             skipped += 1
             continue
 

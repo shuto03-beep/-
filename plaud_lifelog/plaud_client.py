@@ -167,23 +167,36 @@ def _extract_file_list(data: Any) -> list[dict]:
 def get_recording_detail(file_id: str) -> dict:
     """1 件の録音の詳細（メタデータ + 文字起こし + 要約）を取得する。"""
     token, domain = _get_config()
-    # 非公式 API: /file/detail/{file_id}
     url = f"{domain}/file/detail/{file_id}"
     data = _get(url, token)
     inner = data.get("data") or data
 
-    # デバッグ: 初回のみレスポンス構造をログ出力
+    # デバッグ: レスポンスの全キーと値の型・サイズを出力
     if isinstance(inner, dict):
-        print(f"  [plaud] detail keys: {sorted(inner.keys())}")
-        # 文字起こし・要約の候補フィールドを探す
+        print(f"  [plaud-detail] ALL keys ({len(inner)}):")
         for key in sorted(inner.keys()):
             val = inner[key]
-            if isinstance(val, str) and len(val) > 50:
-                print(f"  [plaud]   {key}: str len={len(val)} preview={val[:60]}...")
-            elif isinstance(val, list) and val:
-                print(f"  [plaud]   {key}: list of {len(val)}")
-            elif isinstance(val, dict) and val:
-                print(f"  [plaud]   {key}: dict keys={list(val.keys())[:10]}")
+            if val is None:
+                print(f"    {key}: null")
+            elif isinstance(val, str):
+                print(f"    {key}: str({len(val)}) = {val[:100]!r}")
+            elif isinstance(val, (int, float)):
+                print(f"    {key}: {type(val).__name__} = {val}")
+            elif isinstance(val, list):
+                print(f"    {key}: list({len(val)})")
+                if val and isinstance(val[0], dict):
+                    print(f"      [0] keys: {list(val[0].keys())[:10]}")
+                    first_item = val[0]
+                    for k2, v2 in list(first_item.items())[:5]:
+                        if isinstance(v2, str):
+                            print(f"      [0].{k2}: str({len(v2)}) = {v2[:80]!r}")
+                        else:
+                            print(f"      [0].{k2}: {type(v2).__name__} = {str(v2)[:80]}")
+            elif isinstance(val, dict):
+                print(f"    {key}: dict keys={list(val.keys())[:10]}")
+                for k2, v2 in list(val.items())[:5]:
+                    if isinstance(v2, str):
+                        print(f"      .{k2}: str({len(v2)}) = {v2[:80]!r}")
 
     return inner
 

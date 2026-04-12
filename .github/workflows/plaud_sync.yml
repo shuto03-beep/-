@@ -33,7 +33,7 @@ jobs:
         env:
           PLAUD_BEARER_TOKEN: ${{ secrets.PLAUD_BEARER_TOKEN }}
           PLAUD_API_DOMAIN: ${{ secrets.PLAUD_API_DOMAIN }}
-        run: python -m plaud_lifelog sync --days 2 --no-analyze
+        run: python -m plaud_lifelog sync --limit 1 --no-analyze --force-detail-debug
 
       - name: エントリを保存
         run: |
