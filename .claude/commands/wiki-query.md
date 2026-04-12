@@ -1,6 +1,6 @@
-Read knowledge-base/CLAUDE.md for configuration. Then execute the Query operation:
-The user will ask a question after this command.
-1. Search across all `knowledge-base/wiki/` pages for relevant content
-2. Synthesize an answer with [[source]] citations
-3. If the answer is substantial, save it in `knowledge-base/wiki/outputs/`
-4. Suggest related concepts the user might want to explore
+knowledge-base/CLAUDE.md を読み込み、設定を確認してください。その後、Query（検索・回答）操作を実行:
+ユーザーがこのコマンドの後に質問を入力します。
+1. `knowledge-base/wiki/` 内の全ページから関連コンテンツを検索
+2. [[出典]] 付きで回答を統合
+3. 回答が充実している場合は `knowledge-base/wiki/outputs/` に保存
+4. ユーザーが探索したい関連概念を提案

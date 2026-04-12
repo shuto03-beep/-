@@ -2,14 +2,14 @@
 <!-- tags:  -->
 <!-- updated: {{date}} -->
 
-## Summary
+## 概要
 
 
-## Details
+## 詳細
 
 
-## Related Concepts
-- [[related-concept]]
+## 関連概念
+- [[関連概念名]]
 
-## Sources
-- [[source-name]]
+## 出典
+- [[ソース名]]

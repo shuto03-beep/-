@@ -1,11 +1,11 @@
-# Knowledge Base Index
+# ナレッジベース インデックス
 <!-- updated: 2026-04-12 -->
 
-## Concepts
-_No concepts yet. Run Ingest to populate._
+## 概念
+_まだ概念はありません。Ingest を実行して追加してください。_
 
-## Entities
-_No entities yet._
+## エンティティ
+_まだエンティティはありません。_
 
-## Sources
-_No sources yet. Add files to `raw/` and run Ingest._
+## 出典
+_まだ出典はありません。`raw/` にファイルを追加して Ingest を実行してください。_

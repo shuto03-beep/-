@@ -3,14 +3,14 @@
 <!-- updated: {{date}} -->
 <!-- source: {{url}} -->
 
-## Summary
+## 概要
 
 
-## Key Concepts
-- [[concept-name]]
+## 主要概念
+- [[概念名]]
 
-## Notable Quotes
+## 注目すべき引用
 
 
-## My Notes
+## メモ
 

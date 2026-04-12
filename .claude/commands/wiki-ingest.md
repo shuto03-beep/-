@@ -1,7 +1,7 @@
-Read knowledge-base/CLAUDE.md for configuration. Then execute the Ingest operation:
-1. Scan `knowledge-base/raw/` for files not yet referenced in `knowledge-base/wiki/sources/`
-2. For each unprocessed file, create a source summary in `knowledge-base/wiki/sources/`
-3. Extract and create/update concept pages in `knowledge-base/wiki/concepts/`
-4. Extract and create/update entity pages in `knowledge-base/wiki/entities/`
-5. Update `knowledge-base/wiki/index.md`
-6. Append to `knowledge-base/wiki/log.md`
+knowledge-base/CLAUDE.md を読み込み、設定を確認してください。その後、Ingest（取り込み）操作を実行:
+1. `knowledge-base/raw/` 内で、まだ `knowledge-base/wiki/sources/` に参照されていないファイルをスキャン
+2. 未処理のファイルごとに `knowledge-base/wiki/sources/` にソース要約を作成
+3. 概念を抽出し、`knowledge-base/wiki/concepts/` にページを作成・更新
+4. エンティティを抽出し、`knowledge-base/wiki/entities/` にページを作成・更新
+5. `knowledge-base/wiki/index.md` を更新
+6. `knowledge-base/wiki/log.md` に記録を追加

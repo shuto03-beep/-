@@ -1,8 +1,8 @@
-Read knowledge-base/CLAUDE.md for configuration. Then execute the Lint operation:
-1. Find all broken [[wiki-links]]
-2. Detect contradictions between sources
-3. Flag pages with outdated info
-4. Identify stub pages that could be expanded
-5. Report coverage gaps
-6. Fix issues automatically where possible
-7. Log all changes in `knowledge-base/wiki/log.md`
+knowledge-base/CLAUDE.md を読み込み、設定を確認してください。その後、Lint（品質チェック）操作を実行:
+1. リンク切れの [[wiki-links]] を全て検出
+2. ソース間の矛盾を検出
+3. 情報が古いページをフラグ
+4. 拡充可能なスタブページを特定
+5. カバレッジのギャップを報告
+6. 自動修正可能な問題は修正
+7. 全変更を `knowledge-base/wiki/log.md` に記録
