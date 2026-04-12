@@ -538,8 +538,9 @@ def cmd_sync(args) -> int:
 
         print(f"  [{i}] {recorded_at.date()} {title}")
 
-        transcript = get_transcript(file_id)
-        summary = get_summary(file_id)
+        # detail から直接テキストを抽出（追加の API 呼び出しを避ける）
+        transcript = _extract_content_from_detail(detail)
+        summary = ""  # summary は transcript と同じ content に含まれる
 
         # ParsedDoc 相当のデータを手動構築
         from .models import ParsedDoc
@@ -779,6 +780,27 @@ def _resolve_range(args) -> tuple[datetime, datetime]:
 
 
 # ---------- 補助関数 ----------
+
+def _extract_content_from_detail(detail: dict) -> str:
+    """detail レスポンスから data_content_list の本文を抽出する。"""
+    # data_content_list[].data_content が Plaud API の実際の構造
+    content_list = detail.get("data_content_list") or []
+    if isinstance(content_list, list):
+        for item in content_list:
+            if isinstance(item, dict):
+                text = item.get("data_content") or ""
+                if text:
+                    return str(text)
+    # content[].data_content も探す
+    content = detail.get("content") or []
+    if isinstance(content, list):
+        for item in content:
+            if isinstance(item, dict):
+                text = item.get("data_content") or ""
+                if text:
+                    return str(text)
+    return ""
+
 
 def _truncate(s: str, n: int = 80) -> str:
     s = s.replace("\n", " ")

@@ -30,6 +30,7 @@ _PAGE_SIZE = 50
 
 
 _resolved_domain: str | None = None  # 一度見つけたらキャッシュ
+_detail_debug_done: bool = False  # 最初の1件だけデバッグ出力
 
 
 def _get_config() -> tuple[str, str]:
@@ -171,32 +172,17 @@ def get_recording_detail(file_id: str) -> dict:
     data = _get(url, token)
     inner = data.get("data") or data
 
-    # デバッグ: レスポンスの全キーと値の型・サイズを出力
-    if isinstance(inner, dict):
-        print(f"  [plaud-detail] ALL keys ({len(inner)}):")
-        for key in sorted(inner.keys()):
-            val = inner[key]
-            if val is None:
-                print(f"    {key}: null")
-            elif isinstance(val, str):
-                print(f"    {key}: str({len(val)}) = {val[:100]!r}")
-            elif isinstance(val, (int, float)):
-                print(f"    {key}: {type(val).__name__} = {val}")
-            elif isinstance(val, list):
-                print(f"    {key}: list({len(val)})")
-                if val and isinstance(val[0], dict):
-                    print(f"      [0] keys: {list(val[0].keys())[:10]}")
-                    first_item = val[0]
-                    for k2, v2 in list(first_item.items())[:5]:
-                        if isinstance(v2, str):
-                            print(f"      [0].{k2}: str({len(v2)}) = {v2[:80]!r}")
-                        else:
-                            print(f"      [0].{k2}: {type(v2).__name__} = {str(v2)[:80]}")
-            elif isinstance(val, dict):
-                print(f"    {key}: dict keys={list(val.keys())[:10]}")
-                for k2, v2 in list(val.items())[:5]:
-                    if isinstance(v2, str):
-                        print(f"      .{k2}: str({len(v2)}) = {v2[:80]!r}")
+    # デバッグ: 最初の1件だけレスポンス構造をログ出力
+    global _detail_debug_done
+    if not _detail_debug_done and isinstance(inner, dict):
+        _detail_debug_done = True
+        dcl = inner.get("data_content_list") or []
+        if isinstance(dcl, list) and dcl:
+            first = dcl[0] if isinstance(dcl[0], dict) else {}
+            text = first.get("data_content", "")
+            print(f"  [plaud-detail] data_content_list: {len(dcl)} items, first content len={len(text)}")
+        else:
+            print(f"  [plaud-detail] data_content_list: empty or missing. keys={sorted(inner.keys())}")
 
     return inner
 
