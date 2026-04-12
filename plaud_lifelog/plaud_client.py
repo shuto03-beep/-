@@ -54,7 +54,15 @@ def _get_config() -> tuple[str, str]:
 
 
 def _auto_detect_domain(token: str) -> str:
-    """複数の API ドメインを試して正しいリージョンを自動検出する。"""
+    """複数の API ドメインを試して正しいリージョンを自動検出する。
+
+    - 200 → 成功。このドメインを使う。
+    - 401/403 → エンドポイントは存在するがトークンに問題。
+      ドメイン自体は正しい可能性が高いので候補に入れる。
+    - 404 → エンドポイントが存在しない。スキップ。
+    """
+    auth_domains: list[str] = []  # 401/403 を返したドメイン
+
     for domain in _API_DOMAINS:
         try:
             url = f"{domain}/file/simple/web"
@@ -64,19 +72,30 @@ def _auto_detect_domain(token: str) -> str:
                 params={"pageSize": 1, "page": 1},
                 timeout=10,
             )
-            if resp.status_code != 401:
-                print(f"  [plaud] API domain detected: {domain}")
+            print(f"  [plaud] trying {domain} -> {resp.status_code}")
+            if resp.status_code == 200:
+                print(f"  [plaud] API domain OK: {domain}")
                 return domain
-        except requests.RequestException:
+            if resp.status_code in (401, 403):
+                auth_domains.append(domain)
+        except requests.RequestException as e:
+            print(f"  [plaud] trying {domain} -> error: {e}")
             continue
-    # すべて失敗した場合は最初のドメインで試す
+
+    # 401/403 を返したドメインがあればそれを使う（エンドポイントは正しい）
+    if auth_domains:
+        print(f"  [plaud] using domain (auth issue): {auth_domains[0]}")
+        return auth_domains[0]
+
     print(f"  [plaud] auto-detect failed, trying {_API_DOMAINS[0]}")
     return _API_DOMAINS[0]
 
 
 def _headers(token: str) -> dict[str, str]:
     """API リクエスト用のヘッダーを返す。"""
-    auth = token if token.lower().startswith("bearer ") else f"bearer {token}"
+    # トークンのクォートを除去（localStorage から取得時に引用符が含まれることがある）
+    clean = token.strip().strip("'\"")
+    auth = clean if clean.lower().startswith("bearer ") else f"Bearer {clean}"
     return {
         "Authorization": auth,
         "Content-Type": "application/json",
