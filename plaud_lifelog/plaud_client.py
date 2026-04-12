@@ -204,33 +204,79 @@ def get_recording_detail(file_id: str) -> dict:
 def get_transcript(file_id: str) -> str:
     """文字起こしテキストを取得する。"""
     detail = get_recording_detail(file_id)
-    # API レスポンスの構造はバージョンによって異なる可能性がある
+
+    # Plaud API の実際の構造: data_content_list[].data_content にテキストが入る
+    content_list = detail.get("data_content_list") or []
+    if isinstance(content_list, list):
+        for item in content_list:
+            if isinstance(item, dict):
+                text = item.get("data_content") or ""
+                if text:
+                    return str(text)
+
+    # フォールバック: content[].data_content も探す
+    content = detail.get("content") or []
+    if isinstance(content, list):
+        for item in content:
+            if isinstance(item, dict):
+                text = item.get("data_content") or ""
+                if text:
+                    return str(text)
+
+    # さらにフォールバック: 旧キー名
     trans = detail.get("trans_result") or detail.get("transcript") or ""
     if isinstance(trans, list):
-        # [{speaker, text, start, end}, ...] 形式
         return "\n".join(
             f"{seg.get('speaker', '')}: {seg.get('text', '')}"
             if seg.get("speaker")
             else seg.get("text", "")
             for seg in trans
         )
-    if isinstance(trans, dict):
-        return trans.get("text") or json.dumps(trans, ensure_ascii=False)
     return str(trans)
 
 
 def get_summary(file_id: str) -> str:
-    """AI 要約テキストを取得する。"""
+    """AI 要約テキストを取得する。
+
+    Plaud API では data_content_list に transcript と summary が両方入る場合がある。
+    content[] の data_type で区別（translation=文字起こし、summary=要約）。
+    """
     detail = get_recording_detail(file_id)
-    summary = (
-        detail.get("ai_summary")
-        or detail.get("summary")
-        or detail.get("note")
-        or ""
-    )
-    if isinstance(summary, dict):
-        return summary.get("text") or summary.get("content") or json.dumps(summary, ensure_ascii=False)
-    return str(summary)
+
+    # content[] から summary タイプの data_id を特定
+    content_meta = detail.get("content") or []
+    summary_ids = set()
+    for item in content_meta:
+        if isinstance(item, dict):
+            dtype = str(item.get("data_type") or "").lower()
+            if "summary" in dtype or "note" in dtype or "ai" in dtype:
+                did = item.get("data_id") or ""
+                if did:
+                    summary_ids.add(did)
+
+    # data_content_list から summary の本文を取得
+    content_list = detail.get("data_content_list") or []
+    if isinstance(content_list, list) and summary_ids:
+        for item in content_list:
+            if isinstance(item, dict) and item.get("data_id") in summary_ids:
+                text = item.get("data_content") or ""
+                if text:
+                    return str(text)
+
+    # フォールバック: data_content_list に2件以上あれば2件目を要約とみなす
+    if isinstance(content_list, list) and len(content_list) >= 2:
+        text = content_list[1].get("data_content") or "" if isinstance(content_list[1], dict) else ""
+        if text:
+            return str(text)
+
+    # さらにフォールバック
+    for key in ("ai_summary", "summary", "note"):
+        val = detail.get(key)
+        if val:
+            if isinstance(val, dict):
+                return val.get("text") or val.get("content") or ""
+            return str(val)
+    return ""
 
 
 def get_recording_title(detail: dict) -> str:
