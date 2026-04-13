@@ -143,9 +143,14 @@ def run_full_screening_and_signals(state: dict):
             send_signal_notification(signal)
             signal_count += 1
 
-            # 全戦略に対してポジション開設を試行（STRONG + MEDIUM両方）
-            if signal.signal_type == "BUY" and signal.strength in ("STRONG", "MEDIUM"):
+            # 自動ポジション開設の最低スコア（低MEDIUMは除外）
+            # 3日間の実績: スコア45-48は4敗0勝 → スコア50+に限定
+            MIN_AUTO_OPEN_SCORE = 50
+            if (signal.signal_type == "BUY"
+                    and signal.final_score >= MIN_AUTO_OPEN_SCORE):
                 _auto_open_all_strategies(state, signal)
+            elif signal.signal_type == "BUY":
+                print(f"    ⏭️  スコア{signal.final_score}は自動エントリー閾値(50)未満のためスキップ")
 
     # シグナル履歴保存
     state["signals_history"] = state.get("signals_history", [])[-100:]
@@ -191,7 +196,14 @@ def _auto_open_all_strategies(state: dict, signal):
 
         max_ratio = strategy_config.get("max_position_ratio", 0.20)
         shares = calculate_position_size(capital, price, atr, max_position_ratio=max_ratio)
-        if shares <= 0 or shares * price > capital:
+        label = strategy_config["label"]
+        if shares <= 0:
+            # STRONG以上のシグナルで資金不足→機会損失を記録
+            if signal.final_score >= 55:
+                print(f"  💸 [{label}] {signal.name}: 資金不足で機会損失（スコア{signal.final_score}, "
+                      f"100株={price*100:,.0f}円 > 上限{capital*max_ratio:,.0f}円）")
+            continue
+        if shares * price > capital:
             continue
 
         open_position(
@@ -200,7 +212,6 @@ def _auto_open_all_strategies(state: dict, signal):
             signal_reasons=[r[:50] for r in signal.reasons[:5]],
             ai_confidence=ai_conf,
         )
-        label = strategy_config["label"]
         print(f"  🟢 [{label}] ポジション開設: {signal.name} {shares}株 @ {price:,.0f}円")
 
 
