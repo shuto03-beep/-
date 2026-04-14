@@ -1,0 +1,52 @@
+name: Backtest Strategies
+
+on:
+  workflow_dispatch:
+    inputs:
+      days:
+        description: 'バックテスト日数'
+        required: false
+        default: '90'
+      max_stocks:
+        description: '検証銘柄数'
+        required: false
+        default: '100'
+
+permissions:
+  contents: write
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: リポジトリを取得
+        uses: actions/checkout@v4
+
+      - name: Pythonのセットアップ
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: ライブラリのインストール
+        run: pip install -r requirements.txt
+
+      - name: バックテスト実行
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: |
+          python backtest.py ${{ inputs.days }} ${{ inputs.max_stocks }}
+          python -c "
+          from notifications import _send_discord
+          with open('data/backtest_report.txt', 'r') as f:
+              report = f.read()
+          _send_discord(f'\`\`\`{report}\`\`\`')
+          "
+
+      - name: レポート保存
+        run: |
+          git config user.name "Backtest Bot"
+          git config user.email "backtest@trading.local"
+          git add data/backtest_report.txt data/backtest_result.json
+          git diff --cached --quiet || git commit -m "Backtest report $(date +%Y%m%d_%H%M)"
+          git push
