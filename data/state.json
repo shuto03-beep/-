@@ -1,7 +1,7 @@
 {
   "strategies": {
     "A_3銘柄": {
-      "capital": 582140.0,
+      "capital": 331440.0,
       "positions": [
         {
           "ticker": "3105.T",
@@ -11,7 +11,7 @@
           "entry_date": "2026-04-09",
           "stop_loss": 1600.5,
           "take_profit": 1810.8,
-          "highest_price": 1666.0,
+          "highest_price": 1671.5,
           "signal_score": 47,
           "signal_reasons": [
             "ゴールデンクロス（SMA5×SMA25）",
@@ -38,6 +38,25 @@
             "RSI上昇モメンタム（68.1）",
             "一目均衡表: 雲上抜け",
             "📅 金曜効果: 歴史的にプラス傾向（補正+5）"
+          ],
+          "ai_confidence": 0
+        },
+        {
+          "ticker": "3086.T",
+          "name": "J.フロント",
+          "entry_price": 2507.0,
+          "quantity": 100,
+          "entry_date": "2026-04-15",
+          "stop_loss": 2381.7,
+          "take_profit": 2761.3,
+          "highest_price": 2507.0,
+          "signal_score": 50,
+          "signal_reasons": [
+            "RSI上昇モメンタム（59.5）",
+            "出来高急増（2.0倍）",
+            "一目均衡表: 雲上抜け",
+            "📅 水曜バイアス（補正+3）",
+            "📅 大引けにかけて（出来高急増。機関投資家の活動。+1〜3bpsの正のドリフト）"
           ],
           "ai_confidence": 0
         }
@@ -113,7 +132,7 @@
       }
     },
     "B_5銘柄": {
-      "capital": 583730.0,
+      "capital": 333030.0,
       "positions": [
         {
           "ticker": "3105.T",
@@ -123,7 +142,7 @@
           "entry_date": "2026-04-09",
           "stop_loss": 1600.5,
           "take_profit": 1810.8,
-          "highest_price": 1666.0,
+          "highest_price": 1671.5,
           "signal_score": 47,
           "signal_reasons": [
             "ゴールデンクロス（SMA5×SMA25）",
@@ -150,6 +169,25 @@
             "RSI上昇モメンタム（68.1）",
             "一目均衡表: 雲上抜け",
             "📅 金曜効果: 歴史的にプラス傾向（補正+5）"
+          ],
+          "ai_confidence": 0
+        },
+        {
+          "ticker": "3086.T",
+          "name": "J.フロント",
+          "entry_price": 2507.0,
+          "quantity": 100,
+          "entry_date": "2026-04-15",
+          "stop_loss": 2381.7,
+          "take_profit": 2761.3,
+          "highest_price": 2507.0,
+          "signal_score": 50,
+          "signal_reasons": [
+            "RSI上昇モメンタム（59.5）",
+            "出来高急増（2.0倍）",
+            "一目均衡表: 雲上抜け",
+            "📅 水曜バイアス（補正+3）",
+            "📅 大引けにかけて（出来高急増。機関投資家の活動。+1〜3bpsの正のドリフト）"
           ],
           "ai_confidence": 0
         }
@@ -337,8 +375,8 @@
       }
     }
   },
-  "last_run": "2026-04-15T02:34:45.313534",
-  "last_full_screening": "2026-04-14T07:55:05.690629",
+  "last_run": "2026-04-15T05:13:44.806031",
+  "last_full_screening": "2026-04-15T05:13:44.805391",
   "signals_history": [
     {
       "ticker": "6976.T",
@@ -535,6 +573,55 @@
       "type": "BUY",
       "score": 48,
       "date": "2026-04-14 05:13"
+    },
+    {
+      "ticker": "8058.T",
+      "name": "三菱商事",
+      "type": "BUY",
+      "score": 59,
+      "date": "2026-04-15 05:13"
+    },
+    {
+      "ticker": "3086.T",
+      "name": "J.フロント",
+      "type": "BUY",
+      "score": 50,
+      "date": "2026-04-15 05:13"
+    },
+    {
+      "ticker": "8267.T",
+      "name": "イオン",
+      "type": "BUY",
+      "score": 53,
+      "date": "2026-04-15 05:13"
+    },
+    {
+      "ticker": "1605.T",
+      "name": "INPEX",
+      "type": "BUY",
+      "score": 56,
+      "date": "2026-04-15 05:13"
+    },
+    {
+      "ticker": "5706.T",
+      "name": "三井金属",
+      "type": "BUY",
+      "score": 53,
+      "date": "2026-04-15 05:13"
+    },
+    {
+      "ticker": "3038.T",
+      "name": "神戸物産",
+      "type": "BUY",
+      "score": 50,
+      "date": "2026-04-15 05:13"
+    },
+    {
+      "ticker": "8766.T",
+      "name": "東京海上",
+      "type": "BUY",
+      "score": 50,
+      "date": "2026-04-15 05:13"
     }
   ]
 }
