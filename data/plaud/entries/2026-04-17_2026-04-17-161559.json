@@ -1,0 +1,29 @@
+{
+  "id": "2026-04-17_2026-04-17-161559",
+  "source_file": "plaud-web:3c2d22e533d7f48ed02026ba5ee338ce",
+  "recorded_at": "2026-04-17T07:15:59",
+  "ingested_at": "2026-04-17T21:30:47",
+  "title": "2026-04-17 16:15:59",
+  "raw": {
+    "transcript": "原文の音声書き起こし内容は以下の通りです：\n> [Speaker 1] No sé, a lo...",
+    "summary": ""
+  },
+  "lifelog": {
+    "headline": "2026-04-17 16:15:59",
+    "tags": [
+      "plaud"
+    ],
+    "source": "raw"
+  },
+  "tasks": [],
+  "task_analysis": {
+    "total": 0,
+    "by_priority": {
+      "high": 0,
+      "medium": 0,
+      "low": 0
+    },
+    "effort_summary": "",
+    "blockers": []
+  }
+}

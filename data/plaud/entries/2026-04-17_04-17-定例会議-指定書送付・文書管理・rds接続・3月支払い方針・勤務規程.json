@@ -1,0 +1,29 @@
+{
+  "id": "2026-04-17_04-17-定例会議-指定書送付・文書管理・rds接続・3月支払い方針・勤務規程",
+  "source_file": "plaud-web:e08995299bb8357d68a4fb9fc9821e40",
+  "recorded_at": "2026-04-17T00:39:54",
+  "ingested_at": "2026-04-17T21:30:47",
+  "title": "04-17 定例会議: 指定書送付・文書管理・RDS接続・3月支払い方針・勤務規程見直し・地域移行とバレー部体制・提出フロー整備",
+  "raw": {
+    "transcript": "[{\"timestamp\":7005,\"mark_type\":2,\"mark_type_string\":null,\"mark_content\":\"この日程表は、令和 8 年度の学校行事と教育委員会の訪問スケジュールを一覧化し、訪問時のタイムテーブルと助言体制を具体的に示しています。\",\"content\":null,\"title\":null,\"expanded_content\":null,\"picture_link\":\"permanent/6a96f9e9f528462da5eceab0567a9512/mark/20260417_004009_bc8bafa8.jpg\",\"mark_id\":\"f406f05e030a7d605d83527070031221\",\"ocr_data_link\":\"highlight/ocr_data/ocr_20260417004010-mark@7a7ac2cc57dd183cbe6b27.txt\",\"link_expire_timestamp\":null,\"picture_local_path\":\"plaud_images/note_recording_session_1776386394_7005.jpg\",\"picture_full_url\":null,\"is_user_edited\":false,\"mark_status\":3,\"error_message\":null,\"retry_count\":null,\"last_failed_time\":null,\"is_user_deleted\":null},{\"timestamp\":17504,\"mark_type\":3,\"mark_type_string\":null,\"mark_content\":\"水野の学校園訪問は、稲美北中5/27（水）、天満小6/16(火)、加古小6/26（火）のみ参加\",\"content\":null,\"title\":null,\"expanded_content\":null,\"picture_link\":null,\"mark_id\":null,\"ocr_data_link\":null,\"link_expire_timestamp\":null,\"picture_local_path\":null,\"picture_full_url\":null,\"is_user_edited\":true,\"mark_status\":null,\"error_message\":null,\"retry_count\":null,\"last_failed_time\":null,\"is_user_deleted\":null}]",
+    "summary": ""
+  },
+  "lifelog": {
+    "headline": "04-17 定例会議: 指定書送付・文書管理・RDS接続・3月支払い方針・勤務規程見直し・地域移行とバレー部体制・提出フロー整備",
+    "tags": [
+      "plaud"
+    ],
+    "source": "raw"
+  },
+  "tasks": [],
+  "task_analysis": {
+    "total": 0,
+    "by_priority": {
+      "high": 0,
+      "medium": 0,
+      "low": 0
+    },
+    "effort_summary": "",
+    "blockers": []
+  }
+}
