@@ -2,6 +2,7 @@ from datetime import datetime, date, time
 from app.extensions import db
 from app.models.reservation import Reservation
 from app.models.school_block import SchoolBlock
+from app.services.activity_log_service import log_activity
 from app.utils.helpers import get_available_time_slots
 
 
@@ -131,12 +132,21 @@ def create_reservation(facility_id, organization_id, user_id, target_date, start
         notes=notes,
     )
     db.session.add(reservation)
+    db.session.flush()
+    log_activity(
+        'create_reservation',
+        target_type='reservation', target_id=reservation.id,
+        details=f'date={target_date} facility={facility_id} org={organization_id}',
+        user=user,
+    )
     db.session.commit()
     return reservation
 
 
 def cancel_reservation(reservation_id, user_id, reason):
     """予約をキャンセルする"""
+    from app.models.user import User
+
     reservation = db.session.get(Reservation, reservation_id)
     if not reservation:
         raise ValueError('予約が見つかりません')
@@ -145,5 +155,11 @@ def cancel_reservation(reservation_id, user_id, reason):
     reservation.cancelled_at = datetime.utcnow()
     reservation.cancelled_by = user_id
     reservation.cancellation_reason = reason
+    log_activity(
+        'cancel_reservation',
+        target_type='reservation', target_id=reservation.id,
+        details=f'reason={reason}',
+        user=db.session.get(User, user_id),
+    )
     db.session.commit()
     return reservation

@@ -1,6 +1,6 @@
 import csv
 import io
-from datetime import date, timedelta
+from datetime import date, datetime, time, timedelta
 from flask import Blueprint, render_template, redirect, url_for, flash, request, Response
 from flask_login import login_required, current_user
 from sqlalchemy import func, case
@@ -11,8 +11,10 @@ from app.models.organization import Organization
 from app.models.reservation import Reservation
 from app.models.facility import Facility
 from app.models.school import School
+from app.models.activity_log import ActivityLog
 from app.forms.admin import OrganizationRegistrationForm, UserEditForm
 from app.services.notification_service import create_bulk_notifications
+from app.services.activity_log_service import log_activity
 from app.utils.decorators import admin_required
 
 admin_bp = Blueprint('admin', __name__)
@@ -52,6 +54,11 @@ def approve_organization(id):
     # いなチャレ認定として承認するかどうか
     certify = request.form.get('certify_inachalle') == '1'
     org.is_inachalle_certified = certify
+    log_activity(
+        'approve_organization',
+        target_type='organization', target_id=org.id,
+        details=f'認定={certify}',
+    )
     db.session.commit()
 
     cert_text = 'いなチャレ認定団体として' if certify else ''
@@ -79,6 +86,11 @@ def toggle_certification(id):
         return redirect(url_for('admin.organizations'))
 
     org.is_inachalle_certified = not org.is_inachalle_certified
+    log_activity(
+        'toggle_certification',
+        target_type='organization', target_id=org.id,
+        details=f'認定={org.is_inachalle_certified}',
+    )
     db.session.commit()
 
     if org.is_inachalle_certified:
@@ -110,6 +122,11 @@ def reject_organization(id):
         '団体の承認が見送られました',
         f'「{org.name}」の承認が見送られました。事務局にお問い合わせください。',
     )
+    log_activity(
+        'reject_organization',
+        target_type='organization', target_id=org.id,
+        details=f'団体名={org.name}',
+    )
 
     db.session.delete(org)
     db.session.commit()
@@ -137,6 +154,11 @@ def register_organization():
 
         current_user.organization_id = org.id
         current_user.role = User.ROLE_ORG_LEADER
+        log_activity(
+            'register_organization',
+            target_type='organization', target_id=org.id,
+            details=f'団体名={org.name}',
+        )
         db.session.commit()
 
         admin_ids = [row[0] for row in db.session.query(User.id).filter_by(role=User.ROLE_ADMIN).all()]
@@ -346,3 +368,65 @@ def export_organizations_csv():
         ])
     filename = f'organizations_{date.today().isoformat()}.csv'
     return _csv_response(rows, header, filename)
+
+
+# === 活動ログ（監査） ===
+
+ACTIVITY_ACTION_LABELS = {
+    'approve_organization': '団体承認',
+    'toggle_certification': '認定ステータス変更',
+    'reject_organization': '団体却下',
+    'register_organization': '団体登録申請',
+    'create_school_block': '学校行事ブロック作成',
+    'create_reservation': '予約作成',
+    'cancel_reservation': '予約キャンセル',
+}
+
+
+@admin_bp.route('/admin/activity-logs')
+@login_required
+@admin_required
+def activity_logs():
+    today = date.today()
+    default_from = today - timedelta(days=30)
+    date_from = _parse_iso_date(request.args.get('from'), default_from)
+    date_to = _parse_iso_date(request.args.get('to'), today)
+    action = request.args.get('action') or ''
+    user_id_raw = request.args.get('user_id') or ''
+    page = max(int(request.args.get('page', 1)), 1)
+    per_page = 50
+
+    query = (
+        ActivityLog.query
+        .options(joinedload(ActivityLog.user))
+        .filter(ActivityLog.created_at >= datetime.combine(date_from, time.min))
+        .filter(ActivityLog.created_at <= datetime.combine(date_to, time.max))
+    )
+    if action:
+        query = query.filter(ActivityLog.action == action)
+    if user_id_raw.isdigit():
+        query = query.filter(ActivityLog.user_id == int(user_id_raw))
+
+    total = query.count()
+    logs = (
+        query.order_by(ActivityLog.created_at.desc())
+        .offset((page - 1) * per_page)
+        .limit(per_page)
+        .all()
+    )
+
+    actions_known = list(ACTIVITY_ACTION_LABELS.items())
+    return render_template(
+        'admin/activity_logs.html',
+        logs=logs,
+        total=total,
+        page=page,
+        per_page=per_page,
+        pages=(total + per_page - 1) // per_page,
+        date_from=date_from.isoformat(),
+        date_to=date_to.isoformat(),
+        action=action,
+        user_id=user_id_raw,
+        action_choices=actions_known,
+        action_labels=ACTIVITY_ACTION_LABELS,
+    )

@@ -7,6 +7,7 @@ from app.models.school_block import SchoolBlock
 from app.models.reservation import Reservation
 from app.forms.block import SchoolBlockForm
 from app.services.notification_service import queue_notifications
+from app.services.activity_log_service import log_activity
 from app.utils.decorators import role_required
 
 blocks_bp = Blueprint('blocks', __name__)
@@ -73,6 +74,13 @@ def new_block():
                 'link': url_for('reservations.detail', id=r.id),
             })
         queue_notifications(notifications)
+
+        db.session.flush()
+        log_activity(
+            'create_school_block',
+            target_type='school_block', target_id=block.id,
+            details=f'date={form.date.data} reason={form.reason.data} auto_cancelled={len(conflicts)}',
+        )
 
         db.session.commit()
 
