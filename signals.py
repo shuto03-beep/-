@@ -49,12 +49,15 @@ def calculate_buy_score(indicators: dict, weights: dict = None) -> tuple[int, li
         # 現在価格が直近レンジのどこにいるか（0-1、0=底、1=天井）
         position_in_range = (current_price - recent_low) / (recent_high - recent_low)
 
-        # 天井付近（95%以上）では減点、底付近（30%以下）では加点
-        if position_in_range >= 0.95:
-            score -= 10
-            reasons.append(f"⚠️ 直近高値付近（レンジ{position_in_range*100:.0f}%）")
+        # 天井付近・高値圏を厳しく減点（実績反映）
+        if position_in_range >= 0.90:
+            score -= 15  # -10 → -15に強化
+            reasons.append(f"⚠️ 直近高値圏（レンジ{position_in_range*100:.0f}%）")
+        elif position_in_range >= 0.75:
+            score -= 5  # 新規追加：75%以上は減点
+            reasons.append(f"⚠️ 高値圏（レンジ{position_in_range*100:.0f}%）")
         elif position_in_range <= 0.30:
-            score += 8
+            score += 10  # +8 → +10に強化
             reasons.append(f"✨ 直近安値付近（押し目買いチャンス）")
         elif position_in_range <= 0.60:
             score += 3
@@ -80,7 +83,7 @@ def calculate_buy_score(indicators: dict, weights: dict = None) -> tuple[int, li
         score += weights["macd"]
         reasons.append("MACD買いシグナル")
 
-    # 4. RSI
+    # 4. RSI（厳格化：60以上は減点、押し目優遇）
     rsi = indicators.get("rsi", 50)
     if rsi < 30:
         score += weights["rsi"]
@@ -88,9 +91,15 @@ def calculate_buy_score(indicators: dict, weights: dict = None) -> tuple[int, li
     elif 30 <= rsi <= 50:
         score += weights["rsi"]
         reasons.append(f"RSI回復中（{rsi:.1f}）")
-    elif 50 < rsi < 70:
-        score += weights["rsi"] // 2  # 上昇モメンタム（半分のスコア）
-        reasons.append(f"RSI上昇モメンタム（{rsi:.1f}）")
+    elif 50 < rsi <= 60:
+        score += weights["rsi"] // 3  # やや弱めに
+        reasons.append(f"RSI中立圏（{rsi:.1f}）")
+    elif 60 < rsi <= 70:
+        score -= 5  # 実績から減点
+        reasons.append(f"⚠️ RSI買われすぎ気味（{rsi:.1f}）")
+    elif rsi > 70:
+        score -= 10  # 大幅減点
+        reasons.append(f"⚠️ RSI過熱（{rsi:.1f}）")
     if indicators.get("rsi_divergence") == "BULLISH":
         score += 5
         reasons.append("RSI強気ダイバージェンス")
