@@ -1,6 +1,6 @@
 from flask import Flask
 from app.config import get_config
-from app.extensions import db, migrate, login_manager, csrf
+from app.extensions import db, migrate, login_manager, csrf, mail
 
 
 def create_app(config_class=None):
@@ -11,6 +11,7 @@ def create_app(config_class=None):
     migrate.init_app(app, db)
     login_manager.init_app(app)
     csrf.init_app(app)
+    mail.init_app(app)
 
     from app.models.user import User
 

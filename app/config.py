@@ -20,6 +20,13 @@ def _resolve_secret_key():
     )
 
 
+def _bool_env(name, default=False):
+    value = os.environ.get(name)
+    if value is None:
+        return default
+    return value.lower() in ('1', 'true', 'yes', 'on')
+
+
 class Config:
     SECRET_KEY = _resolve_secret_key()
     SQLALCHEMY_DATABASE_URI = os.environ.get(
@@ -30,6 +37,18 @@ class Config:
     WTF_CSRF_ENABLED = True
     DEBUG = False
     TESTING = False
+
+    # Flask-Mail: 未設定時は送信をスキップ（mail_service.send_notification_email 参照）
+    MAIL_SERVER = os.environ.get('MAIL_SERVER')
+    MAIL_PORT = int(os.environ.get('MAIL_PORT', 587))
+    MAIL_USE_TLS = _bool_env('MAIL_USE_TLS', True)
+    MAIL_USE_SSL = _bool_env('MAIL_USE_SSL', False)
+    MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
+    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
+    MAIL_DEFAULT_SENDER = os.environ.get(
+        'MAIL_DEFAULT_SENDER',
+        'noreply@inachalle.jp',
+    )
 
 
 class DevelopmentConfig(Config):
@@ -47,6 +66,8 @@ class TestingConfig(Config):
     TESTING = True
     WTF_CSRF_ENABLED = False
     SQLALCHEMY_DATABASE_URI = 'sqlite:///:memory:'
+    MAIL_SUPPRESS_SEND = True
+    MAIL_SERVER = 'localhost'  # ensure mail.send path executes in tests
 
 
 _CONFIG_BY_NAME = {

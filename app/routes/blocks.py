@@ -6,7 +6,7 @@ from app.models.facility import Facility
 from app.models.school_block import SchoolBlock
 from app.models.reservation import Reservation
 from app.forms.block import SchoolBlockForm
-from app.services.notification_service import queue_notifications
+from app.services.notification_service import queue_notifications, send_queued_emails
 from app.services.activity_log_service import log_activity
 from app.utils.decorators import role_required
 
@@ -83,6 +83,7 @@ def new_block():
         )
 
         db.session.commit()
+        send_queued_emails(notifications)
 
         if conflicts:
             flash(f'ブロックを設定し、{len(conflicts)}件の予約を自動キャンセルしました。', 'warning')
