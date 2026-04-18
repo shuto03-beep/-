@@ -12,6 +12,7 @@ from app.models.reservation import Reservation
 from app.models.facility import Facility
 from app.models.school import School
 from app.models.activity_log import ActivityLog
+from app.models.coach import Coach
 from app.forms.admin import OrganizationRegistrationForm, UserEditForm
 from app.services.notification_service import create_bulk_notifications
 from app.services.activity_log_service import log_activity
@@ -429,4 +430,154 @@ def activity_logs():
         user_id=user_id_raw,
         action_choices=actions_known,
         action_labels=ACTIVITY_ACTION_LABELS,
+    )
+
+
+# === 月報（印刷用） ===
+
+def _reservation_minutes(status_filter, start, end):
+    """Return total minutes of reservations in [start, end] filtered by status."""
+    rows = (
+        db.session.query(Reservation.start_time, Reservation.end_time)
+        .filter(
+            Reservation.date >= start,
+            Reservation.date <= end,
+            Reservation.status == status_filter,
+        )
+        .all()
+    )
+    total = 0
+    for s, e in rows:
+        s_dt = datetime.combine(date.min, s)
+        e_dt = datetime.combine(date.min, e)
+        m = int((e_dt - s_dt).total_seconds() // 60)
+        if m > 0:
+            total += m
+    return total
+
+
+@admin_bp.route('/admin/reports/monthly')
+@login_required
+@admin_required
+def monthly_report():
+    today = date.today()
+    try:
+        year = int(request.args.get('year', today.year))
+        month = int(request.args.get('month', today.month))
+        if not 1 <= month <= 12:
+            raise ValueError
+    except (TypeError, ValueError):
+        year, month = today.year, today.month
+
+    month_start = date(year, month, 1)
+    if month == 12:
+        month_end = date(year, 12, 31)
+    else:
+        month_end = date(year, month + 1, 1) - timedelta(days=1)
+
+    confirmed_count = func.count(case((Reservation.status == Reservation.STATUS_CONFIRMED, 1)))
+
+    total_confirmed = (
+        db.session.query(func.count(Reservation.id))
+        .filter(
+            Reservation.date >= month_start,
+            Reservation.date <= month_end,
+            Reservation.status == Reservation.STATUS_CONFIRMED,
+        )
+        .scalar() or 0
+    )
+    total_cancelled = (
+        db.session.query(func.count(Reservation.id))
+        .filter(
+            Reservation.date >= month_start,
+            Reservation.date <= month_end,
+            Reservation.status == Reservation.STATUS_CANCELLED,
+        )
+        .scalar() or 0
+    )
+    total_confirmed_minutes = _reservation_minutes(
+        Reservation.STATUS_CONFIRMED, month_start, month_end,
+    )
+
+    facility_rows = (
+        db.session.query(Facility, confirmed_count)
+        .outerjoin(
+            Reservation,
+            (Reservation.facility_id == Facility.id)
+            & (Reservation.date >= month_start)
+            & (Reservation.date <= month_end),
+        )
+        .group_by(Facility.id)
+        .order_by(Facility.id)
+        .all()
+    )
+
+    org_rows = (
+        db.session.query(Organization, confirmed_count)
+        .outerjoin(
+            Reservation,
+            (Reservation.organization_id == Organization.id)
+            & (Reservation.date >= month_start)
+            & (Reservation.date <= month_end),
+        )
+        .filter(Organization.is_approved.is_(True))
+        .group_by(Organization.id)
+        .order_by(Organization.name)
+        .all()
+    )
+
+    # 指導者別謝金見込（有償のみ）
+    coaches = (
+        Coach.query
+        .options(joinedload(Coach.organizations))
+        .filter(
+            Coach.is_active.is_(True),
+            Coach.compensation_type == Coach.COMPENSATION_PAID,
+        )
+        .order_by(Coach.full_name)
+        .all()
+    )
+    minutes_by_org = {}
+    rows = (
+        db.session.query(Reservation.organization_id, Reservation.start_time, Reservation.end_time)
+        .filter(
+            Reservation.date >= month_start,
+            Reservation.date <= month_end,
+            Reservation.status == Reservation.STATUS_CONFIRMED,
+        )
+        .all()
+    )
+    for org_id, s, e in rows:
+        minutes = int((datetime.combine(date.min, e) - datetime.combine(date.min, s)).total_seconds() // 60)
+        if minutes > 0:
+            minutes_by_org[org_id] = minutes_by_org.get(org_id, 0) + minutes
+
+    compensation_rows = []
+    total_compensation = 0
+    for c in coaches:
+        for org in c.organizations:
+            mins = minutes_by_org.get(org.id, 0)
+            hours = mins / 60
+            amount = int(round(hours * (c.hourly_rate or 0)))
+            if mins == 0 and amount == 0:
+                continue
+            total_compensation += amount
+            compensation_rows.append({
+                'coach': c, 'org': org,
+                'minutes': mins, 'hours': hours, 'amount': amount,
+            })
+
+    return render_template(
+        'admin/monthly_report.html',
+        year=year, month=month,
+        month_start=month_start, month_end=month_end,
+        total_confirmed=total_confirmed,
+        total_cancelled=total_cancelled,
+        total_confirmed_minutes=total_confirmed_minutes,
+        total_confirmed_hours=round(total_confirmed_minutes / 60, 2),
+        facility_stats=[{'facility': f, 'count': c} for f, c in facility_rows],
+        org_stats=[{'org': o, 'count': c} for o, c in org_rows],
+        compensation_rows=compensation_rows,
+        total_compensation=total_compensation,
+        generated_at=datetime.now(),
     )

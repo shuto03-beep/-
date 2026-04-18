@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+{% block title %}{{ year }}年{{ month }}月 月報 - いなチャレ施設予約{% endblock %}
+
+{% block extra_head %}
+<style>
+@media print {
+    .main-nav, .top-bar, .main-footer, .no-print { display: none !important; }
+    .main-content { padding-top: 0 !important; }
+    .container { max-width: none !important; }
+    body { background: white !important; }
+    .card { border: 1px solid #888 !important; box-shadow: none !important; page-break-inside: avoid; }
+    .monthly-report h1 { font-size: 20pt; }
+    .monthly-report h2 { font-size: 14pt; margin-top: 1em; }
+    table { font-size: 10pt; }
+    @page { size: A4 portrait; margin: 15mm; }
+}
+.monthly-report .stat-box {
+    border: 1px solid #ddd; padding: 1rem; text-align: center;
+    background: #f8f9fa; border-radius: 4px;
+}
+.monthly-report .stat-box .value {
+    font-size: 1.8rem; font-weight: bold; line-height: 1;
+}
+.monthly-report .stat-box .label { color: #666; font-size: 0.9rem; margin-top: 0.3rem; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="no-print d-flex justify-content-between align-items-center mb-3">
+    <div>
+        <form method="get" class="d-flex gap-2">
+            <input type="number" name="year" value="{{ year }}" class="form-control" style="width: 100px;" min="2020" max="2099">
+            <select name="month" class="form-select" style="width: 100px;">
+                {% for m in range(1, 13) %}
+                <option value="{{ m }}" {{ 'selected' if m == month }}>{{ m }}月</option>
+                {% endfor %}
+            </select>
+            <button type="submit" class="btn btn-outline-primary">表示</button>
+        </form>
+    </div>
+    <button onclick="window.print()" class="btn btn-primary">
+        <i class="bi bi-printer me-1"></i>印刷 / PDF保存
+    </button>
+</div>
+
+<div class="monthly-report">
+    <header class="mb-4 text-center">
+        <h1 class="mb-1">{{ year }}年{{ month }}月 いなチャレ月次利用報告書</h1>
+        <p class="text-muted">稲美町 生涯学習課 / 期間: {{ month_start }} 〜 {{ month_end }}</p>
+    </header>
+
+    <h2><i class="bi bi-bar-chart-line me-2"></i>概要</h2>
+    <div class="row g-3 mb-4">
+        <div class="col-4"><div class="stat-box">
+            <div class="value">{{ total_confirmed }}</div>
+            <div class="label">確定予約件数</div>
+        </div></div>
+        <div class="col-4"><div class="stat-box">
+            <div class="value">{{ total_cancelled }}</div>
+            <div class="label">キャンセル件数</div>
+        </div></div>
+        <div class="col-4"><div class="stat-box">
+            <div class="value">{{ '%.1f' | format(total_confirmed_hours) }}</div>
+            <div class="label">総活動時間（時間）</div>
+        </div></div>
+    </div>
+
+    <h2><i class="bi bi-building me-2"></i>施設別利用状況</h2>
+    <table class="table table-bordered table-sm mb-4">
+        <thead class="table-light">
+            <tr><th>学校</th><th>施設</th><th>区分</th><th class="text-end">予約件数</th></tr>
+        </thead>
+        <tbody>
+            {% for s in facility_stats %}
+            <tr>
+                <td>{{ s.facility.school.name }}</td>
+                <td>{{ s.facility.name }}</td>
+                <td>{{ s.facility.type_label }}</td>
+                <td class="text-end">{{ s.count }}</td>
+            </tr>
+            {% else %}
+            <tr><td colspan="4" class="text-center text-muted">施設登録がありません</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2><i class="bi bi-people me-2"></i>団体別利用状況</h2>
+    <table class="table table-bordered table-sm mb-4">
+        <thead class="table-light">
+            <tr><th>団体名</th><th>ステータス</th><th class="text-end">予約件数</th></tr>
+        </thead>
+        <tbody>
+            {% for s in org_stats %}
+            <tr>
+                <td>{{ s.org.name }}</td>
+                <td>{{ s.org.status_label }}</td>
+                <td class="text-end">{{ s.count }}</td>
+            </tr>
+            {% else %}
+            <tr><td colspan="3" class="text-center text-muted">承認済み団体がありません</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2><i class="bi bi-cash-coin me-2"></i>指導者別謝金見込（有償のみ）</h2>
+    <table class="table table-bordered table-sm mb-2">
+        <thead class="table-light">
+            <tr>
+                <th>指導者</th><th>所属団体</th>
+                <th class="text-end">活動時間</th>
+                <th class="text-end">時間単価</th>
+                <th class="text-end">謝金見込</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for r in compensation_rows %}
+            <tr>
+                <td>{{ r.coach.full_name }}</td>
+                <td>{{ r.org.name }}</td>
+                <td class="text-end">{{ '%.2f' | format(r.hours) }}時間</td>
+                <td class="text-end">{{ '{:,}'.format(r.coach.hourly_rate) }}円</td>
+                <td class="text-end">{{ '{:,}'.format(r.amount) }}円</td>
+            </tr>
+            {% else %}
+            <tr><td colspan="5" class="text-center text-muted">有償指導者の活動がありません</td></tr>
+            {% endfor %}
+        </tbody>
+        {% if compensation_rows %}
+        <tfoot>
+            <tr class="fw-bold">
+                <td colspan="4" class="text-end">合計</td>
+                <td class="text-end">{{ '{:,}'.format(total_compensation) }}円</td>
+            </tr>
+        </tfoot>
+        {% endif %}
+    </table>
+    <p class="text-muted small">
+        ※ 謝金見込は「団体の確定予約時間 × 指導者時給」で算出した概算です。
+        実際の稼働と異なる場合は指導者本人への確認後、請求書発行時に調整してください。
+    </p>
+
+    <footer class="mt-5 pt-3 border-top text-muted small">
+        <div class="d-flex justify-content-between">
+            <span>発行日時: {{ generated_at.strftime('%Y-%m-%d %H:%M') }}</span>
+            <span>稲美町生涯学習課 いなチャレ予約管理システム</span>
+        </div>
+    </footer>
+</div>
+{% endblock %}

@@ -2,9 +2,14 @@
 {% block title %}利用レポート - いなチャレ施設予約{% endblock %}
 
 {% block content %}
-<div class="page-header">
-    <h1><i class="bi bi-bar-chart-line"></i>利用レポート</h1>
-    <p class="page-subtitle">{{ month }} の施設利用状況</p>
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div class="page-header mb-0">
+        <h1><i class="bi bi-bar-chart-line"></i>利用レポート</h1>
+        <p class="page-subtitle mb-0">{{ month }} の施設利用状況</p>
+    </div>
+    <a href="{{ url_for('admin.monthly_report') }}" class="btn btn-outline-primary">
+        <i class="bi bi-file-earmark-text me-1"></i>月次報告書（印刷用）
+    </a>
 </div>
 
 <div class="card mb-4">
