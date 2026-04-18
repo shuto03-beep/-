@@ -25,6 +25,7 @@ def create_app(config_class=None):
     from app.routes.blocks import blocks_bp
     from app.routes.admin import admin_bp
     from app.routes.notifications import notifications_bp
+    from app.routes.coaches import coaches_bp
 
     app.register_blueprint(auth_bp)
     app.register_blueprint(dashboard_bp)
@@ -33,6 +34,7 @@ def create_app(config_class=None):
     app.register_blueprint(blocks_bp)
     app.register_blueprint(admin_bp)
     app.register_blueprint(notifications_bp)
+    app.register_blueprint(coaches_bp)
 
     @app.errorhandler(404)
     def not_found(e):

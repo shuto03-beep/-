@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block title %}指導者管理 - いなチャレ施設予約{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1><i class="bi bi-person-badge"></i>指導者管理</h1>
+    <p class="page-subtitle">地域クラブ指導者の登録・所属団体の管理。中体連一覧提出や謝金計算の基礎データ。</p>
+</div>
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <div>
+        <span class="me-3">登録指導者: <strong>{{ total }}</strong> 人</span>
+        {% if multi_count > 0 %}
+        <span class="badge bg-warning text-dark">複数団体所属: {{ multi_count }} 人</span>
+        {% endif %}
+    </div>
+    <div>
+        <a href="{{ url_for('coaches.list_coaches') }}" class="btn btn-sm btn-outline-secondary {{ 'active' if not only_multi }}">全員</a>
+        <a href="{{ url_for('coaches.list_coaches', multi=1) }}" class="btn btn-sm btn-outline-warning {{ 'active' if only_multi }}">
+            <i class="bi bi-exclamation-triangle me-1"></i>ダブルカウント候補のみ
+        </a>
+        <a href="{{ url_for('coaches.new_coach') }}" class="btn btn-primary ms-2">
+            <i class="bi bi-plus-circle me-1"></i>新規登録
+        </a>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body p-0">
+        <table class="table table-hover mb-0">
+            <thead>
+                <tr>
+                    <th>氏名</th>
+                    <th>報酬区分</th>
+                    <th>時間単価</th>
+                    <th>所属団体</th>
+                    <th>教職員兼職</th>
+                    <th>状態</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for c in coaches %}
+                <tr class="{{ 'table-warning' if c.is_multi_affiliated }}">
+                    <td>
+                        <strong>{{ c.full_name }}</strong>
+                        {% if c.full_name_kana %}<br><small class="text-muted">{{ c.full_name_kana }}</small>{% endif %}
+                    </td>
+                    <td>
+                        {% if c.compensation_type == 'paid' %}
+                            <span class="badge bg-success">{{ c.compensation_label }}</span>
+                        {% else %}
+                            <span class="badge bg-secondary">{{ c.compensation_label }}</span>
+                        {% endif %}
+                    </td>
+                    <td class="text-end">{{ '{:,}'.format(c.hourly_rate or 0) }} 円</td>
+                    <td>
+                        {% for o in c.organizations %}
+                            <span class="badge bg-info me-1">{{ o.name }}</span>
+                        {% else %}
+                            <span class="text-muted">未所属</span>
+                        {% endfor %}
+                        {% if c.is_multi_affiliated %}
+                            <br><small class="text-warning"><i class="bi bi-exclamation-triangle me-1"></i>謝金ダブルカウントに注意</small>
+                        {% endif %}
+                    </td>
+                    <td>{% if c.is_teacher_dual_role %}<i class="bi bi-check-circle-fill text-success"></i>{% endif %}</td>
+                    <td>{% if c.is_active %}有効{% else %}<span class="text-muted">無効</span>{% endif %}</td>
+                    <td>
+                        <a href="{{ url_for('coaches.edit_coach', id=c.id) }}" class="btn btn-sm btn-outline-primary">編集</a>
+                    </td>
+                </tr>
+                {% else %}
+                <tr><td colspan="7" class="text-center text-muted py-4">指導者が登録されていません</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

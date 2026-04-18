@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block title %}{{ '指導者編集' if coach else '指導者登録' }} - いなチャレ施設予約{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1><i class="bi bi-person-badge"></i>{{ '指導者編集' if coach else '指導者登録' }}</h1>
+</div>
+
+<form method="post" class="card">
+    {{ form.hidden_tag() }}
+    <div class="card-body">
+        <div class="row g-3">
+            <div class="col-md-6">
+                <label class="form-label">{{ form.full_name.label.text }} <span class="text-danger">*</span></label>
+                {{ form.full_name(class="form-control") }}
+                {% for err in form.full_name.errors %}<div class="text-danger small">{{ err }}</div>{% endfor %}
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">{{ form.full_name_kana.label.text }}</label>
+                {{ form.full_name_kana(class="form-control") }}
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">{{ form.email.label.text }}</label>
+                {{ form.email(class="form-control", type="email") }}
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">{{ form.phone.label.text }}</label>
+                {{ form.phone(class="form-control") }}
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">{{ form.birth_date.label.text }}</label>
+                {{ form.birth_date(class="form-control") }}
+                <small class="text-muted">同姓同名の区別に使用（ダブルカウント検知）</small>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">{{ form.qualification.label.text }}</label>
+                {{ form.qualification(class="form-control") }}
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label">{{ form.compensation_type.label.text }} <span class="text-danger">*</span></label>
+                {{ form.compensation_type(class="form-select") }}
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">{{ form.hourly_rate.label.text }}</label>
+                {{ form.hourly_rate(class="form-control", type="number", min="0") }}
+                <small class="text-muted">謝金計算CSV出力に使用</small>
+            </div>
+            <div class="col-md-4 d-flex align-items-end">
+                <div class="form-check">
+                    {{ form.is_teacher_dual_role(class="form-check-input") }}
+                    <label class="form-check-label">{{ form.is_teacher_dual_role.label.text }}</label>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <label class="form-label">{{ form.organization_ids.label.text }}</label>
+                {{ form.organization_ids(class="form-select", size="5") }}
+                <small class="text-muted">Ctrl/Cmd キーで複数選択可。複数団体所属時は謝金ダブルカウント警告が表示されます。</small>
+            </div>
+
+            <div class="col-12">
+                <label class="form-label">{{ form.notes.label.text }}</label>
+                {{ form.notes(class="form-control", rows="3") }}
+            </div>
+
+            <div class="col-12">
+                <div class="form-check">
+                    {{ form.is_active(class="form-check-input") }}
+                    <label class="form-check-label">{{ form.is_active.label.text }}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer d-flex justify-content-between">
+        <a href="{{ url_for('coaches.list_coaches') }}" class="btn btn-outline-secondary">キャンセル</a>
+        {{ form.submit(class="btn btn-primary") }}
+    </div>
+</form>
+{% endblock %}
