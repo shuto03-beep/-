@@ -6,7 +6,7 @@ from app.models.facility import Facility
 from app.models.school_block import SchoolBlock
 from app.models.reservation import Reservation
 from app.forms.block import SchoolBlockForm
-from app.services.notification_service import create_notification
+from app.services.notification_service import queue_notifications
 from app.utils.decorators import role_required
 
 blocks_bp = Blueprint('blocks', __name__)
@@ -62,15 +62,17 @@ def new_block():
             )
 
         conflicts = conflict_query.all()
+        notifications = []
         for r in conflicts:
             r.status = Reservation.STATUS_CANCELLED
             r.cancellation_reason = f'学校行事のため自動キャンセル: {block.reason}'
-            create_notification(
-                r.reserved_by,
-                '予約が自動キャンセルされました',
-                f'{r.facility.full_name}の{r.date}の予約が学校行事（{block.reason}）のためキャンセルされました。',
-                link=url_for('reservations.detail', id=r.id),
-            )
+            notifications.append({
+                'user_id': r.reserved_by,
+                'title': '予約が自動キャンセルされました',
+                'message': f'{r.facility.full_name}の{r.date}の予約が学校行事（{block.reason}）のためキャンセルされました。',
+                'link': url_for('reservations.detail', id=r.id),
+            })
+        queue_notifications(notifications)
 
         db.session.commit()
 

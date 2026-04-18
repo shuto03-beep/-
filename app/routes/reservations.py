@@ -11,7 +11,6 @@ from app.services.reservation_service import (
     get_available_slots, create_reservation,
     cancel_reservation, ReservationConflictError, SchoolBlockedError, BookingPeriodError,
 )
-from app.services.notification_service import create_notification
 from app.utils.decorators import role_required
 from app.utils.helpers import time_slot_label
 

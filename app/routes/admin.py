@@ -8,7 +8,7 @@ from app.models.reservation import Reservation
 from app.models.facility import Facility
 from app.models.school import School
 from app.forms.admin import OrganizationRegistrationForm, UserEditForm
-from app.services.notification_service import create_notification
+from app.services.notification_service import create_bulk_notifications
 from app.utils.decorators import admin_required
 
 admin_bp = Blueprint('admin', __name__)
@@ -51,13 +51,15 @@ def approve_organization(id):
     db.session.commit()
 
     cert_text = 'いなチャレ認定団体として' if certify else ''
-    for member in org.members:
-        create_notification(
-            member.id,
-            '団体が承認されました',
-            f'「{org.name}」が{cert_text}事務局に承認されました。施設の予約が可能になりました。'
-            + (f' 認定団体として{org.advance_days}日先まで優先予約が可能です。' if certify else ''),
-        )
+    message = (
+        f'「{org.name}」が{cert_text}事務局に承認されました。施設の予約が可能になりました。'
+        + (f' 認定団体として{org.advance_days}日先まで優先予約が可能です。' if certify else '')
+    )
+    create_bulk_notifications(
+        [m.id for m in org.members],
+        '団体が承認されました',
+        message,
+    )
 
     flash(f'「{org.name}」を{cert_text}承認しました。', 'success')
     return redirect(url_for('admin.organizations'))
@@ -80,12 +82,11 @@ def toggle_certification(id):
     else:
         status_msg = f'いなチャレ認定を解除しました（{org.advance_days}日先まで予約可能）'
 
-    for member in org.members:
-        create_notification(
-            member.id,
-            'いなチャレ認定ステータスが変更されました',
-            f'「{org.name}」の認定ステータスが変更されました。{status_msg}',
-        )
+    create_bulk_notifications(
+        [m.id for m in org.members],
+        'いなチャレ認定ステータスが変更されました',
+        f'「{org.name}」の認定ステータスが変更されました。{status_msg}',
+    )
 
     flash(f'「{org.name}」: {status_msg}', 'success')
     return redirect(url_for('admin.organization_detail', id=id))
@@ -100,12 +101,11 @@ def reject_organization(id):
         flash('団体が見つかりません。', 'danger')
         return redirect(url_for('admin.organizations'))
 
-    for member in org.members:
-        create_notification(
-            member.id,
-            '団体の承認が見送られました',
-            f'「{org.name}」の承認が見送られました。事務局にお問い合わせください。',
-        )
+    create_bulk_notifications(
+        [m.id for m in org.members],
+        '団体の承認が見送られました',
+        f'「{org.name}」の承認が見送られました。事務局にお問い合わせください。',
+    )
 
     db.session.delete(org)
     db.session.commit()
@@ -135,14 +135,13 @@ def register_organization():
         current_user.role = User.ROLE_ORG_LEADER
         db.session.commit()
 
-        admins = User.query.filter_by(role=User.ROLE_ADMIN).all()
-        for admin in admins:
-            create_notification(
-                admin.id,
-                '新しい団体登録申請',
-                f'「{org.name}」から団体登録の申請がありました。',
-                link=url_for('admin.organization_detail', id=org.id),
-            )
+        admin_ids = [row[0] for row in db.session.query(User.id).filter_by(role=User.ROLE_ADMIN).all()]
+        create_bulk_notifications(
+            admin_ids,
+            '新しい団体登録申請',
+            f'「{org.name}」から団体登録の申請がありました。',
+            link=url_for('admin.organization_detail', id=org.id),
+        )
 
         flash('団体登録を申請しました。事務局の承認をお待ちください。', 'info')
         return redirect(url_for('dashboard.index'))
