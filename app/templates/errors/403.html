@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}アクセス権限がありません - いなチャレ施設予約{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-body text-center py-5">
+        <i class="bi bi-shield-exclamation d-block mb-3" style="font-size: 3rem; color: var(--accent);" aria-hidden="true"></i>
+        <h1 class="h3 mb-2">アクセス権限がありません</h1>
+        <p class="text-muted mb-4">
+            このページは特定の権限を持つユーザーのみ閲覧できます。<br>
+            事務局にご確認ください。
+        </p>
+        <a href="{{ url_for('dashboard.index') }}" class="btn btn-primary">
+            <i class="bi bi-house me-1" aria-hidden="true"></i>トップへ戻る
+        </a>
+    </div>
+</div>
+{% endblock %}

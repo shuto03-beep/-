@@ -812,3 +812,100 @@ body {
     .calendar-filters { padding: 12px; }
     .view-switcher .btn { padding: 6px 10px; font-size: 0.75rem; }
 }
+
+/* ============================================
+   アクセシビリティ改善（40-60代ユーザー／キーボード操作対応）
+   ============================================ */
+
+/* Skip to content link (screen reader / keyboard users) */
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 1000;
+    background: var(--primary-dark);
+    color: #fff;
+    padding: 10px 16px;
+    text-decoration: none;
+    border-radius: 0 0 8px 0;
+    font-weight: 700;
+}
+.skip-link:focus {
+    left: 0;
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* Stronger focus indicators for keyboard navigation */
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+.form-control:focus-visible,
+.form-select:focus-visible,
+.nav-link:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 1px var(--primary);
+}
+
+/* Larger base font on desktop — 40-60代配慮 */
+body {
+    font-size: 1rem;
+}
+
+/* Required field indicator (applied via aria-required or .required) */
+label .required-mark,
+.form-label .required-mark {
+    color: #c62828;
+    font-weight: 700;
+    margin-left: 4px;
+}
+
+/* Ensure touch targets meet WCAG 2.5.5 (44x44 on mobile) */
+@media (max-width: 768px) {
+    .btn,
+    .nav-link,
+    .dropdown-item,
+    .form-control,
+    .form-select {
+        min-height: 44px;
+    }
+    .btn-sm {
+        min-height: 36px;
+    }
+    body { font-size: 1.05rem; }  /* slightly larger on mobile */
+    .table { font-size: 0.95rem; }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: more) {
+    :root {
+        --border-color: #333;
+        --text-secondary: #000;
+        --text-muted: #333;
+    }
+    .card, .form-control, .form-select {
+        border-width: 2px !important;
+    }
+}
+
+/* Reduced motion — 乗り物酔い・めまい配慮 */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Visually hidden utility (for screen-reader-only text) */
+.visually-hidden-a11y {
+    position: absolute !important;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0);
+    white-space: nowrap; border: 0;
+}

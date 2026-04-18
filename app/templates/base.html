@@ -11,8 +11,9 @@
     {% block extra_head %}{% endblock %}
 </head>
 <body>
+    <a class="skip-link" href="#main-content">本文へスキップ</a>
     <!-- トップバー -->
-    <div class="top-bar">
+    <div class="top-bar" aria-label="サイト識別">
         <div class="container d-flex justify-content-between align-items-center">
             <small>稲美町 いなみチャレンジクラブ 公式施設予約システム</small>
             {% if current_user.is_authenticated %}
@@ -25,7 +26,7 @@
     </div>
 
     <!-- メインナビゲーション -->
-    <nav class="navbar navbar-expand-lg main-nav">
+    <nav class="navbar navbar-expand-lg main-nav" aria-label="メインメニュー">
         <div class="container">
             <a class="navbar-brand" href="{{ url_for('dashboard.index') }}">
                 <span class="brand-icon"><i class="bi bi-building"></i></span>
@@ -108,10 +109,11 @@
     </nav>
 
     <!-- メインコンテンツ -->
-    <main class="main-content">
+    <main class="main-content" id="main-content" tabindex="-1">
         <div class="container">
             {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
+            <div aria-live="polite" aria-atomic="true">
             {% for category, message in messages %}
             <div class="alert alert-{{ category }} alert-dismissible fade show alert-styled" role="alert">
                 {% if category == 'success' %}<i class="bi bi-check-circle me-2"></i>
@@ -120,9 +122,10 @@
                 {% elif category == 'info' %}<i class="bi bi-info-circle me-2"></i>
                 {% endif %}
                 {{ message }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="メッセージを閉じる"></button>
             </div>
             {% endfor %}
+            </div>
             {% endif %}
             {% endwith %}
 
@@ -131,7 +134,7 @@
     </main>
 
     <!-- フッター -->
-    <footer class="main-footer">
+    <footer class="main-footer" aria-label="フッター情報">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6 text-center text-md-start">

@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from app.config import get_config
 from app.extensions import db, migrate, login_manager, csrf, mail
 
@@ -39,10 +39,10 @@ def create_app(config_class=None):
 
     @app.errorhandler(404)
     def not_found(e):
-        return '<h1>404 - ページが見つかりません</h1><p><a href="/">トップへ戻る</a></p>', 404
+        return render_template('errors/404.html'), 404
 
     @app.errorhandler(403)
     def forbidden(e):
-        return '<h1>403 - アクセス権限がありません</h1><p><a href="/">トップへ戻る</a></p>', 403
+        return render_template('errors/403.html'), 403
 
     return app
