@@ -143,40 +143,114 @@
 
 {% elif current_user.is_school %}
 <!-- ===== 学校ダッシュボード ===== -->
-<div class="card">
-    <div class="card-header d-flex justify-content-between align-items-center">
-        <span><i class="bi bi-calendar-event me-2"></i>本日の予約</span>
-        <a href="{{ url_for('blocks.new_block') }}" class="btn btn-sm btn-outline-danger">
+{% if school %}
+<p class="text-muted mb-3">
+    <i class="bi bi-building me-1"></i>{{ school.name }}
+    <span class="ms-3 small">今週: {{ week_start.strftime('%m/%d') }}〜{{ week_end.strftime('%m/%d') }}</span>
+</p>
+
+<div class="row g-4 mb-4">
+    <div class="col-md-4">
+        <div class="stat-card stat-primary p-4 text-center">
+            <div class="stat-value">{{ today_reservations_list | length }}</div>
+            <div class="stat-label"><i class="bi bi-calendar-check me-1"></i>本日の予約</div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="stat-card stat-subtle p-4 text-center">
+            <div class="stat-value">{{ week_count }}</div>
+            <div class="stat-label"><i class="bi bi-calendar-week me-1"></i>今週の予約数</div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="stat-card stat-accent p-4 text-center">
+            <div class="stat-value">{{ week_block_count }}</div>
+            <div class="stat-label"><i class="bi bi-shield-lock me-1"></i>今週のブロック</div>
+        </div>
+    </div>
+</div>
+
+<div class="card mb-4">
+    <div class="card-header"><i class="bi bi-lightning me-2"></i>クイックアクション</div>
+    <div class="card-body d-flex flex-wrap gap-2">
+        <a href="{{ url_for('calendar.index') }}" class="btn btn-outline-primary">
+            <i class="bi bi-calendar3 me-1"></i>カレンダー
+        </a>
+        <a href="{{ url_for('blocks.list_blocks') }}" class="btn btn-outline-primary">
+            <i class="bi bi-list-check me-1"></i>ブロック一覧
+        </a>
+        <a href="{{ url_for('blocks.new_block') }}" class="btn btn-outline-danger">
             <i class="bi bi-shield-lock me-1"></i>ブロック追加
         </a>
     </div>
-    <div class="card-body">
-        {% if today_reservations_list %}
-        <div class="table-responsive">
-            <table class="table table-hover">
-                <thead>
-                    <tr><th>時間</th><th>施設</th><th>団体</th><th>目的</th></tr>
-                </thead>
-                <tbody>
-                    {% for r in today_reservations_list %}
-                    <tr>
-                        <td>{{ r.time_range }}</td>
-                        <td>{{ r.facility.name }}</td>
-                        <td>{{ r.organization.name }}</td>
-                        <td>{{ r.purpose }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+</div>
+
+<div class="row g-4">
+    <div class="col-md-7">
+        <div class="card">
+            <div class="card-header"><i class="bi bi-calendar-event me-2"></i>今後7日間の予約</div>
+            <div class="card-body p-0">
+                {% if upcoming_week_reservations %}
+                <table class="table table-hover mb-0">
+                    <thead>
+                        <tr><th>日付</th><th>時間</th><th>施設</th><th>団体</th></tr>
+                    </thead>
+                    <tbody>
+                        {% for r in upcoming_week_reservations %}
+                        <tr>
+                            <td class="text-nowrap">{{ r.date.strftime('%m/%d (%a)') }}</td>
+                            <td class="text-nowrap">{{ r.time_range }}</td>
+                            <td>{{ r.facility.name }}</td>
+                            <td>{{ r.organization.name }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <div class="empty-state py-4">
+                    <i class="bi bi-calendar-check d-block"></i>
+                    <p>今後7日間の予約はありません</p>
+                </div>
+                {% endif %}
+            </div>
         </div>
-        {% else %}
-        <div class="empty-state">
-            <i class="bi bi-calendar-check d-block"></i>
-            <p>本日の予約はありません</p>
+    </div>
+    <div class="col-md-5">
+        <div class="card">
+            <div class="card-header"><i class="bi bi-shield-lock me-2"></i>今週のブロック</div>
+            <div class="card-body p-0">
+                {% if week_blocks %}
+                <table class="table table-sm mb-0">
+                    <thead><tr><th>日付</th><th>時間</th><th>理由</th></tr></thead>
+                    <tbody>
+                        {% for b in week_blocks %}
+                        <tr>
+                            <td class="text-nowrap">{{ b.date.strftime('%m/%d') }}</td>
+                            <td class="text-nowrap">
+                                {% if b.is_all_day %}終日
+                                {% else %}{{ b.start_time.strftime('%H:%M') if b.start_time }}〜{{ b.end_time.strftime('%H:%M') if b.end_time }}
+                                {% endif %}
+                            </td>
+                            <td>{{ b.reason }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <div class="empty-state py-4">
+                    <i class="bi bi-check-circle d-block"></i>
+                    <p>今週のブロックはありません</p>
+                </div>
+                {% endif %}
+            </div>
         </div>
-        {% endif %}
     </div>
 </div>
+{% else %}
+<div class="card"><div class="card-body text-center py-5 text-muted">
+    学校情報が未登録です。事務局までお問い合わせください。
+</div></div>
+{% endif %}
 
 {% else %}
 <!-- ===== 一般住民ダッシュボード ===== -->
