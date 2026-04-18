@@ -17,6 +17,13 @@ from app.utils.decorators import admin_required
 
 coaches_bp = Blueprint('coaches', __name__)
 
+# 教職員兼職兼業者の週間活動時間上限: 19時間45分 = 1185分
+TEACHER_DUAL_ROLE_WEEKLY_LIMIT_MINUTES = 19 * 60 + 45
+
+
+def _week_monday(target_date):
+    return target_date - timedelta(days=target_date.weekday())
+
 
 def _parse_iso(value, default):
     if not value:
@@ -223,4 +230,61 @@ def export_compensation_csv():
         buf.getvalue(),
         mimetype='text/csv',
         headers={'Content-Disposition': f'attachment; filename="{filename}"'},
+    )
+
+
+@coaches_bp.route('/admin/coaches/dual-role-workload')
+@login_required
+@admin_required
+def dual_role_workload():
+    """教職員兼職兼業者の週間活動時間チェック。19h45mを超える者を警告。"""
+    today = date.today()
+    week_start_raw = request.args.get('week')
+    week_start = _parse_iso(week_start_raw, _week_monday(today))
+    # 必ず月曜日始まりに正規化
+    week_start = _week_monday(week_start)
+    week_end = week_start + timedelta(days=6)
+
+    teacher_coaches = (
+        Coach.query
+        .options(joinedload(Coach.organizations))
+        .filter_by(is_teacher_dual_role=True, is_active=True)
+        .order_by(Coach.full_name)
+        .all()
+    )
+
+    minutes_by_org = _reservation_minutes_by_org(week_start, week_end)
+
+    results = []
+    for coach in teacher_coaches:
+        minutes = sum(minutes_by_org.get(o.id, 0) for o in coach.organizations)
+        hours = minutes / 60
+        over = minutes > TEACHER_DUAL_ROLE_WEEKLY_LIMIT_MINUTES
+        # 80%以上で注意喚起
+        warning = (not over) and minutes >= 0.8 * TEACHER_DUAL_ROLE_WEEKLY_LIMIT_MINUTES
+        results.append({
+            'coach': coach,
+            'minutes': minutes,
+            'hours': hours,
+            'limit_minutes': TEACHER_DUAL_ROLE_WEEKLY_LIMIT_MINUTES,
+            'over': over,
+            'warning': warning,
+            'ratio': minutes / TEACHER_DUAL_ROLE_WEEKLY_LIMIT_MINUTES if TEACHER_DUAL_ROLE_WEEKLY_LIMIT_MINUTES else 0,
+        })
+
+    # Sort: over > warning > normal, within each descending by minutes
+    results.sort(key=lambda r: (-int(r['over']), -int(r['warning']), -r['minutes']))
+
+    return render_template(
+        'admin/dual_role_workload.html',
+        week_start=week_start,
+        week_end=week_end,
+        results=results,
+        limit_minutes=TEACHER_DUAL_ROLE_WEEKLY_LIMIT_MINUTES,
+        limit_label='19時間45分',
+        prev_week=(week_start - timedelta(days=7)).isoformat(),
+        next_week=(week_start + timedelta(days=7)).isoformat(),
+        total=len(results),
+        over_count=sum(1 for r in results if r['over']),
+        warning_count=sum(1 for r in results if r['warning']),
     )

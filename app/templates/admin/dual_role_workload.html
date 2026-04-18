@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% block title %}教職員兼職 週間活動時間 - いなチャレ施設予約{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1><i class="bi bi-clock-history"></i>教職員兼職 週間活動時間</h1>
+    <p class="page-subtitle">教員の勤務時間外活動上限（{{ limit_label }}／週）のチェック。超過者に警告を表示します。</p>
+</div>
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <div>
+        対象週: <strong>{{ week_start.strftime('%Y-%m-%d') }}（月）</strong> 〜 <strong>{{ week_end.strftime('%Y-%m-%d') }}（日）</strong>
+    </div>
+    <div class="btn-group">
+        <a href="?week={{ prev_week }}" class="btn btn-sm btn-outline-secondary">
+            <i class="bi bi-chevron-left"></i> 前週
+        </a>
+        <a href="{{ url_for('coaches.dual_role_workload') }}" class="btn btn-sm btn-outline-secondary">今週</a>
+        <a href="?week={{ next_week }}" class="btn btn-sm btn-outline-secondary">
+            翌週 <i class="bi bi-chevron-right"></i>
+        </a>
+    </div>
+</div>
+
+{% if over_count > 0 %}
+<div class="alert alert-danger">
+    <i class="bi bi-exclamation-triangle me-2"></i>
+    <strong>{{ over_count }} 名</strong>が週上限（{{ limit_label }}）を超過しています。勤務時間調整を検討してください。
+</div>
+{% elif warning_count > 0 %}
+<div class="alert alert-warning">
+    <i class="bi bi-exclamation-circle me-2"></i>
+    <strong>{{ warning_count }} 名</strong>が上限の80%に達しています。引き続き注意が必要です。
+</div>
+{% else %}
+<div class="alert alert-success">
+    <i class="bi bi-check-circle me-2"></i>
+    教職員兼職対象者 {{ total }} 名中、上限超過者・警告対象者はありません。
+</div>
+{% endif %}
+
+<div class="card">
+    <div class="card-body p-0">
+        <table class="table table-hover mb-0">
+            <thead>
+                <tr>
+                    <th>状態</th>
+                    <th>氏名</th>
+                    <th>所属団体</th>
+                    <th class="text-end">活動時間</th>
+                    <th class="text-end">上限比</th>
+                    <th style="width: 25%;">グラフ</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for r in results %}
+                <tr class="{% if r.over %}table-danger{% elif r.warning %}table-warning{% endif %}">
+                    <td>
+                        {% if r.over %}
+                        <span class="badge bg-danger">超過</span>
+                        {% elif r.warning %}
+                        <span class="badge bg-warning text-dark">注意</span>
+                        {% else %}
+                        <span class="badge bg-success">余裕</span>
+                        {% endif %}
+                    </td>
+                    <td><strong>{{ r.coach.full_name }}</strong></td>
+                    <td>
+                        {% for o in r.coach.organizations %}
+                        <span class="badge bg-info me-1">{{ o.name }}</span>
+                        {% endfor %}
+                    </td>
+                    <td class="text-end">
+                        {{ '%d時間%02d分' | format(r.minutes // 60, r.minutes % 60) }}
+                    </td>
+                    <td class="text-end">{{ '%.0f%%' | format(r.ratio * 100) }}</td>
+                    <td>
+                        <div class="progress" style="height: 12px;">
+                            <div class="progress-bar
+                                {% if r.over %}bg-danger{% elif r.warning %}bg-warning{% else %}bg-success{% endif %}"
+                                style="width: {{ [r.ratio * 100, 100] | min }}%;">
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                {% else %}
+                <tr><td colspan="6" class="text-center text-muted py-4">
+                    教職員兼職兼業として登録された指導者がいません。<br>
+                    <small>指導者管理画面で「教職員兼職兼業として登録」をチェックしてください。</small>
+                </td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="mt-3 text-muted small">
+    <i class="bi bi-info-circle me-1"></i>
+    活動時間は「所属団体の確定予約時間の合計」で算出。複数団体所属の場合は合算されます。
+    実際の指導時間と異なる場合は指導者本人への確認を行ってください。
+</div>
+{% endblock %}
