@@ -3,6 +3,7 @@ import io
 from datetime import date, timedelta
 from flask import Blueprint, render_template, redirect, url_for, flash, request, Response
 from flask_login import login_required, current_user
+from sqlalchemy import func, case
 from sqlalchemy.orm import joinedload
 from app.extensions import db
 from app.models.user import User
@@ -191,37 +192,41 @@ def reports():
     today = date.today()
     month_start = today.replace(day=1)
 
-    monthly_reservations = Reservation.query.filter(
-        Reservation.date >= month_start,
-        Reservation.status == Reservation.STATUS_CONFIRMED,
-    ).count()
+    status_counts = dict(
+        db.session.query(Reservation.status, func.count(Reservation.id))
+        .filter(Reservation.date >= month_start)
+        .group_by(Reservation.status)
+        .all()
+    )
+    monthly_reservations = status_counts.get(Reservation.STATUS_CONFIRMED, 0)
+    monthly_cancellations = status_counts.get(Reservation.STATUS_CANCELLED, 0)
 
-    monthly_cancellations = Reservation.query.filter(
-        Reservation.date >= month_start,
-        Reservation.status == Reservation.STATUS_CANCELLED,
-    ).count()
+    confirmed_count = func.count(case((Reservation.status == Reservation.STATUS_CONFIRMED, 1)))
 
-    # 施設別利用状況
-    facilities = Facility.query.all()
-    facility_stats = []
-    for f in facilities:
-        count = Reservation.query.filter(
-            Reservation.facility_id == f.id,
-            Reservation.date >= month_start,
-            Reservation.status == Reservation.STATUS_CONFIRMED,
-        ).count()
-        facility_stats.append({'facility': f, 'count': count})
+    # 施設別利用状況（全施設を表示、予約0件も含む）
+    facility_rows = (
+        db.session.query(Facility, confirmed_count)
+        .outerjoin(
+            Reservation,
+            (Reservation.facility_id == Facility.id) & (Reservation.date >= month_start),
+        )
+        .group_by(Facility.id)
+        .all()
+    )
+    facility_stats = [{'facility': f, 'count': c} for f, c in facility_rows]
 
-    # 団体別利用状況
-    orgs = Organization.query.filter_by(is_approved=True).all()
-    org_stats = []
-    for org in orgs:
-        count = Reservation.query.filter(
-            Reservation.organization_id == org.id,
-            Reservation.date >= month_start,
-            Reservation.status == Reservation.STATUS_CONFIRMED,
-        ).count()
-        org_stats.append({'org': org, 'count': count})
+    # 団体別利用状況（承認済み団体のみ）
+    org_rows = (
+        db.session.query(Organization, confirmed_count)
+        .outerjoin(
+            Reservation,
+            (Reservation.organization_id == Organization.id) & (Reservation.date >= month_start),
+        )
+        .filter(Organization.is_approved.is_(True))
+        .group_by(Organization.id)
+        .all()
+    )
+    org_stats = [{'org': o, 'count': c} for o, c in org_rows]
 
     return render_template('admin/reports.html',
                            monthly_reservations=monthly_reservations,
