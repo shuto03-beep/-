@@ -1,11 +1,11 @@
 from flask import Flask
-from app.config import Config
+from app.config import get_config
 from app.extensions import db, migrate, login_manager, csrf
 
 
-def create_app(config_class=Config):
+def create_app(config_class=None):
     app = Flask(__name__)
-    app.config.from_object(config_class)
+    app.config.from_object(config_class or get_config())
 
     db.init_app(app)
     migrate.init_app(app, db)
