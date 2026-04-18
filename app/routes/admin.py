@@ -371,6 +371,53 @@ def export_organizations_csv():
     return _csv_response(rows, header, filename)
 
 
+@admin_bp.route('/admin/reports/export/chutairen-roster.csv')
+@login_required
+@admin_required
+def export_chutairen_roster_csv():
+    """中体連提出用: いなチャレ認定かつ承認済みの団体と所属指導者の一覧。
+
+    1行 = 1 (団体, 指導者) ペア。指導者がいない団体も1行出力する。
+    """
+    certified_orgs = (
+        Organization.query
+        .filter(
+            Organization.is_inachalle_certified.is_(True),
+            Organization.is_approved.is_(True),
+        )
+        .order_by(Organization.name)
+        .all()
+    )
+
+    header = [
+        '団体ID', '団体名', '代表者', '登録番号', '連絡先メール', '連絡先電話',
+        '指導者氏名', '指導者氏名カナ', '指導者メール', '指導者電話',
+        '報酬区分', '資格・指導経歴', '教職員兼職兼業',
+    ]
+    rows = []
+    for org in certified_orgs:
+        active_coaches = [c for c in org.coaches if c.is_active]
+        if not active_coaches:
+            rows.append([
+                org.id, org.name, org.representative, org.registration_number or '',
+                org.contact_email or '', org.contact_phone or '',
+                '（指導者未登録）', '', '', '', '', '', '',
+            ])
+            continue
+        for coach in sorted(active_coaches, key=lambda c: c.full_name):
+            rows.append([
+                org.id, org.name, org.representative, org.registration_number or '',
+                org.contact_email or '', org.contact_phone or '',
+                coach.full_name, coach.full_name_kana or '',
+                coach.email or '', coach.phone or '',
+                coach.compensation_label,
+                (coach.qualification or '').replace('\n', ' '),
+                'はい' if coach.is_teacher_dual_role else 'いいえ',
+            ])
+    filename = f'chutairen_roster_{date.today().isoformat()}.csv'
+    return _csv_response(rows, header, filename)
+
+
 # === 活動ログ（監査） ===
 
 ACTIVITY_ACTION_LABELS = {

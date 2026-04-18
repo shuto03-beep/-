@@ -24,16 +24,22 @@
                 <label class="form-label mb-1">終了日</label>
                 <input type="date" name="to" class="form-control" value="{{ export_to }}">
             </div>
-            <div class="col-md-4 d-flex gap-2">
+            <div class="col-md-4 d-flex gap-2 flex-wrap">
                 <button type="submit" class="btn btn-primary">
                     <i class="bi bi-file-earmark-spreadsheet me-1"></i>予約明細CSV
                 </button>
                 <a href="{{ url_for('admin.export_organizations_csv') }}" class="btn btn-outline-primary">
                     <i class="bi bi-people me-1"></i>団体一覧CSV
                 </a>
+                <a href="{{ url_for('admin.export_chutairen_roster_csv') }}" class="btn btn-outline-warning">
+                    <i class="bi bi-award me-1"></i>中体連参加名簿
+                </a>
             </div>
         </form>
-        <small class="text-muted d-block mt-2">Excelで開けるUTF-8(BOM付き)形式。期間未指定時は今月の予約を出力します。</small>
+        <small class="text-muted d-block mt-2">
+            Excelで開けるUTF-8(BOM付き)形式。期間未指定時は今月の予約を出力。
+            中体連参加名簿はいなチャレ認定団体×指導者で出力します。
+        </small>
     </div>
 </div>
 
