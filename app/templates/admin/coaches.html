@@ -7,6 +7,31 @@
     <p class="page-subtitle">地域クラブ指導者の登録・所属団体の管理。中体連一覧提出や謝金計算の基礎データ。</p>
 </div>
 
+<div class="card mb-3">
+    <div class="card-header"><i class="bi bi-calculator me-2"></i>謝金見込CSV（月報用）</div>
+    <div class="card-body">
+        <form action="{{ url_for('coaches.export_compensation_csv') }}" method="get" class="row g-2 align-items-end">
+            <div class="col-md-4">
+                <label class="form-label mb-1">開始日</label>
+                <input type="date" name="from" class="form-control">
+            </div>
+            <div class="col-md-4">
+                <label class="form-label mb-1">終了日</label>
+                <input type="date" name="to" class="form-control">
+            </div>
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-primary w-100">
+                    <i class="bi bi-file-earmark-spreadsheet me-1"></i>謝金見込CSVをダウンロード
+                </button>
+            </div>
+        </form>
+        <small class="text-muted d-block mt-2">
+            期間内の確定予約時間 × 指導者時給。複数団体所属者はダブルカウント回避のため備考欄に注記されます。
+            期間未指定時は今月分を出力。
+        </small>
+    </div>
+</div>
+
 <div class="d-flex justify-content-between align-items-center mb-3">
     <div>
         <span class="me-3">登録指導者: <strong>{{ total }}</strong> 人</span>

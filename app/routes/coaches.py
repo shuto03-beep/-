@@ -1,15 +1,52 @@
-from flask import Blueprint, flash, redirect, render_template, request, url_for
+import csv
+import io
+from datetime import date, datetime, timedelta
+
+from flask import Blueprint, Response, flash, redirect, render_template, request, url_for
 from flask_login import login_required
+from sqlalchemy import func
 from sqlalchemy.orm import joinedload
 
 from app.extensions import db
 from app.forms.coach import CoachForm
 from app.models.coach import Coach
 from app.models.organization import Organization
+from app.models.reservation import Reservation
 from app.services.activity_log_service import log_activity
 from app.utils.decorators import admin_required
 
 coaches_bp = Blueprint('coaches', __name__)
+
+
+def _parse_iso(value, default):
+    if not value:
+        return default
+    try:
+        return date.fromisoformat(value)
+    except ValueError:
+        return default
+
+
+def _reservation_minutes_by_org(date_from, date_to):
+    """Return {organization_id: total_minutes} for confirmed reservations in range."""
+    rows = (
+        db.session.query(Reservation.organization_id, Reservation.start_time, Reservation.end_time)
+        .filter(
+            Reservation.date >= date_from,
+            Reservation.date <= date_to,
+            Reservation.status == Reservation.STATUS_CONFIRMED,
+        )
+        .all()
+    )
+    totals = {}
+    for org_id, start_t, end_t in rows:
+        start = datetime.combine(date.min, start_t)
+        end = datetime.combine(date.min, end_t)
+        minutes = int((end - start).total_seconds() // 60)
+        if minutes <= 0:
+            continue
+        totals[org_id] = totals.get(org_id, 0) + minutes
+    return totals
 
 
 def _set_org_choices(form):
@@ -121,3 +158,69 @@ def edit_coach(id):
         return redirect(url_for('coaches.list_coaches'))
 
     return render_template('admin/coach_form.html', form=form, coach=coach)
+
+
+@coaches_bp.route('/admin/coaches/compensation.csv')
+@login_required
+@admin_required
+def export_compensation_csv():
+    """指導者×団体ごとに、期間内の予約時間から謝金見込を算出してCSV出力。
+
+    注意: 予約は団体単位で登録されるため、現状は「指導者が所属団体の全活動を指導した」と仮定した
+    見込み額。実際の稼働は編集して調整する。
+    """
+    today = date.today()
+    default_from = today.replace(day=1)
+    date_from = _parse_iso(request.args.get('from'), default_from)
+    date_to = _parse_iso(request.args.get('to'), today)
+
+    minutes_by_org = _reservation_minutes_by_org(date_from, date_to)
+
+    coaches = (
+        Coach.query
+        .options(joinedload(Coach.organizations))
+        .filter_by(is_active=True)
+        .order_by(Coach.full_name)
+        .all()
+    )
+
+    header = [
+        '指導者ID', '氏名', '報酬区分', '時間単価(円)', '教職員兼職',
+        '団体ID', '団体名', '稼働時間(分)', '稼働時間(時)', '謝金見込(円)', '備考',
+    ]
+    rows = []
+    for c in coaches:
+        if not c.organizations:
+            rows.append([
+                c.id, c.full_name, c.compensation_label, c.hourly_rate or 0,
+                'はい' if c.is_teacher_dual_role else 'いいえ',
+                '', '（所属なし）', 0, 0, 0, '所属団体未設定',
+            ])
+            continue
+        for org in c.organizations:
+            minutes = minutes_by_org.get(org.id, 0)
+            hours = minutes / 60
+            amount = int(round(hours * (c.hourly_rate or 0)))
+            note_parts = []
+            if c.is_multi_affiliated:
+                note_parts.append('複数団体所属（ダブルカウント注意）')
+            if c.compensation_type == Coach.COMPENSATION_UNPAID:
+                note_parts.append('無償')
+            rows.append([
+                c.id, c.full_name, c.compensation_label, c.hourly_rate or 0,
+                'はい' if c.is_teacher_dual_role else 'いいえ',
+                org.id, org.name, minutes, round(hours, 2), amount,
+                '; '.join(note_parts),
+            ])
+
+    buf = io.StringIO()
+    buf.write('\ufeff')
+    writer = csv.writer(buf)
+    writer.writerow(header)
+    writer.writerows(rows)
+    filename = f'compensation_{date_from.isoformat()}_{date_to.isoformat()}.csv'
+    return Response(
+        buf.getvalue(),
+        mimetype='text/csv',
+        headers={'Content-Disposition': f'attachment; filename="{filename}"'},
+    )
