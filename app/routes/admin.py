@@ -1,6 +1,9 @@
+import csv
+import io
 from datetime import date, timedelta
-from flask import Blueprint, render_template, redirect, url_for, flash, request
+from flask import Blueprint, render_template, redirect, url_for, flash, request, Response
 from flask_login import login_required, current_user
+from sqlalchemy.orm import joinedload
 from app.extensions import db
 from app.models.user import User
 from app.models.organization import Organization
@@ -225,4 +228,116 @@ def reports():
                            monthly_cancellations=monthly_cancellations,
                            facility_stats=facility_stats,
                            org_stats=org_stats,
-                           month=today.strftime('%Y年%m月'))
+                           month=today.strftime('%Y年%m月'),
+                           export_from=month_start.isoformat(),
+                           export_to=today.isoformat())
+
+
+# === CSVエクスポート ===
+
+def _parse_iso_date(value, default):
+    if not value:
+        return default
+    try:
+        return date.fromisoformat(value)
+    except ValueError:
+        return default
+
+
+def _csv_response(rows, header, filename):
+    buf = io.StringIO()
+    buf.write('\ufeff')  # Excelで日本語を正しく扱うためのBOM
+    writer = csv.writer(buf)
+    writer.writerow(header)
+    writer.writerows(rows)
+    return Response(
+        buf.getvalue(),
+        mimetype='text/csv',
+        headers={'Content-Disposition': f'attachment; filename="{filename}"'},
+    )
+
+
+@admin_bp.route('/admin/reports/export/reservations.csv')
+@login_required
+@admin_required
+def export_reservations_csv():
+    today = date.today()
+    default_from = today.replace(day=1)
+    date_from = _parse_iso_date(request.args.get('from'), default_from)
+    date_to = _parse_iso_date(request.args.get('to'), today)
+
+    reservations = (
+        Reservation.query
+        .options(
+            joinedload(Reservation.facility).joinedload(Facility.school),
+            joinedload(Reservation.organization),
+            joinedload(Reservation.user),
+        )
+        .filter(Reservation.date >= date_from, Reservation.date <= date_to)
+        .order_by(Reservation.date, Reservation.start_time)
+        .all()
+    )
+
+    header = [
+        '予約ID', '日付', '開始時刻', '終了時刻',
+        '学校', '施設', '施設区分', '団体名', 'いなチャレ認定',
+        '予約者', '参加予定人数', '目的', 'ステータス',
+        'キャンセル理由', '登録日時',
+    ]
+    rows = []
+    for r in reservations:
+        facility = r.facility
+        school_name = facility.school.name if facility and facility.school else ''
+        facility_name = facility.name if facility else ''
+        facility_type = facility.type_label if facility else ''
+        org_name = r.organization.name if r.organization else ''
+        is_certified = 'はい' if (r.organization and r.organization.is_inachalle_certified) else 'いいえ'
+        user_name = r.user.display_name if r.user else ''
+        rows.append([
+            r.id,
+            r.date.isoformat(),
+            r.start_time.strftime('%H:%M'),
+            r.end_time.strftime('%H:%M'),
+            school_name,
+            facility_name,
+            facility_type,
+            org_name,
+            is_certified,
+            user_name,
+            r.expected_participants or '',
+            r.purpose or '',
+            r.status_label,
+            r.cancellation_reason or '',
+            r.created_at.strftime('%Y-%m-%d %H:%M') if r.created_at else '',
+        ])
+
+    filename = f'reservations_{date_from.isoformat()}_{date_to.isoformat()}.csv'
+    return _csv_response(rows, header, filename)
+
+
+@admin_bp.route('/admin/reports/export/organizations.csv')
+@login_required
+@admin_required
+def export_organizations_csv():
+    orgs = Organization.query.order_by(Organization.created_at.desc()).all()
+    header = [
+        '団体ID', '団体名', '代表者', '連絡先メール', '連絡先電話',
+        '登録番号', 'ステータス', 'いなチャレ認定', '予約可能日数', '備考', '登録日',
+    ]
+    rows = []
+    for org in orgs:
+        rows.append([
+            org.id,
+            org.name,
+            org.representative,
+            org.contact_email or '',
+            org.contact_phone or '',
+            org.registration_number or '',
+            org.status_label,
+            'はい' if org.is_inachalle_certified else 'いいえ',
+            org.advance_days,
+            (org.notes or '').replace('\n', ' '),
+            org.created_at.strftime('%Y-%m-%d') if org.created_at else '',
+        ])
+    filename = f'organizations_{date.today().isoformat()}.csv'
+    return _csv_response(rows, header, filename)
