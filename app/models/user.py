@@ -14,18 +14,28 @@ class User(UserMixin, db.Model):
     display_name = db.Column(db.String(100), nullable=False)
     role = db.Column(db.String(20), nullable=False, default='resident')
     organization_id = db.Column(db.Integer, db.ForeignKey('organizations.id'), nullable=True)
+    child_organization_id = db.Column(db.Integer, db.ForeignKey('organizations.id'), nullable=True)
     phone = db.Column(db.String(20))
     is_active = db.Column(db.Boolean, default=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
-    organization = db.relationship('Organization', backref=db.backref('members', lazy='dynamic'))
+    organization = db.relationship(
+        'Organization', foreign_keys=[organization_id],
+        backref=db.backref('members', lazy='dynamic'),
+    )
+    child_organization = db.relationship(
+        'Organization', foreign_keys=[child_organization_id],
+        backref=db.backref('parent_watchers', lazy='dynamic'),
+    )
 
     ROLE_ADMIN = 'admin'
     ROLE_SCHOOL = 'school'
     ROLE_ORG_LEADER = 'org_leader'
     ROLE_ORG_MEMBER = 'org_member'
     ROLE_RESIDENT = 'resident'
+    ROLE_COACH = 'coach'
+    ROLE_PARENT = 'parent'
 
     ROLE_LABELS = {
         'admin': '事務局',
@@ -33,6 +43,8 @@ class User(UserMixin, db.Model):
         'org_leader': '団体責任者',
         'org_member': '団体メンバー',
         'resident': '一般住民',
+        'coach': '指導者',
+        'parent': '保護者',
     }
 
     def set_password(self, password):
@@ -56,6 +68,14 @@ class User(UserMixin, db.Model):
     @property
     def is_org_leader(self):
         return self.role == self.ROLE_ORG_LEADER
+
+    @property
+    def is_coach(self):
+        return self.role == self.ROLE_COACH
+
+    @property
+    def is_parent(self):
+        return self.role == self.ROLE_PARENT
 
     @property
     def can_make_reservation(self):

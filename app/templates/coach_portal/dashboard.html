@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% block title %}指導者マイページ - いなチャレ施設予約{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1><i class="bi bi-person-badge"></i>{{ coach.full_name }} 様 マイページ</h1>
+    <p class="page-subtitle">あなたの登録情報と、所属団体の今後の活動予定を確認できます。</p>
+</div>
+
+<div class="row g-4 mb-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header"><i class="bi bi-info-circle me-2"></i>登録情報</div>
+            <div class="card-body">
+                <dl class="row mb-0">
+                    <dt class="col-sm-4">氏名</dt><dd class="col-sm-8">{{ coach.full_name }}</dd>
+                    {% if coach.full_name_kana %}
+                    <dt class="col-sm-4">氏名（カナ）</dt><dd class="col-sm-8">{{ coach.full_name_kana }}</dd>
+                    {% endif %}
+                    <dt class="col-sm-4">報酬区分</dt>
+                    <dd class="col-sm-8">
+                        {% if coach.compensation_type == 'paid' %}
+                        <span class="badge bg-success">{{ coach.compensation_label }}</span>
+                        （{{ '{:,}'.format(coach.hourly_rate or 0) }}円/時）
+                        {% else %}
+                        <span class="badge bg-secondary">{{ coach.compensation_label }}</span>
+                        {% endif %}
+                    </dd>
+                    <dt class="col-sm-4">教職員兼職</dt>
+                    <dd class="col-sm-8">{% if coach.is_teacher_dual_role %}はい{% else %}いいえ{% endif %}</dd>
+                    {% if coach.qualification %}
+                    <dt class="col-sm-4">資格・経歴</dt><dd class="col-sm-8">{{ coach.qualification }}</dd>
+                    {% endif %}
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header"><i class="bi bi-people me-2"></i>所属団体</div>
+            <div class="card-body">
+                {% if coach.organizations %}
+                <ul class="list-unstyled mb-0">
+                    {% for o in coach.organizations %}
+                    <li class="mb-2">
+                        <strong>{{ o.name }}</strong>
+                        {% if o.is_inachalle_certified %}
+                        <span class="badge bg-warning text-dark ms-1"><i class="bi bi-award me-1"></i>いなチャレ認定</span>
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% if coach.is_multi_affiliated %}
+                <div class="alert alert-warning mt-3 mb-0" role="alert">
+                    <i class="bi bi-exclamation-triangle me-1"></i>
+                    複数団体に所属しています。謝金計算時は各団体の活動を区分してください。
+                </div>
+                {% endif %}
+                {% else %}
+                <p class="text-muted mb-0">所属団体が未登録です。事務局にお問い合わせください。</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <span><i class="bi bi-calendar-event me-2"></i>今後2週間の活動予定</span>
+        <a href="{{ url_for('coach_portal.compensation') }}" class="btn btn-sm btn-outline-primary">
+            <i class="bi bi-cash-coin me-1"></i>謝金明細を見る
+        </a>
+    </div>
+    <div class="card-body p-0">
+        {% if upcoming %}
+        <table class="table table-hover mb-0">
+            <thead>
+                <tr><th>日付</th><th>時間</th><th>施設</th><th>団体</th></tr>
+            </thead>
+            <tbody>
+                {% for r in upcoming %}
+                <tr>
+                    <td class="text-nowrap">{{ r.date.strftime('%m/%d (%a)') }}</td>
+                    <td class="text-nowrap">{{ r.time_range }}</td>
+                    <td>{{ r.facility.full_name }}</td>
+                    <td>{{ r.organization.name }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <div class="empty-state py-4">
+            <i class="bi bi-calendar-check d-block" aria-hidden="true"></i>
+            <p>2週間以内の活動予定はありません</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

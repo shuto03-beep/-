@@ -32,9 +32,12 @@ class Coach(db.Model):
     hourly_rate = db.Column(db.Integer, default=0)  # 円/時間
     is_teacher_dual_role = db.Column(db.Boolean, default=False)  # 教職員兼職兼業
     is_active = db.Column(db.Boolean, default=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), unique=True, nullable=True)
     notes = db.Column(db.Text)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    user = db.relationship('User', backref=db.backref('coach_profile', uselist=False))
 
     organizations = db.relationship(
         'Organization',

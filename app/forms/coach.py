@@ -26,6 +26,7 @@ class CoachForm(FlaskForm):
     ], default=0)
     is_teacher_dual_role = BooleanField('教職員兼職兼業として登録')
     organization_ids = SelectMultipleField('所属団体（複数選択可）', coerce=int, validators=[Optional()])
+    user_id = SelectField('ログインアカウント（マイページ連携）', coerce=int, validators=[Optional()])
     is_active = BooleanField('有効', default=True)
     notes = TextAreaField('備考', validators=[Optional()])
     submit = SubmitField('保存')

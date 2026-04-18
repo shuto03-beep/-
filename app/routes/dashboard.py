@@ -33,6 +33,13 @@ def root():
 @login_required
 def index():
     today = date.today()
+
+    # 指導者・保護者は専用ポータルへリダイレクト
+    if current_user.is_coach:
+        return redirect(url_for('coach_portal.dashboard'))
+    if current_user.is_parent:
+        return redirect(url_for('parent_portal.dashboard'))
+
     context = {
         'unread_count': get_unread_count(current_user.id),
     }

@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}謝金明細 - いなチャレ施設予約{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1><i class="bi bi-cash-coin"></i>謝金明細（見込）</h1>
+    <p class="page-subtitle">指定期間内の活動時間から算出した謝金見込み額です。実際の支給額とは異なる場合があります。</p>
+</div>
+
+<form method="get" class="card mb-3">
+    <div class="card-body">
+        <div class="row g-2 align-items-end">
+            <div class="col-md-4">
+                <label class="form-label mb-1">開始日</label>
+                <input type="date" name="from" class="form-control" value="{{ date_from.isoformat() }}">
+            </div>
+            <div class="col-md-4">
+                <label class="form-label mb-1">終了日</label>
+                <input type="date" name="to" class="form-control" value="{{ date_to.isoformat() }}">
+            </div>
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-primary w-100">期間を更新</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="card">
+    <div class="card-body p-0">
+        <table class="table mb-0">
+            <thead>
+                <tr>
+                    <th>団体</th>
+                    <th class="text-end">活動時間</th>
+                    <th class="text-end">時間単価</th>
+                    <th class="text-end">謝金見込</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for b in breakdown %}
+                <tr>
+                    <td>{{ b.org.name }}</td>
+                    <td class="text-end">{{ '%.2f'|format(b.hours) }} 時間</td>
+                    <td class="text-end">{{ '{:,}'.format(coach.hourly_rate or 0) }} 円</td>
+                    <td class="text-end">{{ '{:,}'.format(b.amount) }} 円</td>
+                </tr>
+                {% else %}
+                <tr><td colspan="4" class="text-center text-muted py-4">所属団体がありません</td></tr>
+                {% endfor %}
+            </tbody>
+            {% if breakdown %}
+            <tfoot>
+                <tr class="fw-bold">
+                    <td>合計</td>
+                    <td class="text-end">{{ '%.2f'|format(total_hours) }} 時間</td>
+                    <td></td>
+                    <td class="text-end">{{ '{:,}'.format(total_amount) }} 円</td>
+                </tr>
+            </tfoot>
+            {% endif %}
+        </table>
+    </div>
+</div>
+
+<p class="text-muted small mt-3">
+    <i class="bi bi-info-circle me-1"></i>
+    この見込みは「所属団体の確定予約時間 × 時間単価」で算出しています。
+    実稼働と異なる場合は事務局までご連絡ください。
+</p>
+{% endblock %}

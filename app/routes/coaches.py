@@ -12,6 +12,7 @@ from app.forms.coach import CoachForm
 from app.models.coach import Coach
 from app.models.organization import Organization
 from app.models.reservation import Reservation
+from app.models.user import User
 from app.services.activity_log_service import log_activity
 from app.utils.decorators import admin_required
 
@@ -63,6 +64,32 @@ def _set_org_choices(form):
     ]
 
 
+def _set_user_choices(form, current_coach=None):
+    """Build user picker: users that are eligible to be linked as coach accounts.
+
+    Excludes users already linked to another coach (unless it's the one being edited).
+    """
+    taken_user_ids = {
+        uid for (uid,) in db.session.query(Coach.user_id).filter(Coach.user_id.isnot(None)).all()
+    }
+    if current_coach and current_coach.user_id:
+        taken_user_ids.discard(current_coach.user_id)
+
+    candidates = (
+        User.query
+        .filter(User.role.in_([User.ROLE_COACH, User.ROLE_RESIDENT]))
+        .filter(User.is_active.is_(True))
+        .order_by(User.display_name)
+        .all()
+    )
+    choices = [(0, '（未連携）')]
+    for u in candidates:
+        if u.id in taken_user_ids:
+            continue
+        choices.append((u.id, f'{u.display_name} ({u.email})'))
+    form.user_id.choices = choices
+
+
 @coaches_bp.route('/admin/coaches')
 @login_required
 @admin_required
@@ -86,6 +113,7 @@ def list_coaches():
 def new_coach():
     form = CoachForm()
     _set_org_choices(form)
+    _set_user_choices(form)
 
     if form.validate_on_submit():
         coach = Coach(
@@ -99,8 +127,13 @@ def new_coach():
             hourly_rate=form.hourly_rate.data or 0,
             is_teacher_dual_role=form.is_teacher_dual_role.data,
             is_active=form.is_active.data,
+            user_id=form.user_id.data if form.user_id.data else None,
             notes=form.notes.data or None,
         )
+        if coach.user_id:
+            linked_user = db.session.get(User, coach.user_id)
+            if linked_user:
+                linked_user.role = User.ROLE_COACH
         selected_orgs = Organization.query.filter(Organization.id.in_(form.organization_ids.data)).all()
         coach.organizations = selected_orgs
         db.session.add(coach)
@@ -137,8 +170,10 @@ def edit_coach(id):
 
     form = CoachForm(obj=coach)
     _set_org_choices(form)
+    _set_user_choices(form, current_coach=coach)
     if request.method == 'GET':
         form.organization_ids.data = [o.id for o in coach.organizations]
+        form.user_id.data = coach.user_id or 0
 
     if form.validate_on_submit():
         coach.full_name = form.full_name.data.strip()
@@ -151,6 +186,17 @@ def edit_coach(id):
         coach.hourly_rate = form.hourly_rate.data or 0
         coach.is_teacher_dual_role = form.is_teacher_dual_role.data
         coach.is_active = form.is_active.data
+        new_user_id = form.user_id.data or None
+        if coach.user_id and coach.user_id != new_user_id:
+            # Unlink previous user
+            prev = db.session.get(User, coach.user_id)
+            if prev and prev.role == User.ROLE_COACH:
+                prev.role = User.ROLE_RESIDENT
+        coach.user_id = new_user_id
+        if coach.user_id:
+            linked_user = db.session.get(User, coach.user_id)
+            if linked_user:
+                linked_user.role = User.ROLE_COACH
         coach.notes = form.notes.data or None
         coach.organizations = Organization.query.filter(
             Organization.id.in_(form.organization_ids.data),
