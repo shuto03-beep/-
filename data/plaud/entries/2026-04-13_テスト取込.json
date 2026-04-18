@@ -10,14 +10,9 @@
   },
   "lifelog": {
     "headline": "テスト取込",
-    "narrative": "inbox自動テスト",
     "tags": [
       "plaud"
     ],
-    "people": [],
-    "locations": [],
-    "mood": "",
-    "key_points": [],
     "source": "fallback"
   },
   "tasks": [],
@@ -28,7 +23,6 @@
       "medium": 0,
       "low": 0
     },
-    "effort_summary": "(AI 未使用のためタスク抽出はスキップ)",
-    "blockers": []
+    "effort_summary": ""
   }
 }

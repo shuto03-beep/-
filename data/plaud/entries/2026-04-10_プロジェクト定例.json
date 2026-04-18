@@ -10,16 +10,12 @@
   },
   "lifelog": {
     "headline": "プロジェクト定例",
-    "narrative": "新機能リリースに向けたスケジュール調整。QAは月曜までに完了予定。デザインの最終レビューが必要。",
     "tags": [
       "仕事",
       "リリース",
       "plaud"
     ],
-    "people": [],
-    "locations": [],
     "mood": "達成感",
-    "key_points": [],
     "source": "fallback"
   },
   "tasks": [
@@ -40,8 +36,7 @@
       "medium": 0,
       "low": 0
     },
-    "effort_summary": "(AI 未使用のためタスク抽出はスキップ)",
-    "blockers": []
+    "effort_summary": ""
   },
   "notes": [
     {

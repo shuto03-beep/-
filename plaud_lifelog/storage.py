@@ -31,6 +31,14 @@ def save_entry(entry: dict) -> Path:
     return path
 
 
+def save_entry_raw(entry: dict) -> Path:
+    """エントリ JSON だけを書き出す (index/tasks は更新しない)。"""
+    ensure_dirs()
+    path = ENTRIES_DIR / f"{entry['id']}.json"
+    _dump_json(path, entry)
+    return path
+
+
 def load_entry(entry_id: str) -> dict:
     path = ENTRIES_DIR / f"{entry_id}.json"
     if not path.exists():

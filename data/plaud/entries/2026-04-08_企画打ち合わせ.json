@@ -10,14 +10,9 @@
   },
   "lifelog": {
     "headline": "企画打ち合わせ",
-    "narrative": "新サービスのコンセプトを議論。ターゲットユーザーは30代のビジネスパーソン。",
     "tags": [
       "plaud"
     ],
-    "people": [],
-    "locations": [],
-    "mood": "",
-    "key_points": [],
     "source": "fallback"
   },
   "tasks": [],
@@ -28,7 +23,6 @@
       "medium": 0,
       "low": 0
     },
-    "effort_summary": "(AI 未使用のためタスク抽出はスキップ)",
-    "blockers": []
+    "effort_summary": ""
   }
 }

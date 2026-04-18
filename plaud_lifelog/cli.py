@@ -22,6 +22,7 @@ from .plaud_client import (
 )
 from .report_generator import build_report
 from .stats import compute_stats, generate_trend_analysis
+from .compactor import compact_entry
 from .storage import (
     append_note,
     build_entry_id,
@@ -33,6 +34,7 @@ from .storage import (
     load_report,
     reindex,
     save_entry,
+    save_entry_raw,
     save_report,
     search_entries,
     update_task_status,
@@ -118,6 +120,25 @@ def main(argv: list[str] | None = None) -> int:
         help="Claude で傾向分析コメントを生成する（APIキー未設定時はフォールバック）",
     )
 
+    p_compact = sub.add_parser(
+        "compact",
+        help="エントリ JSON を圧縮してトークン消費を削減する",
+    )
+    g_compact = p_compact.add_mutually_exclusive_group(required=True)
+    g_compact.add_argument("entry_id", nargs="?", default=None, help="対象エントリID")
+    g_compact.add_argument("--all", action="store_true", help="entries/ 全件を対象")
+    p_compact.add_argument(
+        "--mode", choices=("safe", "balanced", "aggressive"),
+        default="balanced", help="圧縮モード (既定: balanced)",
+    )
+    p_compact.add_argument(
+        "--transcript-chars", type=int, default=None,
+        help="raw.transcript の上限文字数 (モード既定を上書き)",
+    )
+    p_compact.add_argument("--dry-run", action="store_true", help="保存せず削減表を表示")
+    p_compact.add_argument("--no-reindex", action="store_true", help="最後の reindex() をスキップ")
+    p_compact.add_argument("--yes", "-y", action="store_true", help="確認をスキップ")
+
     args = parser.parse_args(argv)
 
     if args.command == "ingest":
@@ -146,6 +167,8 @@ def main(argv: list[str] | None = None) -> int:
         return cmd_note(args)
     if args.command == "stats":
         return cmd_stats(args)
+    if args.command == "compact":
+        return cmd_compact(args)
 
     parser.print_help()
     return 1
@@ -732,6 +755,102 @@ def cmd_stats(args) -> int:
             for s in suggestions:
                 print(f"  * {s}")
     return 0
+
+
+def cmd_compact(args) -> int:
+    from .config import ENTRIES_DIR
+    from .storage import load_json
+
+    if args.all:
+        if not args.yes and not args.dry_run:
+            print("entries/ 全件を圧縮します。続行しますか？ [y/N] ", end="", flush=True)
+            answer = input().strip().lower()
+            if answer not in ("y", "yes"):
+                print("キャンセル")
+                return 0
+        paths = sorted(ENTRIES_DIR.glob("*.json"))
+        entries = []
+        for p in paths:
+            try:
+                e = load_json(p)
+            except Exception:
+                continue
+            if isinstance(e, dict) and "id" in e:
+                entries.append(e)
+    else:
+        try:
+            entries = [load_entry(args.entry_id)]
+        except FileNotFoundError as e:
+            print(f"[error] {e}", file=sys.stderr)
+            return 2
+
+    if not entries:
+        print("(対象エントリなし)")
+        return 0
+
+    label = "dry-run " if args.dry_run else ""
+    print(f"[compact] {label}mode={args.mode}  対象={len(entries)} 件")
+    print()
+
+    total_before = 0
+    total_after = 0
+    written = 0
+
+    header = f"{'ENTRY_ID':<50} {'BEFORE':>8} {'AFTER':>8} {'SAVED':>8} {'%':>5}  ACTIONS"
+    print(header)
+    print("-" * len(header))
+
+    for entry in entries:
+        new_entry, stats = compact_entry(
+            entry,
+            mode=args.mode,
+            transcript_chars=args.transcript_chars,
+        )
+        total_before += stats["bytes_before"]
+        total_after += stats["bytes_after"]
+
+        entry_id = entry.get("id", "?")
+        display_id = entry_id if len(entry_id) <= 48 else entry_id[:45] + "..."
+        actions_str = ",".join(stats["actions"]) if stats["actions"] else "-"
+
+        print(
+            f"{display_id:<50} "
+            f"{_fmt_bytes(stats['bytes_before']):>8} "
+            f"{_fmt_bytes(stats['bytes_after']):>8} "
+            f"{_fmt_bytes(stats['bytes_saved']):>8} "
+            f"{(stats['bytes_saved'] / stats['bytes_before'] * 100) if stats['bytes_before'] else 0:>5.1f}  "
+            f"{actions_str}"
+        )
+
+        if not args.dry_run and stats["bytes_saved"] > 0:
+            save_entry_raw(new_entry)
+            written += 1
+
+    total_saved = total_before - total_after
+    pct = (total_saved / total_before * 100) if total_before else 0
+    print("-" * len(header))
+    print(
+        f"{'TOTAL (' + str(len(entries)) + ' entries)':<50} "
+        f"{_fmt_bytes(total_before):>8} "
+        f"{_fmt_bytes(total_after):>8} "
+        f"{_fmt_bytes(total_saved):>8} "
+        f"{pct:>5.1f}"
+    )
+
+    if not args.dry_run and written > 0 and not args.no_reindex:
+        print()
+        result = reindex()
+        print(f"reindex done: entries={result['entries']}, tasks={result['tasks']}")
+
+    return 0
+
+
+def _fmt_bytes(n: int) -> str:
+    if n < 1024:
+        return f"{n} B"
+    if n < 1024 * 1024:
+        return f"{n / 1024:.1f} KB"
+    return f"{n / (1024 * 1024):.1f} MB"
 
 
 def _resolve_range(args) -> tuple[datetime, datetime]:

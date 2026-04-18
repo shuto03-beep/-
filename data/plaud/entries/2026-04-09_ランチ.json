@@ -10,14 +10,9 @@
   },
   "lifelog": {
     "headline": "ランチ",
-    "narrative": "同僚とランチ。最近読んだ本の話で盛り上がった。",
     "tags": [
       "plaud"
     ],
-    "people": [],
-    "locations": [],
-    "mood": "",
-    "key_points": [],
     "source": "fallback"
   },
   "tasks": [],
@@ -28,7 +23,6 @@
       "medium": 0,
       "low": 0
     },
-    "effort_summary": "(AI 未使用のためタスク抽出はスキップ)",
-    "blockers": []
+    "effort_summary": ""
   }
 }

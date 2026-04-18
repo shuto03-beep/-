@@ -10,16 +10,12 @@
   },
   "lifelog": {
     "headline": "朝会",
-    "narrative": "今週の優先案件は提案書の初版作成。田中さんと15日までに仕上げる方針を共有した。",
     "tags": [
       "仕事",
       "会議",
       "plaud"
     ],
-    "people": [],
-    "locations": [],
     "mood": "集中",
-    "key_points": [],
     "source": "fallback"
   },
   "tasks": [
@@ -58,8 +54,7 @@
       "medium": 0,
       "low": 0
     },
-    "effort_summary": "(AI 未使用のためタスク抽出はスキップ)",
-    "blockers": []
+    "effort_summary": ""
   },
   "notes": [
     {
