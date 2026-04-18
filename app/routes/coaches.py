@@ -15,6 +15,11 @@ from app.models.reservation import Reservation
 from app.models.user import User
 from app.services.activity_log_service import log_activity
 from app.utils.decorators import admin_required
+from app.utils.fiscal import (
+    FIXED_PAID_RATE,
+    fiscal_period_label,
+    is_fixed_rate_period,
+)
 
 coaches_bp = Blueprint('coaches', __name__)
 
@@ -55,6 +60,19 @@ def _reservation_minutes_by_org(date_from, date_to):
             continue
         totals[org_id] = totals.get(org_id, 0) + minutes
     return totals
+
+
+def _effective_hourly_rate(compensation_type, form_rate):
+    """Return the hourly rate to persist based on fiscal period policy.
+
+    During fixed period: paid → 1,482円 / unpaid → 0 (regardless of form input).
+    During free period: use the value provided in the form.
+    """
+    if compensation_type == Coach.COMPENSATION_UNPAID:
+        return 0
+    if is_fixed_rate_period():
+        return FIXED_PAID_RATE
+    return int(form_rate or 0)
 
 
 def _set_org_choices(form):
@@ -104,6 +122,9 @@ def list_coaches():
     return render_template(
         'admin/coaches.html',
         coaches=coaches, total=total, multi_count=multi_count, only_multi=only_multi,
+        is_fixed_rate_period=is_fixed_rate_period(),
+        fiscal_label=fiscal_period_label(),
+        fixed_paid_rate=FIXED_PAID_RATE,
     )
 
 
@@ -116,6 +137,7 @@ def new_coach():
     _set_user_choices(form)
 
     if form.validate_on_submit():
+        rate = _effective_hourly_rate(form.compensation_type.data, form.hourly_rate.data)
         coach = Coach(
             full_name=form.full_name.data.strip(),
             full_name_kana=form.full_name_kana.data or None,
@@ -124,7 +146,7 @@ def new_coach():
             birth_date=form.birth_date.data,
             qualification=form.qualification.data or None,
             compensation_type=form.compensation_type.data,
-            hourly_rate=form.hourly_rate.data or 0,
+            hourly_rate=rate,
             is_teacher_dual_role=form.is_teacher_dual_role.data,
             is_active=form.is_active.data,
             user_id=form.user_id.data if form.user_id.data else None,
@@ -156,7 +178,13 @@ def new_coach():
             flash(f'指導者「{coach.full_name}」を登録しました。', 'success')
         return redirect(url_for('coaches.list_coaches'))
 
-    return render_template('admin/coach_form.html', form=form, coach=None)
+    return render_template(
+        'admin/coach_form.html',
+        form=form, coach=None,
+        is_fixed_rate_period=is_fixed_rate_period(),
+        fiscal_label=fiscal_period_label(),
+        fixed_paid_rate=FIXED_PAID_RATE,
+    )
 
 
 @coaches_bp.route('/admin/coaches/<int:id>/edit', methods=['GET', 'POST'])
@@ -183,7 +211,9 @@ def edit_coach(id):
         coach.birth_date = form.birth_date.data
         coach.qualification = form.qualification.data or None
         coach.compensation_type = form.compensation_type.data
-        coach.hourly_rate = form.hourly_rate.data or 0
+        coach.hourly_rate = _effective_hourly_rate(
+            form.compensation_type.data, form.hourly_rate.data,
+        )
         coach.is_teacher_dual_role = form.is_teacher_dual_role.data
         coach.is_active = form.is_active.data
         new_user_id = form.user_id.data or None
@@ -210,7 +240,13 @@ def edit_coach(id):
         flash(f'指導者「{coach.full_name}」を更新しました。', 'success')
         return redirect(url_for('coaches.list_coaches'))
 
-    return render_template('admin/coach_form.html', form=form, coach=coach)
+    return render_template(
+        'admin/coach_form.html',
+        form=form, coach=coach,
+        is_fixed_rate_period=is_fixed_rate_period(),
+        fiscal_label=fiscal_period_label(),
+        fixed_paid_rate=FIXED_PAID_RATE,
+    )
 
 
 @coaches_bp.route('/admin/coaches/compensation.csv')
@@ -268,6 +304,8 @@ def export_compensation_csv():
 
     buf = io.StringIO()
     buf.write('\ufeff')
+    if is_fixed_rate_period():
+        buf.write(f'# {fiscal_period_label()} / 有償={FIXED_PAID_RATE}円 固定\n')
     writer = csv.writer(buf)
     writer.writerow(header)
     writer.writerows(rows)

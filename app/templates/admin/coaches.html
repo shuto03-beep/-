@@ -7,6 +7,13 @@
     <p class="page-subtitle">地域クラブ指導者の登録・所属団体の管理。中体連一覧提出や謝金計算の基礎データ。</p>
 </div>
 
+{% if is_fixed_rate_period %}
+<div class="alert alert-info" role="alert">
+    <i class="bi bi-cash-coin me-1" aria-hidden="true"></i>
+    <strong>{{ fiscal_label }}</strong> — 有償は一律 <strong>{{ '{:,}'.format(fixed_paid_rate) }}円/時</strong>（町補助金）。令和11年度から団体自由設定に移行予定。
+</div>
+{% endif %}
+
 <div class="card mb-3">
     <div class="card-header"><i class="bi bi-calculator me-2"></i>謝金見込CSV（月報用）</div>
     <div class="card-body">

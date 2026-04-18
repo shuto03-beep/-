@@ -23,7 +23,12 @@ def test_compensation_csv_header_only_when_no_coach(client, login_admin):
     assert resp.status_code == 200
     body = resp.data.decode('utf-8-sig')
     assert '指導者ID' in body
-    assert body.count('\n') == 1
+    # No coach rows: only the header (and an optional fiscal-period comment)
+    data_lines = [
+        line for line in body.splitlines()
+        if line and not line.startswith('#') and '指導者ID' not in line
+    ]
+    assert data_lines == []
 
 
 def test_compensation_csv_amount_calculation(

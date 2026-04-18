@@ -20,13 +20,17 @@ def test_list_coaches_empty(client, login_admin):
 
 
 def test_create_coach_single_org(client, login_admin, approved_org):
+    """During the fixed-rate period the route enforces 1,482 for paid coaches
+    regardless of what value the form submits."""
+    from app.utils.fiscal import FIXED_PAID_RATE, is_fixed_rate_period
+
     resp = client.post(
         '/admin/coaches/new',
         data={
             'full_name': '田中太郎',
             'full_name_kana': 'タナカタロウ',
             'compensation_type': 'paid',
-            'hourly_rate': '1500',
+            'hourly_rate': '1500',  # Ignored during fixed period
             'organization_ids': [approved_org.id],
             'is_active': 'y',
         },
@@ -35,12 +39,31 @@ def test_create_coach_single_org(client, login_admin, approved_org):
     assert resp.status_code == 302
     coach = Coach.query.one()
     assert coach.full_name == '田中太郎'
-    assert coach.hourly_rate == 1500
+    expected_rate = FIXED_PAID_RATE if is_fixed_rate_period() else 1500
+    assert coach.hourly_rate == expected_rate
     assert [o.id for o in coach.organizations] == [approved_org.id]
     assert not coach.is_multi_affiliated
 
     log = ActivityLog.query.filter_by(action='register_coach').one()
     assert log.target_id == coach.id
+
+
+def test_create_coach_unpaid_sets_rate_to_zero(client, login_admin, approved_org):
+    resp = client.post(
+        '/admin/coaches/new',
+        data={
+            'full_name': '無償 花子',
+            'compensation_type': 'unpaid',
+            'hourly_rate': '5000',  # Ignored for unpaid
+            'organization_ids': [approved_org.id],
+            'is_active': 'y',
+        },
+        follow_redirects=False,
+    )
+    assert resp.status_code == 302
+    coach = Coach.query.filter_by(full_name='無償 花子').one()
+    assert coach.hourly_rate == 0
+    assert coach.compensation_type == 'unpaid'
 
 
 def test_create_coach_multi_affiliation_flagged(client, login_admin, approved_org):
@@ -83,7 +106,8 @@ def test_edit_coach(client, login_admin, approved_org):
     assert resp.status_code == 302
     db.session.refresh(coach)
     assert coach.full_name == '山田花子'
-    assert coach.hourly_rate == 2000
+    from app.utils.fiscal import FIXED_PAID_RATE, is_fixed_rate_period
+    assert coach.hourly_rate == (FIXED_PAID_RATE if is_fixed_rate_period() else 2000)
     assert coach.compensation_type == 'paid'
 
 

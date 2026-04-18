@@ -6,6 +6,20 @@
     <h1><i class="bi bi-person-badge"></i>{{ '指導者編集' if coach else '指導者登録' }}</h1>
 </div>
 
+{% if is_fixed_rate_period %}
+<div class="alert alert-info" role="alert">
+    <i class="bi bi-info-circle me-1" aria-hidden="true"></i>
+    <strong>{{ fiscal_label }}</strong><br>
+    町補助金運用のため、時間単価は<strong>有償 = {{ '{:,}'.format(fixed_paid_rate) }}円/時</strong>、<strong>無償 = 0円</strong>に固定されます。
+    令和11年度（2029年4月以降）から団体ごとに自由設定できるようになります。
+</div>
+{% else %}
+<div class="alert alert-secondary" role="alert">
+    <i class="bi bi-info-circle me-1" aria-hidden="true"></i>
+    <strong>{{ fiscal_label }}</strong>: 団体ごとに時間単価を設定できる期間です。
+</div>
+{% endif %}
+
 <form method="post" class="card">
     {{ form.hidden_tag() }}
     <div class="card-body">
@@ -45,8 +59,13 @@
             </div>
             <div class="col-md-4">
                 <label class="form-label">{{ form.hourly_rate.label.text }}</label>
+                {% if is_fixed_rate_period %}
+                {{ form.hourly_rate(class="form-control", type="number", min="0", readonly=true, value=fixed_paid_rate, style="background:#f0f0f0;") }}
+                <small class="text-muted">固定期間中: 有償={{ '{:,}'.format(fixed_paid_rate) }}円 / 無償=0円（保存時に自動適用）</small>
+                {% else %}
                 {{ form.hourly_rate(class="form-control", type="number", min="0") }}
                 <small class="text-muted">謝金計算CSV出力に使用</small>
+                {% endif %}
             </div>
             <div class="col-md-4 d-flex align-items-end">
                 <div class="form-check">

@@ -17,6 +17,7 @@ from app.forms.admin import OrganizationRegistrationForm, UserEditForm
 from app.services.notification_service import create_bulk_notifications
 from app.services.activity_log_service import log_activity
 from app.utils.decorators import admin_required
+from app.utils.fiscal import FIXED_PAID_RATE, fiscal_period_label, is_fixed_rate_period
 
 admin_bp = Blueprint('admin', __name__)
 
@@ -635,4 +636,7 @@ def monthly_report():
         compensation_rows=compensation_rows,
         total_compensation=total_compensation,
         generated_at=datetime.now(),
+        is_fixed_rate_period=is_fixed_rate_period(month_start),
+        fiscal_label=fiscal_period_label(month_start),
+        fixed_paid_rate=FIXED_PAID_RATE,
     )

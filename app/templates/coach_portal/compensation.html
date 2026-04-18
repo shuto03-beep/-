@@ -7,6 +7,13 @@
     <p class="page-subtitle">指定期間内の活動時間から算出した謝金見込み額です。実際の支給額とは異なる場合があります。</p>
 </div>
 
+{% if is_fixed_rate_period %}
+<div class="alert alert-info" role="alert">
+    <i class="bi bi-info-circle me-1" aria-hidden="true"></i>
+    {{ fiscal_label }} — 町補助金による固定単価（有償: {{ '{:,}'.format(fixed_paid_rate) }}円/時）
+</div>
+{% endif %}
+
 <form method="get" class="card mb-3">
     <div class="card-body">
         <div class="row g-2 align-items-end">

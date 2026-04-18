@@ -47,6 +47,7 @@
     <header class="mb-4 text-center">
         <h1 class="mb-1">{{ year }}年{{ month }}月 いなチャレ月次利用報告書</h1>
         <p class="text-muted">稲美町 生涯学習課 / 期間: {{ month_start }} 〜 {{ month_end }}</p>
+        <p class="text-muted small mb-0">{{ fiscal_label }}</p>
     </header>
 
     <h2><i class="bi bi-bar-chart-line me-2"></i>概要</h2>
@@ -103,6 +104,11 @@
     </table>
 
     <h2><i class="bi bi-cash-coin me-2"></i>指導者別謝金見込（有償のみ）</h2>
+    {% if is_fixed_rate_period %}
+    <p class="text-muted small mb-2">
+        町補助金運用期間のため、有償指導者の時間単価は一律 <strong>{{ '{:,}'.format(fixed_paid_rate) }}円/時</strong> で算出しています。
+    </p>
+    {% endif %}
     <table class="table table-bordered table-sm mb-2">
         <thead class="table-light">
             <tr>

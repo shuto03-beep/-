@@ -7,6 +7,11 @@ from sqlalchemy.orm import joinedload
 from app.extensions import db
 from app.models.coach import Coach
 from app.models.reservation import Reservation
+from app.utils.fiscal import (
+    FIXED_PAID_RATE,
+    fiscal_period_label,
+    is_fixed_rate_period,
+)
 
 coach_portal_bp = Blueprint('coach_portal', __name__)
 
@@ -112,4 +117,7 @@ def compensation():
         total_hours=round(total_minutes / 60, 2),
         date_from=date_from,
         date_to=date_to,
+        is_fixed_rate_period=is_fixed_rate_period(),
+        fiscal_label=fiscal_period_label(),
+        fixed_paid_rate=FIXED_PAID_RATE,
     )

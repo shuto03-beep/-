@@ -119,11 +119,14 @@ def seed():
         db.session.add(coach_user)
         db.session.flush()
 
+        from app.utils.fiscal import FIXED_PAID_RATE, is_fixed_rate_period
+        default_paid_rate = FIXED_PAID_RATE if is_fixed_rate_period() else 1482
+
         coach_ito = Coach(
             full_name='伊藤 健一', full_name_kana='イトウ ケンイチ',
             email='ito@example.com', phone='090-xxx-3333',
             qualification='サッカー指導者ライセンスC級',
-            compensation_type=Coach.COMPENSATION_PAID, hourly_rate=1800,
+            compensation_type=Coach.COMPENSATION_PAID, hourly_rate=default_paid_rate,
             is_teacher_dual_role=False,
             user_id=coach_user.id,
         )
