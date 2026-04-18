@@ -21,7 +21,12 @@ class UserEditForm(FlaskForm):
         ('school', '学校'),
         ('org_leader', '団体責任者'),
         ('org_member', '団体メンバー'),
+        ('coach', '指導者'),
+        ('parent', '保護者'),
         ('resident', '一般住民'),
     ], validators=[DataRequired()])
+    child_organization_id = SelectField(
+        'お子さまの所属団体（保護者ロール時）', coerce=int, validators=[Optional()],
+    )
     is_active = BooleanField('有効')
     submit = SubmitField('更新')

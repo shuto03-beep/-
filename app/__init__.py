@@ -28,6 +28,7 @@ def create_app(config_class=None):
     from app.routes.notifications import notifications_bp
     from app.routes.coaches import coaches_bp
     from app.routes.coach_portal import coach_portal_bp
+    from app.routes.parent_portal import parent_portal_bp
 
     app.register_blueprint(auth_bp)
     app.register_blueprint(dashboard_bp)
@@ -38,6 +39,7 @@ def create_app(config_class=None):
     app.register_blueprint(notifications_bp)
     app.register_blueprint(coaches_bp)
     app.register_blueprint(coach_portal_bp)
+    app.register_blueprint(parent_portal_bp)
 
     @app.errorhandler(404)
     def not_found(e):

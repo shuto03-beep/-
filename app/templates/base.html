@@ -77,6 +77,13 @@
                         </a>
                     </li>
                     {% endif %}
+                    {% if current_user.is_parent %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('parent_portal.dashboard') }}">
+                            <i class="bi bi-people-fill me-1"></i>保護者マイページ
+                        </a>
+                    </li>
+                    {% endif %}
                     {% if current_user.is_admin %}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">

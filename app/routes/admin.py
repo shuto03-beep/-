@@ -196,9 +196,17 @@ def user_detail(id):
         return redirect(url_for('admin.users'))
 
     form = UserEditForm(obj=user)
+    form.child_organization_id.choices = [(0, '（未設定）')] + [
+        (o.id, o.name)
+        for o in Organization.query.filter_by(is_approved=True).order_by(Organization.name).all()
+    ]
+    if request.method == 'GET':
+        form.child_organization_id.data = user.child_organization_id or 0
+
     if form.validate_on_submit():
         user.role = form.role.data
         user.is_active = form.is_active.data
+        user.child_organization_id = form.child_organization_id.data or None
         db.session.commit()
         flash('ユーザー情報を更新しました。', 'success')
         return redirect(url_for('admin.users'))

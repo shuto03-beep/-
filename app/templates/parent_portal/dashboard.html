@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block title %}保護者マイページ - いなチャレ施設予約{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1><i class="bi bi-people-fill"></i>{{ org.name }} 保護者ページ</h1>
+    <p class="page-subtitle">お子さまが所属する団体の活動予定とお知らせをご確認いただけます。</p>
+</div>
+
+<div class="row g-4 mb-4">
+    <div class="col-md-5">
+        <div class="card">
+            <div class="card-header"><i class="bi bi-info-circle me-2"></i>団体情報</div>
+            <div class="card-body">
+                <dl class="row mb-0">
+                    <dt class="col-sm-4">団体名</dt>
+                    <dd class="col-sm-8">
+                        {{ org.name }}
+                        {% if org.is_inachalle_certified %}
+                        <span class="badge bg-warning text-dark ms-1"><i class="bi bi-award me-1"></i>いなチャレ認定</span>
+                        {% endif %}
+                    </dd>
+                    <dt class="col-sm-4">代表者</dt><dd class="col-sm-8">{{ org.representative }}</dd>
+                    {% if org.contact_email %}
+                    <dt class="col-sm-4">連絡先</dt><dd class="col-sm-8">{{ org.contact_email }}</dd>
+                    {% endif %}
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-7">
+        <div class="card">
+            <div class="card-header"><i class="bi bi-bell me-2"></i>最近のお知らせ</div>
+            <div class="card-body p-0">
+                {% if recent_notifications %}
+                <ul class="list-group list-group-flush">
+                    {% for n in recent_notifications %}
+                    <li class="list-group-item {{ 'bg-light' if not n.is_read }}">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <strong>{{ n.title }}</strong>
+                                <div class="text-muted small mt-1">{{ n.message }}</div>
+                            </div>
+                            <small class="text-muted text-nowrap ms-3">{{ n.created_at.strftime('%m/%d') }}</small>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <div class="empty-state py-4">
+                    <i class="bi bi-check-circle d-block" aria-hidden="true"></i>
+                    <p>新しいお知らせはありません</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header"><i class="bi bi-calendar-event me-2"></i>今後2週間の活動予定</div>
+    <div class="card-body p-0">
+        {% if upcoming %}
+        <table class="table table-hover mb-0">
+            <thead>
+                <tr><th>日付</th><th>時間</th><th>施設</th></tr>
+            </thead>
+            <tbody>
+                {% for r in upcoming %}
+                <tr>
+                    <td class="text-nowrap">{{ r.date.strftime('%m/%d (%a)') }}</td>
+                    <td class="text-nowrap">{{ r.time_range }}</td>
+                    <td>{{ r.facility.full_name }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <div class="empty-state py-4">
+            <i class="bi bi-calendar-check d-block" aria-hidden="true"></i>
+            <p>2週間以内の活動予定はありません</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

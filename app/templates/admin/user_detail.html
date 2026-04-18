@@ -23,6 +23,11 @@
                         {{ form.role.label(class="form-label fw-bold") }}
                         {{ form.role(class="form-select") }}
                     </div>
+                    <div class="mb-3">
+                        {{ form.child_organization_id.label(class="form-label fw-bold") }}
+                        {{ form.child_organization_id(class="form-select") }}
+                        <small class="text-muted">保護者ロール時に設定してください。マイページで表示される団体になります。</small>
+                    </div>
                     <div class="mb-3 form-check">
                         {{ form.is_active(class="form-check-input") }}
                         {{ form.is_active.label(class="form-check-label") }}
