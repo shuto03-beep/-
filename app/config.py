@@ -20,6 +20,16 @@ def _resolve_secret_key():
     )
 
 
+def _resolve_database_uri():
+    url = os.environ.get('DATABASE_URL')
+    if not url:
+        return 'sqlite:///' + os.path.join(os.path.dirname(basedir), 'instance', 'inachalle.db')
+    # Render / Heroku-style postgres:// → SQLAlchemy 2.x expects postgresql://
+    if url.startswith('postgres://'):
+        url = 'postgresql://' + url[len('postgres://'):]
+    return url
+
+
 def _bool_env(name, default=False):
     value = os.environ.get(name)
     if value is None:
@@ -29,10 +39,7 @@ def _bool_env(name, default=False):
 
 class Config:
     SECRET_KEY = _resolve_secret_key()
-    SQLALCHEMY_DATABASE_URI = os.environ.get(
-        'DATABASE_URL',
-        'sqlite:///' + os.path.join(os.path.dirname(basedir), 'instance', 'inachalle.db')
-    )
+    SQLALCHEMY_DATABASE_URI = _resolve_database_uri()
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     WTF_CSRF_ENABLED = True
     DEBUG = False
