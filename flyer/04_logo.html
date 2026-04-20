@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>04 ロゴ / いなチャレ</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Hiragino Sans','Noto Sans JP',sans-serif; background:#f5f7fa; color:#2c3e50; line-height:1.6; }
+  .nav { background:#2c3e50; color:white; padding:16px 40px; display:flex; justify-content:space-between; align-items:center; }
+  .nav a { color:#ecf0f1; text-decoration:none; font-size:14px; }
+  .nav .title { font-weight:700; letter-spacing:0.05em; }
+  .container { max-width:1100px; margin:0 auto; padding:40px; }
+  h1 { font-size:32px; margin-bottom:8px; }
+  .lead { color:#7f8c8d; margin-bottom:40px; }
+
+  .logo-card {
+    background:white; border-radius:16px; padding:40px; margin-bottom:32px;
+    box-shadow:0 4px 16px rgba(0,0,0,0.06);
+  }
+  .logo-card h2 { font-size:24px; margin-bottom:8px; }
+  .logo-card .desc { color:#7f8c8d; margin-bottom:24px; font-size:14px; }
+
+  .logo-stage {
+    background:linear-gradient(135deg,#fafbfc 0%,#f0f2f5 100%);
+    border-radius:12px;
+    padding:60px 40px;
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:16px;
+    min-height:220px;
+  }
+  .variants { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+  .variant {
+    border-radius:8px; padding:24px; display:flex; align-items:center; justify-content:center;
+    min-height:120px;
+    border:1px solid #ecf0f1;
+  }
+  .variant.dark { background:#2c3e50; }
+  .variant.color { background:linear-gradient(135deg,#667eea,#764ba2); }
+  .variant.mono { background:#f8fafc; }
+  .variant-label { font-size:11px; color:#7f8c8d; margin-top:6px; text-align:center; }
+
+  .features { display:flex; gap:8px; flex-wrap:wrap; margin-top:16px; }
+  .features span { background:#f0f5ff; color:#2563EB; padding:6px 12px; border-radius:16px; font-size:12px; font-weight:600; }
+
+  .footer-nav { display:flex; justify-content:space-between; margin-top:40px; }
+  .footer-nav a { color:#667eea; text-decoration:none; font-weight:600; }
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <div class="title">いなチャレ / Phase 1</div>
+  <div><a href="index.html">← 目次へ戻る</a></div>
+</div>
+
+<div class="container">
+  <h1>04. ロゴ案 3パターン</h1>
+  <p class="lead">「いなチャレ」のシンボル＆ロゴタイプ案。カラー／ダーク／モノクロの3バリエーションで展開性を確認。</p>
+
+  <!-- Logo Pattern A: サンライズ -->
+  <div class="logo-card">
+    <h2>🌅 Logo A: サンライズマーク</h2>
+    <div class="desc">太陽＋稲穂の曲線で稲美町×ポジティブな未来を表現。丸みを帯びて親しみやすさ重視。</div>
+
+    <div class="logo-stage">
+      <svg width="460" height="160" viewBox="0 0 460 160" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="sunA" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#FF6B9D"/>
+            <stop offset="0.5" stop-color="#FFA07A"/>
+            <stop offset="1" stop-color="#FFD93D"/>
+          </linearGradient>
+        </defs>
+        <!-- Sun -->
+        <circle cx="80" cy="80" r="42" fill="url(#sunA)"/>
+        <!-- Rays -->
+        <g stroke="#FFD93D" stroke-width="4" stroke-linecap="round">
+          <line x1="80" y1="20" x2="80" y2="8"/>
+          <line x1="132" y1="40" x2="142" y2="32"/>
+          <line x1="142" y1="80" x2="156" y2="80"/>
+          <line x1="28" y1="40" x2="18" y2="32"/>
+          <line x1="18" y1="80" x2="4" y2="80"/>
+        </g>
+        <!-- Rice stalk curve -->
+        <path d="M 40,128 Q 80,90 120,128" stroke="#6BCB77" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <!-- Text -->
+        <text x="170" y="90" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" font-size="46" font-weight="900" fill="#2c3e50" letter-spacing="2">いなチャレ</text>
+        <text x="172" y="120" font-family="Arial,sans-serif" font-size="13" font-weight="600" fill="#FF6B9D" letter-spacing="4">INAMI CHALLENGE</text>
+      </svg>
+    </div>
+
+    <div class="variants">
+      <div>
+        <div class="variant dark">
+          <svg width="220" height="70" viewBox="0 0 460 160"><defs><linearGradient id="sunAd" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF6B9D"/><stop offset="0.5" stop-color="#FFA07A"/><stop offset="1" stop-color="#FFD93D"/></linearGradient></defs><circle cx="80" cy="80" r="42" fill="url(#sunAd)"/><g stroke="#FFD93D" stroke-width="4" stroke-linecap="round"><line x1="80" y1="20" x2="80" y2="8"/><line x1="132" y1="40" x2="142" y2="32"/><line x1="142" y1="80" x2="156" y2="80"/><line x1="28" y1="40" x2="18" y2="32"/><line x1="18" y1="80" x2="4" y2="80"/></g><path d="M 40,128 Q 80,90 120,128" stroke="#6BCB77" stroke-width="5" fill="none" stroke-linecap="round"/><text x="170" y="90" font-family="'Hiragino Sans',sans-serif" font-size="46" font-weight="900" fill="white" letter-spacing="2">いなチャレ</text><text x="172" y="120" font-family="Arial" font-size="13" font-weight="600" fill="#FFD93D" letter-spacing="4">INAMI CHALLENGE</text></svg>
+        </div>
+        <div class="variant-label">ダーク背景</div>
+      </div>
+      <div>
+        <div class="variant color">
+          <svg width="220" height="70" viewBox="0 0 460 160"><circle cx="80" cy="80" r="42" fill="white"/><path d="M 40,128 Q 80,90 120,128" stroke="white" stroke-width="5" fill="none" stroke-linecap="round"/><text x="170" y="90" font-family="'Hiragino Sans',sans-serif" font-size="46" font-weight="900" fill="white" letter-spacing="2">いなチャレ</text><text x="172" y="120" font-family="Arial" font-size="13" font-weight="600" fill="white" letter-spacing="4">INAMI CHALLENGE</text></svg>
+        </div>
+        <div class="variant-label">白単色（カラー地）</div>
+      </div>
+      <div>
+        <div class="variant mono">
+          <svg width="220" height="70" viewBox="0 0 460 160"><circle cx="80" cy="80" r="42" fill="#2c3e50"/><path d="M 40,128 Q 80,90 120,128" stroke="#2c3e50" stroke-width="5" fill="none" stroke-linecap="round"/><text x="170" y="90" font-family="'Hiragino Sans',sans-serif" font-size="46" font-weight="900" fill="#2c3e50" letter-spacing="2">いなチャレ</text><text x="172" y="120" font-family="Arial" font-size="13" font-weight="600" fill="#2c3e50" letter-spacing="4">INAMI CHALLENGE</text></svg>
+        </div>
+        <div class="variant-label">モノクロ</div>
+      </div>
+    </div>
+
+    <div class="features">
+      <span>親しみやすさ</span><span>稲美町モチーフ</span><span>拡縮耐性◎</span>
+    </div>
+  </div>
+
+  <!-- Logo Pattern B: ダイナミックチェック -->
+  <div class="logo-card">
+    <h2>⚡ Logo B: エナジーチェック</h2>
+    <div class="desc">「チャレ」の一文字「ャ」をチェックマーク風に変形。挑戦＆達成を同時に表現。</div>
+
+    <div class="logo-stage">
+      <svg width="460" height="160" viewBox="0 0 460 160" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="bolt" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#2563EB"/>
+            <stop offset="1" stop-color="#06B6D4"/>
+          </linearGradient>
+        </defs>
+        <!-- Shield shape -->
+        <path d="M 30,30 L 130,30 L 130,100 Q 80,140 30,100 Z" fill="url(#bolt)"/>
+        <!-- Bolt -->
+        <path d="M 85,45 L 60,85 L 78,85 L 68,115 L 98,75 L 80,75 Z" fill="#FACC15" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+        <!-- Text -->
+        <text x="160" y="90" font-family="'Hiragino Sans',sans-serif" font-size="46" font-weight="900" fill="#1E3A8A" letter-spacing="2">いなチャレ</text>
+        <!-- Underline accent -->
+        <rect x="160" y="105" width="200" height="4" fill="#F59E0B"/>
+        <text x="162" y="130" font-family="Arial" font-size="12" font-weight="700" fill="#2563EB" letter-spacing="3">CHALLENGE YOUR STAGE</text>
+      </svg>
+    </div>
+
+    <div class="variants">
+      <div>
+        <div class="variant dark">
+          <svg width="220" height="70" viewBox="0 0 460 160"><path d="M 30,30 L 130,30 L 130,100 Q 80,140 30,100 Z" fill="#06B6D4"/><path d="M 85,45 L 60,85 L 78,85 L 68,115 L 98,75 L 80,75 Z" fill="#FACC15"/><text x="160" y="90" font-family="'Hiragino Sans',sans-serif" font-size="46" font-weight="900" fill="white" letter-spacing="2">いなチャレ</text><rect x="160" y="105" width="200" height="4" fill="#F59E0B"/><text x="162" y="130" font-family="Arial" font-size="12" font-weight="700" fill="#06B6D4" letter-spacing="3">CHALLENGE YOUR STAGE</text></svg>
+        </div>
+        <div class="variant-label">ダーク背景</div>
+      </div>
+      <div>
+        <div class="variant color">
+          <svg width="220" height="70" viewBox="0 0 460 160"><path d="M 30,30 L 130,30 L 130,100 Q 80,140 30,100 Z" fill="white"/><path d="M 85,45 L 60,85 L 78,85 L 68,115 L 98,75 L 80,75 Z" fill="#FACC15"/><text x="160" y="90" font-family="'Hiragino Sans',sans-serif" font-size="46" font-weight="900" fill="white" letter-spacing="2">いなチャレ</text><rect x="160" y="105" width="200" height="4" fill="white"/><text x="162" y="130" font-family="Arial" font-size="12" font-weight="700" fill="white" letter-spacing="3">CHALLENGE YOUR STAGE</text></svg>
+        </div>
+        <div class="variant-label">白単色</div>
+      </div>
+      <div>
+        <div class="variant mono">
+          <svg width="220" height="70" viewBox="0 0 460 160"><path d="M 30,30 L 130,30 L 130,100 Q 80,140 30,100 Z" fill="#2c3e50"/><path d="M 85,45 L 60,85 L 78,85 L 68,115 L 98,75 L 80,75 Z" fill="white"/><text x="160" y="90" font-family="'Hiragino Sans',sans-serif" font-size="46" font-weight="900" fill="#2c3e50" letter-spacing="2">いなチャレ</text><rect x="160" y="105" width="200" height="4" fill="#2c3e50"/><text x="162" y="130" font-family="Arial" font-size="12" font-weight="700" fill="#2c3e50" letter-spacing="3">CHALLENGE YOUR STAGE</text></svg>
+        </div>
+        <div class="variant-label">モノクロ</div>
+      </div>
+    </div>
+
+    <div class="features">
+      <span>挑戦感</span><span>スポーツ／部活感</span><span>学校配布向け◎</span>
+    </div>
+  </div>
+
+  <!-- Logo Pattern C: ドット・ポップ -->
+  <div class="logo-card">
+    <h2>💫 Logo C: ドット・ポップ</h2>
+    <div class="desc">カラフルなドット4つ（4部活動）をシンボルに。軽やか＆今っぽく、SNS親和性が高い。</div>
+
+    <div class="logo-stage">
+      <svg width="460" height="160" viewBox="0 0 460 160" xmlns="http://www.w3.org/2000/svg">
+        <!-- 4 dots (music/soccer/basket/table-tennis) -->
+        <circle cx="40" cy="50" r="22" fill="#FF6B9D"/>
+        <circle cx="90" cy="50" r="22" fill="#4D96FF"/>
+        <circle cx="40" cy="100" r="22" fill="#FFD93D"/>
+        <circle cx="90" cy="100" r="22" fill="#6BCB77"/>
+        <!-- Wink arc -->
+        <path d="M 20,135 Q 65,155 110,135" stroke="#EF4444" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <!-- Text -->
+        <text x="150" y="85" font-family="'Hiragino Sans',sans-serif" font-size="44" font-weight="900" fill="#2c3e50" letter-spacing="1">いなチャレ</text>
+        <text x="152" y="115" font-family="Arial" font-size="12" font-weight="700" fill="#7f8c8d" letter-spacing="3">4 CLUBS. 1 STAGE.</text>
+        <text x="152" y="135" font-family="Arial" font-size="10" fill="#95a5a6" letter-spacing="1">INAMI CHALLENGE 2026</text>
+      </svg>
+    </div>
+
+    <div class="variants">
+      <div>
+        <div class="variant dark">
+          <svg width="220" height="70" viewBox="0 0 460 160"><circle cx="40" cy="50" r="22" fill="#FF6B9D"/><circle cx="90" cy="50" r="22" fill="#4D96FF"/><circle cx="40" cy="100" r="22" fill="#FFD93D"/><circle cx="90" cy="100" r="22" fill="#6BCB77"/><path d="M 20,135 Q 65,155 110,135" stroke="#FFD93D" stroke-width="4" fill="none" stroke-linecap="round"/><text x="150" y="85" font-family="'Hiragino Sans',sans-serif" font-size="44" font-weight="900" fill="white" letter-spacing="1">いなチャレ</text><text x="152" y="115" font-family="Arial" font-size="12" font-weight="700" fill="#FFD93D" letter-spacing="3">4 CLUBS. 1 STAGE.</text></svg>
+        </div>
+        <div class="variant-label">ダーク背景</div>
+      </div>
+      <div>
+        <div class="variant color">
+          <svg width="220" height="70" viewBox="0 0 460 160"><circle cx="40" cy="50" r="22" fill="white"/><circle cx="90" cy="50" r="22" fill="white" opacity="0.85"/><circle cx="40" cy="100" r="22" fill="white" opacity="0.85"/><circle cx="90" cy="100" r="22" fill="white" opacity="0.7"/><path d="M 20,135 Q 65,155 110,135" stroke="white" stroke-width="4" fill="none" stroke-linecap="round"/><text x="150" y="85" font-family="'Hiragino Sans',sans-serif" font-size="44" font-weight="900" fill="white" letter-spacing="1">いなチャレ</text><text x="152" y="115" font-family="Arial" font-size="12" font-weight="700" fill="white" letter-spacing="3">4 CLUBS. 1 STAGE.</text></svg>
+        </div>
+        <div class="variant-label">白単色</div>
+      </div>
+      <div>
+        <div class="variant mono">
+          <svg width="220" height="70" viewBox="0 0 460 160"><circle cx="40" cy="50" r="22" fill="#2c3e50"/><circle cx="90" cy="50" r="22" fill="#5d6d7e"/><circle cx="40" cy="100" r="22" fill="#85929e"/><circle cx="90" cy="100" r="22" fill="#2c3e50"/><path d="M 20,135 Q 65,155 110,135" stroke="#2c3e50" stroke-width="4" fill="none" stroke-linecap="round"/><text x="150" y="85" font-family="'Hiragino Sans',sans-serif" font-size="44" font-weight="900" fill="#2c3e50" letter-spacing="1">いなチャレ</text><text x="152" y="115" font-family="Arial" font-size="12" font-weight="700" fill="#7f8c8d" letter-spacing="3">4 CLUBS. 1 STAGE.</text></svg>
+        </div>
+        <div class="variant-label">モノクロ</div>
+      </div>
+    </div>
+
+    <div class="features">
+      <span>ポップ</span><span>4部活動=4ドット</span><span>SNSアイコン化◎</span>
+    </div>
+  </div>
+
+  <div class="footer-nav">
+    <a href="03_layout.html">← レイアウト</a>
+    <a href="index.html">目次へ戻る →</a>
+  </div>
+</div>
+
+</body>
+</html>
