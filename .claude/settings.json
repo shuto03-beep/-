@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "alwaysThinkingEnabled": true,
+  "effortLevel": "high",
+  "language": "japanese",
+  "spinnerTipsOverride": {
+    "excludeDefault": false,
+    "tips": [
+      "長時間の独走を避け、節目ごとにユーザーへ報告すること",
+      "深く考え、短く区切って答える"
+    ]
+  }
+}
