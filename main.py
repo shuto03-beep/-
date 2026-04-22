@@ -198,10 +198,12 @@ def _auto_open_all_strategies(state: dict, signal):
         shares = calculate_position_size(capital, price, atr, max_position_ratio=max_ratio)
         label = strategy_config["label"]
         if shares <= 0:
-            # STRONG以上のシグナルで資金不足→機会損失を記録
             if signal.final_score >= 55:
-                print(f"  💸 [{label}] {signal.name}: 資金不足で機会損失（スコア{signal.final_score}, "
-                      f"100株={price*100:,.0f}円 > 上限{capital*max_ratio:,.0f}円）")
+                miss_msg = (f"💸 機会損失 [{label}] {signal.name}（スコア{signal.final_score}）"
+                            f"\n  100株={price*100:,.0f}円 > 上限{capital*max_ratio:,.0f}円")
+                print(f"  {miss_msg}")
+                from notifications import _send_discord
+                _send_discord(miss_msg)
             continue
         if shares * price > capital:
             continue

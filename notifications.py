@@ -161,6 +161,16 @@ def send_strategies_summary(state: dict, signal_count: int):
             msg += f"\n  🎯 勝率: {s.get('win_rate', 0):.0%}（{s.get('total_trades', 0)}件中）"
             msg += f"\n  💹 確定損益: {realized_pnl:+,.0f}円"
 
+            # リスクリワード比を計算
+            closed = state.get("strategies", {}).get(key, {}).get("closed_trades", [])
+            wins = [t for t in closed if t.get("pnl", 0) > 0]
+            losses = [t for t in closed if t.get("pnl", 0) < 0]
+            if wins and losses:
+                avg_win = sum(t["pnl_pct"] for t in wins) / len(wins)
+                avg_loss = abs(sum(t["pnl_pct"] for t in losses) / len(losses))
+                rr = avg_win / avg_loss if avg_loss > 0 else 0
+                msg += f"\n  📊 RR比: {rr:.1f}x（勝{avg_win*100:+.1f}% / 負{-avg_loss*100:.1f}%）"
+
     # ベスト戦略を判定
     if any(s.get("total_trades", 0) > 0 for s in summaries.values()):
         best_key = max(summaries.keys(), key=lambda k: summaries[k].get("total_pnl", 0))
