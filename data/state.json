@@ -633,37 +633,9 @@
       }
     }
   },
-  "last_run": "2026-04-23T05:18:23.322544",
-  "last_full_screening": "2026-04-23T05:18:23.321912",
+  "last_run": "2026-04-23T07:14:43.373124",
+  "last_full_screening": "2026-04-23T07:14:43.372460",
   "signals_history": [
-    {
-      "ticker": "6976.T",
-      "name": "太陽誘電",
-      "type": "BUY",
-      "score": 48,
-      "date": "2026-04-08 02:30"
-    },
-    {
-      "ticker": "7211.T",
-      "name": "三菱自動車",
-      "type": "BUY",
-      "score": 47,
-      "date": "2026-04-08 05:02"
-    },
-    {
-      "ticker": "6976.T",
-      "name": "太陽誘電",
-      "type": "BUY",
-      "score": 51,
-      "date": "2026-04-08 05:02"
-    },
-    {
-      "ticker": "4443.T",
-      "name": "Sansan",
-      "type": "BUY",
-      "score": 45,
-      "date": "2026-04-08 05:02"
-    },
     {
       "ticker": "7956.T",
       "name": "ピジョン",
@@ -1363,6 +1335,41 @@
       "type": "BUY",
       "score": 47,
       "date": "2026-04-23 05:18"
+    },
+    {
+      "ticker": "4661.T",
+      "name": "OLC",
+      "type": "BUY",
+      "score": 60,
+      "date": "2026-04-23 07:14"
+    },
+    {
+      "ticker": "2413.T",
+      "name": "エムスリー",
+      "type": "BUY",
+      "score": 49,
+      "date": "2026-04-23 07:14"
+    },
+    {
+      "ticker": "8267.T",
+      "name": "イオン",
+      "type": "BUY",
+      "score": 59,
+      "date": "2026-04-23 07:14"
+    },
+    {
+      "ticker": "9503.T",
+      "name": "関西電力",
+      "type": "BUY",
+      "score": 46,
+      "date": "2026-04-23 07:14"
+    },
+    {
+      "ticker": "4204.T",
+      "name": "積水化学",
+      "type": "BUY",
+      "score": 54,
+      "date": "2026-04-23 07:14"
     }
   ]
 }
