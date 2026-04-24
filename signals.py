@@ -39,26 +39,32 @@ def calculate_buy_score(indicators: dict, weights: dict = None) -> tuple[int, li
     score = 0
     reasons = []
 
-    # === エントリー位置チェック（天井買い防止）===
+    # === エントリー位置チェック（天井買い防止 + 落ちるナイフ防止）===
     current_price = indicators.get("current_price", 0)
     sr = indicators.get("support_resistance", {})
     recent_high = sr.get("recent_high", current_price)
     recent_low = sr.get("recent_low", current_price)
+    trend = indicators.get("trend", "SIDEWAYS")
+    sma25 = indicators.get("sma25", 0)
 
     if recent_high > recent_low > 0:
-        # 現在価格が直近レンジのどこにいるか（0-1、0=底、1=天井）
         position_in_range = (current_price - recent_low) / (recent_high - recent_low)
 
-        # 天井付近・高値圏を厳しく減点（実績反映）
+        # 天井付近・高値圏を減点
         if position_in_range >= 0.90:
-            score -= 15  # -10 → -15に強化
+            score -= 15
             reasons.append(f"⚠️ 直近高値圏（レンジ{position_in_range*100:.0f}%）")
         elif position_in_range >= 0.75:
-            score -= 5  # 新規追加：75%以上は減点
+            score -= 5
             reasons.append(f"⚠️ 高値圏（レンジ{position_in_range*100:.0f}%）")
         elif position_in_range <= 0.30:
-            score += 10  # +8 → +10に強化
-            reasons.append(f"✨ 直近安値付近（押し目買いチャンス）")
+            # 底値圏だが、下降トレンド中なら「落ちるナイフ」の可能性
+            if trend == "DOWNTREND" or (sma25 > 0 and current_price < sma25 * 0.95):
+                score -= 5  # 下降トレンド中の底値買いは危険
+                reasons.append(f"⚠️ 落ちるナイフ注意（下降トレンド中の底値）")
+            else:
+                score += 10
+                reasons.append(f"✨ 直近安値付近（押し目買いチャンス）")
         elif position_in_range <= 0.60:
             score += 3
             reasons.append("レンジ中位（適正エントリー）")
