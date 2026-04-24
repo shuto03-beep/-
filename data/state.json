@@ -633,44 +633,9 @@
       }
     }
   },
-  "last_run": "2026-04-24T02:40:27.655645",
-  "last_full_screening": "2026-04-23T08:03:54.815456",
+  "last_run": "2026-04-24T05:25:02.533596",
+  "last_full_screening": "2026-04-24T05:25:02.532882",
   "signals_history": [
-    {
-      "ticker": "3105.T",
-      "name": "日清紡HD",
-      "type": "BUY",
-      "score": 52,
-      "date": "2026-04-09 02:25"
-    },
-    {
-      "ticker": "3105.T",
-      "name": "日清紡HD",
-      "type": "BUY",
-      "score": 47,
-      "date": "2026-04-09 06:23"
-    },
-    {
-      "ticker": "6861.T",
-      "name": "キーエンス",
-      "type": "BUY",
-      "score": 58,
-      "date": "2026-04-09 07:45"
-    },
-    {
-      "ticker": "7974.T",
-      "name": "任天堂",
-      "type": "BUY",
-      "score": 49,
-      "date": "2026-04-10 05:15"
-    },
-    {
-      "ticker": "6762.T",
-      "name": "TDK",
-      "type": "BUY",
-      "score": 47,
-      "date": "2026-04-10 05:15"
-    },
     {
       "ticker": "7012.T",
       "name": "川崎重工",
@@ -1370,6 +1335,97 @@
       "type": "BUY",
       "score": 48,
       "date": "2026-04-23 08:03"
+    },
+    {
+      "ticker": "7974.T",
+      "name": "任天堂",
+      "type": "BUY",
+      "score": 53,
+      "date": "2026-04-24 05:25"
+    },
+    {
+      "ticker": "4661.T",
+      "name": "OLC",
+      "type": "BUY",
+      "score": 66,
+      "date": "2026-04-24 05:25"
+    },
+    {
+      "ticker": "4901.T",
+      "name": "富士フイルム",
+      "type": "BUY",
+      "score": 51,
+      "date": "2026-04-24 05:25"
+    },
+    {
+      "ticker": "7731.T",
+      "name": "ニコン",
+      "type": "BUY",
+      "score": 63,
+      "date": "2026-04-24 05:25"
+    },
+    {
+      "ticker": "8267.T",
+      "name": "イオン",
+      "type": "BUY",
+      "score": 47,
+      "date": "2026-04-24 05:25"
+    },
+    {
+      "ticker": "6526.T",
+      "name": "ソシオネクスト",
+      "type": "BUY",
+      "score": 49,
+      "date": "2026-04-24 05:25"
+    },
+    {
+      "ticker": "7550.T",
+      "name": "ゼンショーHD",
+      "type": "BUY",
+      "score": 53,
+      "date": "2026-04-24 05:25"
+    },
+    {
+      "ticker": "7203.T",
+      "name": "トヨタ",
+      "type": "BUY",
+      "score": 46,
+      "date": "2026-04-24 05:25"
+    },
+    {
+      "ticker": "4503.T",
+      "name": "アステラス製薬",
+      "type": "BUY",
+      "score": 58,
+      "date": "2026-04-24 05:25"
+    },
+    {
+      "ticker": "4502.T",
+      "name": "武田薬品",
+      "type": "BUY",
+      "score": 47,
+      "date": "2026-04-24 05:25"
+    },
+    {
+      "ticker": "4543.T",
+      "name": "テルモ",
+      "type": "BUY",
+      "score": 53,
+      "date": "2026-04-24 05:25"
+    },
+    {
+      "ticker": "2413.T",
+      "name": "エムスリー",
+      "type": "BUY",
+      "score": 49,
+      "date": "2026-04-24 05:25"
+    },
+    {
+      "ticker": "9021.T",
+      "name": "JR西日本",
+      "type": "BUY",
+      "score": 63,
+      "date": "2026-04-24 05:25"
     }
   ]
 }
