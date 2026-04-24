@@ -1,0 +1,29 @@
+{
+  "id": "2026-04-24_2026-04-24-215559",
+  "source_file": "plaud-web:d1746ea828f932dea1c177066b034b66",
+  "recorded_at": "2026-04-24T12:55:59",
+  "ingested_at": "2026-04-24T21:36:28",
+  "title": "2026-04-24 21:55:59",
+  "raw": {
+    "transcript": "[{\"timestamp\":2040,\"mark_type\":4,\"mark_type_string\":null,\"mark_content\":\"話し言葉が認識されませんでした\",\"content\":null,\"title\":null,\"expanded_content\":null,\"picture_link\":null,\"mark_id\":\"24d906b3b669be868ecd0f19ef9f156f\",\"ocr_data_link\":null,\"link_expire_timestamp\":null,\"picture_local_path\":\"/var/mobile/Containers/Data/Application/CAD020FB-B022-4BE4-9299-ED274F0181C5/Documents/audio_marks/PLAUD_mark_Audio_00:00:02_1777035363096.opus\",\"picture_full_url\":null,\"is_user_edited\":null,\"mark_status\":3,\"error_message\":null,\"retry_count\":null,\"last_failed_time\":null,\"is_user_deleted\":null}]",
+    "summary": ""
+  },
+  "lifelog": {
+    "headline": "2026-04-24 21:55:59",
+    "tags": [
+      "plaud"
+    ],
+    "source": "raw"
+  },
+  "tasks": [],
+  "task_analysis": {
+    "total": 0,
+    "by_priority": {
+      "high": 0,
+      "medium": 0,
+      "low": 0
+    },
+    "effort_summary": "",
+    "blockers": []
+  }
+}
