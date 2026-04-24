@@ -652,51 +652,9 @@
       }
     }
   },
-  "last_run": "2026-04-24T07:18:43.981010",
-  "last_full_screening": "2026-04-24T07:18:43.980272",
+  "last_run": "2026-04-24T08:12:10.012333",
+  "last_full_screening": "2026-04-24T08:12:10.011696",
   "signals_history": [
-    {
-      "ticker": "3659.T",
-      "name": "ネクソン",
-      "type": "BUY",
-      "score": 48,
-      "date": "2026-04-14 05:13"
-    },
-    {
-      "ticker": "8058.T",
-      "name": "三菱商事",
-      "type": "BUY",
-      "score": 59,
-      "date": "2026-04-15 05:13"
-    },
-    {
-      "ticker": "3086.T",
-      "name": "J.フロント",
-      "type": "BUY",
-      "score": 50,
-      "date": "2026-04-15 05:13"
-    },
-    {
-      "ticker": "8267.T",
-      "name": "イオン",
-      "type": "BUY",
-      "score": 53,
-      "date": "2026-04-15 05:13"
-    },
-    {
-      "ticker": "1605.T",
-      "name": "INPEX",
-      "type": "BUY",
-      "score": 56,
-      "date": "2026-04-15 05:13"
-    },
-    {
-      "ticker": "5706.T",
-      "name": "三井金属",
-      "type": "BUY",
-      "score": 53,
-      "date": "2026-04-15 05:13"
-    },
     {
       "ticker": "3038.T",
       "name": "神戸物産",
@@ -1396,6 +1354,55 @@
       "type": "BUY",
       "score": 50,
       "date": "2026-04-24 07:18"
+    },
+    {
+      "ticker": "7974.T",
+      "name": "任天堂",
+      "type": "BUY",
+      "score": 54,
+      "date": "2026-04-24 08:12"
+    },
+    {
+      "ticker": "4661.T",
+      "name": "OLC",
+      "type": "BUY",
+      "score": 67,
+      "date": "2026-04-24 08:12"
+    },
+    {
+      "ticker": "4901.T",
+      "name": "富士フイルム",
+      "type": "BUY",
+      "score": 58,
+      "date": "2026-04-24 08:12"
+    },
+    {
+      "ticker": "8267.T",
+      "name": "イオン",
+      "type": "BUY",
+      "score": 51,
+      "date": "2026-04-24 08:12"
+    },
+    {
+      "ticker": "5021.T",
+      "name": "コスモエネルギー",
+      "type": "BUY",
+      "score": 46,
+      "date": "2026-04-24 08:12"
+    },
+    {
+      "ticker": "7731.T",
+      "name": "ニコン",
+      "type": "BUY",
+      "score": 51,
+      "date": "2026-04-24 08:12"
+    },
+    {
+      "ticker": "7550.T",
+      "name": "ゼンショーHD",
+      "type": "BUY",
+      "score": 50,
+      "date": "2026-04-24 08:12"
     }
   ]
 }
