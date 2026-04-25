@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>沖縄家族旅行プラン 2026</title>
+<style>
+  :root {
+    --ocean: #0077b6;
+    --ocean-dark: #023e8a;
+    --sky: #90e0ef;
+    --sand: #fef9ef;
+    --coral: #ff6b6b;
+    --palm: #2a9d8f;
+    --text: #1d3557;
+    --gray: #6c757d;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+    background: linear-gradient(180deg, var(--sky) 0%, var(--sand) 30%, var(--sand) 100%);
+    color: var(--text);
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+  .container { max-width: 960px; margin: 0 auto; padding: 24px 20px 80px; }
+
+  header {
+    text-align: center;
+    padding: 40px 20px 32px;
+    background: linear-gradient(135deg, var(--ocean) 0%, var(--ocean-dark) 100%);
+    color: white;
+    border-radius: 20px;
+    margin-bottom: 32px;
+    box-shadow: 0 8px 24px rgba(0,119,182,0.2);
+  }
+  header .emoji { font-size: 48px; display: block; margin-bottom: 8px; }
+  header h1 { font-size: 32px; margin-bottom: 8px; }
+  header .subtitle { font-size: 18px; opacity: 0.9; }
+  header .dates { font-size: 20px; font-weight: bold; margin-top: 16px; padding: 8px 16px; background: rgba(255,255,255,0.2); border-radius: 999px; display: inline-block; }
+
+  section { margin-bottom: 32px; }
+  h2 {
+    font-size: 24px;
+    color: var(--ocean-dark);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 3px solid var(--sky);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .overview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+  }
+  .card {
+    background: white;
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    border-left: 4px solid var(--ocean);
+  }
+  .card .label { font-size: 12px; color: var(--gray); margin-bottom: 4px; }
+  .card .value { font-size: 18px; font-weight: bold; color: var(--ocean-dark); }
+
+  .day {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    position: relative;
+    overflow: hidden;
+  }
+  .day::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 6px; height: 100%;
+    background: var(--coral);
+  }
+  .day-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .day-number {
+    background: var(--coral);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .day-date { font-size: 18px; font-weight: bold; }
+  .day-hotel { font-size: 14px; color: var(--gray); background: var(--sand); padding: 4px 10px; border-radius: 6px; }
+  .schedule {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 8px 16px;
+    margin-top: 12px;
+  }
+  .time { color: var(--palm); font-weight: bold; font-size: 14px; }
+  .activity { font-size: 15px; }
+
+  .hotel-showcase {
+    display: grid;
+    gap: 16px;
+  }
+  .hotel {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    border-top: 4px solid var(--palm);
+  }
+  .hotel h3 { color: var(--palm); font-size: 20px; margin-bottom: 8px; }
+  .hotel .badge { display: inline-block; background: var(--palm); color: white; padding: 2px 10px; border-radius: 999px; font-size: 12px; margin-right: 8px; }
+  .hotel .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; margin-top: 12px; }
+  .feature { background: var(--sand); padding: 8px 12px; border-radius: 8px; font-size: 13px; }
+
+  .budget {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  }
+  .budget-table { width: 100%; border-collapse: collapse; }
+  .budget-table th, .budget-table td { padding: 10px 8px; text-align: left; border-bottom: 1px solid #eee; }
+  .budget-table th { background: var(--ocean); color: white; font-size: 14px; }
+  .budget-table .amount { text-align: right; font-family: 'SF Mono', Menlo, monospace; white-space: nowrap; }
+  .budget-table .total { font-weight: bold; background: var(--sand); font-size: 18px; }
+
+  .highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+  }
+  .highlight {
+    background: white;
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    text-align: center;
+  }
+  .highlight .icon { font-size: 40px; display: block; margin-bottom: 8px; }
+  .highlight .title { font-weight: bold; color: var(--ocean-dark); margin-bottom: 4px; }
+  .highlight .desc { font-size: 13px; color: var(--gray); }
+
+  .note {
+    background: #fff3cd;
+    border-left: 4px solid #ffc107;
+    padding: 14px 18px;
+    border-radius: 8px;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+  .note strong { color: #856404; }
+
+  footer {
+    text-align: center;
+    color: var(--gray);
+    font-size: 13px;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+  }
+
+  @media (max-width: 600px) {
+    header h1 { font-size: 24px; }
+    .schedule { grid-template-columns: 64px 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <span class="emoji">🌺🏝️✈️</span>
+  <h1>沖縄家族旅行プラン</h1>
+  <div class="subtitle">5人で楽しむ！美ら海水族館＆リゾート満喫の4泊5日</div>
+  <div class="dates">2026年9月23日(水) 〜 9月27日(日)</div>
+</header>
+
+<section>
+  <h2>📋 旅行の基本情報</h2>
+  <div class="overview">
+    <div class="card"><div class="label">日程</div><div class="value">4泊5日</div></div>
+    <div class="card"><div class="label">人数</div><div class="value">大人2＋子3</div></div>
+    <div class="card"><div class="label">出発空港</div><div class="value">神戸空港 (UKB)</div></div>
+    <div class="card"><div class="label">航空会社</div><div class="value">スカイマーク</div></div>
+  </div>
+</section>
+
+<section>
+  <h2>🗓️ 日程と行程</h2>
+
+  <div class="day">
+    <div class="day-header">
+      <div><span class="day-number">DAY 1</span> <span class="day-date">9/23(水・秋分の日)</span></div>
+      <span class="day-hotel">🏨 ファミリーロッジ旅籠屋 名護店</span>
+    </div>
+    <div class="schedule">
+      <div class="time">お昼</div><div class="activity">✈️ 神戸空港発（スカイマーク昼便）</div>
+      <div class="time">14:25</div><div class="activity">🛬 那覇空港着 → レンタカー受取</div>
+      <div class="time">15:00</div><div class="activity">🚗 沖縄自動車道で北上（途中休憩）</div>
+      <div class="time">17:00</div><div class="activity">🏨 名護の旅籠屋にチェックイン</div>
+      <div class="time">18:30</div><div class="activity">🍽️ 名護で夕食（沖縄そば or ステーキ）</div>
+      <div class="time">21:00</div><div class="activity">😴 早めに就寝</div>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="day-header">
+      <div><span class="day-number">DAY 2</span> <span class="day-date">9/24(木) 美ら海水族館の日</span></div>
+      <span class="day-hotel">🏨 オリオンホテル モトブ リゾート＆スパ</span>
+    </div>
+    <div class="schedule">
+      <div class="time">7:00</div><div class="activity">☕ 朝食＆スペシャルティコーヒー</div>
+      <div class="time">9:00</div><div class="activity">🐠 美ら海水族館オープン直後入館（混雑回避）</div>
+      <div class="time">10:30</div><div class="activity">🐬 イルカショー（オキちゃん劇場）</div>
+      <div class="time">12:00</div><div class="activity">🍴 ジンベエザメ前で昼食</div>
+      <div class="time">14:00</div><div class="activity">🏖️ エメラルドビーチで海遊び</div>
+      <div class="time">16:00</div><div class="activity">🏨 オリオンモトブへチェックイン</div>
+      <div class="time">18:30</div><div class="activity">🍖 館内ディナー（アグー豚など）</div>
+      <div class="time">20:30</div><div class="activity">♨️ 温泉「美らの湯」でリラックス</div>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="day-header">
+      <div><span class="day-number">DAY 3</span> <span class="day-date">9/25(金) リゾート満喫デー</span></div>
+      <span class="day-hotel">🏨 オリオンホテル モトブ（連泊）</span>
+    </div>
+    <div class="schedule">
+      <div class="time">7:00</div><div class="activity">🌅 大人はビーチ散歩／温泉／コーヒーTO</div>
+      <div class="time">9:00</div><div class="activity">🤿 ゴリラチョップ or 備瀬崎でシュノーケル（浅瀬で安全）</div>
+      <div class="time">12:00</div><div class="activity">🍴 本部町でランチ</div>
+      <div class="time">13:30</div><div class="activity">🏊 ホテルプール＆昼寝タイム</div>
+      <div class="time">16:00</div><div class="activity">🍍 ナゴパイナップルパーク or 備瀬のフクギ並木散策</div>
+      <div class="time">18:30</div><div class="activity">🍖 ディナー（アグー豚しゃぶ or 海鮮）</div>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="day-header">
+      <div><span class="day-number">DAY 4</span> <span class="day-date">9/26(土) 南下＆文化体験</span></div>
+      <span class="day-hotel">🏨 琉球温泉 瀬長島ホテル</span>
+    </div>
+    <div class="schedule">
+      <div class="time">8:00</div><div class="activity">🌅 朝食・荷造り・ホテルチェックアウト</div>
+      <div class="time">9:00</div><div class="activity">🚗 南下（高速で約1時間40分）</div>
+      <div class="time">11:00</div><div class="activity">🕳️ おきなわワールド到着</div>
+      <div class="time">11:00〜13:00</div><div class="activity">✨ <strong>玉泉洞</strong>（890m巨大鍾乳洞・鮮烈体験）</div>
+      <div class="time">13:00</div><div class="activity">🥁 スーパーエイサーショー（本格生演奏・大迫力）</div>
+      <div class="time">14:00</div><div class="activity">🐍 ハブ博物公園</div>
+      <div class="time">15:30</div><div class="activity">🏖️ 瀬長島ウミカジテラスへ移動</div>
+      <div class="time">16:00〜</div><div class="activity">✈️ <strong>飛行機が頭上を轟音通過</strong>（子ども大興奮）＆買い物＆絶景カフェ</div>
+      <div class="time">18:00</div><div class="activity">🌅 海沿いで夕日</div>
+      <div class="time">19:00</div><div class="activity">♨️ 瀬長島ホテルチェックイン・温泉で締めくくり</div>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="day-header">
+      <div><span class="day-number">DAY 5</span> <span class="day-date">9/27(日) 帰路</span></div>
+      <span class="day-hotel">🏡 自宅へ</span>
+    </div>
+    <div class="schedule">
+      <div class="time">8:00</div><div class="activity">🍳 朝食・荷造り</div>
+      <div class="time">10:00</div><div class="activity">🛍️ 空港でお土産タイム（ブルーシール、ちんすこう、泡盛）</div>
+      <div class="time">11:00</div><div class="activity">🚗 レンタカー返却（瀬長島から空港まで車5分）</div>
+      <div class="time">12:30〜</div><div class="activity">✈️ 那覇発・神戸空港へ</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>✨ 旅のハイライト</h2>
+  <div class="highlights">
+    <div class="highlight">
+      <span class="icon">🐋</span>
+      <div class="title">美ら海水族館</div>
+      <div class="desc">ジンベエザメの大水槽と迫力のイルカショー</div>
+    </div>
+    <div class="highlight">
+      <span class="icon">♨️</span>
+      <div class="title">オリオンモトブ温泉</div>
+      <div class="desc">美ら海徒歩7分の天然温泉リゾート</div>
+    </div>
+    <div class="highlight">
+      <span class="icon">🤿</span>
+      <div class="title">シュノーケル体験</div>
+      <div class="desc">浅瀬で安全・年長でもOKのゴリラチョップ</div>
+    </div>
+    <div class="highlight">
+      <span class="icon">🕳️</span>
+      <div class="title">玉泉洞</div>
+      <div class="desc">890m続く巨大鍾乳洞・一生モノの体験</div>
+    </div>
+    <div class="highlight">
+      <span class="icon">🥁</span>
+      <div class="title">スーパーエイサー</div>
+      <div class="desc">本格生演奏の沖縄文化に触れる</div>
+    </div>
+    <div class="highlight">
+      <span class="icon">✈️</span>
+      <div class="title">瀬長島の飛行機</div>
+      <div class="desc">着陸ルート直下の絶景スポット</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>🏨 宿泊先</h2>
+  <div class="hotel-showcase">
+    <div class="hotel">
+      <h3><span class="badge">Day 1</span>ファミリーロッジ旅籠屋 名護店</h3>
+      <p>寝るだけOKの旅の起点。5名1室フラット料金で超コスパ。</p>
+      <div class="features">
+        <div class="feature">💰 5名1室 約¥12,000</div>
+        <div class="feature">🅿️ 駐車場無料</div>
+        <div class="feature">🥐 パン朝食無料</div>
+        <div class="feature">🕐 24時間チェックイン可</div>
+      </div>
+    </div>
+    <div class="hotel">
+      <h3><span class="badge">Day 2-3</span>オリオンホテル モトブ リゾート＆スパ</h3>
+      <p>旅のメイン。美ら海水族館徒歩7分、天然温泉、エメラルドビーチ直結の本格リゾート。</p>
+      <div class="features">
+        <div class="feature">🐠 美ら海徒歩7分</div>
+        <div class="feature">♨️ 天然温泉あり</div>
+        <div class="feature">🏖️ ビーチ直結</div>
+        <div class="feature">🏊 屋内外プール</div>
+        <div class="feature">🌅 全室オーシャンビュー</div>
+        <div class="feature">🍳 ビュッフェ朝食◎</div>
+      </div>
+    </div>
+    <div class="hotel">
+      <h3><span class="badge">Day 4</span>琉球温泉 瀬長島ホテル</h3>
+      <p>旅の締めくくりに温泉リゾート。空港まで車5分で翌朝の帰路がラク。</p>
+      <div class="features">
+        <div class="feature">♨️ 天然温泉</div>
+        <div class="feature">✈️ 空港車5分</div>
+        <div class="feature">🌅 オーシャンビュー</div>
+        <div class="feature">🛍️ ウミカジテラス隣接</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>💰 予算の目安</h2>
+  <div class="budget">
+    <table class="budget-table">
+      <thead>
+        <tr><th>項目</th><th class="amount">目安（5名合計）</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>✈️ 航空券 神戸↔那覇 5名分</td><td class="amount">¥100,000 〜 ¥170,000</td></tr>
+        <tr><td>🏨 宿泊 4泊（旅籠屋1＋オリオン2＋瀬長島1）</td><td class="amount">¥156,000 〜 ¥238,000</td></tr>
+        <tr><td>🚗 レンタカー 4.5日（ミニバン・保険込）</td><td class="amount">¥35,000 〜 ¥50,000</td></tr>
+        <tr><td>⛽ ガソリン・高速</td><td class="amount">¥10,000 〜 ¥15,000</td></tr>
+        <tr><td>🍴 食費 5日</td><td class="amount">¥60,000 〜 ¥100,000</td></tr>
+        <tr><td>🐠 観光・アクティビティ</td><td class="amount">¥15,000 〜 ¥25,000</td></tr>
+        <tr><td>🎁 お土産</td><td class="amount">¥20,000 〜 ¥40,000</td></tr>
+        <tr><td>🅿️ 神戸空港駐車場 4日</td><td class="amount">¥5,000 〜 ¥6,000</td></tr>
+        <tr class="total"><td>合計</td><td class="amount">¥401,000 〜 ¥644,000</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="note">
+    <strong>💡 節約ポイント:</strong> 航空券はスカイマーク「いま得」（75日前）で早期予約。
+    ホテルは早割プラン活用で最大20％オフ。
+    美ら海水族館は道の駅許田で前売券20％オフ。
+  </div>
+</section>
+
+<section>
+  <h2>🌀 注意事項</h2>
+  <div class="note">
+    <strong>⚠️ 台風シーズン:</strong> 9月下旬は沖縄の台風警戒シーズンです。
+    航空券は<strong>変更可能プラン</strong>を選ぶ、または<strong>旅行保険</strong>への加入をおすすめします。
+  </div>
+  <div class="note">
+    <strong>📅 予約タイミング:</strong>
+    ①スカイマーク→②オリオンモトブ連泊→③レンタカーの順に早めに確保しましょう。
+    9月は本土シルバーウィーク直後で人気ホテルは埋まりやすいです。
+  </div>
+</section>
+
+<footer>
+  プラン作成日: 2026年4月 / 詳細の変更可 / 家族で楽しい旅になりますように 🌺
+</footer>
+
+</div>
+</body>
+</html>
