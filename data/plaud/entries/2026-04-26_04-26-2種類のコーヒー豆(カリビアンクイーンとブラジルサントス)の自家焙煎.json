@@ -1,0 +1,29 @@
+{
+  "id": "2026-04-26_04-26-2種類のコーヒー豆(カリビアンクイーンとブラジルサントス)の自家焙煎",
+  "source_file": "plaud-web:325bd7dfaefff518e85d116b01b58b4e",
+  "recorded_at": "2026-04-26T13:14:22",
+  "ingested_at": "2026-04-26T21:26:01",
+  "title": "04-26 2種類のコーヒー豆（カリビアンクイーンとブラジルサントス）の自家焙煎記録",
+  "raw": {
+    "transcript": "[{\"timestamp\":1965170,\"mark_type\":2,\"mark_type_string\":null,\"mark_content\":\"Iwatani 製コンロの直火を利用し、ガラス製のシリンダー内でコーヒー豆を焙煎する自家製セットアップを示しています。\",\"content\":null,\"title\":null,\"expanded_content\":null,\"picture_link\":\"permanent/6a96f9e9f528462da5eceab0567a9512/mark/20260426_134714_7a58e9f0.jpg\",\"mark_id\":\"cc90046a1b466354324bf8703459b3d3\",\"ocr_data_link\":\"highlight/ocr_data/ocr_20260426134715-mark@6df7d0d6626ce9d5aa730f.txt\",\"link_expire_timestamp\":null,\"picture_local_path\":\"plaud_images/note_recording_session_1777209262_1965170.jpg\",\"picture_full_url\":null,\"is_user_edited\":false,\"mark_status\":3,\"error_message\":null,\"retry_count\":null,\"last_failed_time\":null,\"is_user_deleted\":null},{\"timestamp\":1974982,\"mark_type\":2,\"mark_type_string\":null,\"mark_content\":\"これは神戸の「MAMEYA」による「カリビアン クイーン」という銘柄のコーヒー豆で、消費者の好みに応じた焙煎度合いや挽き方を選択可能です。\",\"content\":null,\"title\":null,\"expanded_content\":null,\"picture_link\":\"permanent/6a96f9e9f528462da5eceab0567a9512/mark/20260426_134732_00f637e2.jpg\",\"mark_id\":\"fc97f8c45a22fc0294c510b79d0488d8\",\"ocr_data_link\":\"highlight/ocr_data/ocr_20260426134733-mark@08efd3a608885364de1def.txt\",\"link_expire_timestamp\":null,\"picture_local_path\":\"plaud_images/note_recording_session_1777209262_1974982.jpg\",\"picture_full_url\":null,\"is_user_edited\":false,\"mark_status\":3,\"error_message\":null,\"retry_count\":null,\"last_failed_time\":null,\"is_user_deleted\":null}]",
+    "summary": ""
+  },
+  "lifelog": {
+    "headline": "04-26 2種類のコーヒー豆（カリビアンクイーンとブラジルサントス）の自家焙煎記録",
+    "tags": [
+      "plaud"
+    ],
+    "source": "raw"
+  },
+  "tasks": [],
+  "task_analysis": {
+    "total": 0,
+    "by_priority": {
+      "high": 0,
+      "medium": 0,
+      "low": 0
+    },
+    "effort_summary": "",
+    "blockers": []
+  }
+}
