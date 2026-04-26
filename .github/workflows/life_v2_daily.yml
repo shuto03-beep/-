@@ -58,6 +58,7 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           LIFE_V2_DISCORD_WEBHOOK_URL: ${{ secrets.LIFE_V2_DISCORD_WEBHOOK_URL }}
           PLAUD_DISCORD_WEBHOOK_URL: ${{ secrets.PLAUD_DISCORD_WEBHOOK_URL }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         run: |
           python -m life_v2 morning --save --notify
           python -m life_v2 coach --recent-days 1 --save --save-scorecard --notify
@@ -68,6 +69,7 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           LIFE_V2_DISCORD_WEBHOOK_URL: ${{ secrets.LIFE_V2_DISCORD_WEBHOOK_URL }}
           PLAUD_DISCORD_WEBHOOK_URL: ${{ secrets.PLAUD_DISCORD_WEBHOOK_URL }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         run: |
           python -m life_v2 evening --recent-days 1 --save --save-scorecard --notify
           # 週末は美学を蒸留して Discord に投稿
@@ -81,6 +83,7 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           LIFE_V2_DISCORD_WEBHOOK_URL: ${{ secrets.LIFE_V2_DISCORD_WEBHOOK_URL }}
           PLAUD_DISCORD_WEBHOOK_URL: ${{ secrets.PLAUD_DISCORD_WEBHOOK_URL }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         run: python -m life_v2 coach --recent-days 1 --save --save-scorecard --notify
 
       - name: 永続化コミット

@@ -11,12 +11,17 @@ import urllib.error
 import urllib.request
 
 WEBHOOK_ENV = "LIFE_V2_DISCORD_WEBHOOK_URL"
-FALLBACK_ENV = "PLAUD_DISCORD_WEBHOOK_URL"
+FALLBACK_ENVS = ("PLAUD_DISCORD_WEBHOOK_URL", "DISCORD_WEBHOOK_URL")
 _DISCORD_LIMIT = 1900
 
 
 def post(text: str, *, prefix: str = "") -> bool:
-    url = os.environ.get(WEBHOOK_ENV) or os.environ.get(FALLBACK_ENV)
+    url = os.environ.get(WEBHOOK_ENV)
+    if not url:
+        for env in FALLBACK_ENVS:
+            url = os.environ.get(env)
+            if url:
+                break
     if not url:
         print("[notifier] webhook 未設定。コンソールに出力します:")
         print(f"{prefix}\n{text}")
