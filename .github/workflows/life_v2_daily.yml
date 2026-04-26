@@ -1,0 +1,95 @@
+name: Life V2 Daily Coach
+
+# 朝(JST 06:30)の Morning Set + 夜(JST 22:00)の Evening Ledger を自動実行する。
+# Plaud V1 の最新 entries をテキスト化して life_v2.coach に投入し、
+# Discord に Next Actions を投稿する（カレンダー登録までは人間の Yes/No 承認）。
+
+on:
+  schedule:
+    # 朝 JST 06:30 = UTC 21:30 (前日)
+    - cron: '30 21 * * *'
+    # 夜 JST 22:00 = UTC 13:00
+    - cron: '0 13 * * *'
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: '実行モード'
+        type: choice
+        options: [morning, evening, coach]
+        default: morning
+
+concurrency:
+  group: life-v2-daily
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  ritual:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: リポジトリ取得
+        uses: actions/checkout@v4
+
+      - name: Python セットアップ
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 依存インストール
+        run: pip install anthropic
+
+      - name: モード判定
+        id: mode
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "kind=${{ github.event.inputs.mode }}" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event.schedule }}" = "30 21 * * *" ]; then
+            echo "kind=morning" >> "$GITHUB_OUTPUT"
+          else
+            echo "kind=evening" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Morning Set
+        if: steps.mode.outputs.kind == 'morning'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          LIFE_V2_DISCORD_WEBHOOK_URL: ${{ secrets.LIFE_V2_DISCORD_WEBHOOK_URL }}
+          PLAUD_DISCORD_WEBHOOK_URL: ${{ secrets.PLAUD_DISCORD_WEBHOOK_URL }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: |
+          python -m life_v2 morning --save --notify
+          python -m life_v2 coach --recent-days 1 --save --save-scorecard --notify
+
+      - name: Evening Ledger
+        if: steps.mode.outputs.kind == 'evening'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          LIFE_V2_DISCORD_WEBHOOK_URL: ${{ secrets.LIFE_V2_DISCORD_WEBHOOK_URL }}
+          PLAUD_DISCORD_WEBHOOK_URL: ${{ secrets.PLAUD_DISCORD_WEBHOOK_URL }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: |
+          python -m life_v2 evening --recent-days 1 --save --save-scorecard --notify
+          # 週末は美学を蒸留して Discord に投稿
+          if [ "$(date +%u)" = "7" ]; then
+            python -m life_v2 distill --days 30 --save --json | head -c 1500 || true
+          fi
+
+      - name: Coach (manual)
+        if: steps.mode.outputs.kind == 'coach'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          LIFE_V2_DISCORD_WEBHOOK_URL: ${{ secrets.LIFE_V2_DISCORD_WEBHOOK_URL }}
+          PLAUD_DISCORD_WEBHOOK_URL: ${{ secrets.PLAUD_DISCORD_WEBHOOK_URL }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: python -m life_v2 coach --recent-days 1 --save --save-scorecard --notify
+
+      - name: 永続化コミット
+        run: |
+          git config user.name "Life V2 Bot"
+          git config user.email "bot@life-v2.local"
+          git add data/life_v2/ || true
+          git diff --cached --quiet || git commit -m "life_v2: ${{ steps.mode.outputs.kind }} run $(date +%Y-%m-%d)"
+          git push || true
