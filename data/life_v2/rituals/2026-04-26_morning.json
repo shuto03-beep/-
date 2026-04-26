@@ -1,0 +1,24 @@
+{
+  "kind": "morning",
+  "date": "2026-04-26",
+  "saved_at": "2026-04-26T21:41:34",
+  "payload": {
+    "intention": "今日は1ブロックだけ深く",
+    "two_handed_block": {
+      "start": "09:00",
+      "duration_minutes": 90,
+      "task": "今日唯一の高価値タスクに着手",
+      "preflight": [
+        "通知をオフにする",
+        "机の上を空にする（両手を空ける）",
+        "タイマーを90分にセット"
+      ]
+    },
+    "drop_today": [
+      "返信のための返信",
+      "前例踏襲の書類確認"
+    ],
+    "family_share": "夕食時に今日学んだことを1つだけ家族に話す",
+    "source": "heuristic"
+  }
+}
