@@ -32,7 +32,12 @@ def post(text: str, *, prefix: str = "") -> bool:
         payload = json.dumps({"content": chunk}).encode("utf-8")
         req = urllib.request.Request(
             url, data=payload,
-            headers={"Content-Type": "application/json"},
+            headers={
+                "Content-Type": "application/json",
+                # Discord は Python のデフォルト UA (Python-urllib/...) を
+                # bot 風 UA とみなして 403 を返すため、明示的に設定する。
+                "User-Agent": "life_v2-notifier/2.0 (+https://github.com/shuto03-beep/-)",
+            },
             method="POST",
         )
         try:
@@ -40,6 +45,13 @@ def post(text: str, *, prefix: str = "") -> bool:
                 if resp.status >= 300:
                     print(f"[notifier] HTTP {resp.status}")
                     return False
+        except urllib.error.HTTPError as e:
+            try:
+                detail = e.read().decode("utf-8", errors="replace")[:200]
+            except Exception:
+                detail = ""
+            print(f"[notifier] HTTP {e.code} {e.reason}: {detail}")
+            return False
         except urllib.error.URLError as e:
             print(f"[notifier] error: {e}")
             return False
