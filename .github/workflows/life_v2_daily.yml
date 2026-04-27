@@ -57,6 +57,40 @@ jobs:
           echo "解決された kind=$kind"
           echo "kind=$kind" >> "$GITHUB_OUTPUT"
 
+      - name: Webhook 診断
+        env:
+          LIFE_V2_DISCORD_WEBHOOK_URL: ${{ secrets.LIFE_V2_DISCORD_WEBHOOK_URL }}
+          PLAUD_DISCORD_WEBHOOK_URL: ${{ secrets.PLAUD_DISCORD_WEBHOOK_URL }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: |
+          python <<'PY'
+          import os, hashlib
+          for name in ("LIFE_V2_DISCORD_WEBHOOK_URL", "PLAUD_DISCORD_WEBHOOK_URL", "DISCORD_WEBHOOK_URL"):
+              v = os.environ.get(name, "")
+              if v:
+                  trimmed = v.strip()
+                  print(f"{name}: set / len={len(v)} / trimmed_len={len(trimmed)} / hash={hashlib.sha256(v.encode()).hexdigest()[:12]} / starts_https={v.startswith('https://discord.com')}")
+              else:
+                  print(f"{name}: empty")
+          PY
+          # Discord に直接投稿テスト
+          URL="${LIFE_V2_DISCORD_WEBHOOK_URL:-${PLAUD_DISCORD_WEBHOOK_URL:-$DISCORD_WEBHOOK_URL}}"
+          if [ -z "$URL" ]; then
+            echo "::error::全 webhook secret が空"
+            exit 1
+          fi
+          HTTP=$(curl -s -o /tmp/resp.txt -w "%{http_code}" \
+            -X POST -H "Content-Type: application/json" \
+            -d '{"content":"[diagnostic] GitHub Actions 直接投稿テスト"}' \
+            "$URL")
+          echo "Discord HTTP code: $HTTP"
+          if [ -f /tmp/resp.txt ]; then
+            echo "--- response body ---"
+            cat /tmp/resp.txt
+            echo "---"
+          fi
+
+
       - name: Morning Set
         if: steps.mode.outputs.kind == 'morning'
         env:
