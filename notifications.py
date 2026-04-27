@@ -177,6 +177,25 @@ def send_strategies_summary(state: dict, signal_count: int):
         best_config = STRATEGIES[best_key]
         msg += f"\n\n🏆 現時点のベスト: {best_config['label']}"
 
+    # ベンチマーク比較（日経225）
+    try:
+        import yfinance as yf
+        nikkei = yf.Ticker("^N225")
+        hist = nikkei.history(period="1mo")
+        if hist is not None and len(hist) > 1:
+            nikkei_return = (hist["Close"].iloc[-1] - hist["Close"].iloc[0]) / hist["Close"].iloc[0] * 100
+            best_return = max(
+                (s.get("total_value", INITIAL_CAPITAL) - INITIAL_CAPITAL) / INITIAL_CAPITAL * 100
+                for s in summaries.values()
+            )
+            comparison = "📈 Bot勝ち" if best_return > nikkei_return else "📉 日経勝ち"
+            msg += f"\n\n📌 ベンチマーク比較（1ヶ月）"
+            msg += f"\n  日経225: {nikkei_return:+.2f}%"
+            msg += f"\n  Bot最良: {best_return:+.2f}%"
+            msg += f"\n  {comparison}"
+    except Exception:
+        pass
+
     msg += f"\n📊 本日シグナル: {signal_count}件"
     msg += "\n━━━━━━━━━━━━━━━━━━━"
     _send_discord(msg)
