@@ -1,0 +1,29 @@
+{
+  "id": "2026-04-27_2026-04-28-084716",
+  "source_file": "plaud-web:398ee1e3f709859db3775c2713990fb8",
+  "recorded_at": "2026-04-27T23:47:16",
+  "ingested_at": "2026-04-28T21:48:10",
+  "title": "2026-04-28 08:47:16",
+  "raw": {
+    "transcript": "[{\"timestamp\":6719996,\"mark_type\":1,\"mark_type_string\":null,\"mark_content\":\"ミーティングは逆算で進めていきたい。\",\"content\":null,\"title\":null,\"expanded_content\":null,\"picture_link\":null,\"mark_id\":\"e54370f2161afd8bf4c2a6570cca40b9\",\"ocr_data_link\":null,\"link_expire_timestamp\":null,\"picture_local_path\":\"/var/mobile/Containers/Data/Application/CAD020FB-B022-4BE4-9299-ED274F0181C5/Documents/audio_marks/PLAUD_mark_Audio_01:51:59_1777340361209.opus\",\"picture_full_url\":null,\"is_user_edited\":true,\"mark_status\":3,\"error_message\":null,\"retry_count\":null,\"last_failed_time\":null,\"is_user_deleted\":null},{\"timestamp\":15795233,\"mark_type\":3,\"mark_type_string\":null,\"mark_content\":\"日々の生活や仕事で「上機嫌」を保つための技術として、自分への備忘録のような形で活用してみてください。\\n【日記に使える要約メモ：機嫌は「技術」で守れる】\\n1. 「機嫌」の捉え方を変える\\n• 機嫌は技術である： 機嫌の良し悪しは性格や運ではなく、後から身につけられる「スキル」。\\n• 認知の再評価（カメラを引く）： 嫌なことがあった時、映画のカメラを引くように自分を客観視し、「お、主人公に試練が訪れたな」とRPGのイベントのように捉えると心が楽になる。\\n2. 仕事を「深刻」にせず「真剣」に楽しむ\\n• 深刻はパフォーマンスを下げる： 余裕がないと脳の視野が狭まり、ミスが増える。「真剣」には取り組むが、遊び心を一滴混ぜて「深刻」にならない工夫をする。\\n• 3分ルール： 大きなタスクは「3分で終わる小石」にまで分解して着手する。小さな進捗を感じることで脳にやる気（ドーパミン）が出る。\\n• 報酬を5枚のレンズで見る： 仕事の報酬は「お金」だけでなく、「仲間・経験・信用・次の仕事」の5つ。この視点を持つと、今の仕事の価値が多層的に見えてくる。\\n3. 他人の不機嫌から自分を守る\\n• 感情の伝染を防ぐ： 不機嫌な人のそばにいるだけで脳がコピーしてしまう。\\n• 魔法のフレーズ： 愚痴には同意も否定もせず「気持ちは分かるよ」とだけ返し、深入りしない。\\n• 平和的撤退： 面倒な人からは「急用」や「トイレ」を理由にそっと離れる。逃げるのは自分の機嫌を守る立派な技術。\\n4. 「余白」と「自分軸」を大切にする\\n• やめる勇気： 情熱が冷めたものを惰性で続けるのは「停滞」。思い切って手放すことで、新しいものが入る「余白」ができる。\\n• 村人Aでいい： SNSで他人と比べず、常に「昨日の自分」とだけ比べる。時には主役を降り、ただの「村人」として気楽に過ごす時間を自分に許す。\\n日記に書く際の一言ヒント：\\n「今日は『機嫌は技術』という言葉が響いた。特に、嫌なことがあったら『カメラを引く』というのを試してみたい。仕事も深刻になりすぎず、まずは3分だけ手を動かすことから始めようと思う。」\\nといった形で、自分の今の状況に合わせて書き換えてみてください。\",\"content\":null,\"title\":null,\"expanded_content\":null,\"picture_link\":null,\"mark_id\":null,\"ocr_data_link\":null,\"link_expire_timestamp\":null,\"picture_local_path\":null,\"picture_full_url\":null,\"is_user_edited\":null,\"mark_status\":null,\"error_message\":null,\"retry_count\":null,\"last_failed_time\":null,\"is_user_deleted\":null}]",
+    "summary": ""
+  },
+  "lifelog": {
+    "headline": "2026-04-28 08:47:16",
+    "tags": [
+      "plaud"
+    ],
+    "source": "raw"
+  },
+  "tasks": [],
+  "task_analysis": {
+    "total": 0,
+    "by_priority": {
+      "high": 0,
+      "medium": 0,
+      "low": 0
+    },
+    "effort_summary": "",
+    "blockers": []
+  }
+}

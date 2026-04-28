@@ -1,0 +1,29 @@
+{
+  "id": "2026-04-27_2026-04-28-061743",
+  "source_file": "plaud-web:a8ab81cd89f15450263ec5af1a988a3e",
+  "recorded_at": "2026-04-27T21:17:43",
+  "ingested_at": "2026-04-28T21:48:09",
+  "title": "2026-04-28 06:17:43",
+  "raw": {
+    "transcript": "[{\"timestamp\":8957840,\"mark_type\":4,\"mark_type_string\":null,\"mark_content\":\"マーク済み。文字起こし後に確認できます。\",\"content\":null,\"title\":null,\"expanded_content\":null,\"picture_link\":null,\"mark_id\":null,\"ocr_data_link\":null,\"link_expire_timestamp\":null,\"picture_local_path\":null,\"picture_full_url\":null,\"is_user_edited\":false,\"mark_status\":0,\"error_message\":null,\"retry_count\":null,\"last_failed_time\":null,\"is_user_deleted\":null}]",
+    "summary": ""
+  },
+  "lifelog": {
+    "headline": "2026-04-28 06:17:43",
+    "tags": [
+      "plaud"
+    ],
+    "source": "raw"
+  },
+  "tasks": [],
+  "task_analysis": {
+    "total": 0,
+    "by_priority": {
+      "high": 0,
+      "medium": 0,
+      "low": 0
+    },
+    "effort_summary": "",
+    "blockers": []
+  }
+}
