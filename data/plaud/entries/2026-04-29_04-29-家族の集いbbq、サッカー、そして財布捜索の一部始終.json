@@ -1,0 +1,29 @@
+{
+  "id": "2026-04-29_04-29-家族の集いbbq、サッカー、そして財布捜索の一部始終",
+  "source_file": "plaud-web:ccc08aac638f34629f3fa7e92cbaac52",
+  "recorded_at": "2026-04-29T06:27:33",
+  "ingested_at": "2026-04-29T21:48:35",
+  "title": "04-29 家族の集い：BBQ、サッカー、そして財布捜索の一部始終",
+  "raw": {
+    "transcript": "[{\"timestamp\":10616160,\"mark_type\":4,\"mark_type_string\":null,\"mark_content\":\"マーク済み。文字起こし後に確認できます。\",\"content\":null,\"title\":null,\"expanded_content\":null,\"picture_link\":null,\"mark_id\":\"14f5f64d42240543df03bfa3abeb2653\",\"ocr_data_link\":null,\"link_expire_timestamp\":null,\"picture_local_path\":null,\"picture_full_url\":null,\"is_user_edited\":false,\"mark_status\":6,\"error_message\":\"轮询超时\",\"retry_count\":1,\"last_failed_time\":1777494773236,\"is_user_deleted\":null}]",
+    "summary": ""
+  },
+  "lifelog": {
+    "headline": "04-29 家族の集い：BBQ、サッカー、そして財布捜索の一部始終",
+    "tags": [
+      "plaud"
+    ],
+    "source": "raw"
+  },
+  "tasks": [],
+  "task_analysis": {
+    "total": 0,
+    "by_priority": {
+      "high": 0,
+      "medium": 0,
+      "low": 0
+    },
+    "effort_summary": "",
+    "blockers": []
+  }
+}

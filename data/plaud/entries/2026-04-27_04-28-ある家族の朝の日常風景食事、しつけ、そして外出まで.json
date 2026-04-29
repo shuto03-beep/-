@@ -1,0 +1,29 @@
+{
+  "id": "2026-04-27_04-28-ある家族の朝の日常風景食事、しつけ、そして外出まで",
+  "source_file": "plaud-web:a8ab81cd89f15450263ec5af1a988a3e",
+  "recorded_at": "2026-04-27T21:17:43",
+  "ingested_at": "2026-04-29T21:48:36",
+  "title": "04-28 ある家族の朝の日常風景：食事、しつけ、そして外出まで",
+  "raw": {
+    "transcript": "[{\"timestamp\":8957840,\"mark_type\":4,\"mark_type_string\":null,\"mark_content\":\"マーク済み。文字起こし後に確認できます。\",\"content\":null,\"title\":null,\"expanded_content\":null,\"picture_link\":null,\"mark_id\":\"c0a39c11156dd9117c89395a8277f2d0\",\"ocr_data_link\":null,\"link_expire_timestamp\":null,\"picture_local_path\":null,\"picture_full_url\":null,\"is_user_edited\":false,\"mark_status\":6,\"error_message\":\"轮询超时\",\"retry_count\":1,\"last_failed_time\":1777350052823,\"is_user_deleted\":null}]",
+    "summary": ""
+  },
+  "lifelog": {
+    "headline": "04-28 ある家族の朝の日常風景：食事、しつけ、そして外出まで",
+    "tags": [
+      "plaud"
+    ],
+    "source": "raw"
+  },
+  "tasks": [],
+  "task_analysis": {
+    "total": 0,
+    "by_priority": {
+      "high": 0,
+      "medium": 0,
+      "low": 0
+    },
+    "effort_summary": "",
+    "blockers": []
+  }
+}
