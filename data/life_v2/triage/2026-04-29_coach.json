@@ -1,0 +1,212 @@
+{
+  "date": "2026-04-29",
+  "headline": "両手を空けて1ブロックに集中",
+  "one_minute_action": "カレンダーを開いて、最重要1ブロックの開始時刻を確定する",
+  "aesthetic_signal": "他者評価ではなく、4軸の自分のスコアだけを尺度にする",
+  "scorecard": {
+    "date": "2026-04-29",
+    "systemize": 4,
+    "declutter": 2,
+    "two_handed": 2,
+    "knowledge_share": 10,
+    "systemize_note": "(ヒューリスティック採点) 仕組み系シグナル数",
+    "declutter_note": "(ヒューリスティック採点) 断捨離シグナル数",
+    "two_handed_note": "(ヒューリスティック採点) 集中シグナル数",
+    "knowledge_share_note": "(ヒューリスティック採点) 共有シグナル数",
+    "total": 18,
+    "source_entry_ids": [],
+    "created_at": "2026-04-29T22:29:12"
+  },
+  "dropped": [
+    {
+      "title": "朝礼では声量を上げて全員に届くよう配慮する",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "1〜3月の繁忙期は土日勤務が発生しやすい",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "昔の部長会・職員旅行は縮小・消滅傾向",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "多忙・災害対応と家庭の両立が課題",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "次回の会で「特別ゲスト」を招く可能性（Speaker 1）",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "二次会候補「ドドンパン」（狭いとの情報）",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "注文候補：マグロの刺身、豆腐、刺身系、レモンタワー",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "乾杯の進行は水野さん担当、乾杯後に拍手まで行う",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "電話で「加藤先生」と「佐藤先生」の聞き間違いが頻発し、目線確認で対応",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "内田さんは28歳。結婚の話題があり「結婚します／たぶんします」との発言",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "同棲開始（加古川駅近く）。相手は明石勤務、通勤開始予定",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "引っ越し時期：[Speaker 3]は2月末、相手は3月中旬",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "マッチングアプリは大阪方面のほうがマッチしやすい体感",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "上司（赤松課長）は毎朝神社参拝",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "清岡神社経由の通勤で渋滞回避のケースあり。大阪からの通勤は約2時間見込み",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "結婚後の専業主婦化による1馬力家計への懸念。住宅価格高騰（約6000万円の例）",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "結婚式は2月頃を検討、空きは少なく相楽園が候補。見学は複数回実施",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "契約後の費用上振れは50〜60万円程度の可能性あり",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "プランナーには肯定から入り、相手の希望を尊重しつつ新郎も意見を出す",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "式のみ・会食なしの選択肢や、動画・お祝いムービーを同僚が作る案も",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "前乗りすると本番の負担（食事できない等）が軽減",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "費用負担は割り勘や一部負担など柔軟に検討。旅行に費用を回したい希望も",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "子どもの夜泣き対策や嘔吐対応の具体的経験が共有された",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "ディズニープラス世代でジブリに疎い子どもがいるという話題",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "結婚式・前撮りの費用感（約30万円）やカメラマン指名料、画角・ポーズ指示の重要性",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "VHS記録の結婚式があり、再生機器は一台のみ",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "解散時は電車での帰宅確認と送迎の申し出があった",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "昭和の思い出",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    }
+  ],
+  "next_actions": [
+    {
+      "title": "プリンター配置（教育長室や総務課前）は作業効率と“見られない工夫”に影響",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    },
+    {
+      "title": "加藤課長と小西さん・岡田さん、さらに小西さんの妻・優子さんを交えた飲み会の打診あり",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    }
+  ]
+}
