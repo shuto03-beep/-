@@ -1,0 +1,21 @@
+{
+  "kind": "evening",
+  "date": "2026-04-29",
+  "saved_at": "2026-04-29T15:11:52",
+  "payload": {
+    "scorecard": {
+      "systemize": 0,
+      "systemize_note": "(ヒューリスティック採点) 仕組み系シグナル数",
+      "declutter": 0,
+      "declutter_note": "(ヒューリスティック採点) 断捨離シグナル数",
+      "two_handed": 0,
+      "two_handed_note": "(ヒューリスティック採点) 集中シグナル数",
+      "knowledge_share": 0,
+      "knowledge_share_note": "(ヒューリスティック採点) 共有シグナル数"
+    },
+    "what_worked": "(ヒューリスティック) 仕組みに関わる時間が確保できた程度",
+    "what_was_drag": "(ヒューリスティック) 片手間タスクの侵食が懸念される",
+    "tomorrow_first_move": "明日朝、カレンダーで90分ブロックを先取りする",
+    "source": "heuristic"
+  }
+}
