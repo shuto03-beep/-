@@ -491,7 +491,7 @@
           "entry_date": "2026-04-30",
           "stop_loss": 2111.4,
           "take_profit": 2494.1,
-          "highest_price": 2222.5,
+          "highest_price": 2232.0,
           "signal_score": 68,
           "signal_reasons": [
             "⚠️ 落ちるナイフ注意（下降トレンド中の底値）",
@@ -682,58 +682,9 @@
       }
     }
   },
-  "last_run": "2026-04-30T06:07:33.055731",
-  "last_full_screening": "2026-04-30T06:07:32.826428",
+  "last_run": "2026-04-30T08:28:39.506654",
+  "last_full_screening": "2026-04-30T08:28:39.505932",
   "signals_history": [
-    {
-      "ticker": "4507.T",
-      "name": "塩野義製薬",
-      "type": "BUY",
-      "score": 56,
-      "date": "2026-04-20 05:30"
-    },
-    {
-      "ticker": "6702.T",
-      "name": "富士通",
-      "type": "SELL",
-      "score": -43,
-      "date": "2026-04-20 07:30"
-    },
-    {
-      "ticker": "4507.T",
-      "name": "塩野義製薬",
-      "type": "BUY",
-      "score": 53,
-      "date": "2026-04-20 07:30"
-    },
-    {
-      "ticker": "6702.T",
-      "name": "富士通",
-      "type": "SELL",
-      "score": -43,
-      "date": "2026-04-20 08:17"
-    },
-    {
-      "ticker": "4507.T",
-      "name": "塩野義製薬",
-      "type": "BUY",
-      "score": 53,
-      "date": "2026-04-20 08:17"
-    },
-    {
-      "ticker": "3038.T",
-      "name": "神戸物産",
-      "type": "BUY",
-      "score": 54,
-      "date": "2026-04-21 05:17"
-    },
-    {
-      "ticker": "6702.T",
-      "name": "富士通",
-      "type": "SELL",
-      "score": -41,
-      "date": "2026-04-21 05:17"
-    },
     {
       "ticker": "8267.T",
       "name": "イオン",
@@ -1433,6 +1384,83 @@
       "type": "BUY",
       "score": 48,
       "date": "2026-04-30 06:07"
+    },
+    {
+      "ticker": "7203.T",
+      "name": "トヨタ",
+      "type": "BUY",
+      "score": 48,
+      "date": "2026-04-30 08:28"
+    },
+    {
+      "ticker": "4503.T",
+      "name": "アステラス製薬",
+      "type": "BUY",
+      "score": 67,
+      "date": "2026-04-30 08:28"
+    },
+    {
+      "ticker": "7974.T",
+      "name": "任天堂",
+      "type": "BUY",
+      "score": 54,
+      "date": "2026-04-30 08:28"
+    },
+    {
+      "ticker": "4661.T",
+      "name": "OLC",
+      "type": "BUY",
+      "score": 54,
+      "date": "2026-04-30 08:28"
+    },
+    {
+      "ticker": "7751.T",
+      "name": "キヤノン",
+      "type": "BUY",
+      "score": 48,
+      "date": "2026-04-30 08:28"
+    },
+    {
+      "ticker": "7832.T",
+      "name": "バンナムHD",
+      "type": "BUY",
+      "score": 47,
+      "date": "2026-04-30 08:28"
+    },
+    {
+      "ticker": "4452.T",
+      "name": "花王",
+      "type": "BUY",
+      "score": 45,
+      "date": "2026-04-30 08:28"
+    },
+    {
+      "ticker": "7270.T",
+      "name": "SUBARU",
+      "type": "BUY",
+      "score": 53,
+      "date": "2026-04-30 08:28"
+    },
+    {
+      "ticker": "6645.T",
+      "name": "オムロン",
+      "type": "SELL",
+      "score": -38,
+      "date": "2026-04-30 08:28"
+    },
+    {
+      "ticker": "4768.T",
+      "name": "大塚商会",
+      "type": "BUY",
+      "score": 53,
+      "date": "2026-04-30 08:28"
+    },
+    {
+      "ticker": "6315.T",
+      "name": "TOWA",
+      "type": "BUY",
+      "score": 47,
+      "date": "2026-04-30 08:28"
     }
   ]
 }
