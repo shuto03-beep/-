@@ -1,22 +1,22 @@
 {
   "weights": {
-    "ma_cross": 15,
+    "ma_cross": 20,
     "ma_trend": 10,
-    "macd": 15,
-    "rsi": 10,
-    "bollinger": 10,
-    "volume": 10,
+    "macd": 14,
+    "rsi": 9,
+    "bollinger": 9,
+    "volume": 9,
     "stochastic": 10,
-    "ichimoku": 15,
+    "ichimoku": 14,
     "historical": 5
   },
   "parameters": {
-    "stop_loss_pct": -0.03,
-    "take_profit_pct": 0.08,
+    "stop_loss_pct": -0.028499999999999998,
+    "take_profit_pct": 0.084,
     "buy_threshold": 60
   },
-  "version": 2,
-  "last_optimization": "2026-04-22T07:07:51.300294",
+  "version": 3,
+  "last_optimization": "2026-04-30T06:07:32.827574",
   "performance_history": [
     {
       "date": "2026-04-22",
@@ -24,6 +24,13 @@
       "win_rate": 0.35714285714285715,
       "avg_pnl_pct": 0.029864578889205153,
       "total_trades": 14
+    },
+    {
+      "date": "2026-04-30",
+      "version": 3,
+      "win_rate": 0.20833333333333334,
+      "avg_pnl_pct": -0.011795308819712857,
+      "total_trades": 24
     }
   ]
 }
