@@ -1,0 +1,29 @@
+{
+  "id": "2026-04-30_04-30-会議-文化・スポーツ予算区分、部活動補助金運用、申請スケジュールと予",
+  "source_file": "plaud-web:9cb8dd7485e41033d6779267343270f6",
+  "recorded_at": "2026-04-30T01:06:47",
+  "ingested_at": "2026-05-01T21:40:28",
+  "title": "04-30 会議: 文化・スポーツ予算区分、部活動補助金運用、申請スケジュールと予約システム導入検討",
+  "raw": {
+    "transcript": "[{\"timestamp\":12865520,\"mark_type\":2,\"mark_type_string\":null,\"mark_content\":\"R8 年 5 月 28 日開催の定例教育委員会の資料提出締切は 5 月 20 日 15 時であり、遵守が求められます。\",\"content\":null,\"title\":null,\"expanded_content\":null,\"picture_link\":\"permanent/6a96f9e9f528462da5eceab0567a9512/mark/20260430_140259_4d4f2e75.jpg\",\"mark_id\":\"68df26e7557eeb5411176310869e9c9e\",\"ocr_data_link\":\"highlight/ocr_data/ocr_20260430140300-mark@068ba84a95cc7010427e01.txt\",\"link_expire_timestamp\":null,\"picture_local_path\":\"plaud_images/note_recording_session_1777511207_12865520.jpg\",\"picture_full_url\":null,\"is_user_edited\":false,\"mark_status\":3,\"error_message\":null,\"retry_count\":null,\"last_failed_time\":null,\"is_user_deleted\":null}]",
+    "summary": ""
+  },
+  "lifelog": {
+    "headline": "04-30 会議: 文化・スポーツ予算区分、部活動補助金運用、申請スケジュールと予約システム導入検討",
+    "tags": [
+      "plaud"
+    ],
+    "source": "raw"
+  },
+  "tasks": [],
+  "task_analysis": {
+    "total": 0,
+    "by_priority": {
+      "high": 0,
+      "medium": 0,
+      "low": 0
+    },
+    "effort_summary": "",
+    "blockers": []
+  }
+}
