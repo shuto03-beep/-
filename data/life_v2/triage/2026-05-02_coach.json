@@ -1,0 +1,180 @@
+{
+  "date": "2026-05-02",
+  "headline": "両手を空けて1ブロックに集中",
+  "one_minute_action": "カレンダーを開いて、最重要1ブロックの開始時刻を確定する",
+  "aesthetic_signal": "他者評価ではなく、4軸の自分のスコアだけを尺度にする",
+  "scorecard": {
+    "date": "2026-05-02",
+    "systemize": 2,
+    "declutter": 0,
+    "two_handed": 0,
+    "knowledge_share": 10,
+    "systemize_note": "(ヒューリスティック採点) 仕組み系シグナル数",
+    "declutter_note": "(ヒューリスティック採点) 断捨離シグナル数",
+    "two_handed_note": "(ヒューリスティック採点) 集中シグナル数",
+    "knowledge_share_note": "(ヒューリスティック採点) 共有シグナル数",
+    "total": 12,
+    "source_entry_ids": [],
+    "created_at": "2026-05-02T22:04:06"
+  },
+  "dropped": [
+    {
+      "title": "Mechanism: Outcomes are driven by repeatable systems: rejection tolerance and co",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "Status Quo: Cold outreach for real estate development involves high “no” rates;",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "Response:",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "Negotiate in stages: secure initial fee, deliver measurable results, then reques",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "Stakes: Sellers who avoid negotiation or volume lose pricing power and miss comp",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "Components:",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "Inter-relations:",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "Video/image generation consumes significantly more tokens; cost rises with data",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "Operator usage patterns must align with budget and model capability (e.g., using",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "System Logic: Token economics are non-negotiable; plan workloads around modality",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "Thesis: Buying “recommended stocks” without foundational literacy is reckless",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "Mechanism: Execution requires course setup, order handling, buy/sell rules, and",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "Verdict: No study, no investment. Process competence precedes instrument selecti",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "Background: “Hard mode” feels sticky when decisions are deferred; “easy mode” em",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "Process: Trials appear at decision points (social pressure, health, fear). The r",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "Result: When the operator accepts discomfort and acts, opportunities compound; w",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "Observation: A query on student limits produced inconsistent figures (e.g., 831",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "Maintain uniform, high-energy approach (“approach everyone the same way”) to sta",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "Playground environment to experiment with Gemini models and modalities (text, im",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "Access tiers: some models/features are free; video/audio generation and certain",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "Implication: Without definitive numbers, planning against capacity is speculativ",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    }
+  ],
+  "next_actions": [
+    {
+      "title": "Phenomenon: Multiple domains—sales, investing, AI tooling—penalize impatience an",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(独自性)に合致。",
+      "leverage": false,
+      "mission": false,
+      "uniqueness": true,
+      "source_entry_id": null
+    },
+    {
+      "title": "Root Cause of Failure: Impulsive choices (buying stocks on “recommendations,” sk",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(独自性)に合致。",
+      "leverage": false,
+      "mission": false,
+      "uniqueness": true,
+      "source_entry_id": null
+    },
+    {
+      "title": "Gap/Pain: Early-stage sellers often overreact to “no” and abandon cadence before",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(独自性)に合致。",
+      "leverage": false,
+      "mission": false,
+      "uniqueness": true,
+      "source_entry_id": null
+    }
+  ]
+}
