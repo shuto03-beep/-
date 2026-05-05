@@ -1,0 +1,22 @@
+{
+  "date": "2026-05-05",
+  "headline": "両手を空けて1ブロックに集中",
+  "one_minute_action": "カレンダーを開いて、最重要1ブロックの開始時刻を確定する",
+  "aesthetic_signal": "他者評価ではなく、4軸の自分のスコアだけを尺度にする",
+  "scorecard": {
+    "date": "2026-05-05",
+    "systemize": 0,
+    "declutter": 0,
+    "two_handed": 0,
+    "knowledge_share": 0,
+    "systemize_note": "(ヒューリスティック採点) 仕組み系シグナル数",
+    "declutter_note": "(ヒューリスティック採点) 断捨離シグナル数",
+    "two_handed_note": "(ヒューリスティック採点) 集中シグナル数",
+    "knowledge_share_note": "(ヒューリスティック採点) 共有シグナル数",
+    "total": 0,
+    "source_entry_ids": [],
+    "created_at": "2026-05-05T22:29:30"
+  },
+  "dropped": [],
+  "next_actions": []
+}
