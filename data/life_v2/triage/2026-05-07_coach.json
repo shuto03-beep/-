@@ -1,0 +1,212 @@
+{
+  "date": "2026-05-07",
+  "headline": "両手を空けて1ブロックに集中",
+  "one_minute_action": "カレンダーを開いて、最重要1ブロックの開始時刻を確定する",
+  "aesthetic_signal": "他者評価ではなく、4軸の自分のスコアだけを尺度にする",
+  "scorecard": {
+    "date": "2026-05-07",
+    "systemize": 0,
+    "declutter": 0,
+    "two_handed": 2,
+    "knowledge_share": 10,
+    "systemize_note": "(ヒューリスティック採点) 仕組み系シグナル数",
+    "declutter_note": "(ヒューリスティック採点) 断捨離シグナル数",
+    "two_handed_note": "(ヒューリスティック採点) 集中シグナル数",
+    "knowledge_share_note": "(ヒューリスティック採点) 共有シグナル数",
+    "total": 12,
+    "source_entry_ids": [],
+    "created_at": "2026-05-07T22:32:45"
+  },
+  "dropped": [
+    {
+      "title": "ローソンやケンタッキーの話題が出た（近くにある可能性）",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "踏切や信号が連続で青だったなど、移動中の状況共有があった",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "コンサートや短歌の話題に触れたが、具体的な内容は曖昧",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "濡れていて乾かない物があり、乾燥のために何か（ブイーン）をつけた",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "運転・道路状況",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "コンビニ話（ローソン）",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "ケンタッキー言及",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "コンサート・短歌",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "濡れた物と乾燥",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "焼きそば・食事",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "放屁の冗談",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "寝る場所探し",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "目印の紙",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "本セクションでは、「女性に好かれる男性像」を研究・書籍の知見にもとづいて整理している。核となるのは「堅忍性（長期目標をやり遂げる力）」の重要性で、打たれ強さ・忍",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "「優しさ」と「男らしさ」の両立が、世界各地でパートナーに求められる特性として挙がる。大衆文化（ラブコメ・ドラマ）でも、優しい男性が勇敢さを示して女性を守る場面が",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "第一印象とコミュニケーションの具体策が述べられる。大切なのは自分の気分ではなく「相手が良い気分になること」を意図して振る舞うこと。第一印象には前哨戦があるとし、",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "身だしなみと生活習慣に関しては、部屋や身の回りの清潔さの徹底と、適度な運動習慣（例：ビール腹の解消）が強く推奨される。不潔さは決定的なマイナス要因として明示され",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "人事・賃金請求の実務相談が行われ、賃金請求書は「何もなし」で提出される現状が共有された。所属長確認のうえで、提出前に相手側で確認を済ませる運用になっている。勤務",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "備品（音響設備）貸出調整：",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "岡東知事会から、8月14日～16日にアンプ・ワイヤレス・マイク等の音響設備一式の貸出希望が来庁相談された。音響設備の使用許可申請書は備品担当にはなく、生涯学習課",
+      "reason": "雑務カテゴリ。仕組み化・委任・後回しの対象。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "文書・ファイル運用と無害化：",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "フォルダ運用では、澤野さん用のフォルダが既に作成済みで、そこでやり取り可能。請求書の用途等も含め、新しいフォルダを作成して整理する予定が述べられた。フォルダ作成",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "ファイルの無害化手順が詳細説明された。DeskNetsを開き「無害化」を選択してファイル送信する。メール送信時はパスワードが自動生成される一方、ファイル無害化の",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "LG1は職場内限定の仮想空間である旨が共有された",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "県対応・事業説明：",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "兵庫県で「どんなことをしていますか」と問われた際、会長ではなく事務局が答える場面があるとの注意喚起。前年は案内文なしのまま明石から順に各自が事業内容を説明させら",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "広報・配布・口座関連：",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "口座関係の書類が上がってきている。講演会チラシは公聴会で配布し、他の特別な配布先はなし。学校には案内配布、幼稚園は一部配布にとどめた運用が報告された",
+      "reason": "雑務カテゴリ。仕組み化・委任・後回しの対象。",
+      "disposition": "defer",
+      "source_entry_id": null
+    }
+  ],
+  "next_actions": [
+    {
+      "title": "部活動指導員関連：",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    },
+    {
+      "title": "テント貸出日（8月13日～17日）との整合をとるか、音響のみ8月14日～16日で申請するかの選択肢が検討され、生徒と一緒に返却しやすい観点からテントと合わせる案",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    }
+  ]
+}
