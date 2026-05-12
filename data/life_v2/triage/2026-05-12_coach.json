@@ -1,0 +1,216 @@
+{
+  "date": "2026-05-12",
+  "headline": "両手を空けて1ブロックに集中",
+  "one_minute_action": "カレンダーを開いて、最重要1ブロックの開始時刻を確定する",
+  "aesthetic_signal": "他者評価ではなく、4軸の自分のスコアだけを尺度にする",
+  "scorecard": {
+    "date": "2026-05-12",
+    "systemize": 8,
+    "declutter": 0,
+    "two_handed": 2,
+    "knowledge_share": 10,
+    "systemize_note": "(ヒューリスティック採点) 仕組み系シグナル数",
+    "declutter_note": "(ヒューリスティック採点) 断捨離シグナル数",
+    "two_handed_note": "(ヒューリスティック採点) 集中シグナル数",
+    "knowledge_share_note": "(ヒューリスティック採点) 共有シグナル数",
+    "total": 20,
+    "source_entry_ids": [],
+    "created_at": "2026-05-12T22:38:56"
+  },
+  "dropped": [
+    {
+      "title": "オンライン申請：令和9年度の先行実施分登録が7月から開始",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "登録情報（チーム名、指導者の住所・電話、団体PR等）を一覧化して申請すれば書類はほぼ完了",
+      "reason": "雑務カテゴリ。仕組み化・委任・後回しの対象。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "兼職兼業の書類準備、事前アンケート、熱中症研修フォームの対応が必要",
+      "reason": "雑務カテゴリ。仕組み化・委任・後回しの対象。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "新チームの活動開始は柔軟（休日の先行実施も可）",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "選手登録の整合のため、稲美中・稲美北中のデータを合わせて送付（西村からの送付を急がせる）",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "中央公園は陸上利用が反面で常時あり、枠確保が難しい可能性",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "ナイター設備は来年度工事開始・再来年稼働見込み。整備施設の選定は検討中",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "サンスポ導入には反対意見が多く、導入時は優先枠の扱いが変わる懸念",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "団体登録は翼さんに依頼済みだが、情報の再入力が必要",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "エアコン設置で穴開け費用が約7万円、アスベスト対策が必要",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "卵の価格：マルアイで238円",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "生卵が苦手な子どもがいるが、固めなら食べられる",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "高級志向・ブランド化（例：高級食パン）は商売として成り立ちやすいという意見",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "レーズンやドライフルーツが苦手な人がいるため、具材選びに配慮が必要",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "九州で食べたクリームチーズのパンを参考に自作している",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "クッション性の高いランニングシューズは普段使い・旅行で疲れにくいが、反発が強く筋力が鍛えられる感覚がある",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "旅行を楽しむための体づくり（歩く・基礎体力づくり）への意識",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "薄い生地の制服や服は日常使いに向かないとの意見",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "靴はクッション性や筋力との相性が重要で、筋力がある人向けの流行靴もある",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "いちごは洗わず、ヘタを取らずに保存。水気はカビの原因、ヘタを取ると乾燥が進む",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "いちごは重ならないよう平らな容器にキッチンペーパーを敷いて並べる。パックのままだと下が傷みやすい",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "冷凍保存で約1ヶ月保存可能。冷凍いちごはスムージー、半解凍のシャーベット、ジャムに活用",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "家で届いた（もらった）いちごを生で食べる計画があり、シャーベットにする案も",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "中学校施設の活用が理想。寮の活用で指導者確保を図る",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "AIツール「クロードコード」が流行りだしているという認識を共有",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "クッキーをザクザクにするための工夫の話題あり",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "地域移行と登録手続き",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    }
+  ],
+  "next_actions": [
+    {
+      "title": "中学校でネット関連の説明を実施。PCは店で診断・修理してもらい、AIでの自己対応より持ち込みが有効",
+      "duration_minutes": 30,
+      "priority": "High",
+      "description": "フィルタ(使命・独自性)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": true,
+      "source_entry_id": null
+    },
+    {
+      "title": "平日夜間の合同練習を検討（中央公園や中学校・体育館、寮の5時以降の時間帯を活用）",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    },
+    {
+      "title": "学校開放は夕方開始（部活動時間は空きなし）。小中の体育館利用は規約あり",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    }
+  ]
+}
