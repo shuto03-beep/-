@@ -1,0 +1,47 @@
+{
+  "date": "2026-05-21",
+  "headline": "両手を空けて1ブロックに集中",
+  "one_minute_action": "カレンダーを開いて、最重要1ブロックの開始時刻を確定する",
+  "aesthetic_signal": "他者評価ではなく、4軸の自分のスコアだけを尺度にする",
+  "scorecard": {
+    "date": "2026-05-21",
+    "systemize": 4,
+    "declutter": 0,
+    "two_handed": 0,
+    "knowledge_share": 10,
+    "systemize_note": "(ヒューリスティック採点) 仕組み系シグナル数",
+    "declutter_note": "(ヒューリスティック採点) 断捨離シグナル数",
+    "two_handed_note": "(ヒューリスティック採点) 集中シグナル数",
+    "knowledge_share_note": "(ヒューリスティック採点) 共有シグナル数",
+    "total": 14,
+    "source_entry_ids": [],
+    "created_at": "2026-05-21T22:47:14"
+  },
+  "dropped": [
+    {
+      "title": "**睡眠への渇望と薬物依存（Speaker 3）**: 発言者は深刻な不眠状態にあり、自然な入眠能力を喪失している。睡眠薬や向精神薬に頼り、「脳みそを強制的にシ",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**死生観と現実逃避（Speaker 4）**: 発言者は「死んだっておかしくない」という状況認識のもと、生まれ変わりの概念を精神的な支えとしている。現世での行",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "`[Speaker 1]`と`[Speaker 2]`の発言（例：「一時遅いわ」「3500円安い」「そんなわけないやろ」）は、日常的な会話の一部である可能性が高",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "`[Speaker 1]`の後の発言（「ついにこの服したのはね」「起動せなあかんのかな」）は、何らかの機器操作や試行錯誤の場面を示唆しているが、対象物や目的が欠",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    }
+  ],
+  "next_actions": []
+}
