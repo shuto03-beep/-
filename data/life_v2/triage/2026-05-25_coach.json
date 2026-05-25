@@ -1,0 +1,216 @@
+{
+  "date": "2026-05-25",
+  "headline": "両手を空けて1ブロックに集中",
+  "one_minute_action": "カレンダーを開いて、最重要1ブロックの開始時刻を確定する",
+  "aesthetic_signal": "他者評価ではなく、4軸の自分のスコアだけを尺度にする",
+  "scorecard": {
+    "date": "2026-05-25",
+    "systemize": 4,
+    "declutter": 0,
+    "two_handed": 0,
+    "knowledge_share": 10,
+    "systemize_note": "(ヒューリスティック採点) 仕組み系シグナル数",
+    "declutter_note": "(ヒューリスティック採点) 断捨離シグナル数",
+    "two_handed_note": "(ヒューリスティック採点) 集中シグナル数",
+    "knowledge_share_note": "(ヒューリスティック採点) 共有シグナル数",
+    "total": 14,
+    "source_entry_ids": [],
+    "created_at": "2026-05-25T22:32:39"
+  },
+  "dropped": [
+    {
+      "title": "[ ] バス事故関連の過去通知文の追加探索（見つかった場合は藤橋さんへ連絡） - [TBD]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 債権者登録用紙を添付（手書き可）し、承認後の提出準備 - [TBD]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] テニスコート・中央プラネットの令和7年度利用実績を簡易抽出し、空き傾向の把握資料を提供 - [TBD]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 依頼書の順番を名簿（採用順）に合わせて入れ替え（必要箇所はコピーで差し替え） - [TBD]",
+      "reason": "雑務カテゴリ。仕組み化・委任・後回しの対象。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 氏名ふりがなをひらがな統一（ファイル名に「（ひらがな）」明記、不要なカタカナは削除） - [TBD]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 伺い書を後段に添付し、「大文」「参考」インデックス2枚＋下駄で回覧体裁を統一 - [TBD]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 連名領収書の原本取得とコピー配布により半額負担のエビデンス確保 - [TBD]",
+      "reason": "雑務カテゴリ。仕組み化・委任・後回しの対象。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 伊藤まな名義の口座利用可否の最終確認 - [TBD]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 令和7年度のテニスコート・中央プラネットの予約実績（簡易）提供（空き傾向把握用） - [TBD]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 債権者登録用紙の受領（手書き可）・登録処理の準備 - [TBD]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 連名領収書の原本確認（コピー添付で半額負担の根拠保持） - [TBD]",
+      "reason": "雑務カテゴリ。仕組み化・委任・後回しの対象。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "著者は飲酒習慣があったにもかかわらず、長年にわたり胃カメラ・大腸カメラなどの内視鏡検査を受けていなかった",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "近藤誠氏の著書の影響で「不調を感じてから対処すればよい」と考え、医療への不信感もあった",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "2022年6月に喉の不調を感じ、内科・耳鼻科を受診するも発見されず、胃腸専門病院での内視鏡検査で初めて食道がんが発見された",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "発見時はすでに食道がんステージ3まで進行していた",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "違和感を感じてから正式診断（8月24日）まで約2ヶ月かかった",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "35〜40歳頃からがんリスクが高まるため、年1回の内視鏡検査が推奨される",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "現在は鎮痛剤があるため、検査中に眠れるなど負担が少ない",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "著者は抗がん剤治療2回・手術1回・40日入院を経験し、医療費として直接支払った金額は約235万円だった",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "うち約160万円は1日4万円のシャワー付き個室（高グレード病室）の選択によるもの",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 学校（教頭）不在時の折り返し依頼・再架電の継続対応 - [TBD]",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 北中学校説明会（教職員向け・地域展開）への参加・説明補助 - [当日]",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 北中学校説明会への出席（職員室、16時開始） - [当日]",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 北中学校説明会への出席（職員室、16時開始） - [当日]",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 北中学校説明会への参加（役割は当日調整） - [当日]",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 当町教育委員会からの回答受領（学校向け通知文の有無：現時点見当たらず、探索継続、発見時連絡） - [TBD]",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 県教委（藤橋さん）への「学校向け通知文（バス事故関連）未確認」回答を依頼（発見時は追って連絡） - [TBD]",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    }
+  ],
+  "next_actions": [
+    {
+      "title": "本セクションは、会話内で明示された具体的タスクを、担当者別のチェックリスト形式で集約したものである。各項目は具体的行為＋対象により二値判定可能であり、期限が明示",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(レバレッジ)に合致。",
+      "leverage": true,
+      "mission": false,
+      "uniqueness": false,
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 北中学校説明会（16時・職員室）の司会・進行、資料準備、質問時間確保 - [当日]",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 兼職兼業データは学校側保有分を取得して申請に活用（承認後送付の段取り準備） - [TBD]",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    }
+  ]
+}
