@@ -1,0 +1,208 @@
+{
+  "date": "2026-05-26",
+  "headline": "両手を空けて1ブロックに集中",
+  "one_minute_action": "カレンダーを開いて、最重要1ブロックの開始時刻を確定する",
+  "aesthetic_signal": "他者評価ではなく、4軸の自分のスコアだけを尺度にする",
+  "scorecard": {
+    "date": "2026-05-26",
+    "systemize": 4,
+    "declutter": 0,
+    "two_handed": 2,
+    "knowledge_share": 10,
+    "systemize_note": "(ヒューリスティック採点) 仕組み系シグナル数",
+    "declutter_note": "(ヒューリスティック採点) 断捨離シグナル数",
+    "two_handed_note": "(ヒューリスティック採点) 集中シグナル数",
+    "knowledge_share_note": "(ヒューリスティック採点) 共有シグナル数",
+    "total": 16,
+    "source_entry_ids": [],
+    "created_at": "2026-05-26T22:45:35"
+  },
+  "dropped": [
+    {
+      "title": "著者は飲酒習慣があったにもかかわらず、長年にわたり胃カメラ・大腸カメラなどの内視鏡検査を受けていなかった",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "近藤誠氏の著書の影響で「不調を感じてから対処すればよい」と考え、医療への不信感もあった",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "2022年6月に喉の不調を感じ、内科・耳鼻科を受診するも発見されず、胃腸専門病院での内視鏡検査で初めて食道がんが発見された",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "発見時はすでに食道がんステージ3まで進行していた",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "違和感を感じてから正式診断（8月24日）まで約2ヶ月かかった",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "35〜40歳頃からがんリスクが高まるため、年1回の内視鏡検査が推奨される",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "現在は鎮痛剤があるため、検査中に眠れるなど負担が少ない",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "著者は抗がん剤治療2回・手術1回・40日入院を経験し、医療費として直接支払った金額は約235万円だった",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "うち約160万円は1日4万円のシャワー付き個室（高グレード病室）の選択によるもの",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "手術・抗がん剤などの治療費は約75万円だったが、国民健康保険の高額医療費制度により約61万円が払い戻された",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "実質的な治療費は約14万円程度に抑えられた",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "国民健康保険加入者であれば、がん保険への加入は不要と著者は結論づけている",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "がん保険の保険料は、預金や積立投資に充てる方が合理的とされる",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "がんに関する情報は良質なものも怪しいものも混在しており、患者は何が正しいか判断する時間・知識が不足している",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "大量の情報に触れると混乱したり、現在の治療に迷いが生じやすくなる",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "ピンチの状況では判断能力が低下し、怪しい情報に頼りやすくなる",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "脳科学者・中野信子氏によれば、アドバイスは相手を不快にさせることが多い",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "アドバイスする側は気持ちいいが、される側は不快に感じることが多い",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "がん発症前の著者は、アップル製品・ガジェット・高級腕時計・カメラ・カバンなど多くの物を購入していた",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "振り返ると「買う行為自体が目的」になっていたと気づいた",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "がん進行後に身辺整理として持ち物を大幅に減らした",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "カメラの多くを他人に譲渡し、カバンや服も半分以上を処分",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "持ち物を減らすことでスッキリした環境になり、心の平穏を得やすくなった",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "著者はがんによる闘病中も、連載原稿を一本も欠かさず締め切りに間に合わせ続けた",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "ダイヤモンドオンライン・東洋経済オンラインなどに執筆継続",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "他者から必要とされる仕事があることが、生きる幸せにつながるという",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "ビル・パーキンスの著書『ダイ・ウィズ・ゼロ』を引用し、若い頃の方がお金から得られる喜びが大きいと説明",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "日銀データによると、70代で貯金残高が最高に達する人が非常に多い",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "若い頃に経験・思い出にお金を使わないと、意欲の低下とともに活かせる機会も減る",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    }
+  ],
+  "next_actions": [
+    {
+      "title": "仕事道具はiPhoneとMacBook Airのみで十分と判断",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(独自性)に合致。",
+      "leverage": false,
+      "mission": false,
+      "uniqueness": true,
+      "source_entry_id": null
+    }
+  ]
+}
