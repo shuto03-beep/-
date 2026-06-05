@@ -1,0 +1,29 @@
+{
+  "id": "2026-06-03_2026-06-03-153318",
+  "source_file": "plaud-web:6f5917e7fcb77e0922258e34d3a2a91d",
+  "recorded_at": "2026-06-03T06:33:18",
+  "ingested_at": "2026-06-05T22:07:16",
+  "title": "2026-06-03 15:33:18",
+  "raw": {
+    "transcript": "",
+    "summary": ""
+  },
+  "lifelog": {
+    "headline": "2026-06-03 15:33:18",
+    "tags": [
+      "plaud"
+    ],
+    "source": "raw"
+  },
+  "tasks": [],
+  "task_analysis": {
+    "total": 0,
+    "by_priority": {
+      "high": 0,
+      "medium": 0,
+      "low": 0
+    },
+    "effort_summary": "",
+    "blockers": []
+  }
+}
