@@ -1,0 +1,216 @@
+{
+  "date": "2026-06-10",
+  "headline": "両手を空けて1ブロックに集中",
+  "one_minute_action": "カレンダーを開いて、最重要1ブロックの開始時刻を確定する",
+  "aesthetic_signal": "他者評価ではなく、4軸の自分のスコアだけを尺度にする",
+  "scorecard": {
+    "date": "2026-06-10",
+    "systemize": 4,
+    "declutter": 0,
+    "two_handed": 4,
+    "knowledge_share": 4,
+    "systemize_note": "(ヒューリスティック採点) 仕組み系シグナル数",
+    "declutter_note": "(ヒューリスティック採点) 断捨離シグナル数",
+    "two_handed_note": "(ヒューリスティック採点) 集中シグナル数",
+    "knowledge_share_note": "(ヒューリスティック採点) 共有シグナル数",
+    "total": 12,
+    "source_entry_ids": [],
+    "created_at": "2026-06-10T23:04:51"
+  },
+  "dropped": [
+    {
+      "title": "全国から1,500名以上の自治体担当者が参加",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "説明会は後日共有のため録画されている",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "時間の制約上、質疑応答の時間は設けられていない。質問は終了後に案内される質問フォームから受け付ける",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "令和8年度から6年間の改革実行期間がスタート",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "昨年12月にガイドラインが策定され、昨年度比2倍以上の139億円の予算が確保された",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**安全確保の徹底**: シートベルト着用の徹底、危機管理マニュアルの見直し、教職員間の共通認識の形成",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**事業者との適切な契約**: 貸切バスは国から許可を受けた事業者と契約し、緑ナンバーであることを確認。運送引受書の交付を受ける",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**事故発生時の対応**: 緊急連絡体制の確保と教職員への研修を実施。事故発生時は子どもの命を最優先に対応する",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "通知内容は地域クラブ活動にも適用できる部分について適用を検討すること",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "未着手の自治体も、期間の前期中に休日の地域展開に着手することが方針",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "令和8年度のスポーツ庁・文化庁の予算は、補正予算と当初予算を合わせて約139億円",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "ガイドラインでは、可能な限り低廉な参加費を設定するよう求めている",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "目安として、休日に週1回（月4日程度）の活動で、月額1,000円から3,000円程度をイメージとしているが、地域の実情に応じた多様な設定が可能",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "補助金の申請状況は、スポーツ・文化全体で47都道府県、19指定都市から提出。市区町村別では、スポーツは1,262、文化は780の市区町村から申請がある",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "現在、確保している予算に対して申請額が達していないため、追加公募を実施する",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**公募期間**: 6月上旬から令和8年12月15日まで",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**対象**: 追加申請、新規申請の両方が可能",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**交付決定**: 8月、10月、1月に実施予定",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "各自治体には、令和9年度を見据え、本年度後半からの事業着手や拡大を検討してほしい",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "スポーツ基本法等に部活動の地域展開が明記され、国が地方公共団体への必要な助言や経費補助を行うことが規定されている",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "2026年6月6日に磐越道で発生した私立高校の部活動遠征中のバス事故を受け、6月19日に安全確保に関する通知が発出された",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "**遠征の必要性と移動手段の検討**: 無理のない移動計画を立て、公共交通機関の利用も検討する。費用負担について保護者に事前連絡を行う",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "**学校組織全体での対応**: 部活動を顧問任せにせず、教育委員会や学校組織全体で対応する。管理職による事前承認やチェックを徹底する",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "令和8年度から令和13年度までの6年間を「改革実行期間」とし、原則全ての部活動で地域展開の実現を目指す",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "**事業1**: 休日の地域クラブ活動費等の支援、地方公共団体の体制整備、平日も含めた地域展開の加速化、中学校における部活動指導員の配置支援",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "**事業2**: 経済困窮世帯の生徒への参加費等の支援（対象は参加費・保険料に限定）",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "**多様な兼職兼業モデルの形成**: 小学校の体育専科教員や理学療法士などが、平日の部活動や休日の地域クラブで指導者として活動する",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    }
+  ],
+  "next_actions": [
+    {
+      "title": "令和8年度の部活動の地域展開等推進事業に関するオンライン説明会",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    },
+    {
+      "title": "部活動の地域展開は、日本型学校教育の根幹である部活動を地域と共に未来へ展開する大きな挑戦である",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    },
+    {
+      "title": "これまでの「地域移行」という名称を「地域展開」に見直し、各自治体においても名称を統一するよう要請",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    }
+  ]
+}
