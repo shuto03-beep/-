@@ -1,0 +1,216 @@
+{
+  "date": "2026-06-12",
+  "headline": "両手を空けて1ブロックに集中",
+  "one_minute_action": "カレンダーを開いて、最重要1ブロックの開始時刻を確定する",
+  "aesthetic_signal": "他者評価ではなく、4軸の自分のスコアだけを尺度にする",
+  "scorecard": {
+    "date": "2026-06-12",
+    "systemize": 6,
+    "declutter": 0,
+    "two_handed": 4,
+    "knowledge_share": 10,
+    "systemize_note": "(ヒューリスティック採点) 仕組み系シグナル数",
+    "declutter_note": "(ヒューリスティック採点) 断捨離シグナル数",
+    "two_handed_note": "(ヒューリスティック採点) 集中シグナル数",
+    "knowledge_share_note": "(ヒューリスティック採点) 共有シグナル数",
+    "total": 20,
+    "source_entry_ids": [],
+    "created_at": "2026-06-12T22:53:31"
+  },
+  "dropped": [
+    {
+      "title": "**概要**",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**教職員の状況と課題**",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "若手教員が増加。20代が9名（約3分の1）、一方で60代以上が4名。年齢構成のバランスが課題",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "若手教員の指導力育成が急務。対策として「認知能力の育成」をテーマに設定",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "ベテラン教員の知見を活用し、具体的な指導方法を共有して若手のスキルアップを図る",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**課題への取り組み**",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**概要**",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**今後の方向性**",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] [詳細を挿入]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "グループ分けが案内された",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "Bグループ（中山町長、後藤委員、本田委員、井上部長）：教頭先生が案内",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "人懐っこく元気な生徒が多いが、基本的なルール遵守や授業規律に課題",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "生徒間のコミュニケーション能力が低下し、些細なことからのトラブルが増加",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "不登校の課題を持つ生徒が一定数。保護者と連携して支援。修学旅行では3年生の欠席者1名のみと高い出席率",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "不登校傾向や学校生活に不安のある生徒向けに校内「ふれあいルーム」を設置。ストレス軽減や教室復帰支援に効果",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "生徒支援教員を配置。複数人による授業指導や放課後学習会を実施し、学習困難を抱える生徒の支援体制を整備",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "令和10年の完全移行を目指し、部活動を学校から地域クラブへ移行する方針を議論",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "移行後、学校教員が役員として試合運営等に関与しない見込み",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "中体連大会出場のため暫定的に学校が受け持つ水泳などの部活動について、今後の対応検討が必要",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "従来の部活動形式での新規受け入れは実施しない方針",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "生徒の大会出場機会確保のため、「認定地域クラブ」等への登録を促進する必要",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "部活動廃止方針を事前に周知し、混乱回避が必要との意見",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 部活動地域移行の具体的プロセスとスケジュール案の作成（対象：水泳等の学校外活動生徒）",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 生徒のコミュニケーション能力向上プログラムの企画（体系的な指導方法の整備）",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "**授業参観の変更点とグループ分け**",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "2校時B班（2年2組、水野副課長担当）の授業内容が、調理実習から食生活を考える内容に変更",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "Aグループ（世界に教育調査課会委員、松田委員、前田和夫）：校長先生が案内",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    }
+  ],
+  "next_actions": [
+    {
+      "title": "[ ] 若手教員向け「認知能力の育成」研修計画の策定（知識移転の仕組み設計を含む）",
+      "duration_minutes": 60,
+      "priority": "Medium",
+      "description": "フィルタ(レバレッジ)に合致。",
+      "leverage": true,
+      "mission": false,
+      "uniqueness": false,
+      "source_entry_id": null
+    },
+    {
+      "title": "稲美中学校の校長が、学校の経営方針（教育目標「自立する生徒の育成」）、教職員の状況、生徒の様子、直面している課題を説明",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    },
+    {
+      "title": "**生徒の状況と課題**",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    }
+  ]
+}
