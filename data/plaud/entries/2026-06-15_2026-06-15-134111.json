@@ -1,0 +1,29 @@
+{
+  "id": "2026-06-15_2026-06-15-134111",
+  "source_file": "plaud-web:1d15f5f68a244b88fc4b0dfef6ca79b6",
+  "recorded_at": "2026-06-15T04:41:11",
+  "ingested_at": "2026-06-16T22:45:43",
+  "title": "2026-06-15 13:41:11",
+  "raw": {
+    "transcript": "原文の音声書き起こし内容は以下の通りです：\n> [Speaker 1]Hey Cortana.\n[Speaker 1]稲美。\n[Speaker 1]ここどこどこ今、稲美ね。ここは那須、大阪。\n[Speaker 1]名前言ってました。お父さんかなんかで喋られちゃった。喋られちゃった。",
+    "summary": ""
+  },
+  "lifelog": {
+    "headline": "2026-06-15 13:41:11",
+    "tags": [
+      "plaud"
+    ],
+    "source": "raw"
+  },
+  "tasks": [],
+  "task_analysis": {
+    "total": 0,
+    "by_priority": {
+      "high": 0,
+      "medium": 0,
+      "low": 0
+    },
+    "effort_summary": "",
+    "blockers": []
+  }
+}
