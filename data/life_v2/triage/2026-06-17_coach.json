@@ -1,0 +1,216 @@
+{
+  "date": "2026-06-17",
+  "headline": "両手を空けて1ブロックに集中",
+  "one_minute_action": "カレンダーを開いて、最重要1ブロックの開始時刻を確定する",
+  "aesthetic_signal": "他者評価ではなく、4軸の自分のスコアだけを尺度にする",
+  "scorecard": {
+    "date": "2026-06-17",
+    "systemize": 4,
+    "declutter": 0,
+    "two_handed": 4,
+    "knowledge_share": 10,
+    "systemize_note": "(ヒューリスティック採点) 仕組み系シグナル数",
+    "declutter_note": "(ヒューリスティック採点) 断捨離シグナル数",
+    "two_handed_note": "(ヒューリスティック採点) 集中シグナル数",
+    "knowledge_share_note": "(ヒューリスティック採点) 共有シグナル数",
+    "total": 18,
+    "source_entry_ids": [],
+    "created_at": "2026-06-17T22:55:05"
+  },
+  "dropped": [
+    {
+      "title": "問題行動を示す児童への対応では、受容と関係構築、学年・担任との連携、長期ゴール共有の重要性を確認。専科教員の横断的視点と連携ログ運用の有効性が示された",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "実務面では、連絡・報告体制の整備、スマートロック導入の契約・決裁フロー、イベント日程設計、ウェブ申請・承認プロセスの標準化について運用改善を検討した",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "主体的・対話的で深い学び（美術鑑賞）",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "学習者が感じたことを言語化・表現化し、対話で根拠を具体化して最終的に自分の言葉でアウトプットする設計を重視",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "時間配分とメイン活動の設計",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "専科教員の役割・連携",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "学習面／行動面／支援提案の3項目で気づきを記録し、担任共有の定型フォーマット化。観察ポイントを絞り、具体例を添えた情報共有。隔週ミニ共有で小さな改善案を合意",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "動画視聴活動の配慮（富田くん対応）",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "問題行動への対応（6年生）",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "受容感の体験を重視し、周囲の注意喚起をうまく利用。担任とゴール像を共有して日々の指導に一貫性を持たせる。教員が一人で抱え込まない支援体制を強化",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "1年生国語「のばす音」（石井先生）",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "算数「垂直」（片井先生）",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "垂直の定義を言葉と図で明確化し、身近な直角の体感から導入。全員参加を促すペア・指名・「わからない人？」の問い、板書キーワードの事前計画、児童発言の板書化。新用語",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "道徳「心のシーソー」（兼田先生）",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "漫画の記述（…やダッシュ）から「描かれていない気持ち」を読み解き、ロールプレイで葛藤を自分事化。板書でシーソーを視覚化し、「言う／言わない」両方の気持ちを肯定的",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "板書計画と実践",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "黒板をゾーン分け（日付・題名／発問／意見／まとめ／視覚ツール）し、中心ツール（シーソー等）を常に視野に。計画と実際の写真を対比して改善点を特定",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "ロールプレイと発言支援",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "学級経営と集中力",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "若手教員育成（堅井・河合・片井等）",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "子どもの気づきを核に授業を展開できた点を評価。時間配分、言語化の意識化、姿勢など理想の形の具体提示、子どもを主役にする演出と問い返しの工夫を提案",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "声が小さい生徒には体の向きの指導やペア・グループで段階的に自信形成。背景要因を尊重し、クラス全体への共有意識を育む",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "4年生の集中維持に活動切替・役割演技を活用。3月のゴール像から逆算した学期目標を設定し、自然学校等の学年行事を見通した育成計画を立案",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "初任者を含む複数教員（石井・河井・片井・兼田）への授業レビューと育成支援を行い、用語導入の丁寧さ、子ども目線の説明、授業内での参加促進、板書と教室運営、時間厳守",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "メイン活動（対話または個人アウトプット）を一つに絞り、行動目標とゴール文を板書で明示。活動後に「何がメインだったか」をミニメタ認知で確認し、設計改善にフィードバ",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "関係づくりルールの合意、困難を示す生徒への役割付与、行動支援の一貫対応と学習支援の足場かけを併用。C事業は短いミッション文を毎回確認し、プロジェクト感を醸成",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "目的の明示とメモ枠配布、後方生徒への巡回・個別確認、視聴後の即時ペア確認→全体共有のリズム化。字幕・一時停止・チャプター分けで認知負荷調整、事前役割付与で参加安",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    }
+  ],
+  "next_actions": [
+    {
+      "title": "学習指導要領の「主体的・対話的で深い学び」を美術鑑賞・算数・国語・道徳の各授業でどう実現するかを中心に、発問設計、アウトプット支援、時間配分、板書計画、ロールプ",
+      "duration_minutes": 60,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    },
+    {
+      "title": "授業は短サイクル（導入→個人思考→ペア対話→全体共有→個人アウトプット）で時間配分を明確化。アウトプット枠（見えたこと・感じたこと・理由）と簡易ルーブリック（観",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    },
+    {
+      "title": "授業内の生徒指導と関係形成（C事業）",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    }
+  ]
+}
