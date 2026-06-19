@@ -1050,16 +1050,9 @@
       }
     }
   },
-  "last_run": "2026-06-19T04:20:05.419510",
-  "last_full_screening": "2026-06-19T04:20:05.417723",
+  "last_run": "2026-06-19T09:19:49.632182",
+  "last_full_screening": "2026-06-19T09:19:49.630877",
   "signals_history": [
-    {
-      "ticker": "6861.T",
-      "name": "キーエンス",
-      "type": "SELL",
-      "score": -36,
-      "date": "2026-04-27 08:34"
-    },
     {
       "ticker": "6504.T",
       "name": "富士電機",
@@ -1759,6 +1752,20 @@
       "type": "SELL",
       "score": -35,
       "date": "2026-06-19 04:20"
+    },
+    {
+      "ticker": "7735.T",
+      "name": "SCREENホールディングス",
+      "type": "SELL",
+      "score": -35,
+      "date": "2026-06-19 09:19"
+    },
+    {
+      "ticker": "7741.T",
+      "name": "HOYA",
+      "type": "BUY",
+      "score": 50,
+      "date": "2026-06-19 09:19"
     }
   ]
 }
