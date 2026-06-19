@@ -60,7 +60,7 @@ ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY")
 AI_ENABLED = bool(ANTHROPIC_API_KEY)
 AI_TIMEOUT = 10
 AI_MAX_CALLS_PER_RUN = 15
-AI_MODEL = "claude-sonnet-4-20250514"
+AI_MODEL = os.environ.get("AI_MODEL", "claude-sonnet-4-6")
 
 # === Discord設定 ===
 DISCORD_WEBHOOK_URL = os.environ.get("DISCORD_WEBHOOK_URL")

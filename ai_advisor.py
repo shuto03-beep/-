@@ -1,7 +1,13 @@
 """Claude API判断補助（フォールバック付き）"""
 import json
-import traceback
 from config import ANTHROPIC_API_KEY, AI_ENABLED, AI_TIMEOUT, AI_MODEL
+
+
+def _fmt(value, spec: str) -> str:
+    """数値なら指定フォーマット、そうでなければ'N/A'を返す（APIプロンプト構築用）"""
+    if isinstance(value, (int, float)):
+        return format(value, spec)
+    return "N/A"
 
 
 def get_ai_assessment(ticker: str, name: str, indicators: dict, historical_data: dict = None) -> dict:
@@ -59,14 +65,14 @@ def _build_analysis_prompt(ticker: str, name: str, indicators: dict, historical_
 - トレンド: {indicators.get('trend', 'N/A')}
 
 ## テクニカル指標
-- RSI(14): {indicators.get('rsi', 'N/A'):.1f}
+- RSI(14): {_fmt(indicators.get('rsi'), '.1f')}
 - MACD: {'買いクロス' if indicators.get('macd_cross_buy') else '売りクロス' if indicators.get('macd_cross_sell') else 'ニュートラル'}
 - ヒストグラム: {'増加中' if indicators.get('histogram_increasing') else '減少中'}
-- ボリンジャー%B: {indicators.get('bb_percent_b', 'N/A'):.2f}
-- ストキャスティクス: %K={indicators.get('stoch_k', 'N/A'):.0f}, %D={indicators.get('stoch_d', 'N/A'):.0f}
+- ボリンジャー%B: {_fmt(indicators.get('bb_percent_b'), '.2f')}
+- ストキャスティクス: %K={_fmt(indicators.get('stoch_k'), '.0f')}, %D={_fmt(indicators.get('stoch_d'), '.0f')}
 - 一目均衡表: 雲{indicators.get('ichimoku_cloud_status', 'N/A')}, 転換線{'>' if indicators.get('tenkan_above_kijun') else '<'}基準線
-- 出来高比率: {indicators.get('volume_ratio', 'N/A'):.1f}倍
-- ATR: {indicators.get('atr', 'N/A'):.1f}
+- 出来高比率: {_fmt(indicators.get('volume_ratio'), '.1f')}倍
+- ATR: {_fmt(indicators.get('atr'), '.1f')}
 - ゴールデンクロス: {'あり' if indicators.get('golden_cross') else 'なし'}
 - デッドクロス: {'あり' if indicators.get('dead_cross') else 'なし'}
 - RSIダイバージェンス: {indicators.get('rsi_divergence', 'NONE')}"""
