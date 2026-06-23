@@ -1050,37 +1050,9 @@
       }
     }
   },
-  "last_run": "2026-06-23T07:06:04.378865",
-  "last_full_screening": "2026-06-23T07:06:04.376959",
+  "last_run": "2026-06-23T09:50:50.738973",
+  "last_full_screening": "2026-06-23T09:50:50.737271",
   "signals_history": [
-    {
-      "ticker": "7974.T",
-      "name": "任天堂",
-      "type": "BUY",
-      "score": 54,
-      "date": "2026-04-30 08:28"
-    },
-    {
-      "ticker": "4661.T",
-      "name": "OLC",
-      "type": "BUY",
-      "score": 54,
-      "date": "2026-04-30 08:28"
-    },
-    {
-      "ticker": "7751.T",
-      "name": "キヤノン",
-      "type": "BUY",
-      "score": 48,
-      "date": "2026-04-30 08:28"
-    },
-    {
-      "ticker": "7832.T",
-      "name": "バンナムHD",
-      "type": "BUY",
-      "score": 47,
-      "date": "2026-04-30 08:28"
-    },
     {
       "ticker": "4452.T",
       "name": "花王",
@@ -1780,6 +1752,34 @@
       "type": "SELL",
       "score": -45,
       "date": "2026-06-23 07:06"
+    },
+    {
+      "ticker": "9434.T",
+      "name": "ソフトバンク",
+      "type": "BUY",
+      "score": 46,
+      "date": "2026-06-23 09:50"
+    },
+    {
+      "ticker": "3668.T",
+      "name": "コロプラ",
+      "type": "BUY",
+      "score": 45,
+      "date": "2026-06-23 09:50"
+    },
+    {
+      "ticker": "3086.T",
+      "name": "J.フロント",
+      "type": "SELL",
+      "score": -41,
+      "date": "2026-06-23 09:50"
+    },
+    {
+      "ticker": "8233.T",
+      "name": "高島屋",
+      "type": "SELL",
+      "score": -45,
+      "date": "2026-06-23 09:50"
     }
   ]
 }
