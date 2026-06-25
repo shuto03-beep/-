@@ -49,7 +49,7 @@
           "entry_date": "2026-06-24",
           "stop_loss": 740.0,
           "take_profit": 895.8,
-          "highest_price": 779.0,
+          "highest_price": 784.0,
           "signal_score": 51,
           "signal_reasons": [
             "⚠️ 落ちるナイフ注意（下降トレンド中の底値）",
@@ -399,7 +399,7 @@
           "entry_date": "2026-06-17",
           "stop_loss": 2051.5,
           "take_profit": 2462.9,
-          "highest_price": 2159.5,
+          "highest_price": 2205.0,
           "signal_score": 58,
           "signal_reasons": [
             "ゴールデンクロス（SMA5×SMA25）",
@@ -437,7 +437,7 @@
           "entry_date": "2026-06-24",
           "stop_loss": 740.0,
           "take_profit": 895.8,
-          "highest_price": 779.0,
+          "highest_price": 784.0,
           "signal_score": 51,
           "signal_reasons": [
             "⚠️ 落ちるナイフ注意（下降トレンド中の底値）",
@@ -828,7 +828,7 @@
           "entry_date": "2026-06-24",
           "stop_loss": 740.0,
           "take_profit": 895.8,
-          "highest_price": 779.0,
+          "highest_price": 784.0,
           "signal_score": 51,
           "signal_reasons": [
             "⚠️ 落ちるナイフ注意（下降トレンド中の底値）",
@@ -1107,23 +1107,9 @@
       }
     }
   },
-  "last_run": "2026-06-24T09:38:39.004834",
-  "last_full_screening": "2026-06-24T09:38:39.003271",
+  "last_run": "2026-06-25T03:35:19.079850",
+  "last_full_screening": "2026-06-25T03:35:19.078137",
   "signals_history": [
-    {
-      "ticker": "6723.T",
-      "name": "ルネサス",
-      "type": "SELL",
-      "score": -40,
-      "date": "2026-06-03 04:09"
-    },
-    {
-      "ticker": "6971.T",
-      "name": "京セラ",
-      "type": "SELL",
-      "score": -36,
-      "date": "2026-06-04 08:35"
-    },
     {
       "ticker": "6971.T",
       "name": "京セラ",
@@ -1823,6 +1809,34 @@
       "type": "BUY",
       "score": 49,
       "date": "2026-06-24 09:38"
+    },
+    {
+      "ticker": "3086.T",
+      "name": "J.フロント",
+      "type": "SELL",
+      "score": -36,
+      "date": "2026-06-25 03:35"
+    },
+    {
+      "ticker": "3099.T",
+      "name": "三越伊勢丹",
+      "type": "SELL",
+      "score": -36,
+      "date": "2026-06-25 03:35"
+    },
+    {
+      "ticker": "9434.T",
+      "name": "ソフトバンク",
+      "type": "BUY",
+      "score": 48,
+      "date": "2026-06-25 03:35"
+    },
+    {
+      "ticker": "3659.T",
+      "name": "ネクソン",
+      "type": "BUY",
+      "score": 45,
+      "date": "2026-06-25 03:35"
     }
   ]
 }
