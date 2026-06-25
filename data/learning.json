@@ -15,8 +15,8 @@
     "take_profit_pct": 0.08,
     "buy_threshold": 60
   },
-  "version": 10,
-  "last_optimization": "2026-06-18T08:53:09.949230",
+  "version": 11,
+  "last_optimization": "2026-06-25T09:30:21.457045",
   "performance_history": [
     {
       "date": "2026-04-22",
@@ -80,6 +80,13 @@
       "win_rate": 0.25,
       "avg_pnl_pct": -0.009310740686432567,
       "total_trades": 36
+    },
+    {
+      "date": "2026-06-25",
+      "version": 11,
+      "win_rate": 0.23076923076923078,
+      "avg_pnl_pct": -0.009344456954821053,
+      "total_trades": 39
     }
   ]
 }
