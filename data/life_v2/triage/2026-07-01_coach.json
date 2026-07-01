@@ -1,0 +1,216 @@
+{
+  "date": "2026-07-01",
+  "headline": "両手を空けて1ブロックに集中",
+  "one_minute_action": "カレンダーを開いて、最重要1ブロックの開始時刻を確定する",
+  "aesthetic_signal": "他者評価ではなく、4軸の自分のスコアだけを尺度にする",
+  "scorecard": {
+    "date": "2026-07-01",
+    "systemize": 4,
+    "declutter": 0,
+    "two_handed": 0,
+    "knowledge_share": 10,
+    "systemize_note": "(ヒューリスティック採点) 仕組み系シグナル数",
+    "declutter_note": "(ヒューリスティック採点) 断捨離シグナル数",
+    "two_handed_note": "(ヒューリスティック採点) 集中シグナル数",
+    "knowledge_share_note": "(ヒューリスティック採点) 共有シグナル数",
+    "total": 14,
+    "source_entry_ids": [],
+    "created_at": "2026-07-01T22:45:00"
+  },
+  "dropped": [
+    {
+      "title": "マイナンバー制度では、照会により転入者の所得情報などを取得できる",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "個人情報へのアクセス権限は厳密に管理する必要があるという懸念が共有された",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "Speaker 2は翌日、30分程度のプレゼンテーションを控えている",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "戸籍と本籍地",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "個人情報の取り扱い",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "プレゼンテーションの準備",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 文書内の誤記「令和日本は30」を「令和8」に修正し、修正後の文書を再送付する - [TBD]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 出勤簿の4月・5月分の年号表記「令和8年」を「令和6年」に訂正し、帳票を更新する - [TBD]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 申込ページの二次元コード（QR）差し替えと公開期間設定の更新（1日0時公開反映）、保存・申請まで完了させる - [TBD]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 備品（シューズボックス）購入に向けたカタログ調査結果を基に、当初予算要求用の見積書を作成・提出する - [TBD]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] イベント会場（和室・ホール・製造所）の参加人数に応じた詳細な部屋割り案を確定する - [TBD]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 稲美町助成の適用条件（町内クラブ活動限定）に関するFAQを整備し、他市活動への適用外の原則を明示する - [TBD]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 外部作成チラシ・SNS掲載内容の主体・時間・提供内容の誤りを是正し、承認フローを策定・適用する - [TBD]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 飲食提供スペースの衛生状態（テーブル清掃・虫害・砂埃対策）を点検し、改善措置を実施する - [TBD]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] ECUBEスクールのメール送信不具合者に対し、Gメールアドレスでの再送提出（類型・マスター付き月報含む）を案内・受領する - [TBD]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] クレーム案件の連絡不備の経緯を文書で整理し、申し送り・引き継ぎ・不在時対応の標準プロセスを改訂・周知する - [TBD]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**委嘱状の交付と委員の自己紹介**",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "遠山清美委員、立本千鶴子委員が引き続き、工藤純也委員が住民代表として新たに委嘱された（任期：令和10年3月31日まで）",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "各委員および事務局職員が自己紹介を実施。工藤委員は住民・受益者の視点で意見を述べると表明した",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**委員長・副委員長の選出**",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "事務局の提案により、昨年度に引き続き委員長に遠山清美委員、副委員長に立本千鶴子委員が選出され、了承された",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**点検評価の意義説明（遠山委員長より）**",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] マグロ解体・寿司等の屋外提供に関する衛生管理・保健所許可・環境条件のチェックリストを作成し、企画の適否を判断する - [TBD]",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] いなチャレの保険適用整理（スポーツ安全保険とスポーツ振興センターの適用基準）を文書化し、学校・クラブ向け説明資料として配布する - [TBD]",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 学校宿泊・夜間イベントの代替案として、防災教育（避難所体験・ダンボールベッド作り等）を提案し、安全管理計画を作成する - [TBD]",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] いなチャレの先行実施（令和9年度）募集・住民向け説明会（7月10日・18日）の運営準備（申込フォームの事前質問確認含む）を完了する - [TBD]",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "点検評価は地方教育行政法上の義務であり、アセスメント、エバリュエーション、チェック、レビューなど多義的な概念を含む",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    }
+  ],
+  "next_actions": [
+    {
+      "title": "離婚後300日以内に生まれた子供は前夫の子と推定される法律が存在する",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    },
+    {
+      "title": "離婚後の子供の戸籍問題",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    },
+    {
+      "title": "マイナンバー制度の仕組み",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(レバレッジ)に合致。",
+      "leverage": true,
+      "mission": false,
+      "uniqueness": false,
+      "source_entry_id": null
+    }
+  ]
+}
