@@ -1247,44 +1247,9 @@
       }
     }
   },
-  "last_run": "2026-07-03T06:47:49.077574",
-  "last_full_screening": "2026-07-03T06:47:48.914765",
+  "last_run": "2026-07-03T09:25:35.120883",
+  "last_full_screening": "2026-07-03T09:25:35.119026",
   "signals_history": [
-    {
-      "ticker": "7269.T",
-      "name": "スズキ",
-      "type": "BUY",
-      "score": 61,
-      "date": "2026-06-17 11:04"
-    },
-    {
-      "ticker": "4183.T",
-      "name": "三井化学",
-      "type": "BUY",
-      "score": 58,
-      "date": "2026-06-17 11:04"
-    },
-    {
-      "ticker": "2501.T",
-      "name": "サッポロHD",
-      "type": "SELL",
-      "score": -50,
-      "date": "2026-06-18 04:00"
-    },
-    {
-      "ticker": "8308.T",
-      "name": "りそなHD",
-      "type": "SELL",
-      "score": -40,
-      "date": "2026-06-18 08:53"
-    },
-    {
-      "ticker": "8233.T",
-      "name": "高島屋",
-      "type": "SELL",
-      "score": -38,
-      "date": "2026-06-18 08:53"
-    },
     {
       "ticker": "3668.T",
       "name": "コロプラ",
@@ -1984,6 +1949,20 @@
       "type": "BUY",
       "score": 55,
       "date": "2026-07-03 06:47"
+    },
+    {
+      "ticker": "4578.T",
+      "name": "大塚HD",
+      "type": "BUY",
+      "score": 46,
+      "date": "2026-07-03 09:25"
+    },
+    {
+      "ticker": "4324.T",
+      "name": "電通G",
+      "type": "BUY",
+      "score": 55,
+      "date": "2026-07-03 09:25"
     }
   ]
 }
