@@ -1,7 +1,7 @@
 {
   "strategies": {
     "A_3銘柄": {
-      "capital": 724700.0,
+      "capital": 400400.0,
       "positions": [
         {
           "ticker": "6727.T",
@@ -30,7 +30,7 @@
           "entry_date": "2026-07-01",
           "stop_loss": 404.6,
           "take_profit": 465.4,
-          "highest_price": 436.8,
+          "highest_price": 438.2,
           "signal_score": 50,
           "signal_reasons": [
             "ゴールデンクロス（SMA5×SMA25）",
@@ -38,6 +38,25 @@
             "⚠️ RSI買われすぎ気味（65.2）",
             "一目均衡表: 雲上抜け",
             "📅 水曜バイアス（補正+3）"
+          ],
+          "ai_confidence": 0
+        },
+        {
+          "ticker": "4324.T",
+          "name": "電通G",
+          "entry_price": 3243.0,
+          "quantity": 100,
+          "entry_date": "2026-07-03",
+          "stop_loss": 3080.8,
+          "take_profit": 3617.3,
+          "highest_price": 3243.0,
+          "signal_score": 55,
+          "signal_reasons": [
+            "⚠️ 高値圏（レンジ84%）",
+            "ゴールデンクロス（SMA5×SMA25）",
+            "MACD買いシグナル",
+            "⚠️ RSI買われすぎ気味（60.5）",
+            "RSI強気ダイバージェンス"
           ],
           "ai_confidence": 0
         }
@@ -376,27 +395,8 @@
       }
     },
     "B_5銘柄": {
-      "capital": 774160.0,
+      "capital": 489260.0,
       "positions": [
-        {
-          "ticker": "3668.T",
-          "name": "コロプラ",
-          "entry_price": 365.0,
-          "quantity": 100,
-          "entry_date": "2026-06-18",
-          "stop_loss": 346.8,
-          "take_profit": 403.6,
-          "highest_price": 394.0,
-          "signal_score": 50,
-          "signal_reasons": [
-            "✨ 直近安値付近（押し目買いチャンス）",
-            "RSI売られすぎ（26.4）",
-            "RSI強気ダイバージェンス",
-            "ボリンジャーバンド下限接触",
-            "出来高増加（1.4倍）"
-          ],
-          "ai_confidence": 65
-        },
         {
           "ticker": "6727.T",
           "name": "ワコム",
@@ -424,7 +424,7 @@
           "entry_date": "2026-07-01",
           "stop_loss": 404.6,
           "take_profit": 465.4,
-          "highest_price": 436.8,
+          "highest_price": 438.2,
           "signal_score": 50,
           "signal_reasons": [
             "ゴールデンクロス（SMA5×SMA25）",
@@ -432,6 +432,25 @@
             "⚠️ RSI買われすぎ気味（65.2）",
             "一目均衡表: 雲上抜け",
             "📅 水曜バイアス（補正+3）"
+          ],
+          "ai_confidence": 0
+        },
+        {
+          "ticker": "4324.T",
+          "name": "電通G",
+          "entry_price": 3243.0,
+          "quantity": 100,
+          "entry_date": "2026-07-03",
+          "stop_loss": 3080.8,
+          "take_profit": 3617.3,
+          "highest_price": 3243.0,
+          "signal_score": 55,
+          "signal_reasons": [
+            "⚠️ 高値圏（レンジ84%）",
+            "ゴールデンクロス（SMA5×SMA25）",
+            "MACD買いシグナル",
+            "⚠️ RSI買われすぎ気味（60.5）",
+            "RSI強気ダイバージェンス"
           ],
           "ai_confidence": 0
         }
@@ -793,6 +812,27 @@
             "一目均衡表: 雲上抜け"
           ],
           "ai_confidence": 0
+        },
+        {
+          "ticker": "3668.T",
+          "name": "コロプラ",
+          "entry_price": 365.0,
+          "exit_price": 394.0,
+          "quantity": 100,
+          "entry_date": "2026-06-18",
+          "exit_date": "2026-07-03",
+          "pnl": 2900.0,
+          "pnl_pct": 0.07945205479452055,
+          "reason": "MAX_HOLDING_PERIOD",
+          "signal_score": 50,
+          "signal_reasons": [
+            "✨ 直近安値付近（押し目買いチャンス）",
+            "RSI売られすぎ（26.4）",
+            "RSI強気ダイバージェンス",
+            "ボリンジャーバンド下限接触",
+            "出来高増加（1.4倍）"
+          ],
+          "ai_confidence": 65
         }
       ],
       "daily_pnl": {
@@ -809,31 +849,13 @@
         "2026-06-17": -9100.0,
         "2026-06-19": -540.0,
         "2026-07-01": 3450.0,
-        "2026-07-02": 10100.0
+        "2026-07-02": 10100.0,
+        "2026-07-03": 2900.0
       }
     },
     "C_10銘柄": {
-      "capital": 784230.0,
+      "capital": 823630.0,
       "positions": [
-        {
-          "ticker": "3668.T",
-          "name": "コロプラ",
-          "entry_price": 365.0,
-          "quantity": 100,
-          "entry_date": "2026-06-18",
-          "stop_loss": 346.8,
-          "take_profit": 403.6,
-          "highest_price": 394.0,
-          "signal_score": 50,
-          "signal_reasons": [
-            "✨ 直近安値付近（押し目買いチャンス）",
-            "RSI売られすぎ（26.4）",
-            "RSI強気ダイバージェンス",
-            "ボリンジャーバンド下限接触",
-            "出来高増加（1.4倍）"
-          ],
-          "ai_confidence": 65
-        },
         {
           "ticker": "6727.T",
           "name": "ワコム",
@@ -880,7 +902,7 @@
           "entry_date": "2026-07-01",
           "stop_loss": 404.6,
           "take_profit": 465.4,
-          "highest_price": 436.8,
+          "highest_price": 438.2,
           "signal_score": 50,
           "signal_reasons": [
             "ゴールデンクロス（SMA5×SMA25）",
@@ -1186,6 +1208,27 @@
             "出来高増加（1.2倍）"
           ],
           "ai_confidence": 0
+        },
+        {
+          "ticker": "3668.T",
+          "name": "コロプラ",
+          "entry_price": 365.0,
+          "exit_price": 394.0,
+          "quantity": 100,
+          "entry_date": "2026-06-18",
+          "exit_date": "2026-07-03",
+          "pnl": 2900.0,
+          "pnl_pct": 0.07945205479452055,
+          "reason": "MAX_HOLDING_PERIOD",
+          "signal_score": 50,
+          "signal_reasons": [
+            "✨ 直近安値付近（押し目買いチャンス）",
+            "RSI売られすぎ（26.4）",
+            "RSI強気ダイバージェンス",
+            "ボリンジャーバンド下限接触",
+            "出来高増加（1.4倍）"
+          ],
+          "ai_confidence": 65
         }
       ],
       "daily_pnl": {
@@ -1199,41 +1242,14 @@
         "2026-06-17": -9100.0,
         "2026-06-19": -540.0,
         "2026-07-01": 3450.0,
-        "2026-07-02": 10900.0
+        "2026-07-02": 10900.0,
+        "2026-07-03": 2900.0
       }
     }
   },
-  "last_run": "2026-07-03T03:16:25.673116",
-  "last_full_screening": "2026-07-02T09:19:28.791909",
+  "last_run": "2026-07-03T06:47:49.077574",
+  "last_full_screening": "2026-07-03T06:47:48.914765",
   "signals_history": [
-    {
-      "ticker": "7269.T",
-      "name": "スズキ",
-      "type": "BUY",
-      "score": 61,
-      "date": "2026-06-17 09:13"
-    },
-    {
-      "ticker": "4183.T",
-      "name": "三井化学",
-      "type": "BUY",
-      "score": 58,
-      "date": "2026-06-17 09:13"
-    },
-    {
-      "ticker": "7733.T",
-      "name": "オリンパス",
-      "type": "BUY",
-      "score": 51,
-      "date": "2026-06-17 11:04"
-    },
-    {
-      "ticker": "8233.T",
-      "name": "高島屋",
-      "type": "SELL",
-      "score": -37,
-      "date": "2026-06-17 11:04"
-    },
     {
       "ticker": "7269.T",
       "name": "スズキ",
@@ -1933,6 +1949,41 @@
       "type": "BUY",
       "score": 46,
       "date": "2026-07-02 09:19"
+    },
+    {
+      "ticker": "8015.T",
+      "name": "豊田通商",
+      "type": "BUY",
+      "score": 55,
+      "date": "2026-07-03 06:47"
+    },
+    {
+      "ticker": "4523.T",
+      "name": "エーザイ",
+      "type": "SELL",
+      "score": -40,
+      "date": "2026-07-03 06:47"
+    },
+    {
+      "ticker": "4578.T",
+      "name": "大塚HD",
+      "type": "BUY",
+      "score": 46,
+      "date": "2026-07-03 06:47"
+    },
+    {
+      "ticker": "8002.T",
+      "name": "丸紅",
+      "type": "BUY",
+      "score": 46,
+      "date": "2026-07-03 06:47"
+    },
+    {
+      "ticker": "4324.T",
+      "name": "電通G",
+      "type": "BUY",
+      "score": 55,
+      "date": "2026-07-03 06:47"
     }
   ]
 }
