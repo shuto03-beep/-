@@ -1247,23 +1247,9 @@
       }
     }
   },
-  "last_run": "2026-07-07T07:01:11.811221",
-  "last_full_screening": "2026-07-07T07:01:11.809533",
+  "last_run": "2026-07-07T09:50:02.223021",
+  "last_full_screening": "2026-07-07T09:50:02.221376",
   "signals_history": [
-    {
-      "ticker": "7741.T",
-      "name": "HOYA",
-      "type": "BUY",
-      "score": 50,
-      "date": "2026-06-19 09:19"
-    },
-    {
-      "ticker": "7735.T",
-      "name": "SCREENホールディングス",
-      "type": "SELL",
-      "score": -35,
-      "date": "2026-06-19 10:44"
-    },
     {
       "ticker": "7741.T",
       "name": "HOYA",
@@ -1963,6 +1949,20 @@
       "type": "BUY",
       "score": 47,
       "date": "2026-07-07 07:01"
+    },
+    {
+      "ticker": "7267.T",
+      "name": "ホンダ",
+      "type": "SELL",
+      "score": -36,
+      "date": "2026-07-07 09:50"
+    },
+    {
+      "ticker": "7011.T",
+      "name": "三菱重工",
+      "type": "BUY",
+      "score": 47,
+      "date": "2026-07-07 09:50"
     }
   ]
 }
