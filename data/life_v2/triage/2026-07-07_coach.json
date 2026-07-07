@@ -1,0 +1,216 @@
+{
+  "date": "2026-07-07",
+  "headline": "両手を空けて1ブロックに集中",
+  "one_minute_action": "カレンダーを開いて、最重要1ブロックの開始時刻を確定する",
+  "aesthetic_signal": "他者評価ではなく、4軸の自分のスコアだけを尺度にする",
+  "scorecard": {
+    "date": "2026-07-07",
+    "systemize": 4,
+    "declutter": 0,
+    "two_handed": 2,
+    "knowledge_share": 10,
+    "systemize_note": "(ヒューリスティック採点) 仕組み系シグナル数",
+    "declutter_note": "(ヒューリスティック採点) 断捨離シグナル数",
+    "two_handed_note": "(ヒューリスティック採点) 集中シグナル数",
+    "knowledge_share_note": "(ヒューリスティック採点) 共有シグナル数",
+    "total": 16,
+    "source_entry_ids": [],
+    "created_at": "2026-07-07T22:35:19"
+  },
+  "dropped": [
+    {
+      "title": "週の活動時間は上限11時間（平日目安2時間、休日3時間）",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "夜間活動（平日18時以降）は週2回まで。月2回の夜間練習は規定内で問題なし",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "小学生は19:00–20:00、中学生以上は20:00–21:00案。規定（21:00まで）の範囲で団体が検討",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "地域スポーツクラブ（例：スポーツクラブ21）が運営主体となり、各活動を傘下に置く形が理想。外部委託か新団体設立かを検討",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "稲美町在住児童が他市の体操教室へ通う支援の有無が課題。稲美町には類似支援が未整備",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "会費は低廉（目安2000〜3000円）をクラブに依頼",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "支援者は見守りに加え、会計等の事務も担う。参加形態の多様性を認めつつ、人間関係の配慮が必要",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "令和8年度から段階的に移行、令和10年8月に完全移行方針。令和9年度の具体計画が不明確で分かりにくいとの指摘",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "新指導者として大学卒業後20歳超の森田氏の登録意向。履歴書提出と身元確認を徹底",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "人材バンク登録者は4名に増加（例：昭和31年生まれ合気道経験者、平成7年生まれ野球指導経験の公務員など）",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "紙面情報のみでは人物像が不明確な課題。兼業規定で登録不可となった事例あり",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "団体への情報提供時の個人情報取り扱いを整理し、本人確認の上、開示範囲を明確化",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "ヒアリングシートを作成し詳細把握・ファイリング、団体ニーズとのマッチングを強化",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "紹介時のミスマッチや関係悪化リスクに備え、申請フォームに「地域クラブへの情報提供同意」項目を設置",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "従来は中体連主催大会のみ助成。他大会への助成拡大は対応困難の懸念",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "シニアも参加可能な自走型カフェなど収益事業のアイデア。新潟のコワーキング事例を参考に運営調整を検討",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "有馬芳香堂との連携による商品開発・イベント可能性に言及",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "テント貸し出しは地域イベント向けに前向き。運搬は先方（大西メディカル）が担当。貸出の線引きは難しく、今回は事後報告で対応",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "40代は研修期間終了の本番期。早寝早起き・腹八分目・朝活3時間などシンプルな原理で継続が重要",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "「しないことリスト」推奨：",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "当たり障りのない決断をしない（やりたいことを貫く）",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "気が乗らない仕事・誘いは受けない（時間を本当にやりたいことへ）",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "保険代・会費・遠征費等は原則保護者負担とする方向。ただし経済状況配慮の支援策は検討中",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "住民・学校現場への説明不足による不満（説明が遅い、方針変更頻繁）を認識。役場意図と現場説明の齟齬の可能性あり",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "説明の切り口を「教職員の働き方改革」から「子供のため」に転換し、活動機会拡大などのメリットを強調",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "教育委員会から指導上の注意事項を周知（指導者は専門家ではない前提）",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "地域移行を進める一方で、地域クラブ活動を出席扱いとする方針の整合性に課題。学校教育から社会教育への移行との矛盾指摘。方針未確定",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    }
+  ],
+  "next_actions": [
+    {
+      "title": "参加者（生徒・保護者）の不安に配慮し、時間帯は個別相談で調整",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    },
+    {
+      "title": "部活動の地域移行に伴い、夜間練習の活動場所確保が課題。学校施設の夜間利用希望あり",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    },
+    {
+      "title": "学校を地域活動の拠点として活用し、連携・協業を推進",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    }
+  ]
+}
