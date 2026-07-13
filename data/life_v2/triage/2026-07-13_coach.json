@@ -1,0 +1,102 @@
+{
+  "date": "2026-07-13",
+  "headline": "両手を空けて1ブロックに集中",
+  "one_minute_action": "カレンダーを開いて、最重要1ブロックの開始時刻を確定する",
+  "aesthetic_signal": "他者評価ではなく、4軸の自分のスコアだけを尺度にする",
+  "scorecard": {
+    "date": "2026-07-13",
+    "systemize": 0,
+    "declutter": 0,
+    "two_handed": 0,
+    "knowledge_share": 0,
+    "systemize_note": "(ヒューリスティック採点) 仕組み系シグナル数",
+    "declutter_note": "(ヒューリスティック採点) 断捨離シグナル数",
+    "two_handed_note": "(ヒューリスティック採点) 集中シグナル数",
+    "knowledge_share_note": "(ヒューリスティック採点) 共有シグナル数",
+    "total": 0,
+    "source_entry_ids": [],
+    "created_at": "2026-07-13T22:24:20"
+  },
+  "dropped": [
+    {
+      "title": "[ ] 募集前の全体説明会の実施方式（1対1に近い個別説明ブース配置、質疑応答の運用）を設計し、会場レイアウト・進行台本を作成する -- *水野* 2026-0",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 周知計画を作成（広報、ホームページ、LINEへの投稿、体育協会へのアナウンス依頼）し、各チャネルの原稿と掲載スケジュールを確定する -- *水野* 20",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 体育協会に対するアナウンス協力依頼文書を作成し、送付する -- *水野* 2026-07-19",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 説明会での対応スタッフ体制を強化（事務局2名のみ対応から、複数名での個別説明へ拡充）し、担当割り当て表を作成する -- *水野* 2026-07-20",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "募集実施時期の確定により、周知開始タイミングと説明会日程が連動して決定される。未確定のままだとスケジュール全体が遅延するリスクがある",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "説明会会場の具体的な場所、定員、必要備品（ブース数、案内表示、受付体制）を早急に確定し、参加者対応品質のばらつきと混乱を回避する",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "LINE配信の運用（公式アカウントの有無、配信権限、クリエイティブ制作と承認フロー）を明確化し、告知の到達率低下を防ぐ",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "体育協会へのアナウンス協力の窓口担当者と合意取得方法を設定し、外部連携の停滞を防止する",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    }
+  ],
+  "next_actions": [
+    {
+      "title": "[ ] 募集スケジュール案を「8年度内」実施案と「9年4月以降」実施案の2本立てで作成し、比較検討資料を用意する -- *北谷教育長* *水野* 2026-07",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 中学校活動・バレー希望者向けにFAQを整備し、説明会配布資料とウェブ掲載版を作成する -- *水野* 2026-07-22",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    },
+    {
+      "title": "中学校活動・バレー希望者の受け入れ条件（参加資格、定員、選考基準）を明文化し、問い合わせ増加と不公平感の発生リスクを軽減する",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    }
+  ]
+}
