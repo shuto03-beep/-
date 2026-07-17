@@ -1,0 +1,216 @@
+{
+  "date": "2026-07-17",
+  "headline": "両手を空けて1ブロックに集中",
+  "one_minute_action": "カレンダーを開いて、最重要1ブロックの開始時刻を確定する",
+  "aesthetic_signal": "他者評価ではなく、4軸の自分のスコアだけを尺度にする",
+  "scorecard": {
+    "date": "2026-07-17",
+    "systemize": 2,
+    "declutter": 0,
+    "two_handed": 4,
+    "knowledge_share": 10,
+    "systemize_note": "(ヒューリスティック採点) 仕組み系シグナル数",
+    "declutter_note": "(ヒューリスティック採点) 断捨離シグナル数",
+    "two_handed_note": "(ヒューリスティック採点) 集中シグナル数",
+    "knowledge_share_note": "(ヒューリスティック採点) 共有シグナル数",
+    "total": 16,
+    "source_entry_ids": [],
+    "created_at": "2026-07-17T22:11:00"
+  },
+  "dropped": [
+    {
+      "title": "アプリ導入と決済機能の有無",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "市としてアプリ導入が決定済みかの確認が行われた",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "申込機能での「お金のやり取り」が可能か質問があり、可能との回答",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "既に同機能を運用中のクラブがあることが示唆",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "結論: 決済機能は利用可能。手数料・金額設定は継続検討",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "源泉徴収の取り扱い",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "団体側が源泉徴収すべきかの議論が再提起",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "明確な実務方針は未定で、課題感の共有に留まった",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "結論: 結論なし（継続検討）",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "町公式LINEとBot Expressの活用を検討中",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "予約システムの市域統一状況について確認があり、1月から稼働との発言はあったが詳細不明",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "団体アカウント紐付け、枠の固定割当、団体間の枠入れ替えは事務局経由で対応する運用が示唆",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "固定枠の設定とキャンセルルールの存在が示された",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "結論: 詳細ルールの明確化が必要（未確定）",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "指導者支援の継続性",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "指導者への支援を継続的に実施するかの確認があったが、明確な制度化は不明",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "結論: 制度設計は今後の検討課題",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "ポイント制度による家庭支援（神戸方式の参照）",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "国の支援3,000円の半額相当1,500ポイントを子ども1人当たりに付与する神戸市の事例を参照",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "ポイント制の構築が必要で、低所得世帯支援にも有効との認識を共有",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "配布方法の難しさが課題として挙がった",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "結論: ポイント制度の方向性に関心あり。配布設計は未決",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "学校施設は無料、一般施設は有料の方針が示唆。空調費の扱いは検討課題",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "結論: LINE連携は検討段階。学校は無料・一般は有料の方向性だが細目未確定",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "公共・学校施設の優先予約と利用範囲",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "学校施設の優先利用や試合での半日・1日利用の可否を議論",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "公共施設を含むかの問いに対し、学校・公共両方の言及があったが詳細は不明",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    }
+  ],
+  "next_actions": [
+    {
+      "title": "手数料を保護者負担にする是非や金額設定についての課題を共有",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    },
+    {
+      "title": "施設予約の仕組みとLINE連携の検討",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(レバレッジ)に合致。",
+      "leverage": true,
+      "mission": false,
+      "uniqueness": false,
+      "source_entry_id": null
+    },
+    {
+      "title": "学校施設の枠割当、週次固定枠、未使用時の返却（キャンセル）の運用に言及",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    }
+  ]
+}
