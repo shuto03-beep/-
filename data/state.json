@@ -1311,30 +1311,9 @@
       }
     }
   },
-  "last_run": "2026-07-22T07:58:28.255044",
-  "last_full_screening": "2026-07-22T07:58:28.253294",
+  "last_run": "2026-07-22T08:35:00.505955",
+  "last_full_screening": "2026-07-22T08:35:00.503211",
   "signals_history": [
-    {
-      "ticker": "2914.T",
-      "name": "JT",
-      "type": "BUY",
-      "score": 48,
-      "date": "2026-07-01 03:55"
-    },
-    {
-      "ticker": "4523.T",
-      "name": "エーザイ",
-      "type": "SELL",
-      "score": -39,
-      "date": "2026-07-01 03:55"
-    },
-    {
-      "ticker": "6988.T",
-      "name": "日東電工",
-      "type": "BUY",
-      "score": 45,
-      "date": "2026-07-01 03:55"
-    },
     {
       "ticker": "9843.T",
       "name": "ニトリHD",
@@ -2034,6 +2013,34 @@
       "type": "BUY",
       "score": 46,
       "date": "2026-07-22 07:58"
+    },
+    {
+      "ticker": "5401.T",
+      "name": "日本製鉄",
+      "type": "SELL",
+      "score": -35,
+      "date": "2026-07-22 08:35"
+    },
+    {
+      "ticker": "5411.T",
+      "name": "JFE",
+      "type": "SELL",
+      "score": -37,
+      "date": "2026-07-22 08:35"
+    },
+    {
+      "ticker": "5333.T",
+      "name": "日本ガイシ",
+      "type": "BUY",
+      "score": 55,
+      "date": "2026-07-22 08:35"
+    },
+    {
+      "ticker": "3105.T",
+      "name": "日清紡HD",
+      "type": "BUY",
+      "score": 46,
+      "date": "2026-07-22 08:35"
     }
   ]
 }
