@@ -1445,37 +1445,9 @@
       }
     }
   },
-  "last_run": "2026-07-24T07:58:27.350016",
-  "last_full_screening": "2026-07-24T07:58:27.205811",
+  "last_run": "2026-07-24T08:33:09.510174",
+  "last_full_screening": "2026-07-24T08:33:09.508570",
   "signals_history": [
-    {
-      "ticker": "4578.T",
-      "name": "大塚HD",
-      "type": "BUY",
-      "score": 46,
-      "date": "2026-07-03 06:47"
-    },
-    {
-      "ticker": "8002.T",
-      "name": "丸紅",
-      "type": "BUY",
-      "score": 46,
-      "date": "2026-07-03 06:47"
-    },
-    {
-      "ticker": "4324.T",
-      "name": "電通G",
-      "type": "BUY",
-      "score": 55,
-      "date": "2026-07-03 06:47"
-    },
-    {
-      "ticker": "4578.T",
-      "name": "大塚HD",
-      "type": "BUY",
-      "score": 46,
-      "date": "2026-07-03 09:25"
-    },
     {
       "ticker": "4324.T",
       "name": "電通G",
@@ -2175,6 +2147,34 @@
       "type": "BUY",
       "score": 52,
       "date": "2026-07-24 07:58"
+    },
+    {
+      "ticker": "9201.T",
+      "name": "JAL",
+      "type": "BUY",
+      "score": 54,
+      "date": "2026-07-24 08:33"
+    },
+    {
+      "ticker": "9202.T",
+      "name": "ANA",
+      "type": "BUY",
+      "score": 61,
+      "date": "2026-07-24 08:33"
+    },
+    {
+      "ticker": "7269.T",
+      "name": "スズキ",
+      "type": "BUY",
+      "score": 48,
+      "date": "2026-07-24 08:33"
+    },
+    {
+      "ticker": "6727.T",
+      "name": "ワコム",
+      "type": "BUY",
+      "score": 52,
+      "date": "2026-07-24 08:33"
     }
   ]
 }
