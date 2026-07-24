@@ -1,0 +1,216 @@
+{
+  "date": "2026-07-24",
+  "headline": "両手を空けて1ブロックに集中",
+  "one_minute_action": "カレンダーを開いて、最重要1ブロックの開始時刻を確定する",
+  "aesthetic_signal": "他者評価ではなく、4軸の自分のスコアだけを尺度にする",
+  "scorecard": {
+    "date": "2026-07-24",
+    "systemize": 0,
+    "declutter": 0,
+    "two_handed": 2,
+    "knowledge_share": 10,
+    "systemize_note": "(ヒューリスティック採点) 仕組み系シグナル数",
+    "declutter_note": "(ヒューリスティック採点) 断捨離シグナル数",
+    "two_handed_note": "(ヒューリスティック採点) 集中シグナル数",
+    "knowledge_share_note": "(ヒューリスティック採点) 共有シグナル数",
+    "total": 12,
+    "source_entry_ids": [],
+    "created_at": "2026-07-24T22:32:24"
+  },
+  "dropped": [
+    {
+      "title": "活動時間の調整",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "Speaker 1が提示した活動日時と会費の詳細を水野が確認。提示された曜日・時間帯での活動は可能。ただし他団体との兼ね合いで将来的な調整が必要になる可能性を示",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "平日2時間・休日3時間の目安を超える設定でも、一般の社会人指導者の事情を考慮すれば許容範囲と確認",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "報告書・資料の体裁",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "昨年度の報告書を参考に紙面構成を議論。昨年度はほぼ決まった形式を提示して作成",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "ある程度決まったフォーマットで作成する方が効率的という点で一致",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "他地域の活動名称共有",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "活動名を中学生に募集させる案が以前から検討されていた旨が共有",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "次期パンフレット制作",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "既存チラシを基に情報量の多いパンフレット化を検討。Q&A追加案あり",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "デザイン参考に過去のポップな制作物（カゴクラ）を挙げ、卓球・女子バスケ・吹奏楽などの活動写真掲載を希望。吹奏楽はクール中の撮影が難しく、リハーサルで衣装着用の撮",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "ホームページのフォントは決定済み",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "パンフレット配布時期・制作スケジュール・予算",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "配布時期は当初1〜2月想定だったが、年末までの制作は動きが早すぎるとの意見。最終的に3月の広報誌同時配布が有力（令和9年度活動開始告知に適切）",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "見積もり合わせは10月開始案。広報業務が落ち着く時期で現実的",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "予算目安15万円。全戸配布数次第で超過の可能性。デザインコンセプトを仕様書に明記し、発注先と共有する重要性を確認",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "仕様を守らず安価受注でデザイン対応不可となった過去事例（コスモ）を共有。安価業者のリスクから発注先選定が課題",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "ロゴ・キャッチコピーの公募",
+      "reason": "雑務カテゴリ。仕組み化・委任・後回しの対象。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "キャッチコピー（副題）も募集を検討。スポーツ版・文化部版など複数デザイン採用の可能性を議論。生徒の「自分ごと化」を期待",
+      "reason": "雑務カテゴリ。仕組み化・委任・後回しの対象。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "公募で決定したロゴ等をパンフレットに掲載する方向",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "新入生説明会の構成・タイミング",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "昨年は稲美中・北中同日開催。今年は別日可能性があり、双方対応を検討。土曜開催が基本で春の土日対応を想定",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "説明内容は昨年パターンを基に具体化し、体験（仮入部的お試し）案内を含める方向",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "校長講話後に部活動・地域クラブ（いなチャレ）紹介枠案。講話長引きによる時間超過懸念",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "保護者視点と部活動継続可能性",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "保護者は自子の部活動の見通しを最優先で知りたい傾向",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "令和9年度8月の完全展開予定に伴い、先行実施との関係で部活動が途中終了する可能性を明確に伝える必要",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    }
+  ],
+  "next_actions": [
+    {
+      "title": "「いなチャレ」のカラーやトーン、フォントなどを統一して一貫性を確保する意向",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    },
+    {
+      "title": "ユキティブ（アクティブ由来）、カコプラ（クラブ由来）、姫カツ・神戸カツ（クラブ・部活動由来）、スポカル高砂（スポーツ＆カルチャー由来）などの事例を共有",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    },
+    {
+      "title": "中学生対象でパンフレット用ロゴを公募する案。生徒会事業としての実施案あり",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    }
+  ]
+}
