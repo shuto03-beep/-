@@ -30,7 +30,7 @@
           "entry_date": "2026-07-24",
           "stop_loss": 1868.6,
           "take_profit": 2170.0,
-          "highest_price": 1968.5,
+          "highest_price": 2041.0,
           "signal_score": 62,
           "signal_reasons": [
             "✨ 直近安値付近（押し目買いチャンス）",
@@ -49,7 +49,7 @@
           "entry_date": "2026-07-24",
           "stop_loss": 731.5,
           "take_profit": 851.7,
-          "highest_price": 770.0,
+          "highest_price": 789.0,
           "signal_score": 52,
           "signal_reasons": [
             "MACD買いシグナル",
@@ -471,7 +471,7 @@
           "entry_date": "2026-07-13",
           "stop_loss": 2543.6,
           "take_profit": 3079.1,
-          "highest_price": 2691.5,
+          "highest_price": 2718.0,
           "signal_score": 51,
           "signal_reasons": [
             "✨ 直近安値付近（押し目買いチャンス）",
@@ -490,7 +490,7 @@
           "entry_date": "2026-07-24",
           "stop_loss": 1868.6,
           "take_profit": 2170.0,
-          "highest_price": 1968.5,
+          "highest_price": 2041.0,
           "signal_score": 62,
           "signal_reasons": [
             "✨ 直近安値付近（押し目買いチャンス）",
@@ -509,7 +509,7 @@
           "entry_date": "2026-07-24",
           "stop_loss": 731.5,
           "take_profit": 851.7,
-          "highest_price": 770.0,
+          "highest_price": 789.0,
           "signal_score": 52,
           "signal_reasons": [
             "MACD買いシグナル",
@@ -996,7 +996,7 @@
           "entry_date": "2026-07-13",
           "stop_loss": 2543.6,
           "take_profit": 3079.1,
-          "highest_price": 2691.5,
+          "highest_price": 2718.0,
           "signal_score": 51,
           "signal_reasons": [
             "✨ 直近安値付近（押し目買いチャンス）",
@@ -1015,7 +1015,7 @@
           "entry_date": "2026-07-24",
           "stop_loss": 1868.6,
           "take_profit": 2170.0,
-          "highest_price": 1968.5,
+          "highest_price": 2041.0,
           "signal_score": 62,
           "signal_reasons": [
             "✨ 直近安値付近（押し目買いチャンス）",
@@ -1034,7 +1034,7 @@
           "entry_date": "2026-07-24",
           "stop_loss": 731.5,
           "take_profit": 851.7,
-          "highest_price": 770.0,
+          "highest_price": 789.0,
           "signal_score": 52,
           "signal_reasons": [
             "MACD買いシグナル",
@@ -1445,37 +1445,9 @@
       }
     }
   },
-  "last_run": "2026-07-27T02:54:43.479895",
-  "last_full_screening": "2026-07-24T08:33:09.508570",
+  "last_run": "2026-07-27T06:31:56.570688",
+  "last_full_screening": "2026-07-27T06:31:56.569165",
   "signals_history": [
-    {
-      "ticker": "4324.T",
-      "name": "電通G",
-      "type": "BUY",
-      "score": 55,
-      "date": "2026-07-03 09:25"
-    },
-    {
-      "ticker": "7267.T",
-      "name": "ホンダ",
-      "type": "SELL",
-      "score": -37,
-      "date": "2026-07-06 03:34"
-    },
-    {
-      "ticker": "3382.T",
-      "name": "セブン&アイ",
-      "type": "SELL",
-      "score": -41,
-      "date": "2026-07-06 03:34"
-    },
-    {
-      "ticker": "3407.T",
-      "name": "旭化成",
-      "type": "SELL",
-      "score": -35,
-      "date": "2026-07-06 03:34"
-    },
     {
       "ticker": "7272.T",
       "name": "ヤマハ発動機",
@@ -2175,6 +2147,48 @@
       "type": "BUY",
       "score": 52,
       "date": "2026-07-24 08:33"
+    },
+    {
+      "ticker": "5401.T",
+      "name": "日本製鉄",
+      "type": "SELL",
+      "score": -35,
+      "date": "2026-07-27 06:31"
+    },
+    {
+      "ticker": "6200.T",
+      "name": "インソース",
+      "type": "SELL",
+      "score": -36,
+      "date": "2026-07-27 06:31"
+    },
+    {
+      "ticker": "9434.T",
+      "name": "ソフトバンク",
+      "type": "SELL",
+      "score": -35,
+      "date": "2026-07-27 06:31"
+    },
+    {
+      "ticker": "3659.T",
+      "name": "ネクソン",
+      "type": "SELL",
+      "score": -37,
+      "date": "2026-07-27 06:31"
+    },
+    {
+      "ticker": "5411.T",
+      "name": "JFE",
+      "type": "SELL",
+      "score": -35,
+      "date": "2026-07-27 06:31"
+    },
+    {
+      "ticker": "7752.T",
+      "name": "リコー",
+      "type": "SELL",
+      "score": -35,
+      "date": "2026-07-27 06:31"
     }
   ]
 }
