@@ -1511,23 +1511,9 @@
       }
     }
   },
-  "last_run": "2026-07-30T07:55:24.574055",
-  "last_full_screening": "2026-07-30T07:55:24.572199",
+  "last_run": "2026-07-30T08:33:26.486522",
+  "last_full_screening": "2026-07-30T08:33:26.484817",
   "signals_history": [
-    {
-      "ticker": "7741.T",
-      "name": "HOYA",
-      "type": "BUY",
-      "score": 52,
-      "date": "2026-07-10 07:01"
-    },
-    {
-      "ticker": "5711.T",
-      "name": "三菱マテリアル",
-      "type": "BUY",
-      "score": 46,
-      "date": "2026-07-10 09:42"
-    },
     {
       "ticker": "8725.T",
       "name": "MS&AD",
@@ -2227,6 +2213,27 @@
       "type": "BUY",
       "score": 53,
       "date": "2026-07-30 07:55"
+    },
+    {
+      "ticker": "6762.T",
+      "name": "TDK",
+      "type": "BUY",
+      "score": 51,
+      "date": "2026-07-30 08:33"
+    },
+    {
+      "ticker": "6752.T",
+      "name": "パナソニックHD",
+      "type": "BUY",
+      "score": 53,
+      "date": "2026-07-30 08:33"
+    },
+    {
+      "ticker": "5401.T",
+      "name": "日本製鉄",
+      "type": "SELL",
+      "score": -45,
+      "date": "2026-07-30 08:33"
     }
   ]
 }
