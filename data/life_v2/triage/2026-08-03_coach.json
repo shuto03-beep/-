@@ -1,0 +1,216 @@
+{
+  "date": "2026-08-03",
+  "headline": "両手を空けて1ブロックに集中",
+  "one_minute_action": "カレンダーを開いて、最重要1ブロックの開始時刻を確定する",
+  "aesthetic_signal": "他者評価ではなく、4軸の自分のスコアだけを尺度にする",
+  "scorecard": {
+    "date": "2026-08-03",
+    "systemize": 2,
+    "declutter": 0,
+    "two_handed": 0,
+    "knowledge_share": 6,
+    "systemize_note": "(ヒューリスティック採点) 仕組み系シグナル数",
+    "declutter_note": "(ヒューリスティック採点) 断捨離シグナル数",
+    "two_handed_note": "(ヒューリスティック採点) 集中シグナル数",
+    "knowledge_share_note": "(ヒューリスティック採点) 共有シグナル数",
+    "total": 8,
+    "source_entry_ids": [],
+    "created_at": "2026-08-03T22:32:08"
+  },
+  "dropped": [
+    {
+      "title": "**募集状況と二次募集**",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "3月31日に締め切った一次募集では8団体が登録。登録数が不足しているため、追加（二次）募集を検討している",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "生涯学習課で負担にならない範囲での二次募集実施を再度検討するよう指示があった",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "8月中の募集は困難なため、9月いっぱいを期間として二次募集を行う案が提示された。9月末を一旦の締め切りとし、調整がつけば後からでも団体を追加する方針",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "募集告知の際は、団体数を「8団体程度」とぼかして表現する。ヒアリング済みの文化の森、社会福祉協議会などが候補",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**今後の方向性**",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "加古川市の先行事例と比較すると団体数は少ないが、焦らず軌道に乗せることが重要",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "スポーツクラブ21の代表者から問い合わせがあったが、個々の団体への事前説明の要否について議論された",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**立ち上げ支援金**",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "1クラブあたり10万円の立ち上げ支援金を検討",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "「一律定額配布はばらまき」との見解から、使途を環境整備や備品購入などに限定した実績申請方式を検討。現物支援も許容する方向",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**保険支援**",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "中学生の安全確保を最優先し、町の支援で保険加入を進める方向",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**家庭への支援**",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "当面は保険料支援が中心。経済的困窮世帯への支援は国や県の動向を見守る方針",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "将来的に、神戸市で検討されているようなLINE連携サービス「ボットエクスプレス」のポイント機能を活用した支援金配布の可能性も議論されたが、導入時期は不透明",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**指導者謝金**",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**支援金の支給方法と課題**",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "クラブ経由での一括支給は、年度途中の退会者分も不正に受け取るリスクがあり、在籍確認の難しさが課題",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "不正防止策として、年度末に毎月の出席名簿で精算する方式や、団体の会計監査（査定）を行う必要性が指摘された",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**保険事務**",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "参加費・年会費は統一徴収し、競技ごとの消耗品は各団体負担とする案",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "対象は学校部活動と認定地域クラブの全参加者を想定。全中学生を対象にスポーツ安全保険に加入させることが理想だが、予算確保が課題",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "現行の部活動団体への指導者謝金は、県・国の支援と併用可能との認識で支援を継続する方向だが、最終決定は未了",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "複数のクラブに参加する生徒もいるため、事務局で加入状況を一元管理する必要がある。各クラブに事務を任せるのは困難",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "**会費の仕組み**",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "学校部活動の指導者への休日報奨金が地域クラブ化で不要になる分を予算に反映できているか確認が必要",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    }
+  ],
+  "next_actions": [
+    {
+      "title": "ダンスや文化系の団体が少ないため、人材バンク登録者への声がけや、絵画などの種目を細分化して受け入れることを検討。美術系は学校美術部と重複しない活動説明ができれば",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    },
+    {
+      "title": "先行実施団体と学校部活動からの移行団体への支援は、令和10年8月に一斉に行う方向で検討",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    },
+    {
+      "title": "参加生徒1人あたり800円〜1000円の保険料支援を検討。神戸市（1500円検討）や加古川市の動向も参考にする",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    }
+  ]
+}
