@@ -1592,65 +1592,9 @@
       }
     }
   },
-  "last_run": "2026-08-10T06:52:32.191583",
-  "last_full_screening": "2026-08-10T06:52:32.190080",
+  "last_run": "2026-08-10T07:48:38.120909",
+  "last_full_screening": "2026-08-10T07:48:38.119088",
   "signals_history": [
-    {
-      "ticker": "7269.T",
-      "name": "スズキ",
-      "type": "BUY",
-      "score": 62,
-      "date": "2026-07-24 05:38"
-    },
-    {
-      "ticker": "9201.T",
-      "name": "JAL",
-      "type": "BUY",
-      "score": 48,
-      "date": "2026-07-24 05:38"
-    },
-    {
-      "ticker": "9202.T",
-      "name": "ANA",
-      "type": "BUY",
-      "score": 55,
-      "date": "2026-07-24 05:38"
-    },
-    {
-      "ticker": "9983.T",
-      "name": "ファーストリテイリング",
-      "type": "BUY",
-      "score": 47,
-      "date": "2026-07-24 05:38"
-    },
-    {
-      "ticker": "9201.T",
-      "name": "JAL",
-      "type": "BUY",
-      "score": 57,
-      "date": "2026-07-24 07:58"
-    },
-    {
-      "ticker": "9202.T",
-      "name": "ANA",
-      "type": "BUY",
-      "score": 63,
-      "date": "2026-07-24 07:58"
-    },
-    {
-      "ticker": "7269.T",
-      "name": "スズキ",
-      "type": "BUY",
-      "score": 49,
-      "date": "2026-07-24 07:58"
-    },
-    {
-      "ticker": "6727.T",
-      "name": "ワコム",
-      "type": "BUY",
-      "score": 52,
-      "date": "2026-07-24 07:58"
-    },
     {
       "ticker": "9201.T",
       "name": "JAL",
@@ -2350,6 +2294,62 @@
       "type": "SELL",
       "score": -37,
       "date": "2026-08-10 06:52"
+    },
+    {
+      "ticker": "6098.T",
+      "name": "リクルート",
+      "type": "SELL",
+      "score": -41,
+      "date": "2026-08-10 07:48"
+    },
+    {
+      "ticker": "4543.T",
+      "name": "テルモ",
+      "type": "SELL",
+      "score": -36,
+      "date": "2026-08-10 07:48"
+    },
+    {
+      "ticker": "5108.T",
+      "name": "ブリヂストン",
+      "type": "SELL",
+      "score": -41,
+      "date": "2026-08-10 07:48"
+    },
+    {
+      "ticker": "7272.T",
+      "name": "ヤマハ発動機",
+      "type": "SELL",
+      "score": -43,
+      "date": "2026-08-10 07:48"
+    },
+    {
+      "ticker": "7733.T",
+      "name": "オリンパス",
+      "type": "SELL",
+      "score": -40,
+      "date": "2026-08-10 07:48"
+    },
+    {
+      "ticker": "6869.T",
+      "name": "シスメックス",
+      "type": "SELL",
+      "score": -52,
+      "date": "2026-08-10 07:48"
+    },
+    {
+      "ticker": "7974.T",
+      "name": "任天堂",
+      "type": "SELL",
+      "score": -37,
+      "date": "2026-08-10 07:48"
+    },
+    {
+      "ticker": "9104.T",
+      "name": "商船三井",
+      "type": "SELL",
+      "score": -37,
+      "date": "2026-08-10 07:48"
     }
   ]
 }
