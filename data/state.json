@@ -11,7 +11,7 @@
           "entry_date": "2026-08-07",
           "stop_loss": 2299.5,
           "take_profit": 2783.6,
-          "highest_price": 2420.5,
+          "highest_price": 2520.5,
           "signal_score": 68,
           "signal_reasons": [
             "ゴールデンクロス（SMA5×SMA25）",
@@ -520,7 +520,7 @@
           "entry_date": "2026-08-07",
           "stop_loss": 2299.5,
           "take_profit": 2783.6,
-          "highest_price": 2420.5,
+          "highest_price": 2520.5,
           "signal_score": 68,
           "signal_reasons": [
             "ゴールデンクロス（SMA5×SMA25）",
@@ -1094,7 +1094,7 @@
           "entry_date": "2026-08-07",
           "stop_loss": 2299.5,
           "take_profit": 2783.6,
-          "highest_price": 2420.5,
+          "highest_price": 2520.5,
           "signal_score": 68,
           "signal_reasons": [
             "ゴールデンクロス（SMA5×SMA25）",
@@ -1592,16 +1592,9 @@
       }
     }
   },
-  "last_run": "2026-08-07T07:22:09.882297",
-  "last_full_screening": "2026-08-07T07:22:09.880146",
+  "last_run": "2026-08-10T01:46:58.108045",
+  "last_full_screening": "2026-08-10T01:46:57.916123",
   "signals_history": [
-    {
-      "ticker": "5411.T",
-      "name": "JFE",
-      "type": "SELL",
-      "score": -36,
-      "date": "2026-07-21 05:38"
-    },
     {
       "ticker": "8725.T",
       "name": "MS&AD",
@@ -2301,6 +2294,48 @@
       "type": "BUY",
       "score": 68,
       "date": "2026-08-07 07:22"
+    },
+    {
+      "ticker": "6869.T",
+      "name": "シスメックス",
+      "type": "SELL",
+      "score": -57,
+      "date": "2026-08-10 01:46"
+    },
+    {
+      "ticker": "4114.T",
+      "name": "日本触媒",
+      "type": "SELL",
+      "score": -41,
+      "date": "2026-08-10 01:46"
+    },
+    {
+      "ticker": "6098.T",
+      "name": "リクルート",
+      "type": "SELL",
+      "score": -40,
+      "date": "2026-08-10 01:46"
+    },
+    {
+      "ticker": "6594.T",
+      "name": "ニデック",
+      "type": "SELL",
+      "score": -38,
+      "date": "2026-08-10 01:46"
+    },
+    {
+      "ticker": "5108.T",
+      "name": "ブリヂストン",
+      "type": "SELL",
+      "score": -40,
+      "date": "2026-08-10 01:46"
+    },
+    {
+      "ticker": "4755.T",
+      "name": "楽天G",
+      "type": "SELL",
+      "score": -36,
+      "date": "2026-08-10 01:46"
     }
   ]
 }
