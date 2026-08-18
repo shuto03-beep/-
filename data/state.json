@@ -1598,23 +1598,9 @@
       }
     }
   },
-  "last_run": "2026-08-18T05:57:19.795404",
-  "last_full_screening": "2026-08-18T05:29:24.284921",
+  "last_run": "2026-08-18T06:50:17.079125",
+  "last_full_screening": "2026-08-18T06:50:17.077319",
   "signals_history": [
-    {
-      "ticker": "7832.T",
-      "name": "バンナムHD",
-      "type": "SELL",
-      "score": -40,
-      "date": "2026-08-07 04:44"
-    },
-    {
-      "ticker": "4578.T",
-      "name": "大塚HD",
-      "type": "SELL",
-      "score": -36,
-      "date": "2026-08-07 04:44"
-    },
     {
       "ticker": "4755.T",
       "name": "楽天G",
@@ -2314,6 +2300,34 @@
       "type": "SELL",
       "score": -35,
       "date": "2026-08-18 05:29"
+    },
+    {
+      "ticker": "5801.T",
+      "name": "古河電工",
+      "type": "SELL",
+      "score": -46,
+      "date": "2026-08-18 06:50"
+    },
+    {
+      "ticker": "4478.T",
+      "name": "フリー",
+      "type": "SELL",
+      "score": -45,
+      "date": "2026-08-18 06:50"
+    },
+    {
+      "ticker": "5631.T",
+      "name": "日本製鋼所",
+      "type": "SELL",
+      "score": -37,
+      "date": "2026-08-18 06:50"
+    },
+    {
+      "ticker": "8304.T",
+      "name": "あおぞら銀行",
+      "type": "SELL",
+      "score": -46,
+      "date": "2026-08-18 06:50"
     }
   ]
 }
