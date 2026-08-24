@@ -1658,23 +1658,9 @@
       }
     }
   },
-  "last_run": "2026-08-21T06:54:29.991071",
-  "last_full_screening": "2026-08-21T06:54:29.989619",
+  "last_run": "2026-08-24T01:16:23.822383",
+  "last_full_screening": "2026-08-24T01:16:23.820312",
   "signals_history": [
-    {
-      "ticker": "7974.T",
-      "name": "任天堂",
-      "type": "SELL",
-      "score": -47,
-      "date": "2026-08-12 04:08"
-    },
-    {
-      "ticker": "7974.T",
-      "name": "任天堂",
-      "type": "SELL",
-      "score": -40,
-      "date": "2026-08-12 05:46"
-    },
     {
       "ticker": "4114.T",
       "name": "日本触媒",
@@ -2374,6 +2360,76 @@
       "type": "SELL",
       "score": -40,
       "date": "2026-08-21 06:54"
+    },
+    {
+      "ticker": "4911.T",
+      "name": "資生堂",
+      "type": "SELL",
+      "score": -37,
+      "date": "2026-08-24 01:16"
+    },
+    {
+      "ticker": "5713.T",
+      "name": "住友金属鉱山",
+      "type": "SELL",
+      "score": -37,
+      "date": "2026-08-24 01:16"
+    },
+    {
+      "ticker": "6305.T",
+      "name": "日立建機",
+      "type": "SELL",
+      "score": -39,
+      "date": "2026-08-24 01:16"
+    },
+    {
+      "ticker": "5714.T",
+      "name": "DOWAホールディングス",
+      "type": "SELL",
+      "score": -43,
+      "date": "2026-08-24 01:16"
+    },
+    {
+      "ticker": "4478.T",
+      "name": "フリー",
+      "type": "SELL",
+      "score": -35,
+      "date": "2026-08-24 01:16"
+    },
+    {
+      "ticker": "7733.T",
+      "name": "オリンパス",
+      "type": "SELL",
+      "score": -45,
+      "date": "2026-08-24 01:16"
+    },
+    {
+      "ticker": "9101.T",
+      "name": "日本郵船",
+      "type": "SELL",
+      "score": -44,
+      "date": "2026-08-24 01:16"
+    },
+    {
+      "ticker": "9104.T",
+      "name": "商船三井",
+      "type": "SELL",
+      "score": -44,
+      "date": "2026-08-24 01:16"
+    },
+    {
+      "ticker": "7532.T",
+      "name": "パンパシHD",
+      "type": "SELL",
+      "score": -37,
+      "date": "2026-08-24 01:16"
+    },
+    {
+      "ticker": "5301.T",
+      "name": "東海カーボン",
+      "type": "SELL",
+      "score": -36,
+      "date": "2026-08-24 01:16"
     }
   ]
 }
