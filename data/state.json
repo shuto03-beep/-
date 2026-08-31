@@ -1753,65 +1753,9 @@
       }
     }
   },
-  "last_run": "2026-08-31T10:46:21.175216",
-  "last_full_screening": "2026-08-31T10:46:21.173444",
+  "last_run": "2026-08-31T13:09:15.034963",
+  "last_full_screening": "2026-08-31T13:09:15.033641",
   "signals_history": [
-    {
-      "ticker": "7532.T",
-      "name": "パンパシHD",
-      "type": "SELL",
-      "score": -37,
-      "date": "2026-08-24 03:40"
-    },
-    {
-      "ticker": "2175.T",
-      "name": "SMS",
-      "type": "SELL",
-      "score": -35,
-      "date": "2026-08-24 03:40"
-    },
-    {
-      "ticker": "6305.T",
-      "name": "日立建機",
-      "type": "SELL",
-      "score": -42,
-      "date": "2026-08-24 04:29"
-    },
-    {
-      "ticker": "5713.T",
-      "name": "住友金属鉱山",
-      "type": "SELL",
-      "score": -42,
-      "date": "2026-08-24 04:29"
-    },
-    {
-      "ticker": "5714.T",
-      "name": "DOWAホールディングス",
-      "type": "SELL",
-      "score": -45,
-      "date": "2026-08-24 04:29"
-    },
-    {
-      "ticker": "4478.T",
-      "name": "フリー",
-      "type": "SELL",
-      "score": -48,
-      "date": "2026-08-24 04:29"
-    },
-    {
-      "ticker": "4503.T",
-      "name": "アステラス製薬",
-      "type": "SELL",
-      "score": -35,
-      "date": "2026-08-24 04:29"
-    },
-    {
-      "ticker": "7832.T",
-      "name": "バンナムHD",
-      "type": "SELL",
-      "score": -38,
-      "date": "2026-08-24 04:29"
-    },
     {
       "ticker": "9101.T",
       "name": "日本郵船",
@@ -2511,6 +2455,62 @@
       "type": "SELL",
       "score": -35,
       "date": "2026-08-31 10:46"
+    },
+    {
+      "ticker": "7269.T",
+      "name": "スズキ",
+      "type": "SELL",
+      "score": -43,
+      "date": "2026-08-31 13:09"
+    },
+    {
+      "ticker": "1605.T",
+      "name": "INPEX",
+      "type": "SELL",
+      "score": -35,
+      "date": "2026-08-31 13:09"
+    },
+    {
+      "ticker": "4506.T",
+      "name": "住友ファーマ",
+      "type": "SELL",
+      "score": -55,
+      "date": "2026-08-31 13:09"
+    },
+    {
+      "ticker": "5019.T",
+      "name": "出光興産",
+      "type": "SELL",
+      "score": -47,
+      "date": "2026-08-31 13:09"
+    },
+    {
+      "ticker": "8411.T",
+      "name": "みずほFG",
+      "type": "BUY",
+      "score": 51,
+      "date": "2026-08-31 13:09"
+    },
+    {
+      "ticker": "5301.T",
+      "name": "東海カーボン",
+      "type": "BUY",
+      "score": 54,
+      "date": "2026-08-31 13:09"
+    },
+    {
+      "ticker": "4478.T",
+      "name": "フリー",
+      "type": "SELL",
+      "score": -39,
+      "date": "2026-08-31 13:09"
+    },
+    {
+      "ticker": "6952.T",
+      "name": "カシオ",
+      "type": "SELL",
+      "score": -35,
+      "date": "2026-08-31 13:09"
     }
   ]
 }
