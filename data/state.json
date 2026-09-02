@@ -1,7 +1,7 @@
 {
   "strategies": {
     "A_3銘柄": {
-      "capital": 355080.0,
+      "capital": 536280.0,
       "positions": [
         {
           "ticker": "9020.T",
@@ -23,25 +23,6 @@
           "ai_confidence": 0
         },
         {
-          "ticker": "5301.T",
-          "name": "東海カーボン",
-          "entry_price": 1811.0,
-          "quantity": 100,
-          "entry_date": "2026-08-31",
-          "stop_loss": 1720.4,
-          "take_profit": 2049.1,
-          "highest_price": 1907.0,
-          "signal_score": 54,
-          "signal_reasons": [
-            "ゴールデンクロス（SMA5×SMA25）",
-            "RSI回復中（49.5）",
-            "一目均衡表: 雲上抜け",
-            "📅 月曜効果: 歴史的にマイナス傾向（補正-5）",
-            "📅 8月バイアス（補正-3）; 月替わり効果（+3）"
-          ],
-          "ai_confidence": 0
-        },
-        {
           "ticker": "4188.T",
           "name": "三菱ケミカルG",
           "entry_price": 1266.5,
@@ -49,7 +30,7 @@
           "entry_date": "2026-09-01",
           "stop_loss": 1203.2,
           "take_profit": 1402.8,
-          "highest_price": 1266.5,
+          "highest_price": 1267.5,
           "signal_score": 54,
           "signal_reasons": [
             "⚠️ 直近高値圏（レンジ100%）",
@@ -565,6 +546,27 @@
             "📅 水曜バイアス（補正+3）"
           ],
           "ai_confidence": 0
+        },
+        {
+          "ticker": "5301.T",
+          "name": "東海カーボン",
+          "entry_price": 1811.0,
+          "exit_price": 1812.0,
+          "quantity": 100,
+          "entry_date": "2026-08-31",
+          "exit_date": "2026-09-02",
+          "pnl": 100.0,
+          "pnl_pct": 0.0005521811154058532,
+          "reason": "TRAILING_STOP",
+          "signal_score": 54,
+          "signal_reasons": [
+            "ゴールデンクロス（SMA5×SMA25）",
+            "RSI回復中（49.5）",
+            "一目均衡表: 雲上抜け",
+            "📅 月曜効果: 歴史的にマイナス傾向（補正-5）",
+            "📅 8月バイアス（補正-3）; 月替わり効果（+3）"
+          ],
+          "ai_confidence": 0
         }
       ],
       "daily_pnl": {
@@ -588,11 +590,12 @@
         "2026-07-31": 13300.0,
         "2026-08-06": 12550.0,
         "2026-08-12": -5150.0,
-        "2026-09-01": 25350.0
+        "2026-09-01": 25350.0,
+        "2026-09-02": 100.0
       }
     },
     "B_5銘柄": {
-      "capital": 389150.0,
+      "capital": 570350.0,
       "positions": [
         {
           "ticker": "9020.T",
@@ -614,25 +617,6 @@
           "ai_confidence": 0
         },
         {
-          "ticker": "5301.T",
-          "name": "東海カーボン",
-          "entry_price": 1811.0,
-          "quantity": 100,
-          "entry_date": "2026-08-31",
-          "stop_loss": 1720.4,
-          "take_profit": 2049.1,
-          "highest_price": 1907.0,
-          "signal_score": 54,
-          "signal_reasons": [
-            "ゴールデンクロス（SMA5×SMA25）",
-            "RSI回復中（49.5）",
-            "一目均衡表: 雲上抜け",
-            "📅 月曜効果: 歴史的にマイナス傾向（補正-5）",
-            "📅 8月バイアス（補正-3）; 月替わり効果（+3）"
-          ],
-          "ai_confidence": 0
-        },
-        {
           "ticker": "4188.T",
           "name": "三菱ケミカルG",
           "entry_price": 1266.5,
@@ -640,7 +624,7 @@
           "entry_date": "2026-09-01",
           "stop_loss": 1203.2,
           "take_profit": 1402.8,
-          "highest_price": 1266.5,
+          "highest_price": 1267.5,
           "signal_score": 54,
           "signal_reasons": [
             "⚠️ 直近高値圏（レンジ100%）",
@@ -1219,6 +1203,27 @@
             "📅 水曜バイアス（補正+3）"
           ],
           "ai_confidence": 0
+        },
+        {
+          "ticker": "5301.T",
+          "name": "東海カーボン",
+          "entry_price": 1811.0,
+          "exit_price": 1812.0,
+          "quantity": 100,
+          "entry_date": "2026-08-31",
+          "exit_date": "2026-09-02",
+          "pnl": 100.0,
+          "pnl_pct": 0.0005521811154058532,
+          "reason": "TRAILING_STOP",
+          "signal_score": 54,
+          "signal_reasons": [
+            "ゴールデンクロス（SMA5×SMA25）",
+            "RSI回復中（49.5）",
+            "一目均衡表: 雲上抜け",
+            "📅 月曜効果: 歴史的にマイナス傾向（補正-5）",
+            "📅 8月バイアス（補正-3）; 月替わり効果（+3）"
+          ],
+          "ai_confidence": 0
         }
       ],
       "daily_pnl": {
@@ -1244,31 +1249,13 @@
         "2026-07-31": 13300.0,
         "2026-08-06": 12550.0,
         "2026-08-12": -5150.0,
-        "2026-09-01": 25350.0
+        "2026-09-01": 25350.0,
+        "2026-09-02": 100.0
       }
     },
     "C_10銘柄": {
-      "capital": 758780.0,
+      "capital": 939980.0,
       "positions": [
-        {
-          "ticker": "5301.T",
-          "name": "東海カーボン",
-          "entry_price": 1811.0,
-          "quantity": 100,
-          "entry_date": "2026-08-31",
-          "stop_loss": 1720.4,
-          "take_profit": 2049.1,
-          "highest_price": 1907.0,
-          "signal_score": 54,
-          "signal_reasons": [
-            "ゴールデンクロス（SMA5×SMA25）",
-            "RSI回復中（49.5）",
-            "一目均衡表: 雲上抜け",
-            "📅 月曜効果: 歴史的にマイナス傾向（補正-5）",
-            "📅 8月バイアス（補正-3）; 月替わり効果（+3）"
-          ],
-          "ai_confidence": 0
-        },
         {
           "ticker": "4188.T",
           "name": "三菱ケミカルG",
@@ -1277,7 +1264,7 @@
           "entry_date": "2026-09-01",
           "stop_loss": 1203.2,
           "take_profit": 1402.8,
-          "highest_price": 1266.5,
+          "highest_price": 1267.5,
           "signal_score": 54,
           "signal_reasons": [
             "⚠️ 直近高値圏（レンジ100%）",
@@ -1793,6 +1780,27 @@
             "📅 水曜バイアス（補正+3）"
           ],
           "ai_confidence": 0
+        },
+        {
+          "ticker": "5301.T",
+          "name": "東海カーボン",
+          "entry_price": 1811.0,
+          "exit_price": 1812.0,
+          "quantity": 100,
+          "entry_date": "2026-08-31",
+          "exit_date": "2026-09-02",
+          "pnl": 100.0,
+          "pnl_pct": 0.0005521811154058532,
+          "reason": "TRAILING_STOP",
+          "signal_score": 54,
+          "signal_reasons": [
+            "ゴールデンクロス（SMA5×SMA25）",
+            "RSI回復中（49.5）",
+            "一目均衡表: 雲上抜け",
+            "📅 月曜効果: 歴史的にマイナス傾向（補正-5）",
+            "📅 8月バイアス（補正-3）; 月替わり効果（+3）"
+          ],
+          "ai_confidence": 0
         }
       ],
       "daily_pnl": {
@@ -1815,48 +1823,14 @@
         "2026-07-31": 13300.0,
         "2026-08-06": 12550.0,
         "2026-08-12": -5150.0,
-        "2026-09-01": 25350.0
+        "2026-09-01": 25350.0,
+        "2026-09-02": 100.0
       }
     }
   },
-  "last_run": "2026-09-02T03:09:45.079823",
-  "last_full_screening": "2026-09-01T11:22:38.046664",
+  "last_run": "2026-09-02T07:55:31.905320",
+  "last_full_screening": "2026-09-02T07:55:31.903450",
   "signals_history": [
-    {
-      "ticker": "7832.T",
-      "name": "バンナムHD",
-      "type": "SELL",
-      "score": -36,
-      "date": "2026-08-24 06:03"
-    },
-    {
-      "ticker": "7733.T",
-      "name": "オリンパス",
-      "type": "SELL",
-      "score": -41,
-      "date": "2026-08-24 06:03"
-    },
-    {
-      "ticker": "9532.T",
-      "name": "大阪ガス",
-      "type": "BUY",
-      "score": 46,
-      "date": "2026-08-24 06:03"
-    },
-    {
-      "ticker": "5713.T",
-      "name": "住友金属鉱山",
-      "type": "SELL",
-      "score": -38,
-      "date": "2026-08-24 07:05"
-    },
-    {
-      "ticker": "6305.T",
-      "name": "日立建機",
-      "type": "SELL",
-      "score": -42,
-      "date": "2026-08-24 07:05"
-    },
     {
       "ticker": "9107.T",
       "name": "川崎汽船",
@@ -2556,6 +2530,20 @@
       "type": "BUY",
       "score": 54,
       "date": "2026-09-01 11:22"
+    },
+    {
+      "ticker": "4063.T",
+      "name": "信越化学",
+      "type": "BUY",
+      "score": 46,
+      "date": "2026-09-02 07:55"
+    },
+    {
+      "ticker": "8058.T",
+      "name": "三菱商事",
+      "type": "BUY",
+      "score": 68,
+      "date": "2026-09-02 07:55"
     }
   ]
 }
