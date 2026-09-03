@@ -1,7 +1,7 @@
 {
   "strategies": {
     "A_3銘柄": {
-      "capital": 536280.0,
+      "capital": 314980.0,
       "positions": [
         {
           "ticker": "9020.T",
@@ -30,7 +30,7 @@
           "entry_date": "2026-09-01",
           "stop_loss": 1203.2,
           "take_profit": 1402.8,
-          "highest_price": 1267.5,
+          "highest_price": 1283.0,
           "signal_score": 54,
           "signal_reasons": [
             "⚠️ 直近高値圏（レンジ100%）",
@@ -38,6 +38,25 @@
             "MACD買いシグナル",
             "RSI中立圏（53.6）",
             "一目均衡表: 雲上抜け"
+          ],
+          "ai_confidence": 0
+        },
+        {
+          "ticker": "6473.T",
+          "name": "ジェイテクト",
+          "entry_price": 2213.0,
+          "quantity": 100,
+          "entry_date": "2026-09-03",
+          "stop_loss": 2102.3,
+          "take_profit": 2477.7,
+          "highest_price": 2213.0,
+          "signal_score": 52,
+          "signal_reasons": [
+            "⚠️ 高値圏（レンジ89%）",
+            "ゴールデンクロス（SMA5×SMA25）",
+            "MACD買いシグナル",
+            "RSI中立圏（56.2）",
+            "出来高増加（1.2倍）"
           ],
           "ai_confidence": 0
         }
@@ -595,7 +614,7 @@
       }
     },
     "B_5銘柄": {
-      "capital": 570350.0,
+      "capital": 349050.0,
       "positions": [
         {
           "ticker": "9020.T",
@@ -624,7 +643,7 @@
           "entry_date": "2026-09-01",
           "stop_loss": 1203.2,
           "take_profit": 1402.8,
-          "highest_price": 1267.5,
+          "highest_price": 1283.0,
           "signal_score": 54,
           "signal_reasons": [
             "⚠️ 直近高値圏（レンジ100%）",
@@ -632,6 +651,25 @@
             "MACD買いシグナル",
             "RSI中立圏（53.6）",
             "一目均衡表: 雲上抜け"
+          ],
+          "ai_confidence": 0
+        },
+        {
+          "ticker": "6473.T",
+          "name": "ジェイテクト",
+          "entry_price": 2213.0,
+          "quantity": 100,
+          "entry_date": "2026-09-03",
+          "stop_loss": 2102.3,
+          "take_profit": 2477.7,
+          "highest_price": 2213.0,
+          "signal_score": 52,
+          "signal_reasons": [
+            "⚠️ 高値圏（レンジ89%）",
+            "ゴールデンクロス（SMA5×SMA25）",
+            "MACD買いシグナル",
+            "RSI中立圏（56.2）",
+            "出来高増加（1.2倍）"
           ],
           "ai_confidence": 0
         }
@@ -1254,7 +1292,7 @@
       }
     },
     "C_10銘柄": {
-      "capital": 939980.0,
+      "capital": 718680.0,
       "positions": [
         {
           "ticker": "4188.T",
@@ -1264,7 +1302,7 @@
           "entry_date": "2026-09-01",
           "stop_loss": 1203.2,
           "take_profit": 1402.8,
-          "highest_price": 1267.5,
+          "highest_price": 1283.0,
           "signal_score": 54,
           "signal_reasons": [
             "⚠️ 直近高値圏（レンジ100%）",
@@ -1272,6 +1310,25 @@
             "MACD買いシグナル",
             "RSI中立圏（53.6）",
             "一目均衡表: 雲上抜け"
+          ],
+          "ai_confidence": 0
+        },
+        {
+          "ticker": "6473.T",
+          "name": "ジェイテクト",
+          "entry_price": 2213.0,
+          "quantity": 100,
+          "entry_date": "2026-09-03",
+          "stop_loss": 2102.3,
+          "take_profit": 2477.7,
+          "highest_price": 2213.0,
+          "signal_score": 52,
+          "signal_reasons": [
+            "⚠️ 高値圏（レンジ89%）",
+            "ゴールデンクロス（SMA5×SMA25）",
+            "MACD買いシグナル",
+            "RSI中立圏（56.2）",
+            "出来高増加（1.2倍）"
           ],
           "ai_confidence": 0
         }
@@ -1828,23 +1885,9 @@
       }
     }
   },
-  "last_run": "2026-09-03T03:11:57.219173",
-  "last_full_screening": "2026-09-02T10:56:19.342373",
+  "last_run": "2026-09-03T08:06:08.221046",
+  "last_full_screening": "2026-09-03T08:06:08.219302",
   "signals_history": [
-    {
-      "ticker": "4478.T",
-      "name": "フリー",
-      "type": "SELL",
-      "score": -38,
-      "date": "2026-08-24 07:05"
-    },
-    {
-      "ticker": "9101.T",
-      "name": "日本郵船",
-      "type": "SELL",
-      "score": -51,
-      "date": "2026-08-24 07:05"
-    },
     {
       "ticker": "7751.T",
       "name": "キヤノン",
@@ -2544,6 +2587,27 @@
       "type": "BUY",
       "score": 50,
       "date": "2026-09-02 10:56"
+    },
+    {
+      "ticker": "6473.T",
+      "name": "ジェイテクト",
+      "type": "BUY",
+      "score": 52,
+      "date": "2026-09-03 08:06"
+    },
+    {
+      "ticker": "8002.T",
+      "name": "丸紅",
+      "type": "BUY",
+      "score": 52,
+      "date": "2026-09-03 08:06"
+    },
+    {
+      "ticker": "4183.T",
+      "name": "三井化学",
+      "type": "BUY",
+      "score": 56,
+      "date": "2026-09-03 08:06"
     }
   ]
 }
