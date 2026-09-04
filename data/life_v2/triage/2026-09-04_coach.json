@@ -1,0 +1,216 @@
+{
+  "date": "2026-09-04",
+  "headline": "両手を空けて1ブロックに集中",
+  "one_minute_action": "カレンダーを開いて、最重要1ブロックの開始時刻を確定する",
+  "aesthetic_signal": "他者評価ではなく、4軸の自分のスコアだけを尺度にする",
+  "scorecard": {
+    "date": "2026-09-04",
+    "systemize": 0,
+    "declutter": 0,
+    "two_handed": 0,
+    "knowledge_share": 4,
+    "systemize_note": "(ヒューリスティック採点) 仕組み系シグナル数",
+    "declutter_note": "(ヒューリスティック採点) 断捨離シグナル数",
+    "two_handed_note": "(ヒューリスティック採点) 集中シグナル数",
+    "knowledge_share_note": "(ヒューリスティック採点) 共有シグナル数",
+    "total": 4,
+    "source_entry_ids": [],
+    "created_at": "2026-09-04T23:07:20"
+  },
+  "dropped": [
+    {
+      "title": "水準A（特別校舎開放せず／別棟のみ開放＋文化系は公共施設へ迂回）",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "利点：セキュリティ単純、リスク低",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "水準B（点で守る：理科準備室・音楽準備室等に個別セキュリティ＋必要室のみ解除）",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "利点：守るべき資産を局所的に強化、加古川・高砂の実運用に近く転用しやすい",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "課題：現行「廊下感知」設計との整合、機器追加・導線設計（どこで誰が解除するか）",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "水準C（面で守る：特別校舎を既存系統から分離し、利用区域のみ一括解除）",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "C1：特別校舎を別系統構築、入口で区域解除。利点は運用直感性、欠点は新設費用増",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "C2（柏市参照）：平日（全系統ON）／休日（特別校舎のみOFF）二系統運用。利点は時間帯で運用簡素化、欠点は平日利用想定の差異を要調整",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "スマートキーボックス（5箇所）：鍵番号の付与と本人確認、貸出・返却ログの整備が必須",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "カード／認証：音楽室等の前で解除する方式を想定する場合、カード発行・失効管理・再発行フローが要件化",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "カメラ：特別校舎内に死角を作らない配置（出入口・準備室前）と録画保持ポリシー",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "教職員負担：日常の開閉・警備入退の手間増を最小化（自動スケジュール連動、休日パターン定義）",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "追加入室リスク：理科薬品・高額楽器の無防備化を避けるため、準備室は原則一般解除不可",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "最大12教室（音楽・美術系が中心、被服・図書等含む）を想定。文化系の活動拡大に直結",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "県保健体育課・地域コーディネーターの来庁（9/10）で質問収集、二次募集（～9月末）で令和9年度先行実施の増加を狙う",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "10/14 推進協議会（コミセン）：他課（DX含む）連携、政策調整会議で共有済の「六つの柱」を運用ガイド化",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "安全＞利便の優先度は不変。だが「運用の単純さ」が現場受容性の決定因子",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "B案は低コスト・既存設備活用の延長で実現性高。C案はUXは優れるが初期費用と系統再設計が重い",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "平日利用の有無が方式選択の分水嶺。平日も開放するならC2の時間帯二系統は直接は適用不可、独自のスケジュール連動設計が必要",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 水準Bの技術可否と概算見積（準備室個別セキュリティ＋室前解除の導入要件、廊下感知との整合策）を取得 - [TBD]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 水準C1/C2の系統分離案について、機器構成・入口解除ポイント・スケジュール運用の技術設計案と概算費用を提示 - [TBD]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] スマートキーボックス5箇所の設置位置案（動線・カメラ視野・夜間警備導線）を実地調査のうえ確定 - [TBD]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 9/10 県保健体育課・地域コーディネーターへの質問リストを作成（平日/休日運用、本人確認、事故時責任分界、カード管理、ログ保全） - [9/9]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 9月末までの地域クラブ二次募集の広報強化（対象教室の暫定リスト提示、利用ルールのドラフト共有） - [9/30]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 推進協議会（10/14）に向け、A/B/C水準の比較資料（費用・運用負荷・リスク評価）と意思決定フレームを配布 - [10/7]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 利用者認証と貸出ログのデジタル管理案（カード発行・失効、キーボックスコード付与、カメラ映像保管期間）を提案 - [TBD]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 平日実施の可否と時間帯（施錠・巡回・最終退出確認）に関する現場運用条件を文書化 - [TBD]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    }
+  ],
+  "next_actions": [
+    {
+      "title": "稲美町中学校の機械警備は「廊下等の人感ベースの一元管理」。教室単位の解除導線が前提の加古川・高砂（セコム）方式とは構造が異なる",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    },
+    {
+      "title": "体育館・武道場・卓球場など別棟は既存の学校開放運用延長で比較的活用容易",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    },
+    {
+      "title": "欠点：学校資源の活用範囲が限定、文化系の拡張性に制約",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    }
+  ]
+}
