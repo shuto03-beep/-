@@ -1,0 +1,173 @@
+{
+  "date": "2026-09-07",
+  "headline": "両手を空けて1ブロックに集中",
+  "one_minute_action": "カレンダーを開いて、最重要1ブロックの開始時刻を確定する",
+  "aesthetic_signal": "他者評価ではなく、4軸の自分のスコアだけを尺度にする",
+  "scorecard": {
+    "date": "2026-09-07",
+    "systemize": 0,
+    "declutter": 0,
+    "two_handed": 2,
+    "knowledge_share": 0,
+    "systemize_note": "(ヒューリスティック採点) 仕組み系シグナル数",
+    "declutter_note": "(ヒューリスティック採点) 断捨離シグナル数",
+    "two_handed_note": "(ヒューリスティック採点) 集中シグナル数",
+    "knowledge_share_note": "(ヒューリスティック採点) 共有シグナル数",
+    "total": 2,
+    "source_entry_ids": [],
+    "created_at": "2026-09-07T23:37:21"
+  },
+  "dropped": [
+    {
+      "title": "**タスクの細分化**",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "6つの場所に4つの片付け方法を割り当て、計24タスクへ分解する例を紹介",
+      "reason": "雑務カテゴリ。仕組み化・委任・後回しの対象。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "細分化により「何も達成できない」モヤモヤを解消",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "朝の前半30分をタスク仕分けに充てることを推奨",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "タスク化は多くのメリットがあり、やる気を引き出す効果も期待できる",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**悩み・課題の整理（未来への種まき）**",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "朝の後半30分で、将来に向けた「種まき」として頭の整理を実施",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**ステップ1**: 悩み・課題・不安の原因を「1テーマ1付箋」でランダムに書き出し、頭が空になるまで吐き出す。仕事とプライベートの区別は不要",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**ステップ2**: 横軸「時間軸」、縦軸「解決可能性」の評価表を作り、付箋を分類",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**ステップ3**: 自分が動いても解決できない悩みは心配を手放す。自分の行動で解決できる悩みにのみ注目し、短期的なものから順に対策を考える",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "この手法により、問題を客観視し、取りかかりやすい短期課題から進めることで、段階的に思考がクリアになる",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**実践のアドバイス**",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "慣れるまでは紙の手帳・ノート・付箋などのアナログツールの使用を推奨",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "スマートフォンは他情報が目に入りやすく、SNS閲覧などで集中が途切れやすいデメリットあり",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "ルーティン開始前に、専用ノート・ペン・付箋を準備しておくとよい",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**人生の価値**",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "一度きりの人生をどう楽しむかに対し、「長さではなく質が重要」という視点を提示",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**後悔しないための5つの思考法**",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "27件の研究分析から導かれた、人生を使い切るための比較的根拠ある5つの思考法を紹介",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "これにより、最期に後悔せず、日々をすっきり楽しく過ごせるようになる",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "詳細は「BW」サービスで提供。約7000円で4000本以上の動画が見放題と紹介",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[質問や疑問点を挿入]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "2026年9月8日から早起きを開始し、朝の前半30分でタスクの細分化・仕分け、後半30分で付箋による悩み・課題の整理を実践する",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "ルーティン開始前に、専用のノート・ペン・付箋を準備する",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "慣れるまで、スマートフォンのアプリではなく紙のアナログツールでタスク管理・思考整理を行う",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    }
+  ],
+  "next_actions": []
+}
