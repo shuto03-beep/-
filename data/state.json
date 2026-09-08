@@ -1,7 +1,7 @@
 {
   "strategies": {
     "A_3銘柄": {
-      "capital": 314980.0,
+      "capital": 632180.0,
       "positions": [
         {
           "ticker": "9020.T",
@@ -19,44 +19,6 @@
             "MACD買いシグナル",
             "⚠️ RSI過熱（72.6）",
             "一目均衡表: 雲上抜け"
-          ],
-          "ai_confidence": 0
-        },
-        {
-          "ticker": "4188.T",
-          "name": "三菱ケミカルG",
-          "entry_price": 1266.5,
-          "quantity": 100,
-          "entry_date": "2026-09-01",
-          "stop_loss": 1203.2,
-          "take_profit": 1402.8,
-          "highest_price": 1283.0,
-          "signal_score": 54,
-          "signal_reasons": [
-            "⚠️ 直近高値圏（レンジ100%）",
-            "ゴールデンクロス（SMA5×SMA25）",
-            "MACD買いシグナル",
-            "RSI中立圏（53.6）",
-            "一目均衡表: 雲上抜け"
-          ],
-          "ai_confidence": 0
-        },
-        {
-          "ticker": "6473.T",
-          "name": "ジェイテクト",
-          "entry_price": 2213.0,
-          "quantity": 100,
-          "entry_date": "2026-09-03",
-          "stop_loss": 2102.3,
-          "take_profit": 2477.7,
-          "highest_price": 2213.0,
-          "signal_score": 52,
-          "signal_reasons": [
-            "⚠️ 高値圏（レンジ89%）",
-            "ゴールデンクロス（SMA5×SMA25）",
-            "MACD買いシグナル",
-            "RSI中立圏（56.2）",
-            "出来高増加（1.2倍）"
           ],
           "ai_confidence": 0
         }
@@ -586,6 +548,48 @@
             "📅 8月バイアス（補正-3）; 月替わり効果（+3）"
           ],
           "ai_confidence": 0
+        },
+        {
+          "ticker": "4188.T",
+          "name": "三菱ケミカルG",
+          "entry_price": 1266.5,
+          "exit_price": 1161.5,
+          "quantity": 100,
+          "entry_date": "2026-09-01",
+          "exit_date": "2026-09-08",
+          "pnl": -10500.0,
+          "pnl_pct": -0.08290564547966837,
+          "reason": "STOP_LOSS",
+          "signal_score": 54,
+          "signal_reasons": [
+            "⚠️ 直近高値圏（レンジ100%）",
+            "ゴールデンクロス（SMA5×SMA25）",
+            "MACD買いシグナル",
+            "RSI中立圏（53.6）",
+            "一目均衡表: 雲上抜け"
+          ],
+          "ai_confidence": 0
+        },
+        {
+          "ticker": "6473.T",
+          "name": "ジェイテクト",
+          "entry_price": 2213.0,
+          "exit_price": 2010.5,
+          "quantity": 100,
+          "entry_date": "2026-09-03",
+          "exit_date": "2026-09-08",
+          "pnl": -20250.0,
+          "pnl_pct": -0.09150474469046543,
+          "reason": "STOP_LOSS",
+          "signal_score": 52,
+          "signal_reasons": [
+            "⚠️ 高値圏（レンジ89%）",
+            "ゴールデンクロス（SMA5×SMA25）",
+            "MACD買いシグナル",
+            "RSI中立圏（56.2）",
+            "出来高増加（1.2倍）"
+          ],
+          "ai_confidence": 0
         }
       ],
       "daily_pnl": {
@@ -610,11 +614,12 @@
         "2026-08-06": 12550.0,
         "2026-08-12": -5150.0,
         "2026-09-01": 25350.0,
-        "2026-09-02": 100.0
+        "2026-09-02": 100.0,
+        "2026-09-08": -30750.0
       }
     },
     "B_5銘柄": {
-      "capital": 349050.0,
+      "capital": 666250.0,
       "positions": [
         {
           "ticker": "9020.T",
@@ -632,44 +637,6 @@
             "MACD買いシグナル",
             "⚠️ RSI過熱（72.6）",
             "一目均衡表: 雲上抜け"
-          ],
-          "ai_confidence": 0
-        },
-        {
-          "ticker": "4188.T",
-          "name": "三菱ケミカルG",
-          "entry_price": 1266.5,
-          "quantity": 100,
-          "entry_date": "2026-09-01",
-          "stop_loss": 1203.2,
-          "take_profit": 1402.8,
-          "highest_price": 1283.0,
-          "signal_score": 54,
-          "signal_reasons": [
-            "⚠️ 直近高値圏（レンジ100%）",
-            "ゴールデンクロス（SMA5×SMA25）",
-            "MACD買いシグナル",
-            "RSI中立圏（53.6）",
-            "一目均衡表: 雲上抜け"
-          ],
-          "ai_confidence": 0
-        },
-        {
-          "ticker": "6473.T",
-          "name": "ジェイテクト",
-          "entry_price": 2213.0,
-          "quantity": 100,
-          "entry_date": "2026-09-03",
-          "stop_loss": 2102.3,
-          "take_profit": 2477.7,
-          "highest_price": 2213.0,
-          "signal_score": 52,
-          "signal_reasons": [
-            "⚠️ 高値圏（レンジ89%）",
-            "ゴールデンクロス（SMA5×SMA25）",
-            "MACD買いシグナル",
-            "RSI中立圏（56.2）",
-            "出来高増加（1.2倍）"
           ],
           "ai_confidence": 0
         }
@@ -1262,6 +1229,48 @@
             "📅 8月バイアス（補正-3）; 月替わり効果（+3）"
           ],
           "ai_confidence": 0
+        },
+        {
+          "ticker": "4188.T",
+          "name": "三菱ケミカルG",
+          "entry_price": 1266.5,
+          "exit_price": 1161.5,
+          "quantity": 100,
+          "entry_date": "2026-09-01",
+          "exit_date": "2026-09-08",
+          "pnl": -10500.0,
+          "pnl_pct": -0.08290564547966837,
+          "reason": "STOP_LOSS",
+          "signal_score": 54,
+          "signal_reasons": [
+            "⚠️ 直近高値圏（レンジ100%）",
+            "ゴールデンクロス（SMA5×SMA25）",
+            "MACD買いシグナル",
+            "RSI中立圏（53.6）",
+            "一目均衡表: 雲上抜け"
+          ],
+          "ai_confidence": 0
+        },
+        {
+          "ticker": "6473.T",
+          "name": "ジェイテクト",
+          "entry_price": 2213.0,
+          "exit_price": 2010.5,
+          "quantity": 100,
+          "entry_date": "2026-09-03",
+          "exit_date": "2026-09-08",
+          "pnl": -20250.0,
+          "pnl_pct": -0.09150474469046543,
+          "reason": "STOP_LOSS",
+          "signal_score": 52,
+          "signal_reasons": [
+            "⚠️ 高値圏（レンジ89%）",
+            "ゴールデンクロス（SMA5×SMA25）",
+            "MACD買いシグナル",
+            "RSI中立圏（56.2）",
+            "出来高増加（1.2倍）"
+          ],
+          "ai_confidence": 0
         }
       ],
       "daily_pnl": {
@@ -1288,51 +1297,13 @@
         "2026-08-06": 12550.0,
         "2026-08-12": -5150.0,
         "2026-09-01": 25350.0,
-        "2026-09-02": 100.0
+        "2026-09-02": 100.0,
+        "2026-09-08": -30750.0
       }
     },
     "C_10銘柄": {
-      "capital": 718680.0,
-      "positions": [
-        {
-          "ticker": "4188.T",
-          "name": "三菱ケミカルG",
-          "entry_price": 1266.5,
-          "quantity": 100,
-          "entry_date": "2026-09-01",
-          "stop_loss": 1203.2,
-          "take_profit": 1402.8,
-          "highest_price": 1283.0,
-          "signal_score": 54,
-          "signal_reasons": [
-            "⚠️ 直近高値圏（レンジ100%）",
-            "ゴールデンクロス（SMA5×SMA25）",
-            "MACD買いシグナル",
-            "RSI中立圏（53.6）",
-            "一目均衡表: 雲上抜け"
-          ],
-          "ai_confidence": 0
-        },
-        {
-          "ticker": "6473.T",
-          "name": "ジェイテクト",
-          "entry_price": 2213.0,
-          "quantity": 100,
-          "entry_date": "2026-09-03",
-          "stop_loss": 2102.3,
-          "take_profit": 2477.7,
-          "highest_price": 2213.0,
-          "signal_score": 52,
-          "signal_reasons": [
-            "⚠️ 高値圏（レンジ89%）",
-            "ゴールデンクロス（SMA5×SMA25）",
-            "MACD買いシグナル",
-            "RSI中立圏（56.2）",
-            "出来高増加（1.2倍）"
-          ],
-          "ai_confidence": 0
-        }
-      ],
+      "capital": 1035880.0,
+      "positions": [],
       "closed_trades": [
         {
           "ticker": "4443.T",
@@ -1858,6 +1829,48 @@
             "📅 8月バイアス（補正-3）; 月替わり効果（+3）"
           ],
           "ai_confidence": 0
+        },
+        {
+          "ticker": "4188.T",
+          "name": "三菱ケミカルG",
+          "entry_price": 1266.5,
+          "exit_price": 1161.5,
+          "quantity": 100,
+          "entry_date": "2026-09-01",
+          "exit_date": "2026-09-08",
+          "pnl": -10500.0,
+          "pnl_pct": -0.08290564547966837,
+          "reason": "STOP_LOSS",
+          "signal_score": 54,
+          "signal_reasons": [
+            "⚠️ 直近高値圏（レンジ100%）",
+            "ゴールデンクロス（SMA5×SMA25）",
+            "MACD買いシグナル",
+            "RSI中立圏（53.6）",
+            "一目均衡表: 雲上抜け"
+          ],
+          "ai_confidence": 0
+        },
+        {
+          "ticker": "6473.T",
+          "name": "ジェイテクト",
+          "entry_price": 2213.0,
+          "exit_price": 2010.5,
+          "quantity": 100,
+          "entry_date": "2026-09-03",
+          "exit_date": "2026-09-08",
+          "pnl": -20250.0,
+          "pnl_pct": -0.09150474469046543,
+          "reason": "STOP_LOSS",
+          "signal_score": 52,
+          "signal_reasons": [
+            "⚠️ 高値圏（レンジ89%）",
+            "ゴールデンクロス（SMA5×SMA25）",
+            "MACD買いシグナル",
+            "RSI中立圏（56.2）",
+            "出来高増加（1.2倍）"
+          ],
+          "ai_confidence": 0
         }
       ],
       "daily_pnl": {
@@ -1881,12 +1894,13 @@
         "2026-08-06": 12550.0,
         "2026-08-12": -5150.0,
         "2026-09-01": 25350.0,
-        "2026-09-02": 100.0
+        "2026-09-02": 100.0,
+        "2026-09-08": -30750.0
       }
     }
   },
-  "last_run": "2026-09-08T03:19:21.379919",
-  "last_full_screening": "2026-09-07T12:00:20.367116",
+  "last_run": "2026-09-08T08:17:09.614782",
+  "last_full_screening": "2026-09-08T08:17:09.613404",
   "signals_history": [
     {
       "ticker": "7974.T",
@@ -2587,6 +2601,20 @@
       "type": "SELL",
       "score": -35,
       "date": "2026-09-07 08:20"
+    },
+    {
+      "ticker": "4661.T",
+      "name": "OLC",
+      "type": "SELL",
+      "score": -41,
+      "date": "2026-09-08 08:17"
+    },
+    {
+      "ticker": "9843.T",
+      "name": "ニトリHD",
+      "type": "SELL",
+      "score": -41,
+      "date": "2026-09-08 08:17"
     }
   ]
 }
