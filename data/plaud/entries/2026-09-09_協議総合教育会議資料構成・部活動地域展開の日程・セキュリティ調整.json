@@ -1,0 +1,29 @@
+{
+  "id": "2026-09-09_協議総合教育会議資料構成・部活動地域展開の日程・セキュリティ調整",
+  "source_file": "plaud-web:73dd4b494b226fe303c9da4fcf9069b6",
+  "recorded_at": "2026-09-09T22:43:43",
+  "ingested_at": "2026-09-10T22:49:10",
+  "title": "協議：総合教育会議資料構成・部活動地域展開の日程・セキュリティ調整",
+  "raw": {
+    "transcript": "[{\"timestamp\":8367520,\"mark_type\":4,\"mark_type_string\":null,\"mark_content\":\"本中学校は南校舎、南北中学校は北校舎を部活動で使用する。\",\"content\":null,\"title\":null,\"expanded_content\":null,\"picture_link\":null,\"mark_id\":\"5bbbe4f741df804f4be581d8edf4d376\",\"ocr_data_link\":\"\",\"link_expire_timestamp\":null,\"picture_local_path\":null,\"picture_full_url\":null,\"is_user_edited\":false,\"mark_status\":3,\"error_message\":null,\"retry_count\":null,\"last_failed_time\":null,\"is_user_deleted\":null}]",
+    "summary": ""
+  },
+  "lifelog": {
+    "headline": "協議：総合教育会議資料構成・部活動地域展開の日程・セキュリティ調整",
+    "tags": [
+      "plaud"
+    ],
+    "source": "raw"
+  },
+  "tasks": [],
+  "task_analysis": {
+    "total": 0,
+    "by_priority": {
+      "high": 0,
+      "medium": 0,
+      "low": 0
+    },
+    "effort_summary": "",
+    "blockers": []
+  }
+}

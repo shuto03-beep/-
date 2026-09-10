@@ -1,0 +1,29 @@
+{
+  "id": "2026-09-10_09-10-照明視察-1830現地多可中学校",
+  "source_file": "plaud-web:a0ee13e7505644e1df7a221943a5b7bb",
+  "recorded_at": "2026-09-10T05:09:46",
+  "ingested_at": "2026-09-10T22:49:11",
+  "title": "09-10 照明視察　18:30現地多可中学校",
+  "raw": {
+    "transcript": "",
+    "summary": ""
+  },
+  "lifelog": {
+    "headline": "09-10 照明視察　18:30現地多可中学校",
+    "tags": [
+      "plaud"
+    ],
+    "source": "raw"
+  },
+  "tasks": [],
+  "task_analysis": {
+    "total": 0,
+    "by_priority": {
+      "high": 0,
+      "medium": 0,
+      "low": 0
+    },
+    "effort_summary": "",
+    "blockers": []
+  }
+}

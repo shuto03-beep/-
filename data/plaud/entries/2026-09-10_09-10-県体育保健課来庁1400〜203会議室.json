@@ -1,0 +1,29 @@
+{
+  "id": "2026-09-10_09-10-県体育保健課来庁1400〜203会議室",
+  "source_file": "plaud-web:1ae916ec3403e03766e3d6ae7da55995",
+  "recorded_at": "2026-09-10T01:03:17",
+  "ingested_at": "2026-09-10T22:49:11",
+  "title": "09-10 県体育保健課来庁14:00〜203会議室",
+  "raw": {
+    "transcript": "",
+    "summary": ""
+  },
+  "lifelog": {
+    "headline": "09-10 県体育保健課来庁14:00〜203会議室",
+    "tags": [
+      "plaud"
+    ],
+    "source": "raw"
+  },
+  "tasks": [],
+  "task_analysis": {
+    "total": 0,
+    "by_priority": {
+      "high": 0,
+      "medium": 0,
+      "low": 0
+    },
+    "effort_summary": "",
+    "blockers": []
+  }
+}
