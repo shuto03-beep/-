@@ -1,0 +1,203 @@
+{
+  "date": "2026-09-12",
+  "headline": "両手を空けて1ブロックに集中",
+  "one_minute_action": "カレンダーを開いて、最重要1ブロックの開始時刻を確定する",
+  "aesthetic_signal": "他者評価ではなく、4軸の自分のスコアだけを尺度にする",
+  "scorecard": {
+    "date": "2026-09-12",
+    "systemize": 6,
+    "declutter": 0,
+    "two_handed": 6,
+    "knowledge_share": 0,
+    "systemize_note": "(ヒューリスティック採点) 仕組み系シグナル数",
+    "declutter_note": "(ヒューリスティック採点) 断捨離シグナル数",
+    "two_handed_note": "(ヒューリスティック採点) 集中シグナル数",
+    "knowledge_share_note": "(ヒューリスティック採点) 共有シグナル数",
+    "total": 12,
+    "source_entry_ids": [],
+    "created_at": "2026-09-12T23:07:27"
+  },
+  "dropped": [
+    {
+      "title": "**登壇者**: 千葉市デジタル戦略推進課長の岡田様、福祉機関の鶴巻様",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**テーマ**: 申請、給付、クーポン、マッチングまで、LINEで変わる子育てサービスの届け方",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**モデレーター**: パートナーサクセスマネージャーの武井氏",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**導入経緯**: 以前から子育て支援でLINEを活用していたが、市民が常に使うアプリで多様な手続きを完結させるため、昨年4月にGovTech Expressを",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**登録者数の推移**: 導入後、登録者数は順調に増加。「二十歳の集い」の事前登録、クマ出没アラート、高校サッカー部の応援などをきっかけに、令和7年3月末の5,",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**概要**: 職員が必要な手続きを自由に作成できるスマートフォン向けサービス。決まったパッケージではなく、質問や機能を柔軟に組み合わせられる。公的個人認証やQ",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**5つの特徴**:",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**説明書不要**: LINEのトーク感覚で手続きが可能",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**双方向**: 申請後の不備確認や予約リマインドもLINEで完結",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**マルチチャネル**: LINE非利用者もWebブラウザで同じ手続きを利用可能",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**内製化**: 追加費用なしで職員が必要な機能を増やせる",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**サポート体制**: 他自治体の事例活用や、担当者、コミュニティによるサポートを提供",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**セキュリティ**: データは行政でも利用可能なセキュリティ基準（ISMAP）を満たすセールスフォース上に保存される",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**導入**: 既存サービスとの併用が可能で、必ずしも乗り換える必要はない",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**担当者**: 子ども課の鶴巻氏が子育て現場視点での取り組みを紹介",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**推進理由**: 若い世代のデジタル抵抗が少ないこと、共働き家庭の増加に伴う手続き負担の軽減が急務であった",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**方針**: 「子育てに余裕を」をテーマに、心、お金、仕事、未来の4分野で全50事業を「ゼロ円パッケージ」としてパッケージ化しPR。病児保育など、様々なサービ",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "2040年問題による職員数減少を見据え、窓口業務を減らし、対面でしかできない業務に時間を振り向けることを目指す",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "窓口を廃止するのではなく、LINEでの事前入力・予約を推進し、窓口では本人確認などに集中する方針",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "総業務量は大きく変わらないものの、業務が「事前準備型」に変化し、業務の平準化や住民満足度向上といった質的効果が確認された",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**課題**: 従来、妊娠届、妊婦支援給付、マタニティタクシー券交付で同様の情報を複数回記入する必要があった",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**解決策**:",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "LINEで妊娠届の事前予約・入力を導入。共通情報を3つの手続きに展開し、重複入力を解消",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "相談内容（服薬、障害の有無など）を事前に把握できるため、市役所側は準備を整えて対応可能に",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "窓口では面談、本人確認、母子手帳交付に集中",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**成果**:",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "2024年4月開始後、妊娠届44件のうち約半数が事前予約を利用",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "妊婦支援給付（5万円）の支給期間が、従来の2〜3週間から最短即日に短縮された",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "子どもが急病になった際の病児保育の事前登録を促すため、無料クーポンをLINEで提供",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "利用料（1日2000円）のうち、毎年5日分（合計1万円分）を無料化し、経済的・心理的負担を軽減",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    }
+  ],
+  "next_actions": []
+}
