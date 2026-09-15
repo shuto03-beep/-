@@ -1,0 +1,216 @@
+{
+  "date": "2026-09-15",
+  "headline": "両手を空けて1ブロックに集中",
+  "one_minute_action": "カレンダーを開いて、最重要1ブロックの開始時刻を確定する",
+  "aesthetic_signal": "他者評価ではなく、4軸の自分のスコアだけを尺度にする",
+  "scorecard": {
+    "date": "2026-09-15",
+    "systemize": 2,
+    "declutter": 0,
+    "two_handed": 0,
+    "knowledge_share": 10,
+    "systemize_note": "(ヒューリスティック採点) 仕組み系シグナル数",
+    "declutter_note": "(ヒューリスティック採点) 断捨離シグナル数",
+    "two_handed_note": "(ヒューリスティック採点) 集中シグナル数",
+    "knowledge_share_note": "(ヒューリスティック採点) 共有シグナル数",
+    "total": 12,
+    "source_entry_ids": [],
+    "created_at": "2026-09-15T23:33:44"
+  },
+  "dropped": [
+    {
+      "title": "[ ] 専門指導員の引率に関する規定を整理し、過去に支払われていなかった理由（申請がなかった等）として明文化すること - [TBD]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 中間報告等の様式が不明な状況において、休日・平日の活動実績を適切に按分または分類するための資料を作成すること - [TBD]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 各種行事参加補助金の申請に向けて、補助金の経費内訳資料を作成・完成させること - [TBD]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 次回の大会参加に向け、バス代等の費用に関して昨年度同様に見積もりをミキバスから取得すること - [TBD]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 中間報告等の様式が不明な状況において、休日・平日の活動実績を適切に按分または分類するための資料を作成すること - [TBD]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 10月24日の立ち会い時に、同意書類を手渡すこと - [TBD]",
+      "reason": "雑務カテゴリ。仕組み化・委任・後回しの対象。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 防災工事の当日必要書類について、関係者3名へ伝達すること - [TBD]",
+      "reason": "雑務カテゴリ。仕組み化・委任・後回しの対象。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 各施設（森・天満・東・河口・南）の鍵管理について、立ち会い時に手配すること - [TBD]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 各施設へのLED化調査について、まちづくり側で相見積もりを取得すること - [TBD]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] まちづくり関連施設のLED化工事に関して、見積もりを取得し費用を調査すること - [TBD]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 各施設へのLED化調査について、まちづくり側で相見積もりを取得すること - [TBD]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 予算流用先を確定した内容で資料に反映させること - [TBD]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 支払いを手数料を差し引いた形での振り込みで手配すること - [TBD]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "一転して水野が2杯ラーメンの話を皮切りに、地域の店や「ラーメン部」のストイックなルールまで、ラーメン談義が大いに盛り上がる。続いて自家製チーズケーキが振る舞われ",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "後半はガチャやUFOキャッチャー、競馬・パチンコ・宝くじの確率談義から、職場の噂話、明日の同行段取り、大阪のラーメン情報共有などに派生。最後に勤務・出張・宅配対",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "写真を送付予定",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "システム導入は手数料（3.5%＋月額 vs 無料で5%）の比較試算を実施。まずスタッフのみで試験運用して判断",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "連絡機能の権限制御（指導者→親・子は一斉連絡可、親→指導者は可、親同士・子同士は不可）を確認",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "新規ロッカー扉に不具合（引っかかり）があり、メーカー連絡・後日再確認の方針",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "水野が手作りチーズケーキを差し入れ。レシピのコツ（最後に濾す、チーズ品質が鍵）やアレンジ案を共有",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "技術上達は反復と微調整が重要、忙しい時こそ趣味に没頭を推奨",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "年末に宝くじを少額ずつ購入する案で合意",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "明日は一緒に動く段取り。大阪中心部のラーメン情報共有の約束あり",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "勤務中の宅配対応、視察・出張（公用車）の運用確認を実施",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "駐車場所は厳格なルールを再確認。水野は今後厳守、やむを得ない場合は事前報告の方針",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "資料再編集",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "来年度予算関連の部活動申請シートの提出期限は当日で、[水野]が確認後に送付予定。返事待ちのため先行送付案も検討",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    }
+  ],
+  "next_actions": [
+    {
+      "title": "返事が来ない中で送付判断を迷う苛立ちや、電話が聞き取りにくい相手への対応工夫が共有される。並行して新しく購入したロッカー扉の引っかかりを皆で検証し、メーカーへの",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    },
+    {
+      "title": "勤怠・会計はCSV前提でAIによる集約の可能性を示唆",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(独自性)に合致。",
+      "leverage": false,
+      "mission": false,
+      "uniqueness": true,
+      "source_entry_id": null
+    },
+    {
+      "title": "会話はまず、過去資料の再編集や写真送付、来期予算・部活動申請の締切確認など、事務連絡がテンポよく進む。手数料3.5%＋月額と無料5%の損得比較、勤怠・会計のCS",
+      "duration_minutes": 15,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    }
+  ]
+}
