@@ -1,8 +1,28 @@
 {
   "strategies": {
     "A_3銘柄": {
-      "capital": 985280.0,
-      "positions": [],
+      "capital": 765880.0,
+      "positions": [
+        {
+          "ticker": "2871.T",
+          "name": "ニチレイ",
+          "entry_price": 2194.0,
+          "quantity": 100,
+          "entry_date": "2026-09-15",
+          "stop_loss": 2097.8,
+          "take_profit": 2347.9,
+          "highest_price": 2194.0,
+          "signal_score": 56,
+          "signal_reasons": [
+            "レンジ中位（適正エントリー）",
+            "ゴールデンクロス（SMA5×SMA25）",
+            "MACD買いシグナル",
+            "⚠️ RSI買われすぎ気味（62.5）",
+            "RSI強気ダイバージェンス"
+          ],
+          "ai_confidence": 0
+        }
+      ],
       "closed_trades": [
         {
           "ticker": "4443.T",
@@ -621,8 +641,28 @@
       }
     },
     "B_5銘柄": {
-      "capital": 1019350.0,
-      "positions": [],
+      "capital": 799950.0,
+      "positions": [
+        {
+          "ticker": "2871.T",
+          "name": "ニチレイ",
+          "entry_price": 2194.0,
+          "quantity": 100,
+          "entry_date": "2026-09-15",
+          "stop_loss": 2097.8,
+          "take_profit": 2347.9,
+          "highest_price": 2194.0,
+          "signal_score": 56,
+          "signal_reasons": [
+            "レンジ中位（適正エントリー）",
+            "ゴールデンクロス（SMA5×SMA25）",
+            "MACD買いシグナル",
+            "⚠️ RSI買われすぎ気味（62.5）",
+            "RSI強気ダイバージェンス"
+          ],
+          "ai_confidence": 0
+        }
+      ],
       "closed_trades": [
         {
           "ticker": "4443.T",
@@ -1306,8 +1346,28 @@
       }
     },
     "C_10銘柄": {
-      "capital": 1035880.0,
-      "positions": [],
+      "capital": 816480.0,
+      "positions": [
+        {
+          "ticker": "2871.T",
+          "name": "ニチレイ",
+          "entry_price": 2194.0,
+          "quantity": 100,
+          "entry_date": "2026-09-15",
+          "stop_loss": 2097.8,
+          "take_profit": 2347.9,
+          "highest_price": 2194.0,
+          "signal_score": 56,
+          "signal_reasons": [
+            "レンジ中位（適正エントリー）",
+            "ゴールデンクロス（SMA5×SMA25）",
+            "MACD買いシグナル",
+            "⚠️ RSI買われすぎ気味（62.5）",
+            "RSI強気ダイバージェンス"
+          ],
+          "ai_confidence": 0
+        }
+      ],
       "closed_trades": [
         {
           "ticker": "4443.T",
@@ -1903,37 +1963,9 @@
       }
     }
   },
-  "last_run": "2026-09-14T12:16:10.174354",
-  "last_full_screening": "2026-09-14T12:16:10.172599",
+  "last_run": "2026-09-15T03:40:34.628371",
+  "last_full_screening": "2026-09-15T03:40:34.626695",
   "signals_history": [
-    {
-      "ticker": "9101.T",
-      "name": "日本郵船",
-      "type": "SELL",
-      "score": -43,
-      "date": "2026-08-25 05:06"
-    },
-    {
-      "ticker": "9107.T",
-      "name": "川崎汽船",
-      "type": "SELL",
-      "score": -41,
-      "date": "2026-08-25 05:06"
-    },
-    {
-      "ticker": "9434.T",
-      "name": "ソフトバンク",
-      "type": "SELL",
-      "score": -37,
-      "date": "2026-08-25 05:06"
-    },
-    {
-      "ticker": "6460.T",
-      "name": "セガサミーHD",
-      "type": "SELL",
-      "score": -38,
-      "date": "2026-08-25 05:48"
-    },
     {
       "ticker": "9101.T",
       "name": "日本郵船",
@@ -2633,6 +2665,20 @@
       "type": "SELL",
       "score": -42,
       "date": "2026-09-14 12:16"
+    },
+    {
+      "ticker": "5301.T",
+      "name": "東海カーボン",
+      "type": "SELL",
+      "score": -39,
+      "date": "2026-09-15 03:40"
+    },
+    {
+      "ticker": "2871.T",
+      "name": "ニチレイ",
+      "type": "BUY",
+      "score": 56,
+      "date": "2026-09-15 03:40"
     }
   ]
 }
