@@ -1,0 +1,120 @@
+{
+  "date": "2026-09-16",
+  "headline": "両手を空けて1ブロックに集中",
+  "one_minute_action": "カレンダーを開いて、最重要1ブロックの開始時刻を確定する",
+  "aesthetic_signal": "他者評価ではなく、4軸の自分のスコアだけを尺度にする",
+  "scorecard": {
+    "date": "2026-09-16",
+    "systemize": 0,
+    "declutter": 0,
+    "two_handed": 0,
+    "knowledge_share": 10,
+    "systemize_note": "(ヒューリスティック採点) 仕組み系シグナル数",
+    "declutter_note": "(ヒューリスティック採点) 断捨離シグナル数",
+    "two_handed_note": "(ヒューリスティック採点) 集中シグナル数",
+    "knowledge_share_note": "(ヒューリスティック採点) 共有シグナル数",
+    "total": 10,
+    "source_entry_ids": [],
+    "created_at": "2026-09-16T23:41:49"
+  },
+  "dropped": [
+    {
+      "title": "生涯学習課（橋本課長）",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 校区まちづくり事業（5校区）の事業報告書・収支報告書、夏祭り等の特別会計の収支報告書の提出可否を各団体に確認し、提出可能部分を整理の上で議会へ提示する",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "管理担当課長 前田",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 放課後児童クラブのLED化完了（令和9年末目標）に向けた工程計画の策定と令和9年度予算計上の検討を進める - [TBD]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "スポーツ係（水田係長）",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] スポーツクラブ21のクラブハウスの利用実態（利用率）を調査し、維持管理のあり方（存続・再編・活用策）を検討する - [TBD]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 高園寺球場、いなみ野体育センター等の修繕費・維持管理業務委託料の詳細内訳資料を整理し、議会へ提出する - [TBD]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 中央公園の照明不足への暫定的安全対策の可能性について、都市計画の移設予定を踏まえた選択肢を検討する - [TBD]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "水野（生涯学習課 副課長）",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 地域移行に関する協議会日程（当初10月2日案）の再調整を稲美北中校長と行い、関係者参加可能な代替日程を確定する - [TBD]",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 各部活動顧問に対し、地域移行の方針・参加要件（認定地域クラブ、中体連大会参加条件）と意向を確認し、保護者説明の準備を進める - [TBD]",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    }
+  ],
+  "next_actions": [
+    {
+      "title": "[ ] 学校給食の食材納入業者リスト（20社）と各社の納入金額の詳細資料を整理し、議会へ提出する - [TBD]",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    },
+    {
+      "title": "教育課（前田課長）／管理係長",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 部活動地域移行に関して、難波先生と具体協議を行い、地域クラブの立ち上げ時期・体制（認定申請、指導・事務分担）を決定する - [TBD]",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    }
+  ]
+}
