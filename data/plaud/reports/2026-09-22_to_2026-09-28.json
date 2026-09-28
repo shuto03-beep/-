@@ -1,0 +1,27 @@
+{
+  "period": "2026-09-22_to_2026-09-28",
+  "start": "2026-09-22",
+  "end": "2026-09-28",
+  "generated_at": "2026-09-28T00:26:02",
+  "entry_count": 0,
+  "headlines": [],
+  "top_tags": [],
+  "moods": {},
+  "tasks": {
+    "total": 0,
+    "open": 0,
+    "done": 0,
+    "by_priority": {
+      "high": 0,
+      "medium": 0,
+      "low": 0
+    },
+    "open_list": []
+  },
+  "narrative": {
+    "summary": "(期間内にエントリがありません)",
+    "highlights": [],
+    "next_focus": [],
+    "source": "empty"
+  }
+}
