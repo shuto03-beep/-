@@ -1,27 +1,8 @@
 {
   "strategies": {
     "A_3銘柄": {
-      "capital": 301130.0,
+      "capital": 512530.0,
       "positions": [
-        {
-          "ticker": "2871.T",
-          "name": "ニチレイ",
-          "entry_price": 2194.0,
-          "quantity": 100,
-          "entry_date": "2026-09-15",
-          "stop_loss": 2097.8,
-          "take_profit": 2347.9,
-          "highest_price": 2228.0,
-          "signal_score": 56,
-          "signal_reasons": [
-            "レンジ中位（適正エントリー）",
-            "ゴールデンクロス（SMA5×SMA25）",
-            "MACD買いシグナル",
-            "⚠️ RSI買われすぎ気味（62.5）",
-            "RSI強気ダイバージェンス"
-          ],
-          "ai_confidence": 0
-        },
         {
           "ticker": "4568.T",
           "name": "第一三共",
@@ -649,6 +630,27 @@
             "一目均衡表: 雲上抜け"
           ],
           "ai_confidence": 0
+        },
+        {
+          "ticker": "2871.T",
+          "name": "ニチレイ",
+          "entry_price": 2194.0,
+          "exit_price": 2114.0,
+          "quantity": 100,
+          "entry_date": "2026-09-15",
+          "exit_date": "2026-09-30",
+          "pnl": -8000.0,
+          "pnl_pct": -0.03646308113035551,
+          "reason": "MAX_HOLDING_PERIOD",
+          "signal_score": 56,
+          "signal_reasons": [
+            "レンジ中位（適正エントリー）",
+            "ゴールデンクロス（SMA5×SMA25）",
+            "MACD買いシグナル",
+            "⚠️ RSI買われすぎ気味（62.5）",
+            "RSI強気ダイバージェンス"
+          ],
+          "ai_confidence": 0
         }
       ],
       "daily_pnl": {
@@ -675,31 +677,13 @@
         "2026-09-01": 25350.0,
         "2026-09-02": 100.0,
         "2026-09-08": -30750.0,
-        "2026-09-10": -7300.0
+        "2026-09-10": -7300.0,
+        "2026-09-30": -8000.0
       }
     },
     "B_5銘柄": {
-      "capital": 335200.0,
+      "capital": 546600.0,
       "positions": [
-        {
-          "ticker": "2871.T",
-          "name": "ニチレイ",
-          "entry_price": 2194.0,
-          "quantity": 100,
-          "entry_date": "2026-09-15",
-          "stop_loss": 2097.8,
-          "take_profit": 2347.9,
-          "highest_price": 2228.0,
-          "signal_score": 56,
-          "signal_reasons": [
-            "レンジ中位（適正エントリー）",
-            "ゴールデンクロス（SMA5×SMA25）",
-            "MACD買いシグナル",
-            "⚠️ RSI買われすぎ気味（62.5）",
-            "RSI強気ダイバージェンス"
-          ],
-          "ai_confidence": 0
-        },
         {
           "ticker": "4568.T",
           "name": "第一三共",
@@ -1390,6 +1374,27 @@
             "一目均衡表: 雲上抜け"
           ],
           "ai_confidence": 0
+        },
+        {
+          "ticker": "2871.T",
+          "name": "ニチレイ",
+          "entry_price": 2194.0,
+          "exit_price": 2114.0,
+          "quantity": 100,
+          "entry_date": "2026-09-15",
+          "exit_date": "2026-09-30",
+          "pnl": -8000.0,
+          "pnl_pct": -0.03646308113035551,
+          "reason": "MAX_HOLDING_PERIOD",
+          "signal_score": 56,
+          "signal_reasons": [
+            "レンジ中位（適正エントリー）",
+            "ゴールデンクロス（SMA5×SMA25）",
+            "MACD買いシグナル",
+            "⚠️ RSI買われすぎ気味（62.5）",
+            "RSI強気ダイバージェンス"
+          ],
+          "ai_confidence": 0
         }
       ],
       "daily_pnl": {
@@ -1418,31 +1423,13 @@
         "2026-09-01": 25350.0,
         "2026-09-02": 100.0,
         "2026-09-08": -30750.0,
-        "2026-09-10": -7300.0
+        "2026-09-10": -7300.0,
+        "2026-09-30": -8000.0
       }
     },
     "C_10銘柄": {
-      "capital": 643180.0,
+      "capital": 854580.0,
       "positions": [
-        {
-          "ticker": "2871.T",
-          "name": "ニチレイ",
-          "entry_price": 2194.0,
-          "quantity": 100,
-          "entry_date": "2026-09-15",
-          "stop_loss": 2097.8,
-          "take_profit": 2347.9,
-          "highest_price": 2228.0,
-          "signal_score": 56,
-          "signal_reasons": [
-            "レンジ中位（適正エントリー）",
-            "ゴールデンクロス（SMA5×SMA25）",
-            "MACD買いシグナル",
-            "⚠️ RSI買われすぎ気味（62.5）",
-            "RSI強気ダイバージェンス"
-          ],
-          "ai_confidence": 0
-        },
         {
           "ticker": "7267.T",
           "name": "ホンダ",
@@ -2030,6 +2017,27 @@
             "出来高増加（1.2倍）"
           ],
           "ai_confidence": 0
+        },
+        {
+          "ticker": "2871.T",
+          "name": "ニチレイ",
+          "entry_price": 2194.0,
+          "exit_price": 2114.0,
+          "quantity": 100,
+          "entry_date": "2026-09-15",
+          "exit_date": "2026-09-30",
+          "pnl": -8000.0,
+          "pnl_pct": -0.03646308113035551,
+          "reason": "MAX_HOLDING_PERIOD",
+          "signal_score": 56,
+          "signal_reasons": [
+            "レンジ中位（適正エントリー）",
+            "ゴールデンクロス（SMA5×SMA25）",
+            "MACD買いシグナル",
+            "⚠️ RSI買われすぎ気味（62.5）",
+            "RSI強気ダイバージェンス"
+          ],
+          "ai_confidence": 0
         }
       ],
       "daily_pnl": {
@@ -2054,41 +2062,14 @@
         "2026-08-12": -5150.0,
         "2026-09-01": 25350.0,
         "2026-09-02": 100.0,
-        "2026-09-08": -30750.0
+        "2026-09-08": -30750.0,
+        "2026-09-30": -8000.0
       }
     }
   },
-  "last_run": "2026-09-29T12:26:33.174094",
-  "last_full_screening": "2026-09-25T11:29:35.709033",
+  "last_run": "2026-09-30T04:16:10.579487",
+  "last_full_screening": "2026-09-30T04:16:10.577812",
   "signals_history": [
-    {
-      "ticker": "7269.T",
-      "name": "スズキ",
-      "type": "SELL",
-      "score": -43,
-      "date": "2026-08-31 10:46"
-    },
-    {
-      "ticker": "1605.T",
-      "name": "INPEX",
-      "type": "SELL",
-      "score": -35,
-      "date": "2026-08-31 10:46"
-    },
-    {
-      "ticker": "4506.T",
-      "name": "住友ファーマ",
-      "type": "SELL",
-      "score": -55,
-      "date": "2026-08-31 10:46"
-    },
-    {
-      "ticker": "5019.T",
-      "name": "出光興産",
-      "type": "SELL",
-      "score": -47,
-      "date": "2026-08-31 10:46"
-    },
     {
       "ticker": "8411.T",
       "name": "みずほFG",
@@ -2788,6 +2769,20 @@
       "type": "BUY",
       "score": 48,
       "date": "2026-09-25 11:29"
+    },
+    {
+      "ticker": "6479.T",
+      "name": "ミネベアミツミ",
+      "type": "SELL",
+      "score": -41,
+      "date": "2026-09-30 04:16"
+    },
+    {
+      "ticker": "6855.T",
+      "name": "日本電子",
+      "type": "SELL",
+      "score": -35,
+      "date": "2026-09-30 04:16"
     }
   ]
 }
