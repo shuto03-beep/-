@@ -1,0 +1,216 @@
+{
+  "date": "2026-09-30",
+  "headline": "両手を空けて1ブロックに集中",
+  "one_minute_action": "カレンダーを開いて、最重要1ブロックの開始時刻を確定する",
+  "aesthetic_signal": "他者評価ではなく、4軸の自分のスコアだけを尺度にする",
+  "scorecard": {
+    "date": "2026-09-30",
+    "systemize": 2,
+    "declutter": 0,
+    "two_handed": 0,
+    "knowledge_share": 10,
+    "systemize_note": "(ヒューリスティック採点) 仕組み系シグナル数",
+    "declutter_note": "(ヒューリスティック採点) 断捨離シグナル数",
+    "two_handed_note": "(ヒューリスティック採点) 集中シグナル数",
+    "knowledge_share_note": "(ヒューリスティック採点) 共有シグナル数",
+    "total": 12,
+    "source_entry_ids": [],
+    "created_at": "2026-09-30T00:37:05"
+  },
+  "dropped": [
+    {
+      "title": "施策調整会議のセキュリティ関連内容を反映した予算見積を取得。万が一ケースも含めた複数パターンで積算しており膨らみあり",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "施策調整会議後、女子バレーボールの先行実施など新要望が発生し、計画と予算の修正見込み",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "募集種目が一次の12種目から5種目増の17種目に拡大。4月開始に向け種目調整を前倒し",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "体験会は同日・同会場（例：稲美北中、稲美中の武道場・体育館）で複数種目比較可能な形が望ましい",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "空手は町内2団体から申込み（流派が異なる可能性）。小笠原氏の申請は指導者2名要件に対し1名記載で書類不備、登録未完",
+      "reason": "雑務カテゴリ。仕組み化・委任・後回しの対象。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "支援方法としてポイント制と現金支給を比較検討。ポイント制はHP利用の浸透・漏れ懸念、現金支給は団体の実績に基づく還元でタイミング遅延の可能性",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "団体が参加費を取り立てる状況は避けるべきとの意見",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "就学支援との連携案：クラブ発行の参加証明書を申請時に添付し、支援金額を上乗せ振込。ただし用途不一致（支援金がクラブ費に充当されない）懸念あり",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "必要経費ベースの今回予算案を強く説明する方針",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "二次募集（9月末まで）に関する連絡実施。令和10年8月開始予定で、時期に再連絡依頼",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "伝馬小では各団体がネットを用意する運用の事例共有。支柱等備品は長期利用可能との認識",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "工期見込みは約40日（実工事1ヶ月程度の可能性）だが、部材納期が7月から翌年1月末までかかる不確実性あり。全体期間は半年〜7ヶ月程度を想定",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "設計の有無と入札・価格への影響を議論。設計が入れば質問対応・価格整理・上下限設定で落札の透明性向上。非設計の場合は現場負担増",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "12月補正で設計を行う場合、入札は最短で1月、契約は2週間後、着手は2〜3月見込み。設計期間は不確定",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "工事期間中の活動場所確保が課題。掘削や地中作業期間は使用制限が発生。夏休み・冬休み活用で影響緩和。代替として稲美北中や公共施設の利用を検討（公共施設は空きなしの",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "設計費は工事総額の約10%目安。今回約3200万円規模で設計費300万円超見込み",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "来年度（令和9年度）中の完了制約に合わせ、5月工事契約完了→7月着工を目標。実現には4月設計完了が必要で、今年度中（12月補正）に設計予算確保が前提",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "設計見積と工事概算を11月に同時取得し、12月補正に上げる方針。補正締切は12月5日を確認予定",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "設計仕様書（照明配置、引込計画、図面、照度仕様、電源引込経路・距離、キュービクル容量等）を12月25日までに完成。1月6日入札関連発送、1月21日入札（指名）想",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "電気工事業者選定は、町内2〜3社（天満電工含む）を軸に、広域募集で8〜9社参加見込み。経営審査点と有資格者配置を入札条件に。公平な競争を維持",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "仕様書作成と管理体制強化の必要性を確認。工事と管理の分離を前提に仕様遵守確認の外部委託を検討。管理・設計費等の「物以外費用」による総額上昇リスクに留意",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "天馬電光との過去見積経緯共有（マザ電気に敗北）。仕様書は現場確認内容と注意事項を反映し、品質・仕様準拠の管理を重視。不当な低価格提示への懸念",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "工事予算が高額のため圧縮要請への対応（設計でコスト最適化、入札不落回避）を準備。見積様式の統一と予定価格積算の整合性確保",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "令和9年度査定シート（Excel）は共有フォルダの予算フォルダに格納済み",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "学校施設利用は調整中で現時点では可否未確定",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "学校行事（秋の運動会、4〜5月の行事）を避ける工事スケジュール調整が必要。冬期は授業利用あり",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "キュービクルのブランド・規格・電圧など技術要件を教育部局と10月までに確定。空調工事完了時期（2末/3末）認識差の調整が必要",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    }
+  ],
+  "next_actions": [
+    {
+      "title": "設計業者の選定では、教育施設経験のある事務所を候補に挙げ、「軽設計」などを検討。選定には約1ヶ月想定",
+      "duration_minutes": 60,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    },
+    {
+      "title": "明日（2026年9月30日）配布資料は教育長へ事前共有済み。調書の金額に誤りがあり修正版を持参、内訳不明瞭のため当日配布用補足資料を準備",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    },
+    {
+      "title": "北谷教育長より、意見が通らない場合は直接部長へ働きかける意向",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    }
+  ]
+}
