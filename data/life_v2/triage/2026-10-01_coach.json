@@ -1,0 +1,216 @@
+{
+  "date": "2026-10-01",
+  "headline": "両手を空けて1ブロックに集中",
+  "one_minute_action": "カレンダーを開いて、最重要1ブロックの開始時刻を確定する",
+  "aesthetic_signal": "他者評価ではなく、4軸の自分のスコアだけを尺度にする",
+  "scorecard": {
+    "date": "2026-10-01",
+    "systemize": 0,
+    "declutter": 0,
+    "two_handed": 0,
+    "knowledge_share": 2,
+    "systemize_note": "(ヒューリスティック採点) 仕組み系シグナル数",
+    "declutter_note": "(ヒューリスティック採点) 断捨離シグナル数",
+    "two_handed_note": "(ヒューリスティック採点) 集中シグナル数",
+    "knowledge_share_note": "(ヒューリスティック採点) 共有シグナル数",
+    "total": 2,
+    "source_entry_ids": [],
+    "created_at": "2026-10-01T00:38:59"
+  },
+  "dropped": [
+    {
+      "title": "一般利用者が普通教室等に入れないよう、シャッター等で物理的に切り分け、人感センサーなど機械警備も改修",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "教職員用とは別に地域クラブ専用入口へセキュリティ解除装置を設置",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "薬品庫や高価な楽器保管場所のセキュリティ強化を検討",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "費用・契約の論点",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "改修費を一括で計上するか、警備保証料（月額）に含めるか未決定。月額分割は総額が高くなる懸念",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "現行契約では機器代が月額に含まれている可能性があり、既存機器流用可の業者（例: トヨテック）は有利、新規参入は機器入替費で不利",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "過去は市が初期設置費を負担せず、警備会社が設置・撤去していたとの意見あり。過去契約との比較検討が必要",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "夜間管理者を2校に配置する案（費用: 472万6000円）を検討",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "現在、鍵施錠確認は警備会社（トヨペック）の業務に含まれ、対応可能ならシルバー人材費を削減できる可能性",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "配置時の待機場所の確保と費用は未計上で、見積り・確保方法が未定",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "toto助成金を前提とした事業計画",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "totoは他補助（国の体制整備、地域未来投資促進法の交付金）より手続き負担が軽く高額の可能性。地域未来は補助率1/2想定だが手続きが複雑",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "工事費4,000万円規模の場合、toto・地域未来とも補助額2,000万円程度で同等となる前提ではtotoが有利との見解",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "5年間で複数採択されるか不透明のため、庁内で優先順位調整が必要",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "当初3,000万円規模で設計したが6,000万円へ増額した経緯があり、toto不採択時に一般財源増となるリスクが懸念",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "補助不採択時の対応・予算編成",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "「補助が当たれば実施、当たらなければ原則実施しない（一般財源投入は抑制）」の立場が複数発言で確認",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "政策調整会議で一般財源投入の可否・優先順位を明確化する必要",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "12月補正、当初予算、6月補正など複数シナリオを検討。10年8月までに夜間利用可能（照明必須）とする完了制約が重要",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "不採択時は延期（翌年度送り）や暫定運用（他施設活用）の検討余地",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "仕様基準と資料整備",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "天満関連のグラウンド照明で100/80ルクスの二案を用意し、設計費・工事費の概算を準備。80ルクスの妥当性は利用目的に照らし事前確認",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "照度計で中央公園等を実測し、客観データ（数値・写真）で基準設定を裏付ける",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "設計・見積・契約スケジュール",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "設計は工事積算の根拠に必須。設計と管理の体制構築が前提",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "設計見積は一定程度あり。工事・管理費は概算で枠取りを先行し、正式査定は精度が整い次第",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "教育長向けに夜間利用の現状資料（照明利用状況等）を提出予定",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    }
+  ],
+  "next_actions": [
+    {
+      "title": "いなチャレ（地域クラブ活動）に伴い、特別校舎の一部開放に向けたセキュリティ改修が必要",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    },
+    {
+      "title": "南中・北中の照明設置を令和9・10年度で計画。小学校スポーツ側は中央公園照明で令和10年度のtoto希望",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    },
+    {
+      "title": "公園・学校の照明設置の必要性は共有済みだが、照度基準（例: 100ルクス）を満たすべきか、toto不採択時の最低照度（例: 80ルクス）をどこに置くか未決定",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    }
+  ]
+}
