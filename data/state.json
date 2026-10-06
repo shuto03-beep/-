@@ -30,7 +30,7 @@
           "entry_date": "2026-10-02",
           "stop_loss": 2731.2,
           "take_profit": 3056.9,
-          "highest_price": 2893.5,
+          "highest_price": 2924.0,
           "signal_score": 51,
           "signal_reasons": [
             "✨ 直近安値付近（押し目買いチャンス）",
@@ -733,7 +733,7 @@
           "entry_date": "2026-10-02",
           "stop_loss": 2731.2,
           "take_profit": 3056.9,
-          "highest_price": 2893.5,
+          "highest_price": 2924.0,
           "signal_score": 51,
           "signal_reasons": [
             "✨ 直近安値付近（押し目買いチャンス）",
@@ -2111,7 +2111,7 @@
       }
     }
   },
-  "last_run": "2026-10-05T14:04:37.246537",
+  "last_run": "2026-10-06T05:09:43.493262",
   "last_full_screening": "2026-10-02T12:10:16.103062",
   "signals_history": [
     {
