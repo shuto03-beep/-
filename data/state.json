@@ -2111,8 +2111,8 @@
       }
     }
   },
-  "last_run": "2026-10-07T12:57:23.238476",
-  "last_full_screening": "2026-10-07T12:57:23.236529",
+  "last_run": "2026-10-08T04:47:23.907462",
+  "last_full_screening": "2026-10-08T04:47:23.906138",
   "signals_history": [
     {
       "ticker": "8058.T",
@@ -2813,6 +2813,13 @@
       "type": "SELL",
       "score": -42,
       "date": "2026-10-07 04:36"
+    },
+    {
+      "ticker": "3563.T",
+      "name": "FOOD & LIFE",
+      "type": "BUY",
+      "score": 51,
+      "date": "2026-10-08 04:47"
     }
   ]
 }
