@@ -1,0 +1,216 @@
+{
+  "date": "2026-10-09",
+  "headline": "両手を空けて1ブロックに集中",
+  "one_minute_action": "カレンダーを開いて、最重要1ブロックの開始時刻を確定する",
+  "aesthetic_signal": "他者評価ではなく、4軸の自分のスコアだけを尺度にする",
+  "scorecard": {
+    "date": "2026-10-09",
+    "systemize": 2,
+    "declutter": 0,
+    "two_handed": 8,
+    "knowledge_share": 10,
+    "systemize_note": "(ヒューリスティック採点) 仕組み系シグナル数",
+    "declutter_note": "(ヒューリスティック採点) 断捨離シグナル数",
+    "two_handed_note": "(ヒューリスティック採点) 集中シグナル数",
+    "knowledge_share_note": "(ヒューリスティック採点) 共有シグナル数",
+    "total": 20,
+    "source_entry_ids": [],
+    "created_at": "2026-10-09T01:18:01"
+  },
+  "dropped": [
+    {
+      "title": "移行の目的は、子どもの活動機会の確保・拡大と、教員の負担軽減・働き方改革の両立。教員の地域クラブ関与は本人意思尊重。勤務時間の取り扱いは平日8時間までの認定拡充",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "リレーのバトンパス等の改善が確認され、平日開催は参加状況・熱中症対策の観点から妥当と評価",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "記録の継続管理（同人数条件で年度比較）の導入を検討。先輩記録との比較で意欲向上が期待される",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "先行実施（令和8年度相当）：吹奏楽、サッカー、女子バスケット、卓球などで公共施設や平日夜間練習を活用。10/5時点で19団体が登録申請（先行6、その他13：柔道",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "スケジュール（主な節目）:",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "10月14日：推進協議会で方針改定協議",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "令和9年4月：先行実施拡大、6月頃：令和10年8月以降の募集開始",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "校内施設はイナチャレを優先利用。社会体育と重なる場合は調整し、困難なら中学生活動を優先。町内公共施設（中央公園、テニスコート等）は一般と同条件で申込",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "施設割当は事務局が公平に調整し、夜間練習は当面週2日上限。町有施設の空き枠も共有予定",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "夜間照明は令和9年度内整備を目標に予算調整中。高照度を目指し段階的導入（両校同時は困難）。電力・周辺環境（農作物・住民配慮）等の課題も整理中",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "セキュリティ強化は「松・竹・梅」案で見積精査。必須室に絞る方向、各校防犯カメラ3台目安で追加見積。見守りカメラは家庭責任領域と区別。稲美北中はセンサー増に伴う本",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "スマートロックや校舎区画整備、防犯カメラ増設等の安全対策も拡充検討",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "費用負担方針：共用備品（ネット等）は公費支援を検討。個人用品・消耗品は家庭・クラブ負担。大会参加費や交通費は月会費と別枠扱い。会費はクラブ裁量で国基準月3,00",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "教員の関与は本人意思を尊重。関与しない選択も可能な体制を目指す。指導には関わりたい人材のマッチングや登録制度を整備。外部指導者の報酬（例：月10万円）に伴う税務",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "ガイドライン上の活動目安は週11時間。平日8時間分の勤務認定拡充を県に要望。他市町事例を踏まえ上限8時間認定を目指す",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "吹奏楽：練習場所が固定されず、楽器搬出入負担。公共施設での保管可否は検討課題。費用（修理・搬送）と公平性の配慮が必要",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "女子テニス：地域クラブ化し新人戦出場。指導者は確保も報酬はほぼ無償。ボール代・コート維持費等の実費負担が増加。事務局機能人材と令和12年以降の監督未定",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "活動日・時間：休養日週2日以上、活動は週11時間程度。新規地域クラブは水曜活動も可の方向。先行実施の学校部活動は令和10年7月まで現行方針内で運用",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "教育委員会は独自財源が乏しく、環境整備・地域クラブ整備・家庭支援等の費用を関係先へ要請予定。事務局体制を強化し、クラブ運営（会計・保険・税務・事故対応）の相談窓",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "立ち上げ資金の公的支援を検討（稲美町税を用いるため、原則町内児童生徒が対象）。参加費の家庭支援も検討し、経済困窮家庭には上積み支援方針。他市町児童の参加には町支",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "参加費徴収、事故・けが対応、税務は基本クラブの所掌。教育委員会は相談・支援体制を整備し、会計の透明性点検や保護者説明を支援",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "吹奏楽の楽器修理費・保管場所は課題。学校保管が望ましいとの意見が多く、公共施設での保管は運用上の課題あり。修理費支援・ホール減免の代替策を含む寄付・企業連携等の",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "サッカー：ナイター利用で既存団体との調整懸念。学校照明整備と荷物置き場の課題",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "卓球：夜間後の自転車帰宅に保護者不安。指導者が校務で抜ける場合の対応不明確。部員が多く練習密度不足。次年度の募集制限（10〜15名）を検討も、学校部活との整合が",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "女子バスケット：合同練習の夜間化で安全確保懸念。用具移動を教員が担い急な変更に弱い。学校文化の違い調整に時間",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "野球（南中）：練習開始前の生徒の居場所不明確。令和10年7月以降の教員役割・引き渡しに不安。監督確保と責任負担が課題",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "国・県ガイドラインに基づき、令和10年7月まで学校部活動を現行運用、同年8月以降に地域クラブ（いなみチャレンジ＝いなチャレ）へ本格移行する全体方針を確認。学校施",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    }
+  ],
+  "next_actions": [
+    {
+      "title": "コロナ後の半日開催へ再編し、各校の特色を活かす運営が定着。保護者・地域が子どもの頑張りを見る機会として有効",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    },
+    {
+      "title": "令和9年2月：新入生説明会でいなチャレ紹介",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    },
+    {
+      "title": "令和10年7月：学校部活動終了、8月：全面実施",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    }
+  ]
+}
