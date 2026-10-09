@@ -1,0 +1,29 @@
+{
+  "id": "2026-10-07_2026-10-07-112356",
+  "source_file": "plaud-web:389b96a611c5eab999a03939293bf2a5",
+  "recorded_at": "2026-10-07T02:23:56",
+  "ingested_at": "2026-10-09T00:43:12",
+  "title": "2026-10-07 11:23:56",
+  "raw": {
+    "transcript": "",
+    "summary": ""
+  },
+  "lifelog": {
+    "headline": "2026-10-07 11:23:56",
+    "tags": [
+      "plaud"
+    ],
+    "source": "raw"
+  },
+  "tasks": [],
+  "task_analysis": {
+    "total": 0,
+    "by_priority": {
+      "high": 0,
+      "medium": 0,
+      "low": 0
+    },
+    "effort_summary": "",
+    "blockers": []
+  }
+}
