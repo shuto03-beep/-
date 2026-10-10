@@ -1,0 +1,156 @@
+{
+  "date": "2026-10-10",
+  "headline": "両手を空けて1ブロックに集中",
+  "one_minute_action": "カレンダーを開いて、最重要1ブロックの開始時刻を確定する",
+  "aesthetic_signal": "他者評価ではなく、4軸の自分のスコアだけを尺度にする",
+  "scorecard": {
+    "date": "2026-10-10",
+    "systemize": 2,
+    "declutter": 0,
+    "two_handed": 2,
+    "knowledge_share": 4,
+    "systemize_note": "(ヒューリスティック採点) 仕組み系シグナル数",
+    "declutter_note": "(ヒューリスティック採点) 断捨離シグナル数",
+    "two_handed_note": "(ヒューリスティック採点) 集中シグナル数",
+    "knowledge_share_note": "(ヒューリスティック採点) 共有シグナル数",
+    "total": 8,
+    "source_entry_ids": [],
+    "created_at": "2026-10-10T01:02:59"
+  },
+  "dropped": [
+    {
+      "title": "**評価と境界線**: 技量や実績が高くても、越えてはならない線を超えれば評価はゼロになるという見方が示された。能力を理由に不適切な行為を容認しない姿勢を共有し",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**周囲への影響**: 本人を慕う人を含め、周囲もその行為を良いとは受け止めていないとされた。活動自体が続けられなくなる可能性もあるため、本人に伝える必要がある",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**相談の広がり**: 卓球以外でも、ついていけずに辞めようとしている人がいるという話が出た。登録者や関係者から「どうすればよいか」という相談も出始めており、早",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**任せ方の課題**: 本人には人に任せることが苦手な面があり、自分の感覚や考えと違う動きがあると強く反応するのではないかという意見が出た",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**平日重点活動**",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**休日活動**",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**地方公共団体の体制整備**",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**学校の判断**: 体育、学校行事、授業などで使うかは学校側にしか判断できないため、学校に確認する必要がある",
+      "reason": "雑務カテゴリ。仕組み化・委任・後回しの対象。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 9月末までの支出実行済額と証憑書類を、平日重点・休日・体制整備・部活動指導員のメニュー別に整理する",
+      "reason": "雑務カテゴリ。仕組み化・委任・後回しの対象。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 両校長の都合を調整し、校長のみで地域展開の最終対応を相談する場を設ける。本格実施に向けた大まかな案も整理する",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 前日の会議内容をまとめて関係者へ回覧する",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**伝達の担い手**: 北谷教育長は、自分よりも関係の近い人から伝える方が効く場合があると述べた",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "**関係性の問題**: 周囲からは、教育長とのつながりで教育委員会にいると受け取られかねないという指摘があった。今回のような問題が起きても、教育長が強く言えば収",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "**部活動指導員**",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "**購入負担の分担**: 例えば9本必要なら、学校側と地域側がそれぞれ必要数を購入するような分け方が考えられるとの意見が出た",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "**保管責任**: 地域団体の物品を学校に置く場合、破損や紛失の責任が問題になる。ただし、壊れては困る物は鍵のかかる場所に保管するか、持ち帰るという基本ルールで",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "**施設の公共利用**: 学校施設を地域に開くほど、学校用品以外の物品を置く場面が増える。学校施設を公共施設として使うなら、物品管理の線引きが必要になるとされた",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    }
+  ],
+  "next_actions": [
+    {
+      "title": "**相談窓口**: 高校だけでなく、他の場でも同種の相談が出た場合に教育委員会が対応するなら、相談窓口のような仕組みが必要になるとの懸念が出た",
+      "duration_minutes": 30,
+      "priority": "High",
+      "description": "フィルタ(レバレッジ・使命)に合致。",
+      "leverage": true,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    },
+    {
+      "title": "**勤務中のLINE**: 仕事の時間中に頻繁にLINEを送り合うことは問題とされた。勤務時間外の内容であっても、授業中などに携帯電話を見ることは認められないと",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    },
+    {
+      "title": "**子どもへの行為**: 子どもを傷つける行為は「犯罪」との認識が示された。写真や目隠しを使った事例、授業中にLINEを送り続ける行為などを、許されない例として",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    }
+  ]
+}
