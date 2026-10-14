@@ -8,15 +8,205 @@
     "systemize": 0,
     "declutter": 0,
     "two_handed": 0,
-    "knowledge_share": 0,
+    "knowledge_share": 10,
     "systemize_note": "(ヒューリスティック採点) 仕組み系シグナル数",
     "declutter_note": "(ヒューリスティック採点) 断捨離シグナル数",
     "two_handed_note": "(ヒューリスティック採点) 集中シグナル数",
     "knowledge_share_note": "(ヒューリスティック採点) 共有シグナル数",
-    "total": 0,
+    "total": 10,
     "source_entry_ids": [],
-    "created_at": "2026-10-14T00:25:33"
+    "created_at": "2026-10-14T23:59:12"
   },
-  "dropped": [],
-  "next_actions": []
+  "dropped": [
+    {
+      "title": "**構造的摩擦**: 塩山氏と堀田氏の間で指導方針の整合性が取れておらず、現場でのスタンスにズレが生じている",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**力量の現実**: 組織内評価として、指導力・影響力ともに成熟した水準には達しておらず、現状の権限付与や単独での推進にはリスクが伴う",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**夜間コミュニケーションの遮断**: 威圧感の緩和およびトラブル防止のため、夜間帯のLINE等の連絡を意図的に抑制・停止する",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**直接対話による状況整理**: 木曜日を目処に塩山氏を呼び出し、現状の課題意識と今後の立ち振る舞いについて認識のすり合わせを実施する",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**管轄と境界線の明確化**: 障害・過剰介入の管轄範囲を明確にし、被害者意識の固定化を防ぎつつ、組織的な枠組みの中でコントロール下に置く",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 木村氏へ対象のデジタル資料・データを引き渡し、配置を完了させる - [本日中]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 木曜日に塩山氏との面談を設定し、指導方針の確認と夜間連絡停止を指示する - [木曜日]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 情報共有会で修正があった資料を差し替える - [TBD]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 席次表の配布を取りやめ、席札のみを作成・準備する - [TBD]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 会議当日の配布資料として、概略ガイドライン（約64ページ）を委員分準備する - [TBD]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 副会長選出の進行において、高松和也氏への依頼と、杉本氏が立候補した場合の対応シナリオを整理する - [TBD]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 次回の政策調整会議に向け、高野グラウンドの照度データおよび中央公園との比較資料を作成・準備する - [TBD]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 次回の政策調整会議に向け、高野グラウンドの照度データおよび中央公園との比較資料を作成・準備する - [TBD]",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 防犯カメラの設置・運用について、セキュリティ担当者および警備会社（セコム）との連携手順を確認する - [TBD]",
+      "reason": "雑務カテゴリ。仕組み化・委任・後回しの対象。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "生涯学習課の水野副課長より、依頼の趣旨説明と挨拶が行われた",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "業務承諾にあたり、承諾書の記入・提出が依頼された",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "過去に町からの支払い実績（債権者登録）が確認されており、今回の謝金も同様に登録口座へ振り込まれる予定",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**結論**: 本日中に承諾書へ記入し、水野副課長が預かる",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "委託料・謝金の支払いに関して、所得税の源泉徴収および支払調書の作成が適切に処理されていることを確認",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "税率適用一覧表の管理と、指定用紙による振込手続きの流れが共有された",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 本日中に承諾書を記入し、水野副課長へ提出する",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 登録済みの債権者情報に基づき、謝金の振込手続きを進める",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 謝金振込用紙の提出先と最終確認プロセスを明確化する",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 業務の具体的な実施場所（明石、土山、沿線沿いなど）を確定する",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**過去の自著・記録の参照**",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[Speaker 2] は自身の過去作を読み返さない傾向がある一方、[Speaker 3] は過去の自著を読み返すことが多い",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[Speaker 2] は、過去の記録は調子が良かったときの「ピーク値」であり再現が難しいため、参照価値があると言及",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**情報ストレージと物理的・思考的空間の整理**",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    }
+  ],
+  "next_actions": [
+    {
+      "title": "**現象**: 塩山氏の指導姿勢（過剰な要求・役に入り込んだ指導）に対し、生徒および保護者から強い拒絶反応が発生している",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 新規委員向けの資料一式に要綱・規約を添付し、教育長用には規約を加えて準備する - [TBD]",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    }
+  ]
 }
