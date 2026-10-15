@@ -1,0 +1,216 @@
+{
+  "date": "2026-10-15",
+  "headline": "両手を空けて1ブロックに集中",
+  "one_minute_action": "カレンダーを開いて、最重要1ブロックの開始時刻を確定する",
+  "aesthetic_signal": "他者評価ではなく、4軸の自分のスコアだけを尺度にする",
+  "scorecard": {
+    "date": "2026-10-15",
+    "systemize": 0,
+    "declutter": 0,
+    "two_handed": 0,
+    "knowledge_share": 8,
+    "systemize_note": "(ヒューリスティック採点) 仕組み系シグナル数",
+    "declutter_note": "(ヒューリスティック採点) 断捨離シグナル数",
+    "two_handed_note": "(ヒューリスティック採点) 集中シグナル数",
+    "knowledge_share_note": "(ヒューリスティック採点) 共有シグナル数",
+    "total": 8,
+    "source_entry_ids": [],
+    "created_at": "2026-10-15T23:43:45"
+  },
+  "dropped": [
+    {
+      "title": "生涯学習課の水野副課長より、依頼の趣旨説明と挨拶が行われた",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "業務承諾にあたり、承諾書の記入・提出が依頼された",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "過去に町からの支払い実績（債権者登録）が確認されており、今回の謝金も同様に登録口座へ振り込まれる予定",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**結論**: 本日中に承諾書へ記入し、水野副課長が預かる",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "委託料・謝金の支払いに関して、所得税の源泉徴収および支払調書の作成が適切に処理されていることを確認",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "税率適用一覧表の管理と、指定用紙による振込手続きの流れが共有された",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 本日中に承諾書を記入し、水野副課長へ提出する",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 登録済みの債権者情報に基づき、謝金の振込手続きを進める",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 謝金振込用紙の提出先と最終確認プロセスを明確化する",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 業務の具体的な実施場所（明石、土山、沿線沿いなど）を確定する",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**過去の自著・記録の参照**",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[Speaker 2] は自身の過去作を読み返さない傾向がある一方、[Speaker 3] は過去の自著を読み返すことが多い",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[Speaker 2] は、過去の記録は調子が良かったときの「ピーク値」であり再現が難しいため、参照価値があると言及",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**情報ストレージと物理的・思考的空間の整理**",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[Speaker 2] は過去に大量の書籍を保有していたが、大幅に処分して部屋を整理したことで思考が快適になったと報告",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**マーケティングと「センス」に関する考察**",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[Speaker 3] は、ウケを狙わずに自分が良いと思うものを出す姿勢（自己発信）の重要性を強調",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[Speaker 2] は過去のビール開発（苦いビールの調査で万人受けを狙い失敗した例）を挙げ、過度な市場迎合のリスクを説明",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "センスは先天的能力ではなく、意識の向けどころの自覚と経験の積み重ねによって磨かれるものであることで意見が一致",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**会議の準備と進行規定**",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "会議の進行において、根拠規定を第6条とするか第5条の2とするかについて、司会・統率の観点から第5条の2が適当と整理",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "高松氏へ事前に意見出しのタイミングを伝えておくことを確認",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**配布資料の変更点**",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "**次回日程の調整方針**",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "次回候補日は2月27日とし、参加者の都合がつかない場合は「最大公約数（最も参加者が多い日）」で決定する方針を確認",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 高松氏に事前に意見を求めるタイミングを伝達する",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "事前配布資料から一部（第5項の追加、二次募集データ、学校教員との情報共有会での課題など）が変更された旨を会議冒頭で説明することを確認",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    }
+  ],
+  "next_actions": [
+    {
+      "title": "[Speaker 3] も「在庫極小化」を徹底しており、脳内ストレージを軽くすることが知的生産のパフォーマンス向上につながると主張",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(独自性)に合致。",
+      "leverage": false,
+      "mission": false,
+      "uniqueness": true,
+      "source_entry_id": null
+    },
+    {
+      "title": "教育長が最も早く到着するため、それまでに準備を完了させる（17時〜18時頃のスケジュール管理）",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 会議冒頭で資料の変更点（第5項の追加、二次募集データ、学校教員との情報共有会での課題等）を参加者に説明する",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    }
+  ]
+}
