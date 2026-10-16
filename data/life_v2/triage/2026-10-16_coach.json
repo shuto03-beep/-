@@ -1,0 +1,216 @@
+{
+  "date": "2026-10-16",
+  "headline": "両手を空けて1ブロックに集中",
+  "one_minute_action": "カレンダーを開いて、最重要1ブロックの開始時刻を確定する",
+  "aesthetic_signal": "他者評価ではなく、4軸の自分のスコアだけを尺度にする",
+  "scorecard": {
+    "date": "2026-10-16",
+    "systemize": 8,
+    "declutter": 0,
+    "two_handed": 0,
+    "knowledge_share": 10,
+    "systemize_note": "(ヒューリスティック採点) 仕組み系シグナル数",
+    "declutter_note": "(ヒューリスティック採点) 断捨離シグナル数",
+    "two_handed_note": "(ヒューリスティック採点) 集中シグナル数",
+    "knowledge_share_note": "(ヒューリスティック採点) 共有シグナル数",
+    "total": 18,
+    "source_entry_ids": [],
+    "created_at": "2026-10-16T23:43:51"
+  },
+  "dropped": [
+    {
+      "title": "ハルトマンとトラフトンらの2014年の実験では、決まった手順の作業を参加者に行わせ、中断の長さを扱った",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "ミスを軽く見る人はミスを繰り返しやすいという見方が示された",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "対策として、作業をリスト化する、声に出す、指さし確認をする、確認後に同じ箇所へ戻る、といった手順が挙げられた",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "現場観察では、**優秀なチームはミスが多いのではなく、小さなミスをその場で言える環境にあった**。報告するため記録に残り、改善につながると説明された",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "「全面実施までの間」と書けば、後ろの「まで」は経過期間を示す",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "括弧内の「令和10年8月」は、全面実施の始まる時期を示す表現として読める",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "日付表現を繰り返すより、「全面実施」という表現へそろえる案が出た",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "時期を入れる場合も、「令和10年度」程度にとどめる案が示された",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "他の箇所には8月の記載があるため、時期を全く示さない場合は質問に答えにくいとの懸念も残った",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "日曜日には練習会があり、8時30分から16時30分までの活動があるという話が出た",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "月報はメールで受け取り、Excelで入力して返信する形になる見込みだった。自宅のパソコンやメール環境の利用可否を確認し、難しければ別の方法を考える必要がある",
+      "reason": "雑務カテゴリ。仕組み化・委任・後回しの対象。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "様式は森本または中山から届く見込みとされた。ただし、地域クラブの見通しを含め、関係者間でよく話すことが望ましいとされた",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "個人で運営してきた団体なら、収支の報告書が必要になる場合がある",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "団体ごとに既存の様式がある場合は、それを使えばよい。設問を二重に作る必要はない",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "雛形はExcelシートなどのデータで渡し、必要な団体だけが作成できるようにする案が出た",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "活動開始までに準備する書類は、1月末または2月頃までに集まると整理しやすいという見方があった。ただし、担当側も1月は多忙になる見込みだった",
+      "reason": "雑務カテゴリ。仕組み化・委任・後回しの対象。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "ヒアリングでは、代表者と指導者が18歳以上で高校生ではないこと、スタッフが原則2人以上であることなどを確認する",
+      "reason": "雑務カテゴリ。仕組み化・委任・後回しの対象。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "水曜日に関する事項も説明が必要だとされたが、具体的な内容はこの記録では示されなかった",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "新たに法人をつくる場合は、その扱いを分けて進める必要があるかもしれないとの話が出た",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "男女を問わず参加できる",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "カコクラでは8人を受け入れる",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "[ ] 新しい箇所の文書表現を「全面実施」で統一して出す",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "タイトル: 説明方針の見直し（簡潔化と結論重視）",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "概要:",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "現状の説明が冗長で分かりづらいとの指摘を受け、簡潔化を検討",
+      "reason": "3フィルタ(leverage/mission/uniqueness)に1つも合致せず。",
+      "disposition": "drop",
+      "source_entry_id": null
+    },
+    {
+      "title": "いなチャレでも8人を受け入れる",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    },
+    {
+      "title": "**カコクラは金曜日、いなチャレは月曜日に活動する予定**と確認された",
+      "reason": "上位3件枠から漏れたため後回し。",
+      "disposition": "defer",
+      "source_entry_id": null
+    }
+  ],
+  "next_actions": [
+    {
+      "title": "2009年にガワンデらが世界8カ国の病院で行った実験では、手術前に19項目のチェックリストをチーム全員で声に出した",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(レバレッジ)に合致。",
+      "leverage": true,
+      "mission": false,
+      "uniqueness": false,
+      "source_entry_id": null
+    },
+    {
+      "title": "**休日に地域クラブとして行う活動は、月報で報告すれば謝金の支払い対象とする考え**が示された。学校から依頼された活動と、自主的に土日に行う活動では活動時間が増",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    },
+    {
+      "title": "**令和10年8月以降に全面展開となる**。その後は、生徒から集める費用でクラブを運営し、役場との関係は切れる形になるとの認識が示された",
+      "duration_minutes": 30,
+      "priority": "Medium",
+      "description": "フィルタ(使命)に合致。",
+      "leverage": false,
+      "mission": true,
+      "uniqueness": false,
+      "source_entry_id": null
+    }
+  ]
+}
